@@ -1,0 +1,90 @@
+{
+        "theWidow:WebPower": {
+                "NAME": "Web",
+                "DESCRIPTIONS": ["Reduce the damage of the next #b", " attack by half.", " attacks by half."]
+        },
+        "theWidow:ParalysisPower": {
+                "NAME": "Paralysis",
+                "DESCRIPTIONS": ["Attacks #b1 less time when multi-attacking for #b", " turns."]
+        },
+        "theWidow:NecrosisPower": {
+                "NAME": "Necrosis",
+                "DESCRIPTIONS": ["Increase all damage taken by #b", ". Reduced by half each turn."]
+        },
+        "theWidow:NeurojackPower": {
+                "NAME": "Neurojack",
+                "DESCRIPTIONS": ["At the start of your turn, upgrade #b", " random card.", " random cards."]
+        },
+        "theWidow:HermitWeavePower": {
+                "NAME": "Hermit Weave",
+                "DESCRIPTIONS": ["At the start of your turn, gain #b", " Web."]
+        },
+        "theWidow:LaserDronePower": {
+                "NAME": "Laser Drone",
+                "DESCRIPTIONS": ["At the start of your turn, deal #b", " damage to the target."]
+        },
+        "theWidow:LairPower": {
+                "NAME": "Lair",
+                "DESCRIPTIONS": ["On gaining Web, apply #b", " Vulnerable to ALL enemies."]
+        },
+        "theWidow:ShockedPower": {
+                "NAME": "Shocked",
+                "DESCRIPTIONS": ["On attacking, takes #b", " damage."]
+        },
+        "theWidow:HydraulicsPower": {
+                "NAME": "Hydraulics",
+                "DESCRIPTIONS": ["The first Attack played each turn deals ", "The first #b ", " Attacks played each turn deal ", "double damage and Exhausts."]
+        },
+        "theWidow:GrenadierPower": {
+                "NAME": "Grenadier",
+                "DESCRIPTIONS": ["#b", " extra potion slots."]
+        },
+        "theWidow:ConduitPower": {
+                "NAME": "Conduit",
+                "DESCRIPTIONS": ["Deal extra Attack damage equal to Web."]
+        },
+        "theWidow:AmbushPower": {
+                "NAME": "Ambush",
+                "DESCRIPTIONS": ["At the end of your turn, if you played no Attacks this turn, Retain your hand."]
+        },
+        "theWidow:TranscensionPower": {
+                "NAME": "Transcension",
+                "DESCRIPTIONS": ["At the start of your turn, Upgrade all cards in your hand", " #b", " times.", "."]
+        },
+        "theWidow:TransensionPower2": {
+                "NAME": "Transcension",
+                "DESCRIPTIONS": ["Cards cost 0. When you draw a card, #yTransform it."]
+        },
+        "theWidow:TranscensionPower3": {
+                "NAME": "Transcension",
+                "DESCRIPTIONS": ["At start of turn, choose 1 of 3 cards to add to your hand. It costs 0 this turn."]
+        },
+        "theWidow:BombLauncherPower": {
+                "NAME": "Bomb Launcher",
+                "DESCRIPTIONS": ["The next Potion you use is used twice.", "The next #b", " Potions you use are used twice."]
+        },
+        "theWidow:ChemistryPower": {
+                "NAME": "Chemistry",
+                "DESCRIPTIONS": ["When you use a Potion, draw #b", " cards."]
+        },
+        "theWidow:ScrapperPower": {
+                "NAME": "Scrappy",
+                "DESCRIPTIONS": ["At end of turn, gain #b", " Block per debuff."]
+        },
+        "theWidow:SadisticIntentPower": {
+                "NAME": "Sadistic Intent",
+                "DESCRIPTIONS": ["When applying a debuff to an enemy, draw #b"," card."]
+        },
+        "theWidow:DischargeBatteryPower": {
+                "NAME": "Discharging Battery",
+                "DESCRIPTIONS": ["At start of turn, apply #b", " thewidow:Paralysis and Weak to", " a random enemy.", " ALL enemies."]
+        },
+        "theWidow:ExtraCompartmentPower": {
+                "NAME": "Extra Compartments",
+                "DESCRIPTIONS": ["#b", " extra Potion Slots this turn."]
+        },
+        "theWidow:GashPower": {
+                "NAME": "Gash",
+                "DESCRIPTIONS": ["For the next #b", " turns, takes #b", " damage."]
+        }
+}

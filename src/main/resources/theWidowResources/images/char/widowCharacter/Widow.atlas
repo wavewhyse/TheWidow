@@ -1,0 +1,83 @@
+
+Widow.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 1, 1
+  size: 303, 305
+  orig: 305, 305
+  offset: 0, 0
+  index: -1
+arm1
+  rotate: false
+  xy: 207, 397
+  size: 38, 64
+  orig: 41, 64
+  offset: 3, 0
+  index: -1
+arm2
+  rotate: false
+  xy: 153, 308
+  size: 51, 87
+  orig: 51, 87
+  offset: 0, 0
+  index: -1
+frontleft1
+  rotate: false
+  xy: 179, 397
+  size: 26, 105
+  orig: 33, 112
+  offset: 1, 2
+  index: -1
+frontright1
+  rotate: false
+  xy: 112, 308
+  size: 39, 115
+  orig: 47, 126
+  offset: 4, 3
+  index: -1
+frontleft2
+  rotate: false
+  xy: 392, 214
+  size: 73, 219
+  orig: 92, 227
+  offset: 13, 5
+  index: -1
+frontright2
+  rotate: false
+  xy: 306, 214
+  size: 84, 218
+  orig: 92, 225
+  offset: 3, 3
+  index: -1
+backleft1
+  rotate: false
+  xy: 206, 308
+  size: 28, 87
+  orig: 38, 130
+  offset: 5, 0
+  index: -1
+backleft2
+  rotate: false
+  xy: 306, 1
+  size: 115, 211
+  orig: 146, 219
+  offset: 13, 3
+  index: -1
+backright1
+  rotate: false
+  xy: 112, 434
+  size: 65, 75
+  orig: 65, 107
+  offset: 0, 0
+  index: -1
+backright2
+  rotate: false
+  xy: 1, 308
+  size: 109, 185
+  orig: 150, 199
+  offset: 20, 4
+  index: -1

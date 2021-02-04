@@ -1,0 +1,388 @@
+{
+  "theWidow:StrikeWidow": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "theWidow:DefendWidow": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! Block."
+  },
+  "theWidow:Steelweave": {
+    "NAME": "Steelweave",
+    "DESCRIPTION": "Gain !B! Block. NL Upgrade a random card in your hand for the rest of combat.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Upgrade a card in your hand for the rest of combat."
+  },
+  "theWidow:Spinnerets": {
+    "NAME": "Spinnerets",
+    "DESCRIPTION": "thewidow:Beta. NL Gain !M! thewidow:Web. NL Exhaust."
+  },
+  "theWidow:Weld": {
+    "NAME": "Weld",
+    "DESCRIPTION": "Deal !D! damage. NL Upgrade !M! card in your hand for the rest of combat.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Upgrade !M! cards in your hand for the rest of combat."
+  },
+  "theWidow:ExplosiveKick": {
+    "NAME": "Explosive Kick",
+    "DESCRIPTION": "Deal !D! damage. NL This card cannot be Upgraded outside of combat.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Gain [E]. NL Draw 1 card."
+  },
+  "theWidow:WebSwing": {
+    "NAME": "Web Swing",
+    "DESCRIPTION": "Gain !B! Block. NL Draw !M! cards."
+  },
+  "theWidow:Harden": {
+    "NAME": "Harden",
+    "DESCRIPTION": "thewidow:Beta. NL Gain !B! Block."
+  },
+  "theWidow:RotaryBlade": {
+    "NAME": "Rotary Blade",
+    "DESCRIPTION": "thewidow:Beta. NL Deal !D! damage !M! times. NL Upgrade this card for the rest of combat."
+  },
+  "theWidow:Meltdown": {
+    "NAME": "Meltdown",
+    "DESCRIPTION": "Exhaust an Upgraded card and add !M! non-Upgraded copies to your hand."
+  },
+  "theWidow:Neurojack": {
+    "NAME": "Neuro-Jack",
+    "DESCRIPTION": "At the start of your turn, Upgrade a random card in your hand for the rest of combat.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, Upgrade !M! random cards in your hand for the rest of combat."
+  },
+  "theWidow:HermitWeave": {
+    "NAME": "Hermit Weave",
+    "DESCRIPTION": "At the start of your turn, gain 1 thewidow:Web."
+  },
+  "theWidow:OmniCannon": {
+    "NAME": "Omni-Cannon",
+    "DESCRIPTION": "thewidow:Beta. NL Deal !D! damage to ALL enemies."
+  },
+  "theWidow:ImprobabilityDrive": {
+    "NAME": "Improbability Drive",
+    "DESCRIPTION": "thewidow:Beta. NL Gain !M! [E]. NL Draw !M! cards. NL Exhaust."
+  },
+  "theWidow:ImprobabilityDrive2": {
+    "NAME": "Improbability Drive",
+    "DESCRIPTION": "thewidow:Beta. NL Draw X cards. NL Gain",
+    "EXTENDED_DESCRIPTION": [". NL Exhaust."]
+  },
+  "theWidow:RocketDash": {
+    "NAME": "Rocket Dash",
+    "DESCRIPTION": "thewidow:Beta. NL Gain !B! Block. NL When this card is Upgraded, deal !M! damage to ALL enemies."
+  },
+  "theWidow:Skitter": {
+    "NAME": "Skitter",
+    "DESCRIPTION": "Innate. NL Gain !M! thewidow:Web for each enemy. Exhaust."
+  },
+  "theWidow:Ironthread": {
+    "NAME": "Ironthread",
+    "DESCRIPTION": "Upgrade !M! cards in your hand for the rest of combat."
+  },
+  "theWidow:Restock": {
+    "NAME": "Restock",
+    "DESCRIPTION": "Deal !D! damage to a random enemy. NL Draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Deal !D! and !theWidow:HalfD! damage to random enemies. NL Draw !M! cards."
+  },
+  "theWidow:StringShot": {
+    "NAME": "String Shot",
+    "DESCRIPTION": "Deal !D! damage. Gain !M! thewidow:Web."
+  },
+  "theWidow:LaserDrone": {
+    "NAME": "Laser Drone",
+    "DESCRIPTION": "Deal !D! damage. NL At the start of your next turn, deal !D! damage."
+  },
+  "theWidow:ImprovisedExplosive": {
+    "NAME": "Improvised Explosive",
+    "DESCRIPTION": "Obtain a thewidow:Pulse_Bomb. NL Take !M! damage. NL Exhaust."
+  },
+  "theWidow:LaserRay": {
+    "NAME": "Laser Ray",
+    "DESCRIPTION": "thewidow:Beta. NL Deal !D! damage. Apply !M! Weak. Apply !M! Vulnerable."
+  },
+  "theWidow:Cybershock": {
+    "NAME": "Cybershock",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. Gain !M! Strength. Gain !M! Dexterity."
+  },
+  "theWidow:VenomStrike": {
+    "NAME": "Venom Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Target loses !M! Strength this turn."
+  },
+  "theWidow:Cocoon": {
+    "NAME": "Cocoon",
+    "DESCRIPTION": "Gain !M! thewidow:Web. NL Exhaust."
+  },
+  "theWidow:Lair": {
+    "NAME": "Lair",
+    "DESCRIPTION": "When you gain thewidow:Web, apply !theWidow:M2! Vulnerable to ALL enemies. NL Gain !M! thewidow:Web."
+  },
+  "theWidow:FusionScythe": {
+    "NAME": "Fusion Scythe",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Obtain a [#ff4444]Blessing of the Forge[]. Exhaust."
+  },
+  "theWidow:FusionScythe2": {
+    "NAME": "Fusion Scythe",
+    "DESCRIPTION": "thewidow:Downgrade your hand. Deal !D! damage to ALL enemies for each card thewidow:Downgraded.",
+    "EXTENDED_DESCRIPTION": [" NL ( !theWidow:UpgradesInHand! ", "thewidow:Downgrade )", "thewidow:Downgrades )"]
+  },
+  "theWidow:ShockEmitters": {
+    "NAME": "Shock Emitters",
+    "DESCRIPTION": "thewidow:Beta. NL Deal !D! damage. NL When target attacks this turn, it takes !M! damage."
+  },
+  "theWidow:SharpenedClaws": {
+    "NAME": "Sharpened Claws",
+    "DESCRIPTION": "Deal !D! damage for each Upgrade on a card in your hand."
+  },
+  "theWidow:Salvage": {
+    "NAME": "Salvage",
+    "DESCRIPTION": "Gain !B! Block. NL Discard all non-Upgraded cards in your draw pile."
+  },
+  "theWidow:Scrapskin": {
+    "NAME": "Scrapskin",
+    "DESCRIPTION": "Gain !B! Block. NL Permanently Upgrade this card.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Remove all your debuffs. NL Permanently thewidow:Downgrade this card."
+  },
+  "theWidow:ScrapHeap": {
+    "NAME": "Scrap Heap",
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! Frail."
+  },
+  "theWidow:HydraulicLimbs": {
+    "NAME": "Hydraulic Limbs",
+    "DESCRIPTION": "The first Attack you play each turn deals double damage and Exhausts."
+  },
+  "theWidow:Grenadier": {
+    "NAME": "Grenadier",
+    "DESCRIPTION": "Gain !M! potion slots for the rest of combat. Obtain !theWidow:M2! thewidow:Grenades."
+  },
+  "theWidow:TheBigOne": {
+    "NAME": "The Big One",
+    "DESCRIPTION": "Ethereal. NL Obtain a thewidow:Mini-Nuke. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Obtain a thewidow:Mini-Nuke. NL Exhaust."
+  },
+  "theWidow:Hide": {
+    "NAME": "Hide",
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! thewidow:Web."
+  },
+  "theWidow:Conduit": {
+    "NAME": "Conduit",
+    "DESCRIPTION": "When you deal unblocked Attack damage this turn, deal damage equal to your thewidow:Web. NL Deal !D! damage."
+  },
+  "theWidow:Electroneurons": {
+    "NAME": "Electroneurons",
+    "DESCRIPTION": "Draw !M! cards. NL Exhaust."
+  },
+  "theWidow:Ambush": {
+    "NAME": "Ambush",
+    "DESCRIPTION": "At the end of your turn, if you played no Attacks this turn, Retain your hand."
+  },
+  "theWidow:SelfImprovement": {
+    "NAME": "Self-Improvement",
+    "DESCRIPTION": "Exhaust a card in your hand. Gain !M! [E] and draw !M! card for each Upgrade on that card."
+  },
+  "theWidow:Lace": {
+    "NAME": "Lace",
+    "DESCRIPTION": "Gain !M! thewidow:Web. NL Gain !theWidow:M2! Vulnerable."
+  },
+  "theWidow:BlackVenom": {
+    "NAME": "Black Venom",
+    "DESCRIPTION": "Apply !M! Vulnerable, !M! Weak, !M! thewidow:Paralysis, and !theWidow:M2! thewidow:Necrosis. NL Exhaust."
+  },
+  "theWidow:TranscendentForm": {
+    "NAME": "Transcendent Form",
+    "DESCRIPTION": "At the start of your turn, Upgrade all cards in your hand for the rest of combat.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, Upgrade all cards in your hand !M! times for the rest of combat."
+  },
+  "theWidow:TranscendentForm2": {
+    "NAME": "Transcendent Form",
+    "DESCRIPTION": "Ethereal. Cards cost 0. When you draw a card, Transform it.",
+    "UPGRADE_DESCRIPTION": "Cards cost 0. When you draw a card, Transform it."
+  },
+  "theWidow:TranscendentForm3": {
+    "NAME": "Transcendent Form B",
+    "DESCRIPTION": "At the start of your turn, choose 1 of 3 cards to add to your hand. It costs 0 this turn.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, choose 1 of 3 Upgraded cards to add to your hand. It costs 0 this turn."
+  },
+  "theWidow:MakeshiftArmor": {
+    "NAME": "Makeshift Armor",
+    "DESCRIPTION": "thewidow:Beta. NL Gain !M! Plated Armor."
+  },
+  "theWidow:Scrapper": {
+    "NAME": "Scrapper",
+    "DESCRIPTION": "Gain !B! Block for each debuff stack you have.",
+    "EXTENDED_DESCRIPTION": [" NL ( !theWidow:ScrapperBlock! block )"]
+  },
+  "theWidow:Forge": {
+    "NAME": "Forge",
+    "DESCRIPTION": "Deal !D! damage. NL Obtain a *Blessing *Of *The *Forge NL Exhaust."
+  },
+  "theWidow:BombLauncher": {
+    "NAME": "Bomb Launcher",
+    "DESCRIPTION": "The next Potion you use this turn is used twice.",
+    "UPGRADE_DESCRIPTION": "The next !M! Potions you use this turn are used twice."
+  },
+  "theWidow:Chemistry": {
+    "NAME": "Chemistry",
+    "DESCRIPTION": "When you use a Potion, draw !M! cards."
+  },
+  "theWidow:Desperation": {
+    "NAME": "Desperation",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Gain !M! Weak."
+  },
+  "theWidow:Refine": {
+    "NAME": "Refine",
+    "DESCRIPTION": "Move an Upgradeable card from your discard pile to your hand and Upgrade it for the rest of combat. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Move an Upgradeable card from your discard pile to your hand and Upgrade it for the rest of combat."
+  },
+  "theWidow:SearingBlade": {
+    "NAME": "Searing Blade",
+    "DESCRIPTION": "thewidow:Beta. NL Deal !D! damage."
+  },
+  "theWidow:GeminiBot": {
+    "NAME": "Gemini Bot",
+    "DESCRIPTION": "thewidow:Beta. Unplayable. At the end of your turn, gain !M! Block, and deal !M! damage."
+  },
+  "theWidow:GeminiBot2": {
+    "NAME": "Gemini Bot",
+    "DESCRIPTION": "thewidow:Beta. Unplayable. NL When you play another card in hand, play this as an un-Upgraded copy of that card and Exhaust.",
+    "UPGRADE_DESCRIPTION": "thewidow:Beta. Unplayable. NL When you play another card in hand, play this as a + !theWidow:timesUpgraded! copy of that card and Exhaust."
+  },
+  "theWidow:InForTheKill": {
+    "NAME": "In For The Kill",
+    "DESCRIPTION": "Deal !D! damage. This card benefits from Vulnerable twice.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. This card benefits from Vulnerable three times."
+  },
+  "theWidow:Scrapper2": {
+    "NAME": "Scrapper",
+    "DESCRIPTION": "At the end of your turn, gain !M! Block per debuff affecting you."
+  },
+  "theWidow:MetalBurrs": {
+    "NAME": "Metal Burrs",
+    "DESCRIPTION": "Deal !D! damage. Costs less [E] per debuff affecting you."
+  },
+  "theWidow:Rewire": {
+    "NAME": "Rewire",
+    "DESCRIPTION": "Gain !B! Block. NL Transform a card in your hand."
+  },
+  "theWidow:Opportunist": {
+    "NAME": "Opportunist",
+    "DESCRIPTION": "Apply !M! Vulnerable. If the target is Weak, thewidow:Paralyzed, or does not intend to attack, deal !D! damage twice."
+  },
+  "theWidow:Underfoot": {
+    "NAME": "Underfoot",
+    "DESCRIPTION": "Gain !B! Block. NL Extend the duration of Weak and Vulnerable on an enemy by !M! turns."
+  },
+  "theWidow:Exploit": {
+    "NAME": "Exploit",
+    "DESCRIPTION": "Deal !D! damage. If target is debuffed, deal another !D! damage and gain [E]."
+  },
+  "theWidow:Spiderbite": {
+    "NAME": "Spiderbite",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! thewidow:Necrosis."
+  },
+  "theWidow:Distill": {
+    "NAME": "Distill",
+    "DESCRIPTION": "Remove a card. Obtain a potion that adds it to your hand. NL Exhaust."
+  },
+  "theWidow:Distill2": {
+    "NAME": "Distill",
+    "DESCRIPTION": "Exhaust a card of cost X or less and obtain a potion with its effects. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Exhaust a card of cost X+1 or less and obtain a potion with its effects. NL Exhaust."
+  },
+  "theWidow:Toxic": {
+    "NAME": "Toxic",
+    "DESCRIPTION": "Apply !M! Weak. NL Apply !M! Vulnerable. NL Exhaust."
+  },
+  "theWidow:SadisticIntent": {
+    "NAME": "Sadistic Intent",
+    "DESCRIPTION": "When you apply a debuff to an enemy, draw a card."
+  },
+  "theWidow:DischargeBattery": {
+    "NAME": "Discharge Battery",
+    "DESCRIPTION": "At the start of your turn, apply !M! thewidow:Paralysis and Weak to a random enemy. NL Gain 1 less [E] per turn.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, apply !M! thewidow:Paralysis and Weak to ALL enemies. NL Gain 1 less [E] per turn."
+  },
+  "theWidow:ExtraCompartment": {
+    "NAME": "Extra Compartment",
+    "DESCRIPTION": "Gain 1 Potion Slot this turn. Obtain a thewidow:Grenade. NL Exhaustive !stslib:ex!."
+  },
+  "theWidow:Stinger": {
+    "NAME": "Stinger",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! thewidow:Paralysis."
+  },
+  "theWidow:SludgeWave": {
+    "NAME": "Sludge Wave",
+    "DESCRIPTION": "Apply !M! Weak and !M! Vulnerable to EVERYONE."
+  },
+  "theWidow:LinkUp": {
+    "NAME": "Link-Up",
+    "DESCRIPTION": "Gain !B! Block for each Upgrade on cards in your hand.",
+    "EXTENDED_DESCRIPTION": [" NL ( !theWidow:UpgradesTotalInHand!", " Upgrade )", " Upgrades )"]
+  },
+  "theWidow:BioInformatics": {
+    "NAME": "Bio-Informatics",
+    "DESCRIPTION": "thewidow:Beta. NL Gain !B! Block. NL Draw !M! cards."
+  },
+  "theWidow:Scanner": {
+    "NAME": "Scanner",
+    "DESCRIPTION": "Innate. thewidow:Beta. NL Scry !M!. NL Exhaust."
+  },
+  "theWidow:Iterate": {
+    "NAME": "Iterate",
+    "DESCRIPTION": "Deal !D! damage. NL Upgrade all thewidow:Beta cards in your hand."
+  },
+  "theWidow:FissionAnvil": {
+    "NAME": "Fission Anvil",
+    "DESCRIPTION": "thewidow:Beta. NL Deal !D! damage. NL When this card is Upgraded, Upgrade all other cards in your hand for the rest of combat."
+  },
+  "theWidow:Unstoppable": {
+    "NAME": "Unstoppable",
+    "DESCRIPTION": "Remove all your Vulnerable, Weak, and Frail. NL Deal !D! damage, plus !M! for each stack removed."
+  },
+  "theWidow:Weaving": {
+    "NAME": "Weaving",
+    "DESCRIPTION": "Draw a card and Upgrade it for the rest of combat.",
+    "UPGRADE_DESCRIPTION": "Draw !M! cards and Upgrade them for the rest of combat."
+  },
+  "theWidow:FiberglassDagger": {
+    "NAME": "Fiberglass Dagger",
+    "DESCRIPTION": "thewidow:Beta. NL Deal !D! damage. NL Completely thewidow:Downgrade this card for the rest of combat."
+  },
+  "theWidow:Inspiration": {
+    "NAME": "Inspiration",
+    "DESCRIPTION": "Upgrade a card in your hand X times for the rest of combat. It costs 0 this turn. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Upgrade a card in your hand X+1 times for the rest of combat. It costs 0 this turn. NL Exhaust."
+  },
+  "theWidow:Injection": {
+    "NAME": "Injection",
+    "DESCRIPTION": "Deal !D! damage three times, applying !M! thewidow:Necrosis each time."
+  },
+  "theWidow:Silkshield": {
+    "NAME": "Silkshield",
+    "DESCRIPTION": "thewidow:Beta. NL Gain !B! Block. NL thewidow:Downgrade this card for the rest of combat."
+  },
+  "theWidow:SpiderDance": {
+    "NAME": "Spider Dance",
+    "DESCRIPTION": "Deal !D! damage 4 times."
+  },
+  "theWidow:BackupBattery": {
+    "NAME": "Backup Battery",
+    "DESCRIPTION": "thewidow:Beta. NL Gain [E] [E]. NL Exhaustive !stslib:ex!."
+  },
+  "theWidow:Nanobots": {
+    "NAME": "Nanobots",
+    "DESCRIPTION": "thewidow:Beta. NL Deal !D! damage. NL When this card is Upgraded in combat, shuffle a copy into your draw pile."
+  },
+  "theWidow:UnstableCell": {
+    "NAME": "Unstable Cell",
+    "DESCRIPTION": "thewidow:Beta. NL Deal !D! damage. NL When this card is Upgraded in your hand, play it."
+  },
+  "theWidow:Entrap": {
+    "NAME": "Entrap",
+    "DESCRIPTION": "Apply !M! Weak. NL Gain 1 thewidow:Web for each debuff affecting the target."
+  },
+  "theWidow:Gash": {
+    "NAME": "Gash",
+    "DESCRIPTION": "Deal !D! damage. NL For the next X turns, target takes !D! damage."
+  },
+  "theWidow:Dysphoria": {
+    "NAME": "Dysphoria",
+    "DESCRIPTION": "Unplayable. NL When this is removed from your deck, Upgrade !M! random cards in your deck."
+  }
+}

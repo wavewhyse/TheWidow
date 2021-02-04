@@ -1,0 +1,96 @@
+VERSION 0.4
+
+-Necrosis decays by half its amount each turn instead of 2 each turn
+-new card: Dysphoria (rare Curse): Unplayable. When this is removed from your deck, Upgrade 3 random cards in your deck.
+-Sludge Wave reworked: Apply 2 (3) Weak and Vulnerable to EVERYONE, no exhaust.
+-Gash damage over time halved
+-Hydraulic Limbs causes affected Attacks to Exhaust
+-Grenadier slots gain 2 -> 1 (still gives 2 Grenades)
+-Grenadier+ slots gain 3 -> 2, grenades given 3 -> 2
+-Entrap weak reduced by 1
+-Rocket Dash no longer upgrades quadratically
+-The Big One is now Ethereal
+-The Big One+ cost increased 2 -> 3 (no Ethereal)
+-Rotary Blade rarity changed: uncommon -> rare
+-Injection and Injection+ damage reduced by 2
+-Desperation+ damage reduced by 2
+-Scrap Heap and Scrap Heap+ block reduced by 2
+-Opportunist damage reduced by 2
+-Opportunist+ damage reduced by 4
+-Shock Emitters damage reduced by 1
+-fixed issue where Injection was applying modifiers twice
+-art added for In For The Kill, Exploit, Refine, Entrap, and Gemini Bot
+-zoomed in art added for most cards with art (the ones that aren't just power icons)
+
+VERSION 0.3
+
+-Link-Up removed
+-Salvage removed
+-Gemini Bot reworked: common -> uncommon. Beta. Unplayable. When you play another card in hand, play this as a unupgraded (upgraded) copy of that card and Exhaust.
+-Bio-Informatics draws 1 less card
+-Toxic debuffs decreased 2 -> 1, cost decreased 1 -> 0, Toxic+ unchanged
+-Rotary Blade cost increased 1 -> 2
+-Hourglass Mark STR and DEX gain: 2 -> 1
+-Improvised Explosive now damages self for 6
+-Improvised Explosive+ cost increased 1 -> 2, damages self for 3
+-Skitter and Skitter+ Web reduced 2 -> 1
+-Sludge Wave+ self-debuffs are now the same as unupgraded
+-Sludge Wave Necrosis reduced by 1, Sludge Wave+ Necrosis reduced by 3
+-Desperation damage reduced by 2
+-Opportunist damage reduced by 2
+-Searing Blade damage reduced by 2 and scaling reduced by 1 per upgrade
+-Injection damage reduced by 1, Injection+ damage reduced by 2
+-Harden block reduced by 2 and scaling reduced by 2 per upgrade
+-Bio-Informatics block reduced by 2
+-Iterate damage reduced by 4
+-Weld+ no longer deals increased damage
+-Steelweave+ no longer gains increased block
+-Ironthread and Ironthread+ no longer gain block and upgrade 1 less card each
+-Backup Battery exhaustive reduced by 1
+-Unstoppable cost increased 1 -> 2 (it was balanced around 2 but left at 1 for some reason)
+-Rarity changes:
+--Scrap Heap uncommon -> common
+--Bio-Informatics common -> uncommon
+--Weaving common -> uncommon
+
+VERSION 0.2.0
+
+-new relic: Anarchist's Cookbook (common): At the start of combat, obtain a Grenade.
+-new relic: Perfect Heart (boss): Replaces Cyberheart. At the start of each turn, upgrade 2 random cards in your hand.
+-new card: Unstable Cell (common Attack, 2 cost): Beta. Deal 10 (12, 15, 19...) damage. When this card is Upgraded in your hand, play it.
+-new card: Entrap (common Skill, 2 cost): Apply 2 (3) Weak. Gain 1 Web for each debuff affecting the target.
+-new card: Opportunist (uncommon Attack, 3 cost): Apply 2 Vulnerable. If the target is Weak, Paralyzed, or does not intend to attack, deal 14 (18) damage twice.
+-new card: Spinnerets (common Skill, 0 cost): Beta. Gain 1 (2, 3, 4...) Web. Exhaust.
+-new card: Gash (uncommon Attack, X cost): Deal 5 (6) damage. For the next X turns, target takes twice that damage.
+-Laser Drone removed
+-Blessing of the Forge doubles with Sacred Bark
+-Improbability Drive energy gain increased by 1
+-Improbability Drive description now lists each energy individually
+-Fission Anvil damage decreased by 2
+-Underfoot block decreased by 2
+-Neurojack+: 1 card per turn -> 2 cards; cost 0 -> 1
+-Nanobots scales slower with upgrades (+2 -> +1)
+-Bio-Informatics cost 1 -> 2, Block 5 -> 10
+-Toxic cost 0 -> 1
+-Toxic+ no exhaust -> exhaust (cost is still 0)
+-Conduit changed: Skill -> Attack; Gain 1 (2) Web -> Deal 9 (12) damage
+-fixed Scrapskin tooltip
+-added art for Gash, Metal Burrs, Nanobots, Injection, Fission Anvil, and Distill
+
+VERSION 0.1.2
+
+-Web no longer adjusts enemy intent values
+-Sharpened Claws removed
+-Searing Blade and Fiberglass Dagger now scale slower with upgrades
+-Fiberglass Dagger downgrades itself COMPLETELY on play
+-Shock Emitters scales attack damage slower
+-Injection and Unstoppable correctly update their damage according to their effects
+-Sewing Kit upgrades all Beta cards in current card rewards and your deck on pickup
+-Sludge Wave Necrosis 8 -> 6
+-Sludge Wave+ Necrosis 12 -> 10
+-Distilled Cards show their card as a tooltip
+-Distilled Cards don't trigger "on card play" effects
+-Distilled Cards and Neurostimulant update tooltips with Sacred Bark
+-fixed Distilled cards going into your discard pile and becoming permanently transparent on using the potion
+-fixed Meltdown triggering Rocket Dash's on upgrade effect
+-corrected Necrosis tooltip
