@@ -37,7 +37,7 @@
         },
         "theWidow:GrenadierPower": {
                 "NAME": "Grenadier",
-                "DESCRIPTIONS": ["#b", " extra potion slots."]
+                "DESCRIPTIONS": ["#b", " extra potion slots.", " extra potion slot."]
         },
         "theWidow:ConduitPower": {
                 "NAME": "Conduit",

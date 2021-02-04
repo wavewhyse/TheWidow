@@ -43,10 +43,9 @@ public class Skitter extends CustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters)
-            if (!mon.isDeadOrEscaped())
-                addToBot(new ApplyPowerAction(p, p, new WebPower(p, magicNumber), magicNumber)
-        );
+        addToBot(new ApplyPowerAction(p, p, new WebPower(p,
+                magicNumber * AbstractDungeon.getMonsters().monsters.size()),
+                magicNumber * AbstractDungeon.getMonsters().monsters.size()));
     }
 
     @Override

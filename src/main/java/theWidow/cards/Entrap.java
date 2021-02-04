@@ -49,11 +49,7 @@ public class Entrap extends CustomCard {
         addToBot(new AbstractGameAction() {
             @Override
             public void update() {
-                int count = 0;
-                for (AbstractPower pow : m.powers) {
-                    if (pow.type == AbstractPower.PowerType.DEBUFF)
-                        count++;
-                }
+                int count = (int) m.powers.stream().filter(pow -> pow.type == AbstractPower.PowerType.DEBUFF).count();
                 addToBot(new ApplyPowerAction(p, p, new WebPower(p, count), count));
                 isDone = true;
             }

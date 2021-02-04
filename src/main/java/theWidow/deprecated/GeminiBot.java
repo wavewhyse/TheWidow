@@ -1,4 +1,4 @@
-package theWidow.cards;
+package theWidow.deprecated;
 
 import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.WidowMod;
+import theWidow.cards.BetaCard;
 import theWidow.characters.TheWidow;
 import theWidow.relics.SewingKitRelic;
 

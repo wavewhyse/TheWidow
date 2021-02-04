@@ -60,10 +60,10 @@ public class DischargeBatteryPower extends AbstractPower implements CloneablePow
     @Override
     public void atStartOfTurnPostDraw() {
         if (upgraded) {
-            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
                 addToBot(new ApplyPowerAction(m, owner, new ParalysisPower(m, amount)));
-            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
                 addToBot(new ApplyPowerAction(m, owner, new WeakPower(m, amount, false)));
+            }
         } else {
             AbstractMonster m = AbstractDungeon.getRandomMonster();
             addToBot(new ApplyPowerAction(m, owner, new ParalysisPower(m, amount)));

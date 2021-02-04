@@ -33,9 +33,9 @@ public class BlackVenom extends ExtraMagicalCustomCard  implements Downgradeable
 
     private static final int COST = 2;
     private static final int STATUSES = 2;
-    private static final int UPGRADE_PLUS_STATUSES = 2;
+    private static final int UPGRADE_PLUS_STATUSES = 1;
     private static final int NECROSIS = 4;
-    private static final int UPGRADE_PLUS_NECROSIS = 4;
+    private static final int UPGRADE_PLUS_NECROSIS = 2;
 
     // /STAT DECLARATION/
 

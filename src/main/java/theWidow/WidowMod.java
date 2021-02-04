@@ -147,10 +147,6 @@ public class WidowMod implements
         return getModID() + "Resources/images/relics/outline/" + resourcePath;
     }
     
-    public static String makeOrbPath(String resourcePath) {
-        return getModID() + "Resources/images/orbs/" + resourcePath;
-    }
-    
     public static String makePowerPath(String resourcePath) {
         return getModID() + "Resources/images/powers/" + resourcePath;
     }

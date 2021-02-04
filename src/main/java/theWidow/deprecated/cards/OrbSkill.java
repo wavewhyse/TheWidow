@@ -1,17 +1,16 @@
 package theWidow.deprecated.cards;
 
-import com.megacrit.cardcrawl.actions.defect.ChannelAction;
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.WidowMod;
 import theWidow.characters.TheWidow;
-import theWidow.deprecated.orbs.DefaultOrb;
 
 import static theWidow.WidowMod.makeCardPath;
 
+@AutoAdd.Ignore
 public class OrbSkill extends AbstractDynamicCard {
 
     /*
@@ -53,7 +52,7 @@ public class OrbSkill extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
 
-        AbstractDungeon.actionManager.addToBottom(new ChannelAction(new DefaultOrb())); // Channel a Default Orb.
+        //AbstractDungeon.actionManager.addToBottom(new ChannelAction(new DefaultOrb())); // Channel a Default Orb.
 
     }
 

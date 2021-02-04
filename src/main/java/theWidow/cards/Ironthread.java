@@ -3,6 +3,7 @@ package theWidow.cards;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.WidowMod;
 import theWidow.actions.WidowAllPurposeUpgradeAction;
@@ -15,6 +16,8 @@ public class Ironthread extends CustomCard {
     // TEXT DECLARATION
 
     public static final String ID = WidowMod.makeID(Ironthread.class.getSimpleName());
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("Ironthread.png");
 
     // /TEXT DECLARATION/
@@ -52,6 +55,7 @@ public class Ironthread extends CustomCard {
             upgradeName();
             //upgradeBlock(UPGRADE_PLUS_BLOCK);
             upgradeMagicNumber(UPGRADE_PLUS_UPGRADES);
+            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

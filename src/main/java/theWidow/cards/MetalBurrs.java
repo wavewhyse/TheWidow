@@ -61,11 +61,7 @@ public class MetalBurrs extends CustomCard {
     }
 
     private void calculateDiscount() {
-        int debuffCount = 0;
-        for (AbstractPower pow : AbstractDungeon.player.powers) {
-            if (pow.type == AbstractPower.PowerType.DEBUFF)
-                debuffCount++;
-        }
+        int debuffCount = (int) AbstractDungeon.player.powers.stream().filter(pow -> pow.type == AbstractPower.PowerType.DEBUFF).count();
         if (discount != debuffCount) {
             costForTurn += discount - debuffCount;
             if (costForTurn < 0)

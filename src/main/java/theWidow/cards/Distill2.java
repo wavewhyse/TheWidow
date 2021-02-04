@@ -68,6 +68,7 @@ public class Distill2 extends CustomCard {
                     }
                     if(upgraded)
                         effect++;
+
                     for (AbstractCard c : p.hand.group) {
                         if (c.costForTurn > effect || c.type == AbstractCard.CardType.STATUS || c.type == AbstractCard.CardType.CURSE)
                             unpotionable.add(c);
@@ -78,42 +79,26 @@ public class Distill2 extends CustomCard {
                         isDone = true;
                         return;
                     }
-
                     if (p.hand.size() - unpotionable.size() == 1) {
-                        for (AbstractCard c : p.hand.group) {
-                            if (c.costForTurn > effect || !c.canUse(AbstractDungeon.player, null))
-                                continue;
-                            doDistill(c);
-                            if (!freeToPlayOnce)
-                                p.energy.use(EnergyPanel.totalCount);
-                            isDone = true;
-                            return;
-                        }
-                    }
-                    p.hand.group.removeAll(unpotionable);
-                    if (p.hand.size() > 1) {
-                        AbstractDungeon.handCardSelectScreen.open("Distill", 1, false, false, false, false);
-                        tickDuration();
+                        AbstractCard c = null;
+                        for (AbstractCard hc : p.hand.group)
+                            if (!unpotionable.contains(hc))
+                                c = hc;
+                        doDistill(c);
+                        //p.hand.group.stream().filter(c -> !unpotionable.contains(c)).forEach(this::doDistill);
                         return;
                     }
-                    if (p.hand.size() == 1) {
-                        doDistill(p.hand.getTopCard());
-                        returnCards();
-                        if (!freeToPlayOnce)
-                            p.energy.use(EnergyPanel.totalCount);
-                        isDone = true;
-                    }
+
+                    p.hand.group.removeAll(unpotionable);
+                    AbstractDungeon.handCardSelectScreen.open("Distill", 1, false, false, false, false);
+                    tickDuration();
+                    return;
                 }
                 if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
-                    for (AbstractCard c : AbstractDungeon.handCardSelectScreen.selectedCards.group) {
-                        doDistill(c);
-                    }
+                    doDistill(AbstractDungeon.handCardSelectScreen.selectedCards.getTopCard());
                     returnCards();
                     AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
                     AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
-                    if (!freeToPlayOnce)
-                        p.energy.use(EnergyPanel.totalCount);
-                    isDone = true;
                 }
                 tickDuration();
             }
@@ -124,6 +109,9 @@ public class Distill2 extends CustomCard {
                 cc.purgeOnUse = true;
                 addToBot(new ObtainPotionAction(new DistilledCardPotion2(cc)));
                 p.hand.moveToExhaustPile(c);
+                if (!freeToPlayOnce)
+                    p.energy.use(EnergyPanel.totalCount);
+                isDone = true;
             }
             private void returnCards() {
                 for (AbstractCard c : unpotionable)

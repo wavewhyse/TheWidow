@@ -1,4 +1,4 @@
-package theWidow.cards;
+package theWidow.deprecated;
 
 import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PlatedArmorPower;
 import theWidow.WidowMod;
+import theWidow.cards.BetaCard;
 import theWidow.characters.TheWidow;
 import theWidow.relics.SewingKitRelic;
 

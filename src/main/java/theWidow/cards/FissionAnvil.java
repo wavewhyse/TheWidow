@@ -70,7 +70,7 @@ public class FissionAnvil extends BetaCard {
                 && AbstractDungeon.player.hand.contains(this)) {
             superFlash();
             for (AbstractCard c : AbstractDungeon.player.hand.group) {
-                if (!c.cardID.equals(FissionAnvil.ID)) {
+                if (!(c instanceof FissionAnvil)) {
                     AbstractDungeon.effectsQueue.add(new UpgradeHammerHit(c));
                     c.upgrade();
                     c.applyPowers();

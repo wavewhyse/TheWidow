@@ -19,6 +19,7 @@ public class BioInformatics extends BetaCard {
 
     public static final String ID = WidowMod.makeID(BioInformatics.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("BioInformatics.png");
 
     // /TEXT DECLARATION/
@@ -55,6 +56,8 @@ public class BioInformatics extends BetaCard {
     public void upgrade() {
         upgradeMagicNumber(UPGRADE_PLUS_DRAW);
         upgradeName();
+        rawDescription = UPGRADE_DESCRIPTION;
+        initializeDescription();
     }
 
     @Override

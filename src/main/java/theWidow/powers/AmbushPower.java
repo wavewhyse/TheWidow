@@ -49,11 +49,7 @@ public class AmbushPower extends AbstractPower implements CloneablePowerInterfac
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
-        if (isPlayer) {
-            for (AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn) {
-                if (c.type == AbstractCard.CardType.ATTACK)
-                    return;
-            }
+        if (isPlayer && AbstractDungeon.actionManager.cardsPlayedThisTurn.stream().noneMatch(c -> c.type == AbstractCard.CardType.ATTACK)) {
             flash();
             for (AbstractCard c : AbstractDungeon.player.hand.group) {
                 if (!c.isEthereal)

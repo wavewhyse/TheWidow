@@ -57,7 +57,7 @@ public class InForTheKill extends CustomCard {
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
-        super.calculateCardDamage(mo);
+        super.calculateCardDamage(mo); //TODO: Technically there are rounding errors with this method, a patch would be required to fix
         if(mo.hasPower(VulnerablePower.POWER_ID)) {
             float tmp = damage;
             for (int i = 0; i < magicNumber - 1; i++)

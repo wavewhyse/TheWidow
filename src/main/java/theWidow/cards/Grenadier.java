@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ObtainPotionAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.WidowMod;
 import theWidow.characters.TheWidow;
@@ -18,6 +19,8 @@ public class Grenadier extends ExtraMagicalCustomCard {
     // TEXT DECLARATION
 
     public static final String ID = WidowMod.makeID(Grenadier.class.getSimpleName());
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("Grenadier.png");
 
     // /TEXT DECLARATION/
@@ -57,6 +60,7 @@ public class Grenadier extends ExtraMagicalCustomCard {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_SLOTS);
+            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

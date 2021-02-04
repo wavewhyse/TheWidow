@@ -1,5 +1,5 @@
 package theWidow.deprecated.orbs;
-
+/*
 import basemod.abstracts.CustomOrb;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -20,8 +20,6 @@ import com.megacrit.cardcrawl.vfx.combat.DarkOrbActivateEffect;
 import com.megacrit.cardcrawl.vfx.combat.DarkOrbPassiveEffect;
 import com.megacrit.cardcrawl.vfx.combat.OrbFlareEffect;
 import theWidow.WidowMod;
-
-import static theWidow.WidowMod.makeOrbPath;
 
 public class DefaultOrb extends CustomOrb {
 
@@ -132,4 +130,4 @@ public class DefaultOrb extends CustomOrb {
     public AbstractOrb makeCopy() {
         return new DefaultOrb();
     }
-}
+}*/

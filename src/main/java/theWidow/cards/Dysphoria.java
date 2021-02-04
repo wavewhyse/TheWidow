@@ -1,19 +1,11 @@
 package theWidow.cards;
 
 import basemod.abstracts.CustomCard;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import theWidow.WidowMod;
 import theWidow.characters.TheWidow;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 import static theWidow.WidowMod.makeCardPath;
@@ -37,48 +29,30 @@ public class Dysphoria extends CustomCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = -2;
-    private static final int  UPGRADES = 3;
+    private static final int UPGRADES = 3;
+    private static final int HP_INCREASE = 12;
 
     // /STAT DECLARATION/
 
     public Dysphoria() {
         super(ID, languagePack.getCardStrings(ID).NAME, IMG, COST, languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = UPGRADES;
+        magicNumber = baseMagicNumber = HP_INCREASE;
     }
 
     @Override
     public void onRemoveFromMasterDeck() {
-        ArrayList<AbstractCard> upgradableCards = new ArrayList<>();
-        for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
-            if (c.canUpgrade())
-                upgradableCards.add(c);
-        }
+        AbstractDungeon.player.increaseMaxHp(magicNumber, true);
+
+        /*ArrayList<AbstractCard> upgradableCards = new ArrayList<>();
+        AbstractDungeon.player.masterDeck.group.stream().filter(AbstractCard::canUpgrade).forEach(upgradableCards::add);
         Collections.shuffle(upgradableCards, new Random(AbstractDungeon.miscRng.randomLong()));
-        if (!upgradableCards.isEmpty())
-            if (upgradableCards.size() == 1) {
-                ((AbstractCard) upgradableCards.get(0)).upgrade();
-                AbstractDungeon.player.bottledCardUpgradeCheck(upgradableCards.get(0));
-                AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(((AbstractCard) upgradableCards
-                        .get(0)).makeStatEquivalentCopy()));
-                AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect(Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));
-            } else {
-                ((AbstractCard) upgradableCards.get(0)).upgrade();
-                ((AbstractCard) upgradableCards.get(1)).upgrade();
-                ((AbstractCard) upgradableCards.get(2)).upgrade();
-                AbstractDungeon.player.bottledCardUpgradeCheck(upgradableCards.get(0));
-                AbstractDungeon.player.bottledCardUpgradeCheck(upgradableCards.get(1));
-                AbstractDungeon.player.bottledCardUpgradeCheck(upgradableCards.get(2)); //TODO: fix ui scaling here
-                AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(((AbstractCard) upgradableCards
-
-                        .get(0)).makeStatEquivalentCopy(), Settings.WIDTH / 2.0F - AbstractCard.IMG_WIDTH / 2.0F - 20.0F * Settings.scale, Settings.HEIGHT / 2.0F));
-                AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(((AbstractCard) upgradableCards
-
-                        .get(1)).makeStatEquivalentCopy(), Settings.WIDTH / 2.0F + AbstractCard.IMG_WIDTH / 2.0F - 20.0F * Settings.scale, Settings.HEIGHT / 2.0F));
-                AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(((AbstractCard) upgradableCards
-
-                        .get(2)).makeStatEquivalentCopy(), Settings.WIDTH / 2.0F + AbstractCard.IMG_WIDTH / 1.0F + 40.0F * Settings.scale, Settings.HEIGHT / 2.0F));
-                AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect(Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));
-            }
+        for (int i=0; i<UPGRADES && i < upgradableCards.size(); i++) {
+            upgradableCards.get(i).upgrade();
+            AbstractDungeon.player.bottledCardUpgradeCheck(upgradableCards.get(i));
+            AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect((upgradableCards
+                    .get(i)).makeStatEquivalentCopy(), (i + 1) * Settings.WIDTH / ( UPGRADES + 2f ), Settings.HEIGHT / 2.0F));
+            AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect(Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));
+        }*/
     }
 
     @Override

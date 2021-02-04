@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.helpers.GetAllInBattleInstances;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
-import theWidow.actions.DowngradeCardAction;
+import theWidow.deprecated.DowngradeCardAction;
 
 import java.util.UUID;
 

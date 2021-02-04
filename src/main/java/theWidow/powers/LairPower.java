@@ -46,7 +46,7 @@ public class LairPower extends AbstractPower implements CloneablePowerInterface 
 
     @Override
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if(power.ID == WebPower.POWER_ID && target == AbstractDungeon.player) {
+        if(power instanceof WebPower && target == owner) {
             flash();
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
                 addToBot(new ApplyPowerAction(m, source, new VulnerablePower(m, amount, false)));

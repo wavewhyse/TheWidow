@@ -1,8 +1,15 @@
-VERSION 0.5
+VERSION 0.4.1
 
--FIXED GITHUB INTEGRATION
+-FIXED GITHUB INTEGRATION (I had to remake the github page)
+
+-Dysphoria changed: Unplayable. When this is removed from your deck, gain 12 Max HP.
 -Chemistry draw reduced 2 -> 1
 --Chemistry+ cost increased 0 -> 1 (still draws 2)
+-Black Venom+ statuses applied reduced 4 -> 3, Necrosis applied reduced 8 -> 6
+-Exploit damage reduced 4 -> 3
+--Exploit+ damage reduced 6 -> 4
+-fixed incorrect pluralization in some text
+-some code cleanup/optimization
 
 VERSION 0.4
 
