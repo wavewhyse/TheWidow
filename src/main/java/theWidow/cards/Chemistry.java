@@ -28,8 +28,8 @@ public class Chemistry extends CustomCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 1;
-    private static final int  UPGRADED_COST = 0;
     private static final int DRAW = 1;
+    private static final int UPGRADE_PLUS_DRAW = 1;
 
     // /STAT DECLARATION/
 
@@ -47,7 +47,7 @@ public class Chemistry extends CustomCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADED_COST);
+            upgradeMagicNumber(UPGRADE_PLUS_DRAW);
             initializeDescription();
         }
     }
