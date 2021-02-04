@@ -1,3 +1,9 @@
+VERSION 0.5
+
+-FIXED GITHUB INTEGRATION
+-Chemistry draw reduced 2 -> 1
+--Chemistry+ cost increased 0 -> 1 (still draws 2)
+
 VERSION 0.4
 
 -Necrosis decays by half its amount each turn instead of 2 each turn

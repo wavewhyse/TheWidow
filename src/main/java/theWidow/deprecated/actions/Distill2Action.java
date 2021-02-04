@@ -1,4 +1,4 @@
-package theWidow.actions;
+package theWidow.deprecated.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ObtainPotionAction;
