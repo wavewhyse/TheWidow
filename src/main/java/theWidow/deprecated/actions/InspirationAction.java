@@ -11,6 +11,7 @@ import theWidow.vfx.UpgradeHammerHit;
 
 import java.util.ArrayList;
 
+@Deprecated
 public class InspirationAction extends AbstractGameAction {
 
     private static final float DURATION = Settings.ACTION_DUR_LONG;

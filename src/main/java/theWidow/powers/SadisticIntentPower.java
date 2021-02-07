@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -43,19 +44,39 @@ public class SadisticIntentPower extends AbstractPower implements CloneablePower
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        if (amount == 1)
+            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        else
+            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[2];
     }
 
-    @Override
+    /*@Override
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if (power.type == PowerType.DEBUFF && target instanceof AbstractMonster && source == owner) {
             flash();
-            /*addToTop(new ApplyPowerAction(owner, owner, new StrengthPower(owner, amount), amount));
-            addToTop(new ApplyPowerAction(owner, owner, new LoseStrengthPower(owner, amount), amount));
-            addToTop(new ApplyPowerAction(owner, owner, new DexterityPower(owner, amount), amount));
-            addToTop(new ApplyPowerAction(owner, owner, new LoseDexterityPower(owner, amount), amount));*/
+//            addToTop(new ApplyPowerAction(owner, owner, new StrengthPower(owner, amount), amount));
+//            addToTop(new ApplyPowerAction(owner, owner, new LoseStrengthPower(owner, amount), amount));
+//            addToTop(new ApplyPowerAction(owner, owner, new DexterityPower(owner, amount), amount));
+//            addToTop(new ApplyPowerAction(owner, owner, new LoseDexterityPower(owner, amount), amount));
             addToBot(new DrawCardAction(amount));
         }
+    }*/
+
+    @Override
+    public void atStartOfTurn() {
+        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+            boolean thisMon = false;
+            for (AbstractPower pow : m.powers) {
+                if (pow.type == PowerType.DEBUFF) {
+                    thisMon = true;
+                    break;
+                }
+            }
+            if (!thisMon)
+                return;
+        }
+        flash();
+        addToBot(new DrawCardAction(amount));
     }
 
     @Override

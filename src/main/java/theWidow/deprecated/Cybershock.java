@@ -16,6 +16,7 @@ import theWidow.characters.TheWidow;
 import static theWidow.WidowMod.makeCardPath;
 
 @AutoAdd.Ignore
+@Deprecated
 public class Cybershock extends CustomCard {
 
     // TEXT DECLARATION

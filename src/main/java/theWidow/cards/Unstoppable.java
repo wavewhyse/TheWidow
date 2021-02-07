@@ -1,7 +1,6 @@
 package theWidow.cards;
 
 import basemod.abstracts.CustomCard;
-import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -17,7 +16,6 @@ import theWidow.WidowMod;
 import theWidow.characters.TheWidow;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static theWidow.WidowMod.makeCardPath;
 
@@ -38,9 +36,9 @@ public class Unstoppable extends CustomCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 2;
-    private static final int DAMAGE = 14;
+    private static final int DAMAGE = 10;
     private static final int UPGRADE_PLUS_DMG = 4;
-    private static final int SCALING = 1;
+    private static final int SCALING = 2;
     private static final int UPGRADE_PLUS_SCALING = 1;
 
     // /STAT DECLARATION/
@@ -85,13 +83,6 @@ public class Unstoppable extends CustomCard {
                 isDone = true;
             }
         });
-    }
-
-    @Override
-    public List<TooltipInfo> getCustomTooltips() {
-        ArrayList<TooltipInfo> retVal = new ArrayList<>();
-        //retVal.add(new TooltipInfo("Generic Debuffs","Vulnerable, Weak, Frail, -Strength, -Dexterity, Draw Down, Energy Down"));
-        return retVal;
     }
 
     @Override

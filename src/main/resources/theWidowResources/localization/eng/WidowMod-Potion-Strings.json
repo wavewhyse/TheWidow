@@ -27,14 +27,10 @@
                 ]
         },
         "theWidow:DistilledCardPotion": {
-                "NAME": "Distilled Card",
-                "DESCRIPTIONS": ["Add a ", "Add 2", " to your hand."]
-        },
-        "theWidow:DistilledCardPotion2": {
                 "NAME": "Distilled ",
                 "DESCRIPTIONS": [
-                        "Play a ", ".",
-                        "Play #b", "s."
+                        "Has the effects of a ", ".",
+                        "Have the effects of #b", "s."
                 ]
         }
 }

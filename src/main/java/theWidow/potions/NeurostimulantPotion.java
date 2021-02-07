@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.relics.SacredBark;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import theWidow.WidowMod;
-import theWidow.actions.WidowAllPurposeUpgradeAction;
+import theWidow.actions.WidowUpgradeManagerAction;
 
 public class NeurostimulantPotion extends CustomPotion {
 
@@ -52,7 +52,7 @@ public class NeurostimulantPotion extends CustomPotion {
         target = AbstractDungeon.player;
         // If you are in combat, permanently upgrade a card in your hand.
         if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)
-            addToBot(new WidowAllPurposeUpgradeAction(AbstractDungeon.player, false, potency, true));
+            addToBot(new WidowUpgradeManagerAction(AbstractDungeon.player, false, potency, true));
     }
     
     @Override

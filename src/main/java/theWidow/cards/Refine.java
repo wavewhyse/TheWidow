@@ -2,6 +2,7 @@ package theWidow.cards;
 
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -11,8 +12,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.WidowMod;
+import theWidow.actions.WidowUpgradeCardAction;
 import theWidow.characters.TheWidow;
-import theWidow.vfx.UpgradeHammerHit;
 
 import static theWidow.WidowMod.makeCardPath;
 
@@ -101,12 +102,11 @@ public class Refine extends CustomCard {
             private void refineCard(AbstractCard c, boolean unhover) {
                 p.hand.addToHand(c);
                 p.discardPile.removeCard(c);
-                c.upgrade();
-                AbstractDungeon.effectsQueue.add(new UpgradeHammerHit(c));
+                addToTop(new WidowUpgradeCardAction(false, c));
+                addToTop(new WaitAction(0.2f));
                 c.lighten(false);
                 if (unhover)
                     c.unhover();
-                c.superFlash();
                 c.applyPowers();
             }
         }

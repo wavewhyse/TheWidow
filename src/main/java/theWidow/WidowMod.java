@@ -27,6 +27,7 @@ import com.megacrit.cardcrawl.potions.BlessingOfTheForge;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.relics.SacredBark;
+import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -36,7 +37,6 @@ import theWidow.characters.TheWidow;
 import theWidow.potions.*;
 import theWidow.powers.BombLauncherPower;
 import theWidow.powers.ChemistryPower;
-import theWidow.powers.ParalysisPower;
 import theWidow.relics.*;
 import theWidow.util.IDCheckDontTouchPls;
 import theWidow.util.TextureLoader;
@@ -70,7 +70,6 @@ public class WidowMod implements
         OnPowersModifiedSubscriber,
         PostPotionUseSubscriber,
         PostPowerApplySubscriber,
-        PreMonsterTurnSubscriber,
         AddAudioSubscriber,
         PostBattleSubscriber{
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
@@ -356,7 +355,6 @@ public class WidowMod implements
         settingsPanel.addUIElement(enableNormalsButton); // Add the button to the settings panel. Button is a go.
         
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
-
         
         // =============== EVENTS =================
         // https://github.com/daviscook477/BaseMod/wiki/Custom-Events
@@ -400,6 +398,7 @@ public class WidowMod implements
         BaseMod.addPotion(GrenadePotion.class, GrenadePotion.LIQUID_COLOR, GrenadePotion.HYBRID_COLOR, GrenadePotion.SPOTS_COLOR, GrenadePotion.POTION_ID, TheWidow.Enums.THE_WIDOW);
         BaseMod.addPotion(PulseBombPotion.class, PulseBombPotion.LIQUID_COLOR, PulseBombPotion.HYBRID_COLOR, PulseBombPotion.SPOTS_COLOR, PulseBombPotion.POTION_ID, TheWidow.Enums.THE_WIDOW);
         BaseMod.addPotion(MiniNukePotion.class, MiniNukePotion.LIQUID_COLOR, MiniNukePotion.HYBRID_COLOR, MiniNukePotion.SPOTS_COLOR, MiniNukePotion.POTION_ID, TheWidow.Enums.THE_WIDOW);
+        BaseMod.addPotion(DistilledCardPotion.class, DistilledCardPotion.LIQUID_COLOR, DistilledCardPotion.HYBRID_COLOR, DistilledCardPotion.SPOTS_COLOR, DistilledCardPotion.POTION_ID, TheWidow.Enums.THE_WIDOW);
         
         logger.info("Done editing potions");
     }
@@ -585,17 +584,10 @@ public class WidowMod implements
     }
 
     @Override
-    public boolean receivePreMonsterTurn(AbstractMonster mon) {
-        if (mon.hasPower(ParalysisPower.POWER_ID)) {
-        }
-        return true;
-    }
-
-    @Override
     public void receivePostBattle(AbstractRoom abstractRoom) {
-        /*for (RewardItem r : abstractRoom.rewards)
+        for (RewardItem r : abstractRoom.rewards)
             if (r.cards != null)
                 for (AbstractCard c : r.cards)
-                    c.upgrade();*/
+                    c.upgrade();
     }
 }

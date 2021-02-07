@@ -15,6 +15,7 @@ import theWidow.util.TextureLoader;
 import static theWidow.WidowMod.makePowerPath;
 
 
+@Deprecated
 public class TransensionPower2 extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
 

@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theWidow.WidowMod;
 
+@Deprecated
 public class DowngradeRandomCardsAction extends AbstractGameAction {
 
     private static final float DURATION = Settings.ACTION_DUR_FASTER;

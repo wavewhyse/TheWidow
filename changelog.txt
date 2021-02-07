@@ -1,3 +1,27 @@
+VERSION 0.5
+
+-Sadistic Intent changed: At the start of your turn, if ALL enemies are debuffed, draw 1 (2) cards.
+-Weaving card draw increased 1 -> 2, but only upgrades 1 (chosen randomly). Weaving+ unchanged
+-Unstoppable damage 14 -> 10, damage scaling per stack 1 -> 2
+--Unstoppable+ damage 18 -> 14, damage scaling per stack 2 -> 3
+-Fusion Scythe damage increased 6 -> 7
+--Fusion Scythe+ damage increased 9 -> 10
+-Spiderbite rarity uncommon -> common
+-Gemini Bot rarity common -> uncommon (??!?! why was it common)
+-fixed Opportunist dealing damage in the opposite circumstances that it should have
+-fixed Restock+ second hit scaling only half with Strength/Necrosis
+-fixed Gemini Bot not autoplaying when copying cards that open a selection menu
+-fixed Gemini Bot duplicating cards that removed it from the hand somehow (like Meltdown)
+-fixed Scrapskin not upgrading/downgrading its name and description
+-fixed Grenadier and Extra Compartments display bug on the potion bar
+-Distilled Card potions now persist through saving and reloading
+-Simultaneous upgrades now play their VFX in sequence instead of one big jumble (should reduce audio-related crashes)
+-updated Distilled Card description
+-Gash debuff now displays both damage and turns remaining
+-updated Dysphoria description
+-added art for Stinger (kinda), Unstable Cell, Weaving, Venom Strike, and Forge
+-updated art for In For The Kill
+
 VERSION 0.4.1
 
 -FIXED GITHUB INTEGRATION (I had to remake the github page)

@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theWidow.WidowMod;
 import theWidow.characters.TheWidow;
-import theWidow.potions.DistilledCardPotion2;
+import theWidow.potions.DistilledCardPotion;
 
 import java.util.ArrayList;
 
@@ -107,7 +107,7 @@ public class Distill2 extends CustomCard {
                 cc.energyOnUse = energyOnUse;
                 cc.freeToPlayOnce = true;
                 cc.purgeOnUse = true;
-                addToBot(new ObtainPotionAction(new DistilledCardPotion2(cc)));
+                addToBot(new ObtainPotionAction(new DistilledCardPotion(cc)));
                 p.hand.moveToExhaustPile(c);
                 if (!freeToPlayOnce)
                     p.energy.use(EnergyPanel.totalCount);

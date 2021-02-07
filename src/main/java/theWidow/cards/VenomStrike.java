@@ -21,7 +21,7 @@ public class VenomStrike extends CustomCard {
     // TEXT DECLARATION
 
     public static final String ID = WidowMod.makeID(VenomStrike.class.getSimpleName());
-    public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("VenomStrike.png");
+    public static final String IMG = makeCardPath("VenomStrike.png");
 
     // /TEXT DECLARATION/
 

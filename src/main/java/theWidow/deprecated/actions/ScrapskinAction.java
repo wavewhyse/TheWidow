@@ -15,6 +15,7 @@ import theWidow.deprecated.DowngradeCardAction;
 
 import java.util.UUID;
 
+@Deprecated
 public class ScrapskinAction extends AbstractGameAction {
     private AbstractPlayer p;
 

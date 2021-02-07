@@ -20,7 +20,7 @@ public class Stinger extends CustomCard {
     // TEXT DECLARATION
 
     public static final String ID = WidowMod.makeID(Stinger.class.getSimpleName());
-    public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("Stinger.png");
+    public static final String IMG = makeCardPath("Stinger.png");
 
     // /TEXT DECLARATION/
 

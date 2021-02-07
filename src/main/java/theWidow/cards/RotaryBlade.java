@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.WidowMod;
+import theWidow.actions.WidowUpgradeCardAction;
 import theWidow.characters.TheWidow;
 import theWidow.relics.SewingKitRelic;
 
@@ -55,8 +56,7 @@ public class RotaryBlade extends BetaCard {
                     new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
                             AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         }
-        upgrade();
-        superFlash();
+        addToBot(new WidowUpgradeCardAction(false, this));
         applyPowers();
     }
 

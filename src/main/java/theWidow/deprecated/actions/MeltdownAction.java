@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 import java.util.ArrayList;
 
+@Deprecated
 public class MeltdownAction extends AbstractGameAction {
     private AbstractPlayer p;
 

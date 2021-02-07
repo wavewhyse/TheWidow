@@ -16,6 +16,7 @@ import theWidow.relics.SewingKitRelic;
 import static theWidow.WidowMod.makeCardPath;
 
 @AutoAdd.Ignore
+@Deprecated
 public class MakeshiftArmor extends BetaCard {
 
     // TEXT DECLARATION

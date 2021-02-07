@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.WidowMod;
-import theWidow.actions.WidowAllPurposeUpgradeAction;
+import theWidow.actions.WidowUpgradeManagerAction;
 import theWidow.characters.TheWidow;
 
 import static theWidow.WidowMod.makeCardPath;
@@ -48,7 +48,7 @@ public class Steelweave extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, block));
-        addToBot(new WidowAllPurposeUpgradeAction(p, !upgraded));
+        addToBot(new WidowUpgradeManagerAction(p, !upgraded));
     }
 
     //Upgraded stats.

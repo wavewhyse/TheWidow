@@ -6,11 +6,10 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.WidowMod;
+import theWidow.actions.WidowUpgradeCardAction;
 import theWidow.characters.TheWidow;
-import theWidow.vfx.UpgradeHammerHit;
 
 import static theWidow.WidowMod.makeCardPath;
 
@@ -46,10 +45,7 @@ public class Iterate extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot( new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        p.hand.group.stream().filter(c -> c instanceof BetaCard).forEach(c -> {
-            c.upgrade();
-            AbstractDungeon.effectsQueue.add(new UpgradeHammerHit(c));
-        });
+        p.hand.group.stream().filter(c -> c instanceof BetaCard).forEach(c -> addToBot(new WidowUpgradeCardAction(false, c)));
     }
 
     @Override

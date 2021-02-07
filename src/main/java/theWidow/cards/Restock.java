@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.FlickCoinEffect;
 import theWidow.WidowMod;
 import theWidow.characters.TheWidow;
@@ -53,8 +52,10 @@ public class Restock extends CustomCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i=0; i<magicNumber; i++) {
             m = AbstractDungeon.getRandomMonster();
-            addToBot((AbstractGameAction)new VFXAction((AbstractGameEffect)new FlickCoinEffect(p.hb.cX, p.hb.cY, m.hb.cX, m.hb.cY), 0.3F));
-            addToBot(new DamageAction(m, new DamageInfo(p, damage / (i + 1), damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
+            DamageInfo info = new DamageInfo(p, baseDamage / (i + 1), damageTypeForTurn);
+            info.applyPowers(p, m);
+            addToBot(new VFXAction(new FlickCoinEffect(p.hb.cX, p.hb.cY, m.hb.cX, m.hb.cY), 0.3F));
+            addToBot(new DamageAction(m, info, AbstractGameAction.AttackEffect.NONE));
         }
         addToBot(new DrawCardAction(magicNumber));
     }

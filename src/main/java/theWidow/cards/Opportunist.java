@@ -57,8 +57,9 @@ public class Opportunist extends CustomCard {
             case ATTACK_BUFF:
             case ATTACK_DEBUFF:
             case ATTACK_DEFEND:
-                attacking = true;
+                break;
             default:
+                attacking = true;
                 break;
         }
         for (AbstractPower pow : m.powers)

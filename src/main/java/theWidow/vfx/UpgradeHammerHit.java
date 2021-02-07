@@ -16,7 +16,7 @@ public class UpgradeHammerHit extends AbstractGameEffect {
 
     public UpgradeHammerHit(AbstractCard c) {
         this.card = c;
-        this.duration = 0.6F;
+        this.duration = 0.2F;
     }
 
     @Override

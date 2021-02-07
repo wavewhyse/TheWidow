@@ -5,6 +5,8 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import theWidow.cards.Downgradeable;
+
+@Deprecated
 public class DowngradeCardAction extends AbstractGameAction {
 
     private static final float DURATION = Settings.ACTION_DUR_FAST;

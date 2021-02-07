@@ -1,5 +1,6 @@
 package theWidow.cards;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -25,13 +26,13 @@ public class GeminiBot2 extends BetaCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = -2;
-    private static final int EXHAUSTIVE = 2;
+    //private static final int EXHAUSTIVE = 2;
 
     private AbstractCard cardToCopy;
 
@@ -65,7 +66,18 @@ public class GeminiBot2 extends BetaCard {
     public void triggerOnOtherCardPlayed(AbstractCard c) {
         dontTriggerOnUseCard = true;
         cardToCopy = c.makeCopy();
-        AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(this, true, c.energyOnUse, true, true));
+        addToTop(new AbstractGameAction() {
+            @Override
+            public void update() {
+                if (!AbstractDungeon.player.hand.contains(GeminiBot2.this)) {
+                    cardToCopy = null;
+                    isDone = true;
+                    return;
+                }
+                AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(GeminiBot2.this, true, c.energyOnUse, true, true));
+                isDone = true;
+            }
+        });
     }
 
     @Override
@@ -73,10 +85,5 @@ public class GeminiBot2 extends BetaCard {
         upgradeName();
         rawDescription = cardStrings.UPGRADE_DESCRIPTION;
         initializeDescription();
-    }
-
-    @Override
-    public void downgrade() {
-        super.downgrade();
     }
 }

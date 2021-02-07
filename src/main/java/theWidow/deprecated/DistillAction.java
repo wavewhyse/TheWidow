@@ -6,8 +6,8 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import theWidow.potions.DistilledCardPotion;
 
+@Deprecated
 public class DistillAction extends AbstractGameAction {
 
     private static final float DURATION = Settings.ACTION_DUR_FAST;

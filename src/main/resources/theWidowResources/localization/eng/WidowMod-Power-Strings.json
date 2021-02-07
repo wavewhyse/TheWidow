@@ -73,7 +73,7 @@
         },
         "theWidow:SadisticIntentPower": {
                 "NAME": "Sadistic Intent",
-                "DESCRIPTIONS": ["When applying a debuff to an enemy, draw #b"," card."]
+                "DESCRIPTIONS": ["At turn start, if ALL enemies are debuffed, draw #b"," card."," cards."]
         },
         "theWidow:DischargeBatteryPower": {
                 "NAME": "Discharging Battery",

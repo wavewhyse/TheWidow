@@ -13,6 +13,7 @@ import theWidow.characters.TheWidow;
 import static theWidow.WidowMod.makeCardPath;
 
 @AutoAdd.Ignore
+@Deprecated
 public class TranscendentForm2 extends CustomCard {
 
     // TEXT DECLARATION

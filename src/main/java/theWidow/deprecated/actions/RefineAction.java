@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 import java.util.ArrayList;
 
+@Deprecated
 public class RefineAction extends AbstractGameAction {
     private AbstractPlayer player;
     private ArrayList<AbstractCard> cannotUpgrade = new ArrayList<>();

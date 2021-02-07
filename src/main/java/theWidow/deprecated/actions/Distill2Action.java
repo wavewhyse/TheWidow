@@ -8,10 +8,11 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import theWidow.potions.DistilledCardPotion2;
+import theWidow.potions.DistilledCardPotion;
 
 import java.util.ArrayList;
 
+@Deprecated
 public class Distill2Action extends AbstractGameAction {
 
     private static final float DURATION = Settings.ACTION_DUR_FAST;
@@ -98,7 +99,7 @@ public class Distill2Action extends AbstractGameAction {
         cc.energyOnUse = energyOnUse;
         cc.freeToPlayOnce = true;
         cc.purgeOnUse = true;
-        addToBot(new ObtainPotionAction(new DistilledCardPotion2(cc)));
+        addToBot(new ObtainPotionAction(new DistilledCardPotion(cc)));
         p.hand.moveToExhaustPile(c);
     }
 

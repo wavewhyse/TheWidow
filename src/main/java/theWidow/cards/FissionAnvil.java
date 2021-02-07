@@ -14,9 +14,9 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.combat.WeightyImpactEffect;
 import theWidow.WidowMod;
+import theWidow.actions.WidowUpgradeCardAction;
 import theWidow.characters.TheWidow;
 import theWidow.relics.SewingKitRelic;
-import theWidow.vfx.UpgradeHammerHit;
 
 import static theWidow.WidowMod.makeCardPath;
 
@@ -70,11 +70,8 @@ public class FissionAnvil extends BetaCard {
                 && AbstractDungeon.player.hand.contains(this)) {
             superFlash();
             for (AbstractCard c : AbstractDungeon.player.hand.group) {
-                if (!(c instanceof FissionAnvil)) {
-                    AbstractDungeon.effectsQueue.add(new UpgradeHammerHit(c));
-                    c.upgrade();
-                    c.applyPowers();
-                }
+                if (!(c instanceof FissionAnvil) && c.canUpgrade())
+                    addToTop(new WidowUpgradeCardAction(false, c));
             }
             actionQueued = false;
         }

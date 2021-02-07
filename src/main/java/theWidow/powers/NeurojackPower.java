@@ -9,14 +9,13 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theWidow.WidowMod;
-import theWidow.actions.WidowAllPurposeUpgradeAction;
+import theWidow.actions.WidowUpgradeManagerAction;
 import theWidow.util.TextureLoader;
 
 import static theWidow.WidowMod.makePowerPath;
 
 
 public class NeurojackPower extends AbstractPower implements CloneablePowerInterface {
-    public AbstractCreature source;
 
     public static final String POWER_ID = WidowMod.makeID(NeurojackPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -32,7 +31,6 @@ public class NeurojackPower extends AbstractPower implements CloneablePowerInter
 
         this.owner = owner;
         this.amount = amount;
-        this.source = source;
 
         type = PowerType.BUFF;
         isTurnBased = false;
@@ -46,7 +44,7 @@ public class NeurojackPower extends AbstractPower implements CloneablePowerInter
     @Override
     public void atStartOfTurnPostDraw() {
         flash();
-        addToBot(new WidowAllPurposeUpgradeAction(AbstractDungeon.player, true, amount));
+        addToBot(new WidowUpgradeManagerAction(AbstractDungeon.player, true, amount));
     }
 
     @Override

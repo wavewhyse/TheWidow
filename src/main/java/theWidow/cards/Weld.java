@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.WidowMod;
-import theWidow.actions.WidowAllPurposeUpgradeAction;
+import theWidow.actions.WidowUpgradeManagerAction;
 import theWidow.characters.TheWidow;
 
 import static theWidow.WidowMod.makeCardPath;
@@ -50,7 +50,7 @@ public class Weld extends CustomCard {
         addToBot(new
                 DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE)
         );
-        addToBot(new WidowAllPurposeUpgradeAction(p,magicNumber));
+        addToBot(new WidowUpgradeManagerAction(p,magicNumber));
     }
 
     @Override

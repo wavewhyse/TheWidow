@@ -294,7 +294,8 @@
   },
   "theWidow:SadisticIntent": {
     "NAME": "Sadistic Intent",
-    "DESCRIPTION": "When you apply a debuff to an enemy, draw a card."
+    "DESCRIPTION": "At the start of your turn, if ALL enemies are debuffed, draw a card.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, if ALL enemies are debuffed, draw !M! cards."
   },
   "theWidow:DischargeBattery": {
     "NAME": "Discharge Battery",
@@ -341,8 +342,8 @@
   },
   "theWidow:Weaving": {
     "NAME": "Weaving",
-    "DESCRIPTION": "Draw a card and Upgrade it for the rest of combat.",
-    "UPGRADE_DESCRIPTION": "Draw !M! cards and Upgrade them for the rest of combat."
+    "DESCRIPTION": "Draw 2 cards and Upgrade 1 of them randomly for the rest of combat.",
+    "UPGRADE_DESCRIPTION": "Draw 2 cards and Upgrade them for the rest of combat."
   },
   "theWidow:FiberglassDagger": {
     "NAME": "Fiberglass Dagger",
@@ -387,6 +388,6 @@
   },
   "theWidow:Dysphoria": {
     "NAME": "Dysphoria",
-    "DESCRIPTION": "Unplayable. NL When this is removed from your deck, Upgrade !M! random cards in your deck."
+    "DESCRIPTION": "Unplayable. NL When this is removed from your deck, gain !M! maximum HP."
   }
 }

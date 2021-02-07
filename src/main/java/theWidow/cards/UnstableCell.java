@@ -20,7 +20,7 @@ public class UnstableCell extends BetaCard {
     public static final String ID = WidowMod.makeID(UnstableCell.class.getSimpleName());
     //private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     //private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("UnstableCell.png");
+    public static final String IMG = makeCardPath("UnstableCell.png");
 
     // /TEXT DECLARATION/
 

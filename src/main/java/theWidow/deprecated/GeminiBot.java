@@ -19,6 +19,7 @@ import theWidow.relics.SewingKitRelic;
 import static theWidow.WidowMod.makeCardPath;
 
 @AutoAdd.Ignore
+@Deprecated
 public class GeminiBot extends BetaCard {
 
     // TEXT DECLARATION

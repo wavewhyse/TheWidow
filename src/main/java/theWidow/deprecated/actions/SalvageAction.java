@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 import java.util.ArrayList;
 
+@Deprecated
 public class SalvageAction extends AbstractGameAction {
 
     private static final float DURATION = Settings.ACTION_DUR_MED;

@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theWidow.WidowMod;
-import theWidow.actions.WidowAllPurposeUpgradeAction;
+import theWidow.actions.WidowUpgradeManagerAction;
 import theWidow.util.TextureLoader;
 
 import static theWidow.WidowMod.makePowerPath;
@@ -56,7 +56,7 @@ public class TranscensionPower extends AbstractPower implements CloneablePowerIn
     public void atStartOfTurnPostDraw() {
         flash();
         for (int i=0; i<amount; i++)
-            addToBot(new WidowAllPurposeUpgradeAction((AbstractPlayer) owner, true, BaseMod.MAX_HAND_SIZE));
+            addToBot(new WidowUpgradeManagerAction((AbstractPlayer) owner, true, BaseMod.MAX_HAND_SIZE));
     }
 
     @Override

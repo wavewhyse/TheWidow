@@ -50,7 +50,7 @@ public class BackupBattery extends BetaCard {
     }
 
     @Override
-    public void upgrade() {
+    public void upgrade() { //TODO: make the exhaustive increase by 1 instead of completely resetting
         upgradeName();
         ExhaustiveVariable.upgrade(this, 1);
     }

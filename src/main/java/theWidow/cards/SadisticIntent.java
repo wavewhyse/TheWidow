@@ -29,26 +29,26 @@ public class SadisticIntent extends CustomCard {
 
     private static final int COST = 2;
     private static final int UPGRADED_COST = 1;
-    //private static final int STATS = 1;
-    //private static final int UPGRADE_PLUS_STATS = 1;
+    private static final int DRAW = 1;
+    private static final int UPGRADE_PLUS_DRAW = 1;
 
     // /STAT DECLARATION/
 
     public SadisticIntent() {
         super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-        //magicNumber = baseMagicNumber = STATS;
+        magicNumber = baseMagicNumber = DRAW;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot( new ApplyPowerAction(p, p, new SadisticIntentPower(p, 1), 1));
+        addToBot( new ApplyPowerAction(p, p, new SadisticIntentPower(p, magicNumber), magicNumber));
     }
 
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            //upgradeMagicNumber(UPGRADE_PLUS_STATS);
+            upgradeMagicNumber(UPGRADE_PLUS_DRAW);
             upgradeBaseCost(UPGRADED_COST);
             initializeDescription();
         }

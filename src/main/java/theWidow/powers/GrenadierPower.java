@@ -3,6 +3,7 @@ package theWidow.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -55,12 +56,20 @@ public class GrenadierPower extends AbstractPower implements CloneablePowerInter
 
     private void addSlots(int num) {
         AbstractDungeon.player.potionSlots += num;
-        for (int i = 0; i < num; i++)
-            AbstractDungeon.player.potions.add(new PotionSlot(AbstractDungeon.player.potionSlots - 1 - i));
+        for (int i = 0; i < num; i++) {
+            int finalI = i;
+            addToTop(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    AbstractDungeon.player.potions.add(new PotionSlot(AbstractDungeon.player.potionSlots - 1 - finalI));
+                    isDone = true;
+                }
+            });
+        }
         /*addToBot(new WaitAction(10f));
         for (int i = 0; i < num; i++)
             addToBot(new ObtainPotionAction(new GrenadePotion()));*/
-        AbstractDungeon.player.adjustPotionPositions();
+        //AbstractDungeon.player.adjustPotionPositions();
     }
 
     @Override
@@ -75,8 +84,9 @@ public class GrenadierPower extends AbstractPower implements CloneablePowerInter
             from 0 through the new size minus 1; which is correct.
             Why the FDUCK is potionSlots not just equal to potions.size() anyway i hate this
         */
-        for (int i = p.potions.size() - 1; i >= p.potionSlots; i--)
-            p.potions.remove(i);
+        if (p.potions.size() > p.potionSlots) {
+            p.potions.subList(p.potionSlots, p.potions.size()).clear();
+        }
     }
 
     @Override

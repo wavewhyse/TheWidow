@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
+@Deprecated
 public class ScrapHeapAction extends AbstractGameAction {
 
     private static final float DURATION = Settings.ACTION_DUR_FAST;

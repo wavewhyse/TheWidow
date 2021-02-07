@@ -15,6 +15,7 @@ import theWidow.characters.TheWidow;
 import static theWidow.WidowMod.makeCardPath;
 
 @AutoAdd.Ignore
+@Deprecated
 public class FusionScythe extends CustomCard {
 
     // TEXT DECLARATION
