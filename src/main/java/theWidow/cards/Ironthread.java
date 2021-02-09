@@ -45,8 +45,9 @@ public class Ironthread extends CustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        //addToBot(new GainBlockAction(p, block));
-        addToBot(new WidowUpgradeManagerAction(p, magicNumber));
+//        addToBot(new GainBlockAction(p, block));
+        addToBot(new WidowUpgradeManagerAction(magicNumber));
+//        addToBot(new SelectCardsInHandAction(magicNumber, "Upgrade", true, true, AbstractCard::canUpgrade, cards -> cards.forEach(c -> addToTop(new WidowUpgradeCardAction(c)))));
     }
 
     @Override

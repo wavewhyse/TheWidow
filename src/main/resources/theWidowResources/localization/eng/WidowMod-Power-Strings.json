@@ -1,7 +1,7 @@
 {
         "theWidow:WebPower": {
                 "NAME": "Web",
-                "DESCRIPTIONS": ["Reduce the damage of the next #b", " attack by half.", " attacks by half."]
+                "DESCRIPTIONS": ["Reduce the damage of the next #b", " attack by 25%.", " attacks by 25%."]
         },
         "theWidow:ParalysisPower": {
                 "NAME": "Paralysis",
@@ -77,7 +77,7 @@
         },
         "theWidow:DischargeBatteryPower": {
                 "NAME": "Discharging Battery",
-                "DESCRIPTIONS": ["At start of turn, apply #b", " thewidow:Paralysis and Weak to", " a random enemy.", " ALL enemies."]
+                "DESCRIPTIONS": ["Apply ","#b"," times ","leftover Energy at end of turn as Paralysis to ALL enemies."]
         },
         "theWidow:ExtraCompartmentPower": {
                 "NAME": "Extra Compartments",

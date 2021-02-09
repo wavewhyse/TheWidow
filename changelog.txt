@@ -1,3 +1,23 @@
+VERSION 0.6
+
+-Web reduces damage by 25%, instead of by 50%.
+
+-removed Conduit
+-removed Silkshield
+-removed Scanner
+-readded Salvage: Gain 6 (9) Block. Discard the top 4 (6) un-upgraded cards in your discard pile.
+-new potion: Venom Cocktail (uncommon): Apply 6 Necrosis.
+-Discharge Battery changed: If you end your turn with Energy remaining, spend it and apply that much Paralysis to ALL enemies.
+--Discharge Battery+ cost decreased 1 -> 0
+-Sadistic Intent cost decreased 2 -> 1
+-Metal Burrs damage increased 16 -> 18
+--Metal Burrs+ damage increased 20 -> 23
+-Entrap Weak increased by 1 (1 -> 2, upgraded 2 -> 3)
+-Toxic debuffs increased by 1 (1 -> 2, upgraded 2 -> 3)
+-Scrapskin+ displays its downgraded version as a tooltip
+-added dead sprite
+-messed with code
+
 VERSION 0.5
 
 -Sadistic Intent changed: At the start of your turn, if ALL enemies are debuffed, draw 1 (2) cards.

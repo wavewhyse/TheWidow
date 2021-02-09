@@ -2,7 +2,6 @@ package theWidow.cards;
 
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -102,8 +101,7 @@ public class Refine extends CustomCard {
             private void refineCard(AbstractCard c, boolean unhover) {
                 p.hand.addToHand(c);
                 p.discardPile.removeCard(c);
-                addToTop(new WidowUpgradeCardAction(false, c));
-                addToTop(new WaitAction(0.2f));
+                addToTop(new WidowUpgradeCardAction(c));
                 c.lighten(false);
                 if (unhover)
                     c.unhover();

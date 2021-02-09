@@ -48,7 +48,7 @@ public class Steelweave extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, block));
-        addToBot(new WidowUpgradeManagerAction(p, !upgraded));
+        addToBot(new WidowUpgradeManagerAction(!upgraded));
     }
 
     //Upgraded stats.

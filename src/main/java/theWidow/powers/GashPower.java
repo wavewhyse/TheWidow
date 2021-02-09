@@ -4,6 +4,7 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
@@ -19,7 +20,7 @@ import theWidow.util.TextureLoader;
 import static theWidow.WidowMod.makePowerPath;
 
 
-public class GashPower extends TwoAmountPower implements CloneablePowerInterface {
+public class GashPower extends TwoAmountPower implements CloneablePowerInterface, NonStackablePower {
 
     public static final String POWER_ID = WidowMod.makeID("GashPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -29,12 +30,12 @@ public class GashPower extends TwoAmountPower implements CloneablePowerInterface
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("GashPower84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("GashPower32.png"));
 
-    private static int gashIDOffset;
+    //private static int gashIDOffset;
 
     public GashPower(final AbstractCreature owner, final int damage, final int duration) {
         name = NAME;
-        ID = POWER_ID + gashIDOffset;
-        gashIDOffset++;
+        ID = POWER_ID;// + gashIDOffset;
+        //gashIDOffset++;
 
         this.owner = owner;
         this.amount = duration;

@@ -1,5 +1,6 @@
 package theWidow.cards;
 
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.utility.ScryAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -12,6 +13,7 @@ import theWidow.relics.SewingKitRelic;
 
 import static theWidow.WidowMod.makeCardPath;
 
+@AutoAdd.Ignore
 public class Scanner extends BetaCard {
 
     // TEXT DECLARATION
@@ -29,7 +31,7 @@ public class Scanner extends BetaCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
-    private static final int COST = 0;
+    private static final int COST = 1;
     private static final int SCRY = 4;
     private static final int UPGRADE_PLUS_SCRY = 2;
 

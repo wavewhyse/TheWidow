@@ -15,7 +15,6 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
@@ -31,7 +30,6 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theWidow.cards.Downgradeable;
 import theWidow.cards.ExtraMagicalCustomCard;
 import theWidow.characters.TheWidow;
 import theWidow.potions.*;
@@ -123,7 +121,7 @@ public class WidowMod implements
     private static final String THE_WIDOW_PORTRAIT = "theWidowResources/images/charSelect/WidowCharacterPortraitBG.png";
     public static final String THE_DEFAULT_SHOULDER_1 = "theWidowResources/images/char/defaultCharacter/shoulder.png";
     public static final String THE_DEFAULT_SHOULDER_2 = "theWidowResources/images/char/defaultCharacter/shoulder2.png";
-    public static final String THE_DEFAULT_CORPSE = "theWidowResources/images/char/defaultCharacter/corpse.png";
+    public static final String THE_WIDOW_CORPSE = "theWidowResources/images/char/widowCharacter/corpse.png";
     
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
     public static final String BADGE_IMAGE = "theWidowResources/images/Badge.png";
@@ -273,38 +271,6 @@ public class WidowMod implements
     
     // ============== /SUBSCRIBE, CREATE THE COLOR_GRAY, INITIALIZE/ =================
 
-    public static void downgradeCard(AbstractCard card) {
-        if (card.upgraded) {
-            if (card instanceof Downgradeable) {
-                ((Downgradeable) card).downgrade();
-            } else {
-                AbstractCard downgradedVersion = card.makeCopy();
-                card.baseDamage = card.damage = downgradedVersion.baseDamage;
-                card.baseBlock = card.block = downgradedVersion.baseBlock;
-                card.baseMagicNumber = card.magicNumber = downgradedVersion.baseMagicNumber;
-                card.baseDiscard = card.discard = downgradedVersion.baseDiscard;
-                card.baseDraw = card.draw = downgradedVersion.baseDraw;
-                card.baseHeal = card.heal = downgradedVersion.baseHeal;
-                card.cost = downgradedVersion.cost;
-                card.costForTurn = downgradedVersion.costForTurn;
-                card.purgeOnUse = downgradedVersion.purgeOnUse;
-                card.isEthereal = downgradedVersion.isEthereal;
-                card.exhaust = downgradedVersion.exhaust;
-                card.retain = downgradedVersion.retain;
-
-                card.timesUpgraded = 0;
-                card.upgraded = card.upgradedBlock = card.upgradedCost = card.upgradedDamage = card.upgradedMagicNumber = false;
-
-                card.name = CardCrawlGame.languagePack.getCardStrings(card.cardID).NAME;
-                card.rawDescription = CardCrawlGame.languagePack.getCardStrings(card.cardID).DESCRIPTION;
-            }
-            card.applyPowers();
-            card.initializeDescription();
-            //card.initializeTitle(); <------find a way to do this (maybe)!
-        }
-    }
-    
-    
     // =============== LOAD THE CHARACTER =================
     
     @Override
@@ -394,6 +360,7 @@ public class WidowMod implements
         // Remember, you can press ctrl+P inside parentheses like addPotions)
         BaseMod.addPotion(SilkPotion.class, SilkPotion.LIQUID_COLOR, SilkPotion.HYBRID_COLOR, SilkPotion.SPOTS_COLOR, SilkPotion.POTION_ID, TheWidow.Enums.THE_WIDOW);
         BaseMod.addPotion(NeurostimulantPotion.class, NeurostimulantPotion.LIQUID_COLOR, NeurostimulantPotion.HYBRID_COLOR, NeurostimulantPotion.SPOTS_COLOR, NeurostimulantPotion.POTION_ID, TheWidow.Enums.THE_WIDOW);
+        BaseMod.addPotion(VenomCocktailPotion.class, VenomCocktailPotion.LIQUID_COLOR, VenomCocktailPotion.HYBRID_COLOR, VenomCocktailPotion.SPOTS_COLOR, VenomCocktailPotion.POTION_ID, TheWidow.Enums.THE_WIDOW);
 
         BaseMod.addPotion(GrenadePotion.class, GrenadePotion.LIQUID_COLOR, GrenadePotion.HYBRID_COLOR, GrenadePotion.SPOTS_COLOR, GrenadePotion.POTION_ID, TheWidow.Enums.THE_WIDOW);
         BaseMod.addPotion(PulseBombPotion.class, PulseBombPotion.LIQUID_COLOR, PulseBombPotion.HYBRID_COLOR, PulseBombPotion.SPOTS_COLOR, PulseBombPotion.POTION_ID, TheWidow.Enums.THE_WIDOW);

@@ -27,6 +27,8 @@ public class WebPower extends AbstractPower implements CloneablePowerInterface {
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("WebPower84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("WebPower32.png"));
 
+    public static final float DAMAGE_MULT = 0.75f;
+
     public WebPower(final AbstractCreature owner, final int amount) {
         name = NAME;
         ID = POWER_ID;
@@ -55,7 +57,7 @@ public class WebPower extends AbstractPower implements CloneablePowerInterface {
     @Override
     public float atDamageFinalReceive(float damage, DamageInfo.DamageType type) {
         if (type == DamageInfo.DamageType.NORMAL)
-            return damage/2;
+            return damage * DAMAGE_MULT;    //TODO: patch intents to work correctly with Web
         return damage;
     }
 

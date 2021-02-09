@@ -21,7 +21,7 @@ public class SewingKitRelic extends CustomRelic {
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic2.png"));
 
     public SewingKitRelic() {
-        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, LandingSound.SOLID);
+        super(ID, IMG, OUTLINE, RelicTier.COMMON, LandingSound.SOLID);
     }
 
     @Override

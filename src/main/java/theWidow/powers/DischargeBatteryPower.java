@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theWidow.WidowMod;
 import theWidow.util.TextureLoader;
 
@@ -27,18 +27,12 @@ public class DischargeBatteryPower extends AbstractPower implements CloneablePow
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("DischargeBatteryPower84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("DischargeBatteryPower32.png"));
 
-    private boolean upgraded;
-
-    public DischargeBatteryPower(final AbstractCreature owner, final int amount, final boolean upgraded) {
+    public DischargeBatteryPower(final AbstractCreature owner, final int amount) {
         name = NAME;
-        if (upgraded)
-            ID = POWER_ID + 1;
-        else
-            ID = POWER_ID;
+        ID = POWER_ID;
 
         this.owner = owner;
         this.amount = amount;
-        this.upgraded = upgraded;
 
         type = PowerType.BUFF;
         isTurnBased = false;
@@ -51,11 +45,24 @@ public class DischargeBatteryPower extends AbstractPower implements CloneablePow
 
     @Override
     public void updateDescription() {
-        if (upgraded)
-            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + DESCRIPTIONS[2];
+        if (amount == 1)
+            description = DESCRIPTIONS[0]  + DESCRIPTIONS[3];
         else
-            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + DESCRIPTIONS[3];
+            description = DESCRIPTIONS[0] + DESCRIPTIONS[1] + amount + DESCRIPTIONS[2] + DESCRIPTIONS[3];
     }
+
+    @Override
+    public void atEndOfTurn(boolean isPlayer) {
+        if (isPlayer && EnergyPanel.totalCount > 0) {
+            flash();
+            int energy = EnergyPanel.totalCount;
+            AbstractDungeon.player.energy.use(energy);
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
+                addToBot(new ApplyPowerAction(m, AbstractDungeon.player, new ParalysisPower(m, energy * amount), energy * amount));
+        }
+    }
+
+    /*
 
     @Override
     public void atStartOfTurnPostDraw() {
@@ -70,9 +77,10 @@ public class DischargeBatteryPower extends AbstractPower implements CloneablePow
             addToBot(new ApplyPowerAction(m, owner, new WeakPower(m, amount, false)));
         }
     }
+*/
 
     @Override
     public AbstractPower makeCopy() {
-        return new DischargeBatteryPower(owner, amount, upgraded);
+        return new DischargeBatteryPower(owner, amount);
     }
 }

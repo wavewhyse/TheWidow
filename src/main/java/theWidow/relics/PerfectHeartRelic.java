@@ -44,7 +44,7 @@ public class PerfectHeartRelic extends CustomRelic {
     public void atTurnStartPostDraw() {
         flash();
         addToBot(new RelicAboveCreatureAction((AbstractCreature)AbstractDungeon.player, this));
-        addToBot(new WidowUpgradeManagerAction(AbstractDungeon.player, true, UPGRADES, false));
+        addToBot(new WidowUpgradeManagerAction(UPGRADES, true));
     }
 
     // Description

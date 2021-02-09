@@ -1,5 +1,6 @@
 package theWidow.cards;
 
+import basemod.AutoAdd;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -14,6 +15,7 @@ import theWidow.powers.ConduitPower;
 
 import static theWidow.WidowMod.makeCardPath;
 
+@AutoAdd.Ignore
 public class Conduit extends CustomCard {
 
     // TEXT DECLARATION

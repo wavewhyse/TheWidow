@@ -59,6 +59,13 @@ public class ParalysisPower extends AbstractPower implements CloneablePowerInter
     }
 
     @Override
+    public void onRemove() {
+        if (owner instanceof AbstractMonster && !owner.isDying) {
+            ((AbstractMonster) owner).createIntent();
+        }
+    }
+
+    @Override
     public void atEndOfRound() {
         if (amount <= 1)
             addToBot(new RemoveSpecificPowerAction(owner, AbstractDungeon.player, this));

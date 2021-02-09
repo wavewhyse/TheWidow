@@ -32,7 +32,7 @@ public class CyberheartRelic extends CustomRelic {
     public void atBattleStart() {
         flash();
         addToBot(new RelicAboveCreatureAction((AbstractCreature)AbstractDungeon.player, this));
-        addToBot(new WidowUpgradeManagerAction(AbstractDungeon.player, true, UPGRADES, false));
+        addToBot(new WidowUpgradeManagerAction(UPGRADES, true));
     }
 
     // Description

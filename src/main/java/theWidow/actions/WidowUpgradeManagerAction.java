@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import java.util.ArrayList;
 
 public class WidowUpgradeManagerAction extends AbstractGameAction {
-    private AbstractPlayer p;
+    private AbstractPlayer p = AbstractDungeon.player;
 
     private ArrayList<AbstractCard> cannotUpgrade = new ArrayList<>();
     private final boolean random;
@@ -18,24 +18,23 @@ public class WidowUpgradeManagerAction extends AbstractGameAction {
 
     private static final float DURATION = Settings.ACTION_DUR_XFAST;
 
-    public WidowUpgradeManagerAction(final AbstractPlayer p) {
-        this(p, false, 1, false);
+    public WidowUpgradeManagerAction() {
+        this(1, false, false);
     }
 
-    public WidowUpgradeManagerAction(final AbstractPlayer p, final int amount) {
-        this(p, false, amount, false);
+    public WidowUpgradeManagerAction(final int amount) {
+        this(amount, false, false);
     }
 
-    public WidowUpgradeManagerAction(final AbstractPlayer p, final boolean random) {
-        this(p, random, 1, false);
+    public WidowUpgradeManagerAction(final boolean random) {
+        this(1, random, false);
     }
 
-    public WidowUpgradeManagerAction(final AbstractPlayer p, final boolean random, final int amount) {
-        this(p,random, amount, false);
+    public WidowUpgradeManagerAction(final int amount, final boolean random) {
+        this(amount, random, false);
     }
 
-    public WidowUpgradeManagerAction(final AbstractPlayer p, final boolean random, final int amount, final boolean permanent) {
-        this.p = p;
+    public WidowUpgradeManagerAction(final int amount, final boolean random, final boolean permanent) {
         this.amount = amount;
         this.permanent = permanent;
         this.random = random;
@@ -61,7 +60,7 @@ public class WidowUpgradeManagerAction extends AbstractGameAction {
             if (p.hand.size() - cannotUpgrade.size() <= amount) {
                 for (AbstractCard c : p.hand.group) {
                     if (c.canUpgrade())
-                        addToTop(new WidowUpgradeCardAction(permanent, c));
+                        addToTop(new WidowUpgradeCardAction(c, permanent));
                 }
                 isDone = true;
                 return;
@@ -74,7 +73,7 @@ public class WidowUpgradeManagerAction extends AbstractGameAction {
                 for (int i=0; i<amount && !cardsToUpgrade.isEmpty(); i++) {
                     AbstractCard c = cardsToUpgrade.getRandomCard(AbstractDungeon.cardRandomRng);
                     if (c.canUpgrade())
-                        addToBot(new WidowUpgradeCardAction(permanent, c));
+                        addToTop(new WidowUpgradeCardAction(c, permanent));
                     cardsToUpgrade.removeCard(c);
                 }
                 isDone = true;
@@ -84,19 +83,19 @@ public class WidowUpgradeManagerAction extends AbstractGameAction {
             p.hand.group.removeAll(cannotUpgrade);
             if (p.hand.size() <= amount) {
                 for (AbstractCard c : p.hand.group)
-                    addToTop(new WidowUpgradeCardAction(permanent, c));
+                    addToTop(new WidowUpgradeCardAction(c, permanent));
                 returnCards();
                 isDone = true;
             }
             if (p.hand.size() > amount) {
-                AbstractDungeon.handCardSelectScreen.open("Upgrade", amount, false, false, false, true);
+                AbstractDungeon.handCardSelectScreen.open("Upgrade", amount, true, true, false, true);
                 tickDuration();
                 return;
             }
         }
         if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
             for (AbstractCard c : AbstractDungeon.handCardSelectScreen.selectedCards.group) {
-                addToTop(new WidowUpgradeCardAction(permanent, c));
+                addToTop(new WidowUpgradeCardAction(c, permanent));
                 p.hand.addToTop(c);
             }
             returnCards();
