@@ -22,7 +22,7 @@ public class WebIntentPatch {
     )
     public static void dontCheckWeb(AbstractMonster __instance, int dmg, @ByRef float[] tmp, AbstractPower p) {
         if (p instanceof WebPower)
-            tmp[0] *= 2f;
+            tmp[0] /= WebPower.DAMAGE_MULT;
     }
 
     private static class Locator extends SpireInsertLocator {

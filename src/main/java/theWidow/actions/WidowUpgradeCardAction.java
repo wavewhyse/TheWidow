@@ -16,11 +16,15 @@ public class WidowUpgradeCardAction extends AbstractGameAction {
     private boolean permanent;
     public float DURATION = 0.1f;
 
-    public WidowUpgradeCardAction(boolean permanent, AbstractCard c) {
+    public WidowUpgradeCardAction(AbstractCard card, boolean permanent) {
         actionType = ActionType.CARD_MANIPULATION;
         duration = DURATION;
-        this.c = c;
+        this.c = card;
         this.permanent = permanent;
+    }
+
+    public WidowUpgradeCardAction(AbstractCard card) {
+        this(card, false);
     }
 
     @Override

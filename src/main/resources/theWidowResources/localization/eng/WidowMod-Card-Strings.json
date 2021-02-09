@@ -133,7 +133,7 @@
   },
   "theWidow:Salvage": {
     "NAME": "Salvage",
-    "DESCRIPTION": "Gain !B! Block. NL Discard all non-Upgraded cards in your draw pile."
+    "DESCRIPTION": "Gain !B! Block. NL Discard the first !M! un-Upgraded cards in your draw pile."
   },
   "theWidow:Scrapskin": {
     "NAME": "Scrapskin",
@@ -299,8 +299,7 @@
   },
   "theWidow:DischargeBattery": {
     "NAME": "Discharge Battery",
-    "DESCRIPTION": "At the start of your turn, apply !M! thewidow:Paralysis and Weak to a random enemy. NL Gain 1 less [E] per turn.",
-    "UPGRADE_DESCRIPTION": "At the start of your turn, apply !M! thewidow:Paralysis and Weak to ALL enemies. NL Gain 1 less [E] per turn."
+    "DESCRIPTION": "If you end your turn with [E] remaining, spend it and apply that much thewidow:Paralysis to ALL enemies."
   },
   "theWidow:ExtraCompartment": {
     "NAME": "Extra Compartment",
@@ -376,7 +375,7 @@
   },
   "theWidow:UnstableCell": {
     "NAME": "Unstable Cell",
-    "DESCRIPTION": "thewidow:Beta. NL Deal !D! damage. NL When this card is Upgraded in your hand, play it."
+    "DESCRIPTION": "thewidow:Beta. NL Deal !D! damage. NL When this card is Upgraded in combat, play it."
   },
   "theWidow:Entrap": {
     "NAME": "Entrap",

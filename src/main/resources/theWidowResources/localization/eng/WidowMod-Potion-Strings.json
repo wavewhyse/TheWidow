@@ -32,5 +32,9 @@
                         "Has the effects of a ", ".",
                         "Have the effects of #b", "s."
                 ]
+        },
+        "theWidow:VenomCocktailPotion": {
+                "NAME": "Venom Cocktail",
+                "DESCRIPTIONS": ["Apply #b", " Necrosis."]
         }
 }

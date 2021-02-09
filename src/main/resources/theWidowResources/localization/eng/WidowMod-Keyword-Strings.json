@@ -39,7 +39,7 @@
       "web",
       "webbed"
     ],
-    "DESCRIPTION": "Whenever you take Attack damage, reduce the damage by half and lose 1 Web."
+    "DESCRIPTION": "Whenever you take Attack damage, reduce the damage by 25% and lose 1 Web."
   },
   {
     "NAMES": [

@@ -33,7 +33,7 @@ public class Entrap extends CustomCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 2;
-    private static final int WEAK = 1;
+    private static final int WEAK = 2;
     private static final int UPGRADE_PLUS_WEAK = 1;
 
     // /STAT DECLARATION/

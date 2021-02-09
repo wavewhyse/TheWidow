@@ -35,8 +35,8 @@ public class MetalBurrs extends CustomCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 3;
-    private static final int DAMAGE = 16;
-    private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int DAMAGE = 18;
+    private static final int UPGRADE_PLUS_DMG = 5;
 
     private int discount;
 

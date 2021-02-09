@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theWidow.WidowMod;
@@ -44,7 +43,7 @@ public class NeurojackPower extends AbstractPower implements CloneablePowerInter
     @Override
     public void atStartOfTurnPostDraw() {
         flash();
-        addToBot(new WidowUpgradeManagerAction(AbstractDungeon.player, true, amount));
+        addToBot(new WidowUpgradeManagerAction(amount, true));
     }
 
     @Override

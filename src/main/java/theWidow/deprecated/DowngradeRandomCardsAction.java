@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import theWidow.WidowMod;
 
 @Deprecated
 public class DowngradeRandomCardsAction extends AbstractGameAction {
@@ -38,8 +37,8 @@ public class DowngradeRandomCardsAction extends AbstractGameAction {
                 }
             } else {
                 upgraded.shuffle(AbstractDungeon.cardRng);
-                for (AbstractCard c : upgraded.group)
-                WidowMod.downgradeCard(c);
+                //for (AbstractCard c : upgraded.group)
+                //WidowMod.downgradeCard(c);
             }
         }
         tickDuration();

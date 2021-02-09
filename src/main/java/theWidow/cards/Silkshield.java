@@ -1,5 +1,6 @@
 package theWidow.cards;
 
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -13,6 +14,7 @@ import theWidow.relics.SewingKitRelic;
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 import static theWidow.WidowMod.makeCardPath;
 
+@AutoAdd.Ignore
 public class Silkshield extends BetaCard {
 
     // TEXT DECLARATION

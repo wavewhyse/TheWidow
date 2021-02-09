@@ -1,18 +1,14 @@
 package theWidow.cards;
 
 import basemod.abstracts.CustomCard;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.unique.RemoveDebuffsAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import theWidow.WidowMod;
+import theWidow.actions.WidowDowngradeCardAction;
 import theWidow.actions.WidowUpgradeCardAction;
 import theWidow.characters.TheWidow;
 
@@ -51,7 +47,8 @@ public class Scrapskin extends CustomCard implements Downgradeable{
         addToBot(new GainBlockAction(p, block));
         if (upgraded) {
             addToBot(new RemoveDebuffsAction(p));
-            addToBot(new AbstractGameAction() {
+            addToBot(new WidowDowngradeCardAction(this, true));
+            /*addToBot(new AbstractGameAction() {
                 @Override
                 public void update() {
                     for (AbstractCard c : p.masterDeck.group) {
@@ -67,9 +64,9 @@ public class Scrapskin extends CustomCard implements Downgradeable{
                     superFlash();
                     isDone = true;
                 }
-            });
+            });*/
         } else {
-            addToBot(new WidowUpgradeCardAction(true, this));
+            addToBot(new WidowUpgradeCardAction(this, true));
             /*for (AbstractCard c : p.masterDeck.group) {
                 if (c.uuid.equals(this.uuid) && !c.upgraded) {
                     c.upgrade();
@@ -86,6 +83,7 @@ public class Scrapskin extends CustomCard implements Downgradeable{
     public void upgrade() {
         if (!upgraded) {
             rawDescription = UPGRADE_DESCRIPTION;
+            cardsToPreview = makeCopy();
             upgradeName();
             initializeDescription();
         }
@@ -97,6 +95,7 @@ public class Scrapskin extends CustomCard implements Downgradeable{
         timesUpgraded--;
         name = cardStrings.NAME;
         rawDescription = cardStrings.DESCRIPTION;
+        cardsToPreview = null;
         initializeTitle();
         initializeDescription();
     }

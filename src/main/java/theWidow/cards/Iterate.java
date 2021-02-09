@@ -3,9 +3,11 @@ package theWidow.cards;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.WidowMod;
 import theWidow.actions.WidowUpgradeCardAction;
@@ -44,8 +46,10 @@ public class Iterate extends CustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot( new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        p.hand.group.stream().filter(c -> c instanceof BetaCard).forEach(c -> addToBot(new WidowUpgradeCardAction(false, c)));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        for (AbstractCard c : AbstractDungeon.player.hand.group)
+            if (c instanceof BetaCard)
+                addToBot(new WidowUpgradeCardAction(c));
     }
 
     @Override

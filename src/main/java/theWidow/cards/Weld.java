@@ -47,10 +47,10 @@ public class Weld extends CustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new
-                DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE)
-        );
-        addToBot(new WidowUpgradeManagerAction(p,magicNumber));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
+        addToBot(new WidowUpgradeManagerAction(magicNumber));
+//        addToBot(new SelectCardsInHandAction(magicNumber, "Upgrade", true, true, AbstractCard::canUpgrade, cards -> cards.forEach(c -> addToTop(new WidowUpgradeCardAction(c)))));
+
     }
 
     @Override

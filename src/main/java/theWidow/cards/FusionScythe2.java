@@ -6,11 +6,10 @@ import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 import theWidow.WidowMod;
+import theWidow.actions.WidowDowngradeCardAction;
 import theWidow.characters.TheWidow;
 
 import static theWidow.WidowMod.makeCardPath;
@@ -55,19 +54,15 @@ public class FusionScythe2 extends CustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        int count = 0;
         for (AbstractCard c : p.hand.group) {
             if (c.upgraded && c != this) {
-                addToBot(new AbstractGameAction() {
-                         @Override
-                         public void update() {
-                             AbstractDungeon.effectsQueue.add(new ExhaustCardEffect(c));
-                             WidowMod.downgradeCard(c);
-                             isDone = true;
-                         }
-                     });
-                addToBot(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HEAVY));
+                addToBot(new WidowDowngradeCardAction(c));
+                count++;
             }
         }
+        for (int i=0; i<count; i++)
+            addToBot(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HEAVY));
     }
 
     @Override

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theWidow.WidowMod;
+import theWidow.actions.WidowDowngradeCardAction;
 import theWidow.util.TextureLoader;
 
 import static theWidow.WidowMod.makeRelicOutlinePath;
@@ -43,9 +44,7 @@ public class HoloProjectorRelic extends CustomRelic {
                         upgraded.addToTop(c);
                 for (int i=0; i<DOWNGRADES && !upgraded.isEmpty(); i++) {
                     AbstractCard c = upgraded.getRandomCard(AbstractDungeon.cardRandomRng);
-                    WidowMod.downgradeCard(c);
-                    //AbstractDungeon.effectsQueue.add(new ExhaustCardEffect(c));
-                    c.superFlash();
+                    addToTop(new WidowDowngradeCardAction(c));
                     upgraded.removeCard(c);
                 }
                 isDone = true;

@@ -27,8 +27,7 @@ public class SadisticIntent extends CustomCard {
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
-    private static final int COST = 2;
-    private static final int UPGRADED_COST = 1;
+    private static final int COST = 1;
     private static final int DRAW = 1;
     private static final int UPGRADE_PLUS_DRAW = 1;
 
@@ -49,8 +48,6 @@ public class SadisticIntent extends CustomCard {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_DRAW);
-            upgradeBaseCost(UPGRADED_COST);
-            initializeDescription();
         }
     }
 }
