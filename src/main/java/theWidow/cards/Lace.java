@@ -28,7 +28,7 @@ public class Lace extends ExtraMagicalCustomCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 0;
-    private static final int WEB = 4;
+    private static final int WEB = 3;
     private static final int VULNERABLE = 2;
     private static final int UPGRADE_PLUS_WEB = 2;
 
