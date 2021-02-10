@@ -35,7 +35,7 @@ public class Gash extends CustomCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = -1;
-    private static final int DAMAGE = 5;
+    private static final int DAMAGE = 4;
     private static final int UPGRADE_PLUS_DMG = 1;
 
     // /STAT DECLARATION/
@@ -59,7 +59,7 @@ public class Gash extends CustomCard {
                     p.getRelic(ChemicalX.ID).flash();
                 }
                 if (effect > 0)
-                    addToTop(new ApplyPowerAction(m, p, new GashPower(m, damage, effect), effect));
+                    addToTop(new ApplyPowerAction(m, p, new GashPower(m, damage*2, effect), effect));
                 if (!freeToPlayOnce)
                     p.energy.use(EnergyPanel.totalCount);
                 isDone = true;

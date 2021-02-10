@@ -1,5 +1,6 @@
 package theWidow.actions;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -39,7 +40,8 @@ public class WidowDowngradeCardAction extends AbstractGameAction {
                     addToTop(new WaitAction(Settings.ACTION_DUR_MED));
                 });
             doDowngrade(c);
-            AbstractDungeon.effectsQueue.add(new ExhaustCardEffect(c));
+//            AbstractDungeon.effectsQueue.add(new ExhaustCardEffect(c));
+            c.superFlash(Color.BLACK);
             c.applyPowers();
         }
         tickDuration();

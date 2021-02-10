@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import javassist.CtBehavior;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import theWidow.WidowMod;
 import theWidow.powers.WebPower;
 
 @SpirePatch(
@@ -14,6 +15,8 @@ import theWidow.powers.WebPower;
 )
 public class WebIntentPatch {
 
+    public boolean changeIntent;
+
     private static final Logger logger = LogManager.getLogger(ParalysisPatch.class.getName());
 
     @SpireInsertPatch(
@@ -21,7 +24,7 @@ public class WebIntentPatch {
             localvars = {"tmp", "p"}
     )
     public static void dontCheckWeb(AbstractMonster __instance, int dmg, @ByRef float[] tmp, AbstractPower p) {
-        if (p instanceof WebPower)
+        if (!WidowMod.webAffectsIntents &&  p instanceof WebPower)
             tmp[0] /= WebPower.DAMAGE_MULT;
     }
 

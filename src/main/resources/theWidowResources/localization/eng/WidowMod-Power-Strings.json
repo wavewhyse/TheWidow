@@ -9,7 +9,7 @@
         },
         "theWidow:NecrosisPower": {
                 "NAME": "Necrosis",
-                "DESCRIPTIONS": ["Increase all damage taken by #b", ". Reduced by half each turn."]
+                "DESCRIPTIONS": ["Increase Attack damage taken by #b", ". Reduced by half each turn."]
         },
         "theWidow:NeurojackPower": {
                 "NAME": "Neurojack",
@@ -86,5 +86,13 @@
         "theWidow:GashPower": {
                 "NAME": "Gash",
                 "DESCRIPTIONS": ["For the next #b", " turns, takes #b", " damage."]
+        },
+        "theWidow:VengefulPower": {
+                "NAME": "Vengeful",
+                "DESCRIPTIONS": ["When debuffed, gain #b"," temporary #yStrength."]
+        },
+        "theWidow:InfectPower": {
+                "NAME": "Infected",
+                "DESCRIPTIONS": ["When debuffed, gain #b"," #yNecrosis."]
         }
 }

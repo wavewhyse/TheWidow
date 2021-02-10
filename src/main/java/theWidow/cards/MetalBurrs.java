@@ -35,8 +35,8 @@ public class MetalBurrs extends CustomCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 3;
-    private static final int DAMAGE = 18;
-    private static final int UPGRADE_PLUS_DMG = 5;
+    private static final int DAMAGE = 4;
+    private static final int UPGRADE_PLUS_DMG = 1;
 
     private int discount;
 
@@ -79,7 +79,8 @@ public class MetalBurrs extends CustomCard {
                 addToBot(new VFXAction( new ViolentAttackEffect(m.hb.cX, m.hb.cY, Color.BLACK), 0.4F));
             }
         }
-        addToBot( new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
+        for (int i=0; i<4; i++)
+            addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
     }
 
     @Override

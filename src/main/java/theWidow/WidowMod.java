@@ -76,9 +76,9 @@ public class WidowMod implements
     private static String modID;
 
     // Mod-settings settings. This is if you want an on/off savable button
-    public static Properties theDefaultDefaultSettings = new Properties();
-    public static final String ENABLE_PLACEHOLDER_SETTINGS = "enablePlaceholder";
-    public static boolean enablePlaceholder = true; // The boolean we'll be setting on/off (true/false)
+    public static Properties theWidowSettings = new Properties();
+    public static final String WEB_INTENT_SETTINGS = "webIntent";
+    public static boolean webAffectsIntents = false; // The boolean we'll be setting on/off (true/false)
 
     //This is for the in-game mod settings panel.
     private static final String MODNAME = "The Widow";
@@ -206,12 +206,12 @@ public class WidowMod implements
         logger.info("Adding mod settings");
         // This loads the mod settings.
         // The actual mod Button is added below in receivePostInitialize()
-        theDefaultDefaultSettings.setProperty(ENABLE_PLACEHOLDER_SETTINGS, "FALSE"); // This is the default setting. It's actually set...
+        theWidowSettings.setProperty(WEB_INTENT_SETTINGS, "FALSE"); // This is the default setting. It's actually set...
         try {
-            SpireConfig config = new SpireConfig("defaultMod", "theDefaultConfig", theDefaultDefaultSettings); // ...right here
+            SpireConfig config = new SpireConfig("widowMod", "theWidowConfig", theWidowSettings); // ...right here
             // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
             config.load(); // Load the setting and set the boolean to equal it
-            enablePlaceholder = config.getBool(ENABLE_PLACEHOLDER_SETTINGS);
+            webAffectsIntents = config.getBool(WEB_INTENT_SETTINGS);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -265,7 +265,7 @@ public class WidowMod implements
     
     public static void initialize() {
         logger.info("========================= Initializing Default Mod. Hi. =========================");
-        WidowMod defaultmod = new WidowMod();
+        WidowMod widowMod = new WidowMod();
         logger.info("========================= /Default Mod Initialized. Hello World./ =========================");
     }
     
@@ -300,18 +300,18 @@ public class WidowMod implements
         ModPanel settingsPanel = new ModPanel();
         
         // Create the on/off button:
-        ModLabeledToggleButton enableNormalsButton = new ModLabeledToggleButton("This is the text which goes next to the checkbox.",
+        ModLabeledToggleButton enableNormalsButton = new ModLabeledToggleButton("Web affects enemy intents (shows incorrect numbers when you don't have enough Web)",
                 350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
-                enablePlaceholder, // Boolean it uses
+                webAffectsIntents, // Boolean it uses
                 settingsPanel, // The mod panel in which this button will be in
                 (label) -> {}, // thing??????? idk
                 (button) -> { // The actual button:
             
-            enablePlaceholder = button.enabled; // The boolean true/false will be whether the button is enabled or not
+            webAffectsIntents = button.enabled; // The boolean true/false will be whether the button is enabled or not
             try {
                 // And based on that boolean, set the settings and save them
-                SpireConfig config = new SpireConfig("defaultMod", "theDefaultConfig", theDefaultDefaultSettings);
-                config.setBool(ENABLE_PLACEHOLDER_SETTINGS, enablePlaceholder);
+                SpireConfig config = new SpireConfig("widowMod", "theDefaultConfig", theWidowSettings);
+                config.setBool(WEB_INTENT_SETTINGS, webAffectsIntents);
                 config.save();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -536,12 +536,17 @@ public class WidowMod implements
 
     @Override
     public void receivePostPotionUse(AbstractPotion pot) {
+        if (AbstractDungeon.player.hasPower(BombLauncherPower.POWER_ID)) {
+            ((BombLauncherPower) AbstractDungeon.player.getPower(BombLauncherPower.POWER_ID)).onPotionUse(pot);
+            if (AbstractDungeon.player.hasRelic(SacredBark.ID) && pot instanceof BlessingOfTheForge)
+                pot.use(AbstractDungeon.player);
+            if (AbstractDungeon.player.hasPower(ChemistryPower.POWER_ID))
+                ((ChemistryPower)AbstractDungeon.player.getPower(ChemistryPower.POWER_ID)).onPotionUse(pot);
+        }
         if (AbstractDungeon.player.hasRelic(SacredBark.ID) && pot instanceof BlessingOfTheForge)
             pot.use(AbstractDungeon.player);
-        if (AbstractDungeon.player.hasPower(BombLauncherPower.POWER_ID))
-            ((BombLauncherPower)AbstractDungeon.player.getPower(BombLauncherPower.POWER_ID)).onPotionUse(pot);
         if (AbstractDungeon.player.hasPower(ChemistryPower.POWER_ID))
-            ((ChemistryPower)AbstractDungeon.player.getPower(ChemistryPower.POWER_ID)).onPotionUse(pot);
+            ((ChemistryPower) AbstractDungeon.player.getPower(ChemistryPower.POWER_ID)).onPotionUse(pot);
     }
 
     @Override

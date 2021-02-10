@@ -1,3 +1,17 @@
+VERSION 0.6.1
+
+-new card: Vengeful (uncommon 0-cost Power): When you are debuffed, gain 1(2) temporary Strength.
+-new card: Infect (uncommon 1-cost Attack): Deal 5(8) damage. When you debuff this enemy, also apply 2(3) Necrosis. Exhaust.
+-Entrap now gains 2 Web per debuff instead of 1
+-Gash base damage decreased 5(6) -> 4(5)
+-Gash damage per turn increased to double the initial damage
+-Metal Burrs now hits multiple times: 4(5) damage 4 times
+-Mini-Nuke damage decreased 30 -> 25
+-Skitter rarity changed common -> uncommon
+-Backup Battery rarity changed common -> uncommon
+-there is now a setting to toggle Web altering enemy intents or not
+-added art for Vengeful and Infect
+
 VERSION 0.6
 
 -Web reduces damage by 25%, instead of by 50%.

@@ -257,7 +257,7 @@
   },
   "theWidow:MetalBurrs": {
     "NAME": "Metal Burrs",
-    "DESCRIPTION": "Deal !D! damage. Costs less [E] per debuff affecting you."
+    "DESCRIPTION": "Deal !D! damage 4 times. Costs less [E] per debuff affecting you."
   },
   "theWidow:Rewire": {
     "NAME": "Rewire",
@@ -379,14 +379,22 @@
   },
   "theWidow:Entrap": {
     "NAME": "Entrap",
-    "DESCRIPTION": "Apply !M! Weak. NL Gain 1 thewidow:Web for each debuff affecting the target."
+    "DESCRIPTION": "Apply !M! Weak. NL Gain 2 thewidow:Web for each debuff affecting the target."
   },
   "theWidow:Gash": {
     "NAME": "Gash",
-    "DESCRIPTION": "Deal !D! damage. NL For the next X turns, target takes !D! damage."
+    "DESCRIPTION": "Deal !D! damage. NL For the next X turns, target takes twice that much damage."
   },
   "theWidow:Dysphoria": {
     "NAME": "Dysphoria",
     "DESCRIPTION": "Unplayable. NL When this is removed from your deck, gain !M! maximum HP."
+  },
+  "theWidow:Vengeful": {
+    "NAME": "Vengeful",
+    "DESCRIPTION": "When you are debuffed, gain !M! temporary Strength."
+  },
+  "theWidow:Infect": {
+    "NAME": "Infect",
+    "DESCRIPTION": "Deal !D! damage. NL When you debuff this enemy, also apply !M! thewidow:Necrosis. NL Exhaust."
   }
 }
