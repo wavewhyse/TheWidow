@@ -11,8 +11,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
+import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.characters.TheWidow;
 import theWidow.powers.ParalysisPower;
 
 import static theWidow.WidowMod.makeCardPath;
@@ -51,34 +51,34 @@ public class Opportunist extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), magicNumber));
-        boolean attacking = false;
-        switch (m.intent) {
-            case ATTACK:
-            case ATTACK_BUFF:
-            case ATTACK_DEBUFF:
-            case ATTACK_DEFEND:
-                break;
-            default:
-                attacking = true;
-                break;
-        }
-        for (AbstractPower pow : m.powers)
-            if (pow instanceof WeakPower || pow instanceof ParalysisPower) {
-                attacking = true;
-                break;
-            }
-        if (attacking) {
-            addToBot(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    DamageInfo info =new DamageInfo(p, baseDamage, damageTypeForTurn);
-                    info.applyPowers(p, m);
-                    addToTop(new DamageAction(m, info, AttackEffect.SLASH_HORIZONTAL));
-                    addToTop(new DamageAction(m, info, AttackEffect.SLASH_HEAVY));
-                    isDone = true;
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                boolean attacking = false;
+                switch (m.intent) {
+                    case ATTACK:
+                    case ATTACK_BUFF:
+                    case ATTACK_DEBUFF:
+                    case ATTACK_DEFEND:
+                        break;
+                    default:
+                        attacking = true;
+                        break;
                 }
-            });
-        }
+                for (AbstractPower pow : m.powers)
+                    if (pow instanceof WeakPower || pow instanceof ParalysisPower) {
+                        attacking = true;
+                        break;
+                    }
+                if (attacking) {
+                    Opportunist.this.calculateCardDamage(m);
+                    DamageInfo info = new DamageInfo(p, damage, damageTypeForTurn);
+                    addToTop(new DamageAction(m, info, AttackEffect.SLASH_HEAVY));
+                    addToTop(new DamageAction(m, info, AttackEffect.SLASH_HORIZONTAL));
+                }
+                isDone = true;
+            }
+        });
     }
 
     @Override

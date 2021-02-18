@@ -11,8 +11,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.BiteEffect;
+import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.characters.TheWidow;
 import theWidow.powers.NecrosisPower;
 
 import static theWidow.WidowMod.makeCardPath;
@@ -36,7 +36,7 @@ public class Spiderbite extends CustomCard {
     private static final int COST = 1;
     private static final int DAMAGE = 7;
     private static final int UPGRADE_PLUS_DMG = 2;
-    private static final int NECROSIS = 3;
+    private static final int NECROSIS = 2;
     private static final int UPGRADE_PLUS_NECROSIS = 1;
 
     // /STAT DECLARATION/

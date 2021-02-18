@@ -12,8 +12,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.characters.TheWidow;
 
 import static theWidow.WidowMod.makeCardPath;
 

@@ -13,11 +13,8 @@ import theWidow.util.TextureLoader;
 import static theWidow.WidowMod.makePowerPath;
 
 public class ExtraCompartmentPower extends GrenadierPower {
-    public AbstractCreature source;
-
     public static final String POWER_ID = WidowMod.makeID(ExtraCompartmentPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-    public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("ExtraCompartmentPower84.png"));
@@ -25,7 +22,7 @@ public class ExtraCompartmentPower extends GrenadierPower {
 
     public ExtraCompartmentPower(final AbstractCreature owner, final int amount) {
         super(owner, amount);
-        name = NAME;
+        name = powerStrings.NAME;
         ID = POWER_ID;
 
         type = PowerType.BUFF;
@@ -42,7 +39,7 @@ public class ExtraCompartmentPower extends GrenadierPower {
         if (!isPlayer)
             return;
         super.onVictory();
-        addToBot(new RemoveSpecificPowerAction(owner, source, this));
+        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 
     @Override

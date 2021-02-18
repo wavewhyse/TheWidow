@@ -7,8 +7,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.characters.TheWidow;
 import theWidow.relics.SewingKitRelic;
 
 import static theWidow.WidowMod.makeCardPath;
@@ -32,7 +32,7 @@ public class BioInformatics extends BetaCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 2;
-    private static final int BLOCK = 8;
+    private static final int BLOCK = 10;
     private static final int DRAW = 1;
     private static final int UPGRADE_PLUS_DRAW = 1;
 

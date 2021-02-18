@@ -6,8 +6,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.characters.TheWidow;
 import theWidow.powers.WebPower;
 
 import static theWidow.WidowMod.makeCardPath;

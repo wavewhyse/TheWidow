@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
@@ -13,6 +12,7 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import theWidow.cards.Downgradeable;
 
 public class WidowDowngradeCardAction extends AbstractGameAction {
+
     private AbstractPlayer p = AbstractDungeon.player;
     private AbstractCard c;
     private boolean permanent;
@@ -41,8 +41,7 @@ public class WidowDowngradeCardAction extends AbstractGameAction {
                 });
             doDowngrade(c);
 //            AbstractDungeon.effectsQueue.add(new ExhaustCardEffect(c));
-            c.superFlash(Color.BLACK);
-            c.applyPowers();
+            c.superFlash(new Color(0.5f,0f,0.1f,0f));
         }
         tickDuration();
     }
@@ -59,8 +58,8 @@ public class WidowDowngradeCardAction extends AbstractGameAction {
                 card.baseDiscard = card.discard = downgradedVersion.baseDiscard;
                 card.baseDraw = card.draw = downgradedVersion.baseDraw;
                 card.baseHeal = card.heal = downgradedVersion.baseHeal;
-                card.cost = downgradedVersion.cost;
-                card.costForTurn = downgradedVersion.costForTurn;
+                if (downgradedVersion.cost >= 0)
+                    card.updateCost(downgradedVersion.cost - card.cost);
                 card.purgeOnUse = downgradedVersion.purgeOnUse;
                 card.isEthereal = downgradedVersion.isEthereal;
                 card.exhaust = downgradedVersion.exhaust;
@@ -69,8 +68,8 @@ public class WidowDowngradeCardAction extends AbstractGameAction {
                 card.timesUpgraded = 0;
                 card.upgraded = card.upgradedBlock = card.upgradedCost = card.upgradedDamage = card.upgradedMagicNumber = false;
 
-                card.name = CardCrawlGame.languagePack.getCardStrings(card.cardID).NAME;
-                card.rawDescription = CardCrawlGame.languagePack.getCardStrings(card.cardID).DESCRIPTION;
+                card.name = downgradedVersion.name;
+                card.rawDescription = downgradedVersion.rawDescription;
             }
             card.applyPowers();
             card.initializeDescription();

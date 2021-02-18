@@ -1,0 +1,22 @@
+{
+  "theWidow:WidowUpgradeManagerAction": {
+    "TEXT": [
+      "Upgrade"
+    ]
+  },
+  "theWidow:SelfImprovementAction": {
+    "TEXT": [
+      "Exhaust"
+    ]
+  },
+  "theWidow:DistillAction": {
+    "TEXT": [
+      "Distill"
+    ]
+  },
+  "theWidow:MeltdownAction": {
+    "TEXT": [
+      "Melt Down"
+    ]
+  }
+}

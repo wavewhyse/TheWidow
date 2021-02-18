@@ -1,0 +1,102 @@
+{
+        "theWidow:WebPower": {
+                "NAME": "Web",
+                "DESCRIPTIONS": ["Reduce the damage of the next #b", " attack by 25%.", " attacks by 25%.", "Caution!","This multiattack is only partially reduced by your current Web."]
+        },
+        "theWidow:ParalysisPower": {
+                "NAME": "Paralysis",
+                "DESCRIPTIONS": ["Attacks #b1 less time when multi-attacking for #b", " turns."]
+        },
+        "theWidow:NecrosisPower": {
+                "NAME": "Necrosis",
+                "DESCRIPTIONS": ["Increase Attack damage taken by #b", ". Reduced by half each turn."]
+        },
+        "theWidow:NeurojackPower": {
+                "NAME": "Neurojack",
+                "DESCRIPTIONS": ["At the start of your turn, upgrade #b", " random card.", " random cards."]
+        },
+        "theWidow:HermitWeavePower": {
+                "NAME": "Hermit Weave",
+                "DESCRIPTIONS": ["At the start of your turn, gain #b", " Web."]
+        },
+        "theWidow:LaserDronePower": {
+                "NAME": "Laser Drone",
+                "DESCRIPTIONS": ["At the start of your turn, deal #b", " damage to the target."]
+        },
+        "theWidow:LairPower": {
+                "NAME": "Lair",
+                "DESCRIPTIONS": ["On gaining Web, apply #b", " Vulnerable to ALL enemies."]
+        },
+        "theWidow:ShockedPower": {
+                "NAME": "Shocked",
+                "DESCRIPTIONS": ["On attacking, takes #b", " damage."]
+        },
+        "theWidow:HydraulicsPower": {
+                "NAME": "Hydraulics",
+                "DESCRIPTIONS": ["The first Attack played each turn costs double and deals ", "The first #b ", " Attacks played each turn cost double and deal ", "double damage."]
+        },
+        "theWidow:GrenadierPower": {
+                "NAME": "Grenadier",
+                "DESCRIPTIONS": ["#b", " extra potion slots.", " extra potion slot."]
+        },
+        "theWidow:ConduitPower": {
+                "NAME": "Conduit",
+                "DESCRIPTIONS": ["Deal extra Attack damage equal to Web."]
+        },
+        "theWidow:AmbushPower": {
+                "NAME": "Ambush",
+                "DESCRIPTIONS": ["At the end of your turn, if you played no Attacks this turn, Retain your hand."]
+        },
+        "theWidow:TranscensionPower": {
+                "NAME": "Transcension",
+                "DESCRIPTIONS": ["At the start of your turn, Upgrade all cards in your hand", " #b", " times.", "."]
+        },
+        "theWidow:TransensionPower2": {
+                "NAME": "Transcension",
+                "DESCRIPTIONS": ["Cards cost 0. When you draw a card, #yTransform it."]
+        },
+        "theWidow:TranscensionPower3": {
+                "NAME": "Transcension",
+                "DESCRIPTIONS": ["At start of turn, choose 1 of 3 cards to add to your hand. It costs 0 this turn."]
+        },
+        "theWidow:BombLauncherPower": {
+                "NAME": "Bomb Launcher",
+                "DESCRIPTIONS": ["The next Potion you use is used twice.", "The next #b", " Potions you use are used twice."]
+        },
+        "theWidow:ChemistryPower": {
+                "NAME": "Chemistry",
+                "DESCRIPTIONS": ["When you use a Potion, draw #b", " cards."]
+        },
+        "theWidow:ScrapperPower": {
+                "NAME": "Scrappy",
+                "DESCRIPTIONS": ["At end of turn, gain #b", " Block per debuff."]
+        },
+        "theWidow:SadisticIntentPower": {
+                "NAME": "Sadistic Intent",
+                "DESCRIPTIONS": ["At turn start, if ALL enemies are debuffed, draw #b"," card."," cards."]
+        },
+        "theWidow:DischargeBatteryPower": {
+                "NAME": "Discharging Battery",
+                "DESCRIPTIONS": ["Apply ","#b"," times ","leftover Energy at end of turn as Paralysis to ALL enemies."]
+        },
+        "theWidow:ExtraCompartmentPower": {
+                "NAME": "Extra Compartments",
+                "DESCRIPTIONS": ["#b", " extra Potion Slots this turn."]
+        },
+        "theWidow:GashPower": {
+                "NAME": "Gash",
+                "DESCRIPTIONS": ["At the end of its next #b", " turns, takes #b", " damage."]
+        },
+        "theWidow:VengefulPower": {
+                "NAME": "Vengeful",
+                "DESCRIPTIONS": ["When debuffed, gain #b"," temporary #yStrength."]
+        },
+        "theWidow:InfectPower": {
+                "NAME": "Infected",
+                "DESCRIPTIONS": ["When debuffed, gain #b"," #yNecrosis."]
+        },
+        "theWidow:EggClutchPower": {
+                "NAME": "Egg Clutch",
+                "DESCRIPTIONS": ["Upgrade #b"," card"," cards"," in this combat's card reward screen."]
+        }
+}

@@ -10,9 +10,9 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theWidow.TheWidow;
 import theWidow.WidowMod;
 import theWidow.actions.WidowUpgradeCardAction;
-import theWidow.characters.TheWidow;
 
 import static theWidow.WidowMod.makeCardPath;
 

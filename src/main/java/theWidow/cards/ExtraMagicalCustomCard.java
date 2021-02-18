@@ -1,7 +1,7 @@
 package theWidow.cards;
 import basemod.abstracts.CustomCard;
 
-public abstract class ExtraMagicalCustomCard extends CustomCard {
+public abstract class ExtraMagicalCustomCard extends CustomCard implements Downgradeable {
 
     public int secondMagicNumber;
     public int baseSecondMagicNumber;

@@ -2,15 +2,15 @@ package theWidow.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.characters.TheWidow;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 import static theWidow.WidowMod.makeCardPath;
@@ -34,7 +34,7 @@ public class Nanobots extends BetaCard {
 
     private static final int COST = 0;
     private static final int DAMAGE = 5;
-    private static final int UPGRADE_PLUS_DMG = 1;
+    private static final int UPGRADE_PLUS_DMG = 2;
 
     // /STAT DECLARATION/
 
@@ -55,7 +55,7 @@ public class Nanobots extends BetaCard {
     public void applyPowers() {
         super.applyPowers();
         if (shuffleQueued && AbstractDungeon.player.hand.contains(this)) {
-            addToBot(new MakeTempCardInDrawPileAction(this.makeSameInstanceOf(), 1, true, true));
+            addToBot(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(), 1));
             shuffleQueued = false;
         }
     }

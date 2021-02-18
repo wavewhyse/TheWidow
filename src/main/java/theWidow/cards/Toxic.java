@@ -1,19 +1,18 @@
 package theWidow.cards;
 
-import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
+import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.characters.TheWidow;
+import theWidow.powers.NecrosisPower;
 
 import static theWidow.WidowMod.makeCardPath;
 
-public class Toxic extends CustomCard {
+public class Toxic extends ExtraMagicalCustomCard {
 
     // TEXT DECLARATION
 
@@ -34,19 +33,22 @@ public class Toxic extends CustomCard {
     private static final int COST = 0;
     private static final int DEBUFFS = 2;
     private static final int UPGRADE_PLUS_DEBUFFS = 1;
+    private static final int NECROSIS = 2;
+    private static final int UPGRADE_PLUS_NECROSIS = 1;
 
     // /STAT DECLARATION/
 
     public Toxic() {
         super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = DEBUFFS;
+        secondMagicNumber = baseSecondMagicNumber = NECROSIS;
         exhaust = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot( new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false), magicNumber));
-        addToBot( new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), magicNumber));
+        addToBot( new ApplyPowerAction(m, p, new NecrosisPower(m, secondMagicNumber), secondMagicNumber));
     }
 
     @Override
@@ -54,8 +56,19 @@ public class Toxic extends CustomCard {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_DEBUFFS);
-            //rawDescription = UPGRADE_DESCRIPTION;
-            //initializeDescription();
+            upgradeSecondMagicNumber(UPGRADE_PLUS_NECROSIS);
+        }
+    }
+
+    @Override
+    public void downgrade() {
+        if (upgraded) {
+            name = cardStrings.NAME;
+            timesUpgraded--;
+            upgraded = false;
+            magicNumber = baseMagicNumber = DEBUFFS;
+            secondMagicNumber = baseSecondMagicNumber = NECROSIS;
+            upgradedMagicNumber = upgradedSecondMagicNumber = false;
         }
     }
 }

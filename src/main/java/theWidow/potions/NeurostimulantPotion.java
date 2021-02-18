@@ -28,7 +28,6 @@ public class NeurostimulantPotion extends CustomPotion {
     public NeurostimulantPotion() {
         // The bottle shape and inside is determined by potion size and color. The actual colors are the main DefaultMod.java
         super(NAME, POTION_ID, PotionRarity.RARE, PotionSize.BOLT, PotionColor.ENERGY);
-        
     }
 
     @Override
@@ -44,6 +43,7 @@ public class NeurostimulantPotion extends CustomPotion {
 
         isThrown = false;
 
+        tips.clear();
         tips.add(new PowerTip(name, description));
     }
 

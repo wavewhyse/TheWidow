@@ -6,8 +6,8 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.characters.TheWidow;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 import static theWidow.WidowMod.makeCardPath;
@@ -19,7 +19,7 @@ public class SpiderDance extends CustomCard {
     public static final String ID = WidowMod.makeID(SpiderDance.class.getSimpleName());
     //private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     //private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("SpiderDance.png");
+    public static final String IMG = makeCardPath("SpiderDance.png");
 
     // /TEXT DECLARATION/
 

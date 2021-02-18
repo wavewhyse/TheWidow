@@ -5,16 +5,15 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
-import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
+import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.characters.TheWidow;
 import theWidow.powers.NecrosisPower;
 import theWidow.powers.ParalysisPower;
 
 import static theWidow.WidowMod.makeCardPath;
 
-public class BlackVenom extends ExtraMagicalCustomCard  implements Downgradeable {
+public class BlackVenom extends ExtraExtraMagicalCustomCard {
 
     // TEXT DECLARATION
 
@@ -32,10 +31,12 @@ public class BlackVenom extends ExtraMagicalCustomCard  implements Downgradeable
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 2;
-    private static final int STATUSES = 2;
-    private static final int UPGRADE_PLUS_STATUSES = 1;
+    private static final int STATUSES = 4;
+    private static final int UPGRADE_PLUS_STATUSES = 2;
     private static final int NECROSIS = 4;
     private static final int UPGRADE_PLUS_NECROSIS = 2;
+    private static final int STRENGTH_DOWN = 1;
+    private static final int UPGRADE_PLUS_STRENGTH_DOWN = 1;
 
     // /STAT DECLARATION/
 
@@ -43,15 +44,17 @@ public class BlackVenom extends ExtraMagicalCustomCard  implements Downgradeable
         super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = STATUSES;
         secondMagicNumber = baseSecondMagicNumber = NECROSIS;
+        thirdMagicNumber = baseThirdMagicNumber = STRENGTH_DOWN;
         exhaust = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), magicNumber));
-        addToBot(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false), magicNumber));
+//        addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), magicNumber));
+//        addToBot(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false), magicNumber));
         addToBot(new ApplyPowerAction(m, p, new ParalysisPower(m, magicNumber), magicNumber));
         addToBot(new ApplyPowerAction(m, p, new NecrosisPower(m, secondMagicNumber), secondMagicNumber));
+        addToBot(new ApplyPowerAction(m, p, new StrengthPower(m, -thirdMagicNumber), -thirdMagicNumber));
     }
 
     @Override
@@ -60,6 +63,7 @@ public class BlackVenom extends ExtraMagicalCustomCard  implements Downgradeable
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_STATUSES);
             upgradeSecondMagicNumber(UPGRADE_PLUS_NECROSIS);
+            upgradeThirdMagicNumber(UPGRADE_PLUS_STRENGTH_DOWN);
             initializeDescription();
         }
     }
@@ -72,7 +76,8 @@ public class BlackVenom extends ExtraMagicalCustomCard  implements Downgradeable
             upgraded = false;
             magicNumber = baseMagicNumber = STATUSES;
             secondMagicNumber = baseSecondMagicNumber = NECROSIS;
-            upgradedMagicNumber = upgradedSecondMagicNumber = false;
+            thirdMagicNumber = baseThirdMagicNumber = STRENGTH_DOWN;
+            upgradedMagicNumber = upgradedSecondMagicNumber = upgradedThirdMagicNumber = false;
         }
     }
 }

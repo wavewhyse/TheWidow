@@ -1,0 +1,83 @@
+[
+  {
+    "NAMES": [
+      "Beta",
+      "beta"
+    ],
+    "DESCRIPTION": "This card can be upgraded any number of times."
+  },
+  {
+    "NAMES": [
+      "Beta+",
+      "beta+"
+    ],
+    "DESCRIPTION": "This card can be upgraded any number of times. Each upgrade is progressively better."
+  },
+  {
+    "NAMES": [
+      "Downgrade",
+      "downgrade",
+      "downgrades",
+      "downgraded"
+    ],
+    "DESCRIPTION": "Downgrading a card undoes the effects of any #yUpgrades that have been applied to it."
+  },
+  {
+    "NAMES": [
+      "Web",
+      "web",
+      "webbed"
+    ],
+    "DESCRIPTION": "Whenever you take Attack damage, reduce the damage by #b25% and lose 1 #yWeb."
+  },
+  {
+    "NAMES": [
+      "Paralysis",
+      "paralysis",
+      "paralyzed"
+    ],
+    "DESCRIPTION": "Paralyzed enemies attack #b1 less time when multi-attacking."
+  },
+  {
+    "NAMES": [
+      "Necrosis",
+      "necrosis",
+      "necrotic"
+    ],
+    "DESCRIPTION": "Increases damage taken from Attacks. Reduced by half each turn."
+  },
+  {
+    "NAMES": [
+      "Grenade",
+      "grenade",
+      "grenades"
+    ],
+    "DESCRIPTION": "#yPotion NL Deal 10 damage to an enemy."
+  },
+  {
+    "PROPER_NAME": "Pulse Bomb",
+    "NAMES": [
+      "Pulse Bomb",
+      "pulse_bomb",
+      "pulse_bombs"
+    ],
+    "DESCRIPTION": "#yPotion NL Deal 20 damage to an enemy and 10 damage to all other enemies."
+  },
+  {
+    "NAMES": [
+      "Mini-nuke",
+      "mini-nuke",
+      "mini-nukes",
+      "nuke",
+      "nukes"
+    ],
+    "DESCRIPTION": "#yPotion NL Deal 25 damage to ALL enemies."
+  },
+  {
+    "NAMES": [
+      "Silk Potion",
+      "silk_potion"
+    ],
+    "DESCRIPTION": "#yPotion NL Gain 3 #yWeb."
+  }
+]

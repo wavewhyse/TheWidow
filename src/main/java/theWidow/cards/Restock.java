@@ -12,8 +12,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.FlickCoinEffect;
+import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.characters.TheWidow;
 
 import static theWidow.WidowMod.makeCardPath;
 
@@ -24,7 +24,7 @@ public class Restock extends CustomCard {
     public static final String ID = WidowMod.makeID(Restock.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("Restock.png");
+    public static final String IMG = makeCardPath("Restock.png");
 
     // /TEXT DECLARATION/
 

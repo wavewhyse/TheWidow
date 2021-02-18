@@ -1,3 +1,49 @@
+VERSION 0.9
+
+-Web now (mostly) correctly adjusts enemy intents. Multiattacks that break Web midway through will display a warning, indicating that they will do so, next to the intent.
+-new bg art for Widow cards, as well as energy orbs on cards
+
+-new card: Egg Clutch: (2-cost uncommon power) Upgrade 1(2) card(s) in this combat's card reward screen.
+
+-Hydraulic Limbs changed: 2(1)-cost, The first Attack you play each turn costs twice as much energy and deals double damage. (might be very buggy)
+-Dysphoria changed: Unplayable. When removed from your deck, Upgrade 3 random cards in your deck and gain 6 Max HP.
+-Cocoon changed: cost 2(1), Obtain a Silk Potion. Exhaust.
+-Black Venom changed: Apply 4(6) Paralysis and 4(6) Necrosis. Target loses 1(2) Strength. Exhaust.
+-Exploit changed: Deal 3(4) damage. Your next attack deals 2(3) damage for each debuff on the target.
+-new effect added to Sludge Wave: If there are 3 or more enemies, stun the one with the highest health.
+-Sludge Wave cost reduced: 2 -> 1
+-Nanobots changed: adds to discard pile, not draw pile
+-Nanobots damage increase on upgrade increased 1 -> 2
+-Injection changed: 1-cost rare attack: Deal 8(11) damage and apply 3(4) Necrosis to ALL enemies.
+-Toxic changed: Apply 2(3) Weak and 2(3) Necrosis. Exhaust.
+-Self-Improvement changed: 0-cost, Exhaust a card in your hand. Gain 1 energy and draw 1(2) card(s) for each Upgrade on that card.
+
+-Spiderbite Necrosis decreased: 3(4) -> 2(3)
+-Infect Necrosis decreased 2(3) -> 1(2)
+-Spinnerets Web gain doubled. (2, 4, 6...) Cost increased 0 -> 1
+-Searing Blade gets 1 extra damage per upgrade. damage is 7, 9, 12, 16, 21, 27...
+-Vengeful strength gain increased: 1(2) -> 2(3)
+-Laser Ray no longer increases damage on upgrade
+-Harden base block incresaed: 6 -> 8
+-Iterate damage increased: 6(9) -> 8(11)
+-changed name of Scrap Heap to Junk Heap
+-Junk Heap block increased: 8(11) -> 9(13)
+-Bio-Informatics block increased: 8 -> 10
+-Forge+ damage decreased: 18 -> 16
+-Bomb Launcher and Gemini Bot no longer choose a random target
+
+-Searing Blade, Harden, Fiberglass Dagger, Fission Anvil, and Unstable Cell now use the "Beta+" keyword, indicating that they upgrade quadratically
+-Unstoppable now displays the final damage it will deal after bonuses are applied and Weak removed
+-added art for Harden, Egg Clutch, Restock, Junk Heap, Spider Dance, and Cocoon
+-added vfx for In For The Kill on a Vulnerable enemy
+
+-lots and lots of code cleanup and organization
+-moved UI text to a json instead of being hardcoded
+-fixed Paralysis on Writhing Mass
+-bug fixes many more
+
+-added compatibility with Wide Potions for Silk Potion, Venom Cocktail, and Neurostimulant (pog)
+
 VERSION 0.6.1
 
 -new card: Vengeful (uncommon 0-cost Power): When you are debuffed, gain 1(2) temporary Strength.

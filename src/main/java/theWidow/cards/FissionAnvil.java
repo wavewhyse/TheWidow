@@ -13,9 +13,9 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.combat.WeightyImpactEffect;
+import theWidow.TheWidow;
 import theWidow.WidowMod;
 import theWidow.actions.WidowUpgradeCardAction;
-import theWidow.characters.TheWidow;
 import theWidow.relics.SewingKitRelic;
 
 import static theWidow.WidowMod.makeCardPath;

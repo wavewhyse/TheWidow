@@ -13,8 +13,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.ViolentAttackEffect;
+import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.characters.TheWidow;
 
 import static theWidow.WidowMod.makeCardPath;
 
@@ -37,6 +37,7 @@ public class MetalBurrs extends CustomCard {
     private static final int COST = 3;
     private static final int DAMAGE = 4;
     private static final int UPGRADE_PLUS_DMG = 1;
+    private static final int HITS = 4;
 
     private int discount;
 
@@ -63,9 +64,7 @@ public class MetalBurrs extends CustomCard {
     private void calculateDiscount() {
         int debuffCount = (int) AbstractDungeon.player.powers.stream().filter(pow -> pow.type == AbstractPower.PowerType.DEBUFF).count();
         if (discount != debuffCount) {
-            costForTurn += discount - debuffCount;
-            if (costForTurn < 0)
-                costForTurn = 0;
+            setCostForTurn(costForTurn + discount - debuffCount);
             discount = debuffCount;
         }
     }
@@ -79,7 +78,7 @@ public class MetalBurrs extends CustomCard {
                 addToBot(new VFXAction( new ViolentAttackEffect(m.hb.cX, m.hb.cY, Color.BLACK), 0.4F));
             }
         }
-        for (int i=0; i<4; i++)
+        for (int i=0; i<HITS; i++)
             addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
     }
 

@@ -3,11 +3,13 @@ package theWidow.patches;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import javassist.CtBehavior;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theWidow.powers.ParalysisPower;
+import theWidow.powers.WebPower;
 
 @SpirePatch(
         clz = AbstractMonster.class,
@@ -25,11 +27,16 @@ public class ParalysisPatch {
             AbstractMonster __instance, @ByRef int[] intentMultiAmt, @ByRef boolean[] isMultiDmg) {
         if (__instance.hasPower(ParalysisPower.POWER_ID) && intentMultiAmt[0] > 1) {    //if paralyzed and multiattacking, attack 1 less time.
             intentMultiAmt[0]--;
-            if (intentMultiAmt[0] < 2) {
+            if (intentMultiAmt[0] <= 1) {
                 intentMultiAmt[0] = -1;
                 isMultiDmg[0] = false;
             }
             ((ParalysisPower) __instance.getPower(ParalysisPower.POWER_ID)).primed = true;
+        }
+        IntentMultiDmgField.amount.set(__instance, intentMultiAmt[0]);
+        if (AbstractDungeon.player.hasPower(WebPower.POWER_ID)) {
+            ((WebPower) AbstractDungeon.player.getPower(WebPower.POWER_ID)).updateWebbedMonsters();
+            __instance.applyPowers();
         }
         // Incredible.
     }
@@ -37,7 +44,7 @@ public class ParalysisPatch {
     private static class Locator extends SpireInsertLocator {
         @Override
         public int[] Locate(CtBehavior ctMethodToPatch) throws Exception {
-            Matcher finalMatcher = new Matcher.MethodCallMatcher(AbstractMonster.class, "getIntentBg");
+            Matcher finalMatcher = new Matcher.MethodCallMatcher(AbstractMonster.class, "getIntentImg");
             return LineFinder.findInOrder(ctMethodToPatch, finalMatcher);
         }
     }

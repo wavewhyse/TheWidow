@@ -19,7 +19,6 @@ public class HourglassMarkRelic extends CustomRelic {
     // ID, images, text.
     public static final String ID = WidowMod.makeID("HourglassMarkRelic");
 
-    private boolean active;
     public static final int TRIGGER_AMOUNT = 5;
     public static final int STAT_GAIN = 1;
 
@@ -28,7 +27,7 @@ public class HourglassMarkRelic extends CustomRelic {
 
     public HourglassMarkRelic() {
         super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, LandingSound.MAGICAL);
-        active = false;
+        pulse = false;
     }
 
     @Override
@@ -37,18 +36,19 @@ public class HourglassMarkRelic extends CustomRelic {
         int webNumber = 0;
         if (p.hasPower(WebPower.POWER_ID))
             webNumber = p.getPower(WebPower.POWER_ID).amount;
-        if (!active) {
+        if (!pulse) {
             if (webNumber >= TRIGGER_AMOUNT){
+                flash();
                 addToTop(new ApplyPowerAction(p, p, new StrengthPower(p, STAT_GAIN), STAT_GAIN));
                 addToTop(new ApplyPowerAction(p, p, new DexterityPower(p, STAT_GAIN), STAT_GAIN));
-                active = true;
                 beginPulse();
+                pulse = true;
             }
         } else {
             if (webNumber < TRIGGER_AMOUNT){
                 addToTop(new ApplyPowerAction(p, p, new StrengthPower(p, -STAT_GAIN), -STAT_GAIN));
                 addToTop(new ApplyPowerAction(p, p, new DexterityPower(p, -STAT_GAIN), -STAT_GAIN));
-                active = false;
+                pulse = false;
                 stopPulse();
             }
 
@@ -57,7 +57,7 @@ public class HourglassMarkRelic extends CustomRelic {
 
     @Override
     public void onVictory() {
-        active = false;
+        pulse = false;
     }
 
     // Description

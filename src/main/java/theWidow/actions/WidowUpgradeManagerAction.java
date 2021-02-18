@@ -4,13 +4,17 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.UIStrings;
+import theWidow.WidowMod;
 
 import java.util.ArrayList;
 
 public class WidowUpgradeManagerAction extends AbstractGameAction {
     private AbstractPlayer p = AbstractDungeon.player;
+    private static final UIStrings uistrings = CardCrawlGame.languagePack.getUIString(WidowMod.makeID(WidowUpgradeManagerAction.class.getSimpleName()));
 
     private ArrayList<AbstractCard> cannotUpgrade = new ArrayList<>();
     private final boolean random;
@@ -88,7 +92,7 @@ public class WidowUpgradeManagerAction extends AbstractGameAction {
                 isDone = true;
             }
             if (p.hand.size() > amount) {
-                AbstractDungeon.handCardSelectScreen.open("Upgrade", amount, true, true, false, true);
+                AbstractDungeon.handCardSelectScreen.open(uistrings.TEXT[0], amount, false, false, false, true);
                 tickDuration();
                 return;
             }

@@ -28,20 +28,20 @@ public class SilkPotion extends CustomPotion {
     public SilkPotion() {
         // The bottle shape and inside is determined by potion size and color. The actual colors are the main DefaultMod.java
         super(NAME, POTION_ID, PotionRarity.COMMON, PotionSize.SNECKO, PotionColor.WHITE);
+    }
+
+    @Override
+    public void initializeData() {
         labOutlineColor = WidowMod.WIDOW_BLACK;
-        
-        // Potency is the damage/magic number equivalent of potions.
+
         potency = getPotency();
-        
-        // Initialize the Description
+
         description = DESCRIPTIONS[0] + potency + DESCRIPTIONS[1];
-        
-       // Do you throw this potion at an enemy or do you just consume it.
+
         isThrown = false;
-        
-        // Initialize the on-hover name + description
+
+        tips.clear();
         tips.add(new PowerTip(name, description));
-        
     }
 
     @Override
@@ -58,7 +58,6 @@ public class SilkPotion extends CustomPotion {
         return new SilkPotion();
     }
 
-    // This is your potency.
     @Override
     public int getPotency(final int potency) {
         return 3;

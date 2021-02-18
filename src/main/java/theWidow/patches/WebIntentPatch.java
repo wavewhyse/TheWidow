@@ -1,12 +1,10 @@
 package theWidow.patches;
 
 import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import javassist.CtBehavior;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import theWidow.WidowMod;
 import theWidow.powers.WebPower;
 
 @SpirePatch(
@@ -15,18 +13,16 @@ import theWidow.powers.WebPower;
 )
 public class WebIntentPatch {
 
-    public boolean changeIntent;
-
-    private static final Logger logger = LogManager.getLogger(ParalysisPatch.class.getName());
-
     @SpireInsertPatch(
             locator = Locator.class,
             localvars = {"tmp", "p"}
     )
-    public static void dontCheckWeb(AbstractMonster __instance, int dmg, @ByRef float[] tmp, AbstractPower p) {
-        if (!WidowMod.webAffectsIntents &&  p instanceof WebPower)
+    public static void betterWebDamageReceive(AbstractMonster __instance, int dmg, @ByRef float[] tmp, AbstractPower p) {
+        if (p instanceof WebPower) {
+            tmp[0] = ((WebPower) p).atDamageReceiveButPassTheActualDamageSource(tmp[0], DamageInfo.DamageType.NORMAL, __instance);
             tmp[0] /= WebPower.DAMAGE_MULT;
-    }
+        }
+    } //Incredible.
 
     private static class Locator extends SpireInsertLocator {
         @Override

@@ -15,9 +15,8 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
-import com.megacrit.cardcrawl.relics.SacredBark;
+import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.characters.TheWidow;
 
 public class DistilledCardPotion extends CustomPotion implements CustomSavable<CardSave> {
 
@@ -56,6 +55,7 @@ public class DistilledCardPotion extends CustomPotion implements CustomSavable<C
         potency = getPotency();
         if (card == null)
             return;
+        card.resetAttributes();
         switch (card.target) {
             case ENEMY:
             case SELF_AND_ENEMY:
@@ -73,10 +73,14 @@ public class DistilledCardPotion extends CustomPotion implements CustomSavable<C
                 break;
         }
         tips.clear();
-        if (AbstractDungeon.player.hasRelic(SacredBark.ID))
+        if (potency > 1)
             description = DESCRIPTIONS[2] + potency + " " + card.name + DESCRIPTIONS[3];
         else
             description = DESCRIPTIONS[0] + card.name + DESCRIPTIONS[1];
+//        description = "";
+//        for (DescriptionLine line : card.description) {
+//            description += line.getCachedTokenizedText();
+//        }
         tips.add(new PowerTip(name, description));
         tips.add(new CardPowerTip(card));
     }

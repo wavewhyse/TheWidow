@@ -7,8 +7,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.characters.TheWidow;
 import theWidow.potions.GrenadePotion;
 import theWidow.powers.GrenadierPower;
 
@@ -61,6 +61,19 @@ public class Grenadier extends ExtraMagicalCustomCard {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_SLOTS);
             rawDescription = UPGRADE_DESCRIPTION;
+            initializeDescription();
+        }
+    }
+
+    @Override
+    public void downgrade() {
+        if (upgraded) {
+            name = cardStrings.NAME;
+            timesUpgraded--;
+            upgraded = false;
+            magicNumber = baseMagicNumber = SLOTS;
+            upgradedMagicNumber = false;
+            rawDescription = cardStrings.DESCRIPTION;
             initializeDescription();
         }
     }

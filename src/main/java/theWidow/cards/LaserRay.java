@@ -12,8 +12,8 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
+import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.characters.TheWidow;
 import theWidow.relics.SewingKitRelic;
 
 import static theWidow.WidowMod.makeCardPath;
@@ -64,20 +64,20 @@ public class LaserRay extends BetaCard {
     @Override
     public void upgrade() {
         upgradeMagicNumber(UPGRADE_PLUS_MAGIC);
-        upgradeDamage(UPGRADE_PLUS_DMG);
+//        upgradeDamage(UPGRADE_PLUS_DMG);
         upgradeName();
         initializeDescription();
     }
 
     @Override
-    public AbstractCard makeCopy() {
-        return new LaserRay();
+    public void downgrade() {
+        magicNumber = baseMagicNumber = baseMagicNumber - UPGRADE_PLUS_MAGIC;
+//        baseDamage -= UPGRADE_PLUS_DMG;
+        super.downgrade();
     }
 
     @Override
-    public void downgrade() {
-        magicNumber = baseMagicNumber = baseMagicNumber - UPGRADE_PLUS_MAGIC;
-        baseDamage -= UPGRADE_PLUS_DMG;
-        super.downgrade();
+    public AbstractCard makeCopy() {
+        return new LaserRay();
     }
 }

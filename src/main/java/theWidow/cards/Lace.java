@@ -3,10 +3,11 @@ package theWidow.cards;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
+import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.characters.TheWidow;
 import theWidow.powers.WebPower;
 
 import static theWidow.WidowMod.makeCardPath;
@@ -16,6 +17,7 @@ public class Lace extends ExtraMagicalCustomCard {
     // TEXT DECLARATION
 
     public static final String ID = WidowMod.makeID(Lace.class.getSimpleName());
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Lace.png");
 
     // /TEXT DECLARATION/
@@ -52,6 +54,17 @@ public class Lace extends ExtraMagicalCustomCard {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_WEB);
             initializeDescription();
+        }
+    }
+
+    @Override
+    public void downgrade() {
+        if (upgraded) {
+            name = cardStrings.NAME;
+            timesUpgraded--;
+            upgraded = false;
+            magicNumber = baseMagicNumber = WEB;
+            upgradedMagicNumber = false;
         }
     }
 }

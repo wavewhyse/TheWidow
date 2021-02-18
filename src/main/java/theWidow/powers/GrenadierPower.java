@@ -17,18 +17,15 @@ import theWidow.util.TextureLoader;
 import static theWidow.WidowMod.makePowerPath;
 
 public class GrenadierPower extends AbstractPower implements CloneablePowerInterface {
-    public AbstractCreature source;
-
     public static final String POWER_ID = WidowMod.makeID(GrenadierPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-    public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("GrenadierPower84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("GrenadierPower32.png"));
 
     public GrenadierPower(final AbstractCreature owner, final int amount) {
-        name = NAME;
+        name = powerStrings.NAME;
         ID = POWER_ID;
 
         this.owner = owner;

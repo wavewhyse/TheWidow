@@ -1,16 +1,22 @@
 package theWidow.cards;
 
-import basemod.abstracts.CustomCard;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
+import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.characters.TheWidow;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 import static theWidow.WidowMod.makeCardPath;
 
-public class Dysphoria extends CustomCard {
+public class Dysphoria extends ExtraMagicalCustomCard {
 
     // TEXT DECLARATION
 
@@ -30,29 +36,29 @@ public class Dysphoria extends CustomCard {
 
     private static final int COST = -2;
     private static final int UPGRADES = 3;
-    private static final int HP_INCREASE = 12;
+    private static final int HP_INCREASE = 6;
 
     // /STAT DECLARATION/
 
     public Dysphoria() {
         super(ID, languagePack.getCardStrings(ID).NAME, IMG, COST, languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = HP_INCREASE;
+        magicNumber = baseMagicNumber = UPGRADES;
+        secondMagicNumber = baseSecondMagicNumber = HP_INCREASE;
     }
 
     @Override
     public void onRemoveFromMasterDeck() {
-        AbstractDungeon.player.increaseMaxHp(magicNumber, true);
-
-        /*ArrayList<AbstractCard> upgradableCards = new ArrayList<>();
+        ArrayList<AbstractCard> upgradableCards = new ArrayList<>();
         AbstractDungeon.player.masterDeck.group.stream().filter(AbstractCard::canUpgrade).forEach(upgradableCards::add);
-        Collections.shuffle(upgradableCards, new Random(AbstractDungeon.miscRng.randomLong()));
+        Collections.shuffle(upgradableCards, AbstractDungeon.miscRng.random);
         for (int i=0; i<UPGRADES && i < upgradableCards.size(); i++) {
             upgradableCards.get(i).upgrade();
             AbstractDungeon.player.bottledCardUpgradeCheck(upgradableCards.get(i));
             AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect((upgradableCards
                     .get(i)).makeStatEquivalentCopy(), (i + 1) * Settings.WIDTH / ( UPGRADES + 2f ), Settings.HEIGHT / 2.0F));
             AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect(Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));
-        }*/
+        }
+        AbstractDungeon.player.increaseMaxHp(secondMagicNumber, true);
     }
 
     @Override
@@ -65,6 +71,7 @@ public class Dysphoria extends CustomCard {
     }
 
     @Override
-    public void upgrade() {
-    }
+    public void upgrade() {}
+    @Override
+    public void downgrade() {}
 }

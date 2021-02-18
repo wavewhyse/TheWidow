@@ -7,15 +7,14 @@ import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
+import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.characters.TheWidow;
-
-import java.util.ArrayList;
 
 import static theWidow.WidowMod.makeCardPath;
 
@@ -24,6 +23,7 @@ public class Unstoppable extends CustomCard {
     // TEXT DECLARATION
 
     public static final String ID = WidowMod.makeID(Unstoppable.class.getSimpleName());
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("Unstoppable.png");
 
     // /TEXT DECLARATION/
@@ -38,8 +38,8 @@ public class Unstoppable extends CustomCard {
     private static final int COST = 2;
     private static final int DAMAGE = 10;
     private static final int UPGRADE_PLUS_DMG = 4;
-    private static final int SCALING = 2;
-    private static final int UPGRADE_PLUS_SCALING = 1;
+    public static final int SCALING = 2;
+    public static final int UPGRADE_PLUS_SCALING = 1;
 
     // /STAT DECLARATION/
 
@@ -50,8 +50,16 @@ public class Unstoppable extends CustomCard {
     }
 
     @Override
+    public void applyPowers() {
+        super.applyPowers();
+        rawDescription = cardStrings.DESCRIPTION;
+        rawDescription += cardStrings.EXTENDED_DESCRIPTION[0];
+        initializeDescription();
+    }
+
+    @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        ArrayList<AbstractPower> powersToRemove = new ArrayList<>();
+        int counter = 0;
         for (AbstractPower pow : p.powers) {
             switch (pow.ID) {
                 /*case StrengthPower.POWER_ID:
@@ -65,21 +73,19 @@ public class Unstoppable extends CustomCard {
                 case VulnerablePower.POWER_ID:
                 case WeakPower.POWER_ID:
                 case FrailPower.POWER_ID:
-                    powersToRemove.add(pow);
+                    counter += pow.amount;
+                    addToBot(new RemoveSpecificPowerAction(p, p, pow));
             }
-        }
-        int counter = 0;
-        for (AbstractPower pow : powersToRemove) {
-            counter += pow.amount;
-            addToBot(new RemoveSpecificPowerAction(p, p, pow));
         }
         int finalCounter = counter;
         addToBot(new AbstractGameAction() {
             @Override
             public void update() {
-                DamageInfo info = new DamageInfo(p, damage + magicNumber * finalCounter, damageTypeForTurn);
-                info.applyPowers(p, m);
-                addToTop( new DamageAction(m, info, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                int oldBaseDamage = baseDamage;
+                baseDamage += finalCounter * magicNumber;
+                calculateCardDamage(m);
+                addToTop( new DamageAction(m, new DamageInfo(p, damage), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                baseDamage = oldBaseDamage;
                 isDone = true;
             }
         });

@@ -6,8 +6,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.characters.TheWidow;
 import theWidow.relics.SewingKitRelic;
 
 import static theWidow.WidowMod.makeCardPath;
@@ -18,7 +18,7 @@ public class Harden extends BetaCard {
 
     public static final String ID = WidowMod.makeID(Harden.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = makeCardPath("Skill.png");
+    public static final String IMG = makeCardPath("Harden.png");
 
     // /TEXT DECLARATION/
 
@@ -31,7 +31,7 @@ public class Harden extends BetaCard {
 
     private static final int COST = 1;
 
-    private static final int BLOCK = 6;
+    private static final int BLOCK = 8;
     private static final int UPGRADE_PLUS_BLOCK = 1;
 
     // /STAT DECLARATION/
@@ -53,7 +53,7 @@ public class Harden extends BetaCard {
     // Upgraded stats.
     @Override
     public void upgrade() {
-        upgradeBlock(UPGRADE_PLUS_BLOCK+timesUpgraded);
+        upgradeBlock(UPGRADE_PLUS_BLOCK + timesUpgraded);
         upgradeName();
     }
 

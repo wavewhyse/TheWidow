@@ -5,8 +5,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.characters.TheWidow;
 import theWidow.powers.WebPower;
 
 import static theWidow.WidowMod.makeCardPath;
@@ -29,9 +29,9 @@ public class Spinnerets extends BetaCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
-    private static final int COST = 0;
-    private static final int WEB = 1;
-    private static final int UPGRADE_PLUS_WEB = 1;
+    private static final int COST = 1;
+    private static final int WEB = 2;
+    private static final int UPGRADE_PLUS_WEB = 2;
 
     // /STAT DECLARATION/
 

@@ -3,14 +3,17 @@ package theWidow.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.ReactivePower;
 import theWidow.WidowMod;
 import theWidow.util.TextureLoader;
 
@@ -21,7 +24,6 @@ public class ParalysisPower extends AbstractPower implements CloneablePowerInter
 
     public static final String POWER_ID = WidowMod.makeID(ParalysisPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-    public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("ParalysisPower84.png"));
@@ -30,7 +32,7 @@ public class ParalysisPower extends AbstractPower implements CloneablePowerInter
     public boolean primed;
 
     public ParalysisPower(final AbstractCreature owner, final int amount) {
-        name = NAME;
+        name = powerStrings.NAME;
         ID = POWER_ID;
 
         this.owner = owner;
@@ -59,9 +61,22 @@ public class ParalysisPower extends AbstractPower implements CloneablePowerInter
     }
 
     @Override
+    public int onAttacked(DamageInfo info, int damageAmount) {
+        if (owner.hasPower(ReactivePower.POWER_ID) && !owner.isDying)
+            ((AbstractMonster) owner).createIntent();
+        return damageAmount;
+    }
+
+    @Override
     public void onRemove() {
         if (owner instanceof AbstractMonster && !owner.isDying) {
-            ((AbstractMonster) owner).createIntent();
+            addToBot(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    ((AbstractMonster) owner).createIntent();
+                    isDone = true;
+                }
+            });
         }
     }
 

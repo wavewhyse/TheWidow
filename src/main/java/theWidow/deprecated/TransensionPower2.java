@@ -21,14 +21,13 @@ public class TransensionPower2 extends AbstractPower implements CloneablePowerIn
 
     public static final String POWER_ID = WidowMod.makeID(TransensionPower2.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-    public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("TransensionPower84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("TransensionPower32.png"));
 
     public TransensionPower2(final AbstractCreature owner, final AbstractCreature source, final int amount) {
-        name = NAME;
+        name = powerStrings.NAME;
         ID = POWER_ID;
 
         this.owner = owner;

@@ -30,7 +30,7 @@ public class TranscensionPower3 extends AbstractPower implements CloneablePowerI
     private boolean upgraded;
 
     public TranscensionPower3(final AbstractCreature owner, int amount, boolean upgraded) {
-        name = NAME;
+        name = powerStrings.NAME;
         ID = POWER_ID;
 
         this.owner = owner;

@@ -28,21 +28,21 @@ public class VenomCocktailPotion extends CustomPotion {
     public VenomCocktailPotion() {
         // The bottle shape and inside is determined by potion size and color. The actual colors are the main DefaultMod.java
         super(NAME, POTION_ID, PotionRarity.UNCOMMON, PotionSize.M, PotionColor.FAIRY);
+    }
+
+    @Override
+    public void initializeData() {
         labOutlineColor = WidowMod.WIDOW_BLACK;
-        
-        // Potency is the damage/magic number equivalent of potions.
+
         potency = getPotency();
-        
-        // Initialize the Description
+
         description = DESCRIPTIONS[0] + potency + DESCRIPTIONS[1];
-        
-       // Do you throw this potion at an enemy or do you just consume it.
+
         isThrown = true;
         targetRequired = true;
-        
-        // Initialize the on-hover name + description
+
+        tips.clear();
         tips.add(new PowerTip(name, description));
-        
     }
 
     @Override

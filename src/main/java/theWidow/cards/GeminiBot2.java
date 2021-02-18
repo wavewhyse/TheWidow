@@ -1,5 +1,6 @@
 package theWidow.cards;
 
+import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
@@ -8,13 +9,13 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.characters.TheWidow;
 import theWidow.relics.SewingKitRelic;
 
 import static theWidow.WidowMod.makeCardPath;
 
-public class GeminiBot2 extends BetaCard {
+public class GeminiBot2 extends CustomCard {
 
     // TEXT DECLARATION
 
@@ -54,18 +55,25 @@ public class GeminiBot2 extends BetaCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (int i=0; i<timesUpgraded; i++)
-            if (cardToCopy.canUpgrade())
-                cardToCopy.upgrade();
+        if (upgraded && cardToCopy.canUpgrade())
+            cardToCopy.upgrade();
         //cardToCopy.dontTriggerOnUseCard = true;
         cardToCopy.purgeOnUse = true;
-        AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(cardToCopy, true, energyOnUse, true, true));
+        AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(cardToCopy, m, energyOnUse, true, true));
     }
 
     @Override
     public void triggerOnOtherCardPlayed(AbstractCard c) {
         dontTriggerOnUseCard = true;
         cardToCopy = c.makeCopy();
+        AbstractMonster m = null;
+        for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
+            if (mon.hb.hovered)
+                m = mon;
+        }
+        if (m == null)
+            m = AbstractDungeon.getRandomMonster();
+        AbstractMonster finalM = m;
         addToTop(new AbstractGameAction() {
             @Override
             public void update() {
@@ -74,7 +82,7 @@ public class GeminiBot2 extends BetaCard {
                     isDone = true;
                     return;
                 }
-                AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(GeminiBot2.this, true, c.energyOnUse, true, true));
+                AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(GeminiBot2.this, finalM, c.energyOnUse, true, true));
                 isDone = true;
             }
         });
