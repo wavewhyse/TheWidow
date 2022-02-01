@@ -26,7 +26,6 @@ public class EggClutch extends CustomCard {
 
     public static final String ID = WidowMod.makeID(EggClutch.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("EggClutch.png");
 
     // /TEXT DECLARATION/
@@ -40,7 +39,7 @@ public class EggClutch extends CustomCard {
 
     private static final int COST = 2;
     private static final int UPGRADED = 1;
-    private static final int UPGRADE_PLUS_UPGRADED = 1;
+    private static final int UPGRADED_COST = 1;
 
     // /STAT DECLARATION/
 
@@ -58,9 +57,7 @@ public class EggClutch extends CustomCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_UPGRADED);
-            rawDescription = UPGRADE_DESCRIPTION;
-            initializeDescription();
+            upgradeBaseCost(UPGRADED_COST);
         }
     }
 

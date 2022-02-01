@@ -3,6 +3,7 @@ package theWidow.variables;
 import basemod.abstracts.DynamicVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
@@ -31,18 +32,29 @@ public class UnstoppableDamage extends DynamicVariable {
 
     @Override
     public int value(AbstractCard card) {
-        float dam = card.damage;
-        if (AbstractDungeon.player.hasPower(WeakPower.POWER_ID))
-            dam /= 0.75f;
+        int oldDamage = card.baseDamage;
         for (AbstractPower pow : AbstractDungeon.player.powers)
             switch (pow.ID) {
                 case WeakPower.POWER_ID:
                 case VulnerablePower.POWER_ID:
                 case FrailPower.POWER_ID:
-                    dam += pow.amount * (Unstoppable.SCALING + (card.upgraded? Unstoppable.UPGRADE_PLUS_SCALING : 0));
+                    card.baseDamage += pow.amount * (Unstoppable.SCALING + (card.upgraded? Unstoppable.UPGRADE_PLUS_SCALING : 0));
                     break;
             }
-        return (int) dam; // KNOWN BUG: additional damage from cleanse will not scale in the preview with Vulnerable or other multipliers
+        AbstractMonster target = null;
+        for (AbstractMonster m: AbstractDungeon.getCurrRoom().monsters.monsters) {
+            if (m.hb.hovered) {
+                target = m;
+                break;
+            }
+        }
+        card.calculateCardDamage(target);
+        float finalDamage = card.damage;
+        if (AbstractDungeon.player.hasPower(WeakPower.POWER_ID))
+            finalDamage /= 0.75f;
+        card.baseDamage = oldDamage;
+        //card.calculateCardDamage(target);
+        return (int) finalDamage;
     }
 
     @Override

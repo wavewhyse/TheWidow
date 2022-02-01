@@ -18,7 +18,6 @@ public class Steelweave extends CustomCard {
 
     public static final String ID = WidowMod.makeID(Steelweave.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("Steelweave.png");
 
     // /TEXT DECLARATION/
@@ -32,7 +31,7 @@ public class Steelweave extends CustomCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 1;
-    private static final int BLOCK = 5;
+    private static final int BLOCK = 7;
     //private static final int UPGRADE_PLUS_BLOCK = 3;
 
 
@@ -40,7 +39,7 @@ public class Steelweave extends CustomCard {
 
 
     public Steelweave() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
     }
 
@@ -57,7 +56,6 @@ public class Steelweave extends CustomCard {
         if (!upgraded) {
             upgradeName();
             //upgradeBlock(UPGRADE_PLUS_BLOCK);
-            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

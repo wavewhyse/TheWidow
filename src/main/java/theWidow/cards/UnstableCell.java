@@ -32,8 +32,8 @@ public class UnstableCell extends BetaCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 2;
-    private static final int DAMAGE = 10;
-    private static final int UPGRADE_PLUS_DMG = 1;
+    private static final int DAMAGE = 18;
+    private static final int UPGRADE_PLUS_DMG = 5;
 
     private boolean playQueued;
 
@@ -68,13 +68,13 @@ public class UnstableCell extends BetaCard {
     @Override
     public void upgrade() {
         upgradeName();
-        upgradeDamage(UPGRADE_PLUS_DMG + timesUpgraded);
+        upgradeDamage(UPGRADE_PLUS_DMG);
         playQueued = true;
     }
 
     @Override
     public void downgrade() {
         super.downgrade();
-        baseDamage -= (UPGRADE_PLUS_DMG + timesUpgraded);
+        baseDamage -= (UPGRADE_PLUS_DMG);
     }
 }

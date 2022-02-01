@@ -18,5 +18,10 @@
     "TEXT": [
       "Melt Down"
     ]
+  },
+  "theWidow:ParticleAcceleratorAction": {
+    "TEXT": [
+      "Play"
+    ]
   }
 }

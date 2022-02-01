@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.TransformCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -30,7 +31,6 @@ public class TranscendentForm extends CustomCard {
 
     public static final String ID = WidowMod.makeID(TranscendentForm.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("TranscendentForm.png");
 
     // /TEXT DECLARATION/
@@ -49,7 +49,7 @@ public class TranscendentForm extends CustomCard {
     // /STAT DECLARATION/
 
     public TranscendentForm() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = UPGRADES;
         tags.add(BaseModCardTags.FORM);
     }
@@ -64,7 +64,6 @@ public class TranscendentForm extends CustomCard {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_UPGRADES);
-            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }
@@ -103,6 +102,15 @@ public class TranscendentForm extends CustomCard {
 
         @Override
         public void atStartOfTurnPostDraw() {
+            addToBot(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    for (int i=0; i< AbstractDungeon.player.hand.size(); i++)
+                        if (AbstractDungeon.player.hand.group.get(i).type == CardType.STATUS || AbstractDungeon.player.hand.group.get(i).type == CardType.CURSE)
+                            addToTop(new TransformCardInHandAction(i, AbstractDungeon.returnTrulyRandomCardInCombat()));
+                    isDone = true;
+                }
+            });
             for (int i=0; i<amount; i++)
                 addToBot(new AbstractGameAction() {
                     @Override

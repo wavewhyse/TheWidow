@@ -24,7 +24,7 @@ public class ExplosiveKick extends CustomCard {
     public static final String ID = WidowMod.makeID(ExplosiveKick.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("ExplosiveKick.png");
+    public static final String IMG = makeCardPath("ExplosiveKick.png");
 
     // /TEXT DECLARATION/
 
@@ -41,7 +41,7 @@ public class ExplosiveKick extends CustomCard {
     // /STAT DECLARATION/
 
     public ExplosiveKick() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
     }
 

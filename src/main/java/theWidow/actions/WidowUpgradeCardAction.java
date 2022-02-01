@@ -43,9 +43,11 @@ public class WidowUpgradeCardAction extends AbstractGameAction {
                     break;
                 }
             }
-            c.upgrade();
-            AbstractDungeon.effectsQueue.add(new UpgradeHammerHit(c));
-            c.applyPowers();
+            if (c.canUpgrade()) {
+                c.upgrade();
+                AbstractDungeon.effectsQueue.add(new UpgradeHammerHit(c));
+                c.applyPowers();
+            }
         }
         tickDuration();
     }

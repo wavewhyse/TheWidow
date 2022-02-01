@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import theWidow.WidowMod;
-import theWidow.powers.WebPower;
+import theWidow.powers.WebPower2;
 import theWidow.util.TextureLoader;
 
 import static theWidow.WidowMod.makeRelicOutlinePath;
@@ -34,8 +34,8 @@ public class HourglassMarkRelic extends CustomRelic {
     public void onTrigger() {
         AbstractPlayer p = AbstractDungeon.player;
         int webNumber = 0;
-        if (p.hasPower(WebPower.POWER_ID))
-            webNumber = p.getPower(WebPower.POWER_ID).amount;
+        if (p.hasPower(WebPower2.POWER_ID))
+            webNumber = p.getPower(WebPower2.POWER_ID).amount;
         if (!pulse) {
             if (webNumber >= TRIGGER_AMOUNT){
                 flash();

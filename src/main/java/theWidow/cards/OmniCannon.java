@@ -41,7 +41,7 @@ public class OmniCannon extends BetaCard {
     // /STAT DECLARATION/
 
     public OmniCannon() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
         isMultiDamage = true;
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(SewingKitRelic.ID))
@@ -58,7 +58,7 @@ public class OmniCannon extends BetaCard {
 
     @Override
     public boolean canUpgrade() {
-        return cost > 0;
+        return costForTurn > 0 || cost > 0;
     }
 
     // Upgraded stats.
@@ -66,6 +66,13 @@ public class OmniCannon extends BetaCard {
     public void upgrade() {
         upgradeBaseCost(cost - 1);
         upgradeName();
+    }
+
+    @Override
+    public void downgrade() {
+        cost++;
+        costForTurn++;
+        super.downgrade();
     }
 
     @Override

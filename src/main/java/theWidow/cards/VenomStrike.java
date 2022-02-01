@@ -7,12 +7,11 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.ArtifactPower;
-import com.megacrit.cardcrawl.powers.GainStrengthPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
+import theWidow.powers.SapPower;
 
 import static theWidow.WidowMod.makeCardPath;
 
@@ -21,6 +20,7 @@ public class VenomStrike extends CustomCard {
     // TEXT DECLARATION
 
     public static final String ID = WidowMod.makeID(VenomStrike.class.getSimpleName());
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("VenomStrike.png");
 
     // /TEXT DECLARATION/
@@ -35,15 +35,15 @@ public class VenomStrike extends CustomCard {
     private static final int COST = 1;
     private static final int DAMAGE = 8;
     private static final int UPGRADE_PLUS_DMG = 3;
-    private static final int MAGIC = 2;
-    private static final int UPGRADE_PLUS_MAGIC = 1;
+    private static final int SAP = 3;
+    private static final int UPGRADE_PLUS_SAP = 2;
 
     // /STAT DECLARATION/
 
     public VenomStrike() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
-        magicNumber = baseMagicNumber = MAGIC;
+        magicNumber = baseMagicNumber = SAP;
         this.tags.add(CardTags.STRIKE);
     }
 
@@ -52,9 +52,7 @@ public class VenomStrike extends CustomCard {
         addToBot(new
                 DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.POISON)
         );
-        addToBot(new ApplyPowerAction(m, p, new StrengthPower(m, -magicNumber), -magicNumber));
-        if (!m.hasPower(ArtifactPower.POWER_ID))
-            addToBot(new ApplyPowerAction(m, p, new GainStrengthPower(m, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(m, p, new SapPower(m, magicNumber), magicNumber));
     }
 
     @Override
@@ -62,7 +60,7 @@ public class VenomStrike extends CustomCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeMagicNumber(UPGRADE_PLUS_MAGIC);
+            upgradeMagicNumber(UPGRADE_PLUS_SAP);
             initializeDescription();
         }
     }

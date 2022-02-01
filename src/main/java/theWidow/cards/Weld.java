@@ -20,7 +20,6 @@ public class Weld extends CustomCard {
 
     public static final String ID = WidowMod.makeID(Weld.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("Weld.png");
 
     // /TEXT DECLARATION/
@@ -40,7 +39,7 @@ public class Weld extends CustomCard {
     // /STAT DECLARATION/
 
     public Weld() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = UPGRADES;
     }
@@ -58,7 +57,6 @@ public class Weld extends CustomCard {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_UPGRADES);
-            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

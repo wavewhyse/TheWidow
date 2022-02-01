@@ -17,7 +17,6 @@ public class Ironthread extends CustomCard {
 
     public static final String ID = WidowMod.makeID(Ironthread.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("Ironthread.png");
 
     // /TEXT DECLARATION/
@@ -38,7 +37,7 @@ public class Ironthread extends CustomCard {
     // /STAT DECLARATION/
 
     public Ironthread() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         //baseBlock = BLOCK;
         magicNumber = baseMagicNumber = UPGRADES;
     }
@@ -56,7 +55,6 @@ public class Ironthread extends CustomCard {
             upgradeName();
             //upgradeBlock(UPGRADE_PLUS_BLOCK);
             upgradeMagicNumber(UPGRADE_PLUS_UPGRADES);
-            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

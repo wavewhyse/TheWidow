@@ -3,11 +3,12 @@ package theWidow.cards;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.powers.WebPower;
+import theWidow.powers.WebPower2;
 
 import static theWidow.WidowMod.makeCardPath;
 
@@ -30,20 +31,22 @@ public class Spinnerets extends BetaCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 1;
-    private static final int WEB = 2;
+    private static final int WEB = 5;
     private static final int UPGRADE_PLUS_WEB = 2;
 
     // /STAT DECLARATION/
 
     public Spinnerets() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = WEB;
         exhaust = true;
+        if (CardLibrary.getAllCards() != null && !CardLibrary.getAllCards().isEmpty())
+            theWidow.util.artHelp.CardArtRoller.computeCard(this);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new WebPower(p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new WebPower2(p, magicNumber), magicNumber));
     }
 
     @Override

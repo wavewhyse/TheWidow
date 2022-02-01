@@ -19,7 +19,6 @@ public class BioInformatics extends BetaCard {
 
     public static final String ID = WidowMod.makeID(BioInformatics.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("BioInformatics.png");
 
     // /TEXT DECLARATION/
@@ -33,13 +32,13 @@ public class BioInformatics extends BetaCard {
 
     private static final int COST = 2;
     private static final int BLOCK = 10;
-    private static final int DRAW = 1;
+    private static final int DRAW = 2;
     private static final int UPGRADE_PLUS_DRAW = 1;
 
     // /STAT DECLARATION/
 
     public BioInformatics() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
         magicNumber = baseMagicNumber = DRAW;
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(SewingKitRelic.ID))
@@ -54,10 +53,8 @@ public class BioInformatics extends BetaCard {
 
     @Override
     public void upgrade() {
-        upgradeMagicNumber(UPGRADE_PLUS_DRAW);
         upgradeName();
-        rawDescription = UPGRADE_DESCRIPTION;
-        initializeDescription();
+        upgradeMagicNumber(UPGRADE_PLUS_DRAW);
     }
 
     @Override

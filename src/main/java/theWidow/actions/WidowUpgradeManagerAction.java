@@ -91,7 +91,7 @@ public class WidowUpgradeManagerAction extends AbstractGameAction {
                 returnCards();
                 isDone = true;
             }
-            if (p.hand.size() > amount) {
+            else {
                 AbstractDungeon.handCardSelectScreen.open(uistrings.TEXT[0], amount, false, false, false, true);
                 tickDuration();
                 return;

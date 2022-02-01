@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import theWidow.WidowMod;
-import theWidow.powers.NecrosisPower;
+import theWidow.powers.SapPower;
 
 public class VenomCocktailPotion extends CustomPotion {
 
@@ -48,7 +48,7 @@ public class VenomCocktailPotion extends CustomPotion {
     @Override
     public void use(AbstractCreature target) {
         if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
-            addToBot(new ApplyPowerAction(target, AbstractDungeon.player, new NecrosisPower(target, potency), potency));
+            addToBot(new ApplyPowerAction(target, AbstractDungeon.player, new SapPower(target, potency), potency));
         }
     }
     
@@ -60,7 +60,7 @@ public class VenomCocktailPotion extends CustomPotion {
     // This is your potency.
     @Override
     public int getPotency(final int potency) {
-        return 6;
+        return 8;
     }
 
     public void upgradePotion()

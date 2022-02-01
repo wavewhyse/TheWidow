@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.common.ObtainPotionAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.potions.BlessingOfTheForge;
 import theWidow.TheWidow;
@@ -19,8 +20,7 @@ public class Forge extends CustomCard {
     // TEXT DECLARATION
 
     public static final String ID = WidowMod.makeID(Forge.class.getSimpleName());
-    //private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    //private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Forge.png");
 
     // /TEXT DECLARATION/
@@ -39,7 +39,7 @@ public class Forge extends CustomCard {
     // /STAT DECLARATION/
 
     public Forge() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
         exhaust = true;
     }

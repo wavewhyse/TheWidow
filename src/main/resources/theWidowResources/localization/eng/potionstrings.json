@@ -3,9 +3,13 @@
                 "NAME": "Silk Potion",
                 "DESCRIPTIONS": ["Gain #b", " #yWeb."]
         },
+        "theWidow:SilkPlusPotion": {
+                "NAME": "Silk+ Potion",
+                "DESCRIPTIONS": ["Gain #b", " #yWeb."]
+        },
         "theWidow:VenomCocktailPotion": {
                 "NAME": "Venom Cocktail",
-                "DESCRIPTIONS": ["Apply #b", " Necrosis."]
+                "DESCRIPTIONS": ["Apply #b", " Sapped."]
         },
         "theWidow:NeurostimulantPotion": {
                 "NAME": "Neurostimulant",
@@ -18,12 +22,24 @@
                 "NAME": "Grenade",
                 "DESCRIPTIONS": ["Deal #b", " damage."]
         },
+        "theWidow:GrenadePlusPotion": {
+                "NAME": "Grenade+",
+                "DESCRIPTIONS": ["Deal #b", " damage."]
+        },
         "theWidow:PulseBombPotion": {
                 "NAME": "Pulse Bomb",
                 "DESCRIPTIONS": ["Deal #b", " damage to one enemy and #b", " damage to all other enemies."]
         },
+        "theWidow:PulseBombPlusPotion": {
+                "NAME": "Pulse Bomb+",
+                "DESCRIPTIONS": ["Deal #b", " damage to one enemy and #b", " damage to all other enemies."]
+        },
         "theWidow:MiniNukePotion": {
                 "NAME": "Mini-Nuke",
+                "DESCRIPTIONS": ["Deal #b", " damage to ALL enemies."]
+        },
+        "theWidow:MiniNukePlusPotion": {
+                "NAME": "Mini-Nuke+",
                 "DESCRIPTIONS": ["Deal #b", " damage to ALL enemies."]
         },
         "theWidow:DistilledCardPotion": {

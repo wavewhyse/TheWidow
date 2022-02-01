@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.DaggerSprayEffect;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.powers.NecrosisPower;
+import theWidow.powers.SapPower;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 import static theWidow.WidowMod.makeCardPath;
@@ -33,17 +33,17 @@ public class Injection extends CustomCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 8;
+    private static final int DAMAGE = 7;
     private static final int UPGRADE_PLUS_DMG = 3;
-    private static final int NECROSIS = 3;
-    private static final int UPGRADE_PLUS_NECROSIS = 1;
+    private static final int SAP = 4;
+    private static final int UPGRADE_PLUS_SAP = 2;
 
     // /STAT DECLARATION/
 
     public Injection() {
         super(ID, languagePack.getCardStrings(ID).NAME, IMG, COST, languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
-        magicNumber = baseMagicNumber = NECROSIS;
+        magicNumber = baseMagicNumber = SAP;
         isMultiDamage = true;
     }
 
@@ -63,7 +63,7 @@ public class Injection extends CustomCard {
         addToBot(new VFXAction(new DaggerSprayEffect(AbstractDungeon.getMonsters().shouldFlipVfx())));
         addToBot(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.POISON));
         for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters)
-            addToBot(new ApplyPowerAction(mon, p, new NecrosisPower(mon, magicNumber), magicNumber));
+            addToBot(new ApplyPowerAction(mon, p, new SapPower(mon, magicNumber), magicNumber));
     }
 
     @Override
@@ -71,7 +71,7 @@ public class Injection extends CustomCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeMagicNumber(UPGRADE_PLUS_NECROSIS);
+            upgradeMagicNumber(UPGRADE_PLUS_SAP);
             initializeDescription();
         }
     }

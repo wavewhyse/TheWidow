@@ -2,8 +2,8 @@ package theWidow;
 
 import basemod.AutoAdd;
 import basemod.BaseMod;
-import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
+import basemod.abstracts.CustomCard;
 import basemod.abstracts.CustomRelic;
 import basemod.abstracts.DynamicVariable;
 import basemod.interfaces.*;
@@ -13,7 +13,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.mod.widepotions.WidePotionsMod;
 import com.evacipated.cardcrawl.modthespire.Loader;
-import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -22,7 +21,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
-import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
@@ -34,19 +33,19 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theWidow.cards.BombLauncher;
-import theWidow.cards.Chemistry;
-import theWidow.cards.ExtraMagicalCustomCard;
+import theWidow.cards.*;
 import theWidow.potions.*;
 import theWidow.powers.WebPower;
 import theWidow.relics.BlackBoxRelic;
 import theWidow.relics.CyberheartRelic;
 import theWidow.relics.HourglassMarkRelic;
 import theWidow.util.TextureLoader;
+import theWidow.util.artHelp.CardArtRoller;
 import theWidow.variables.UpgradesInHand;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
+import java.util.Random;
 
 @SpireInitializer
 public class WidowMod implements
@@ -60,7 +59,8 @@ public class WidowMod implements
         PostPotionUseSubscriber,
         PostPowerApplySubscriber,
         AddAudioSubscriber,
-        PostBattleSubscriber{
+        PostBattleSubscriber,
+        StartGameSubscriber{
     public static final Logger logger = LogManager.getLogger(WidowMod.class.getName());
     private static String modID;
 
@@ -104,15 +104,19 @@ public class WidowMod implements
     public static int EGG_CLUTCH_UPGRADES = 0;
 
     // =============== MAKE IMAGE PATHS =================
-    
+
     public static String makeCardPath(String resourcePath) {
         return getModID() + "Resources/images/cards/" + resourcePath;
     }
-    
+
+    public static String makeImagePath(String resourcePath) {
+        return getModID() + "Resources/images/" + resourcePath;
+    }
+
     public static String makeRelicPath(String resourcePath) {
         return getModID() + "Resources/images/relics/" + resourcePath;
     }
-    
+
     public static String makeRelicOutlinePath(String resourcePath) {
         return getModID() + "Resources/images/relics/outline/" + resourcePath;
     }
@@ -151,15 +155,15 @@ public class WidowMod implements
         logger.info("Adding mod settings");
         // This loads the mod settings.
         // The actual mod Button is added below in receivePostInitialize()
-        theWidowSettings.setProperty(WEB_INTENT_SETTINGS, "FALSE"); // This is the default setting. It's actually set...
-        try {
-            SpireConfig config = new SpireConfig("widowMod", "theWidowConfig", theWidowSettings); // ...right here
-            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
-            config.load(); // Load the setting and set the boolean to equal it
-            webAffectsIntents = config.getBool(WEB_INTENT_SETTINGS);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        theWidowSettings.setProperty(WEB_INTENT_SETTINGS, "FALSE"); // This is the default setting. It's actually set...
+//        try {
+//            SpireConfig config = new SpireConfig("widowMod", "theWidowConfig", theWidowSettings); // ...right here
+//            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
+//            config.load(); // Load the setting and set the boolean to equal it
+//            webAffectsIntents = config.getBool(WEB_INTENT_SETTINGS);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         logger.info("Done adding mod settings");
         
     }
@@ -213,30 +217,34 @@ public class WidowMod implements
         ModPanel settingsPanel = new ModPanel();
         
         // Create the on/off button:
-        ModLabeledToggleButton enableNormalsButton = new ModLabeledToggleButton("Web affects enemy intents (shows incorrect numbers when you don't have enough Web)",
-                350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
-                webAffectsIntents, // Boolean it uses
-                settingsPanel, // The mod panel in which this button will be in
-                (label) -> {}, // thing??????? idk
-                (button) -> { // The actual button:
-            
-            webAffectsIntents = button.enabled; // The boolean true/false will be whether the button is enabled or not
-            try {
-                // And based on that boolean, set the settings and save them
-                SpireConfig config = new SpireConfig("widowMod", "theWidowConfig", theWidowSettings);
-                config.setBool(WEB_INTENT_SETTINGS, webAffectsIntents);
-                config.save();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+//        ModLabeledToggleButton enableNormalsButton = new ModLabeledToggleButton("Web affects enemy intents (shows incorrect numbers when you don't have enough Web)",
+//                350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
+//                webAffectsIntents, // Boolean it uses
+//                settingsPanel, // The mod panel in which this button will be in
+//                (label) -> {}, // thing??????? idk
+//                (button) -> { // The actual button:
+//
+//            webAffectsIntents = button.enabled; // The boolean true/false will be whether the button is enabled or not
+//            try {
+//                // And based on that boolean, set the settings and save them
+//                SpireConfig config = new SpireConfig("widowMod", "theWidowConfig", theWidowSettings);
+//                config.setBool(WEB_INTENT_SETTINGS, webAffectsIntents);
+//                config.save();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        });
         
-        settingsPanel.addUIElement(enableNormalsButton); // Add the button to the settings panel. Button is a go.
+//        settingsPanel.addUIElement(enableNormalsButton); // Add the button to the settings panel. Button is a go.
         
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 
         // =============== /EVENTS/ =================
         logger.info("Done loading badge Image and mod options");
+
+        for (AbstractCard c : CardLibrary.getCardList(TheWidow.Enums.WIDOW_BLACK))
+            if (c instanceof CustomCard && (((CustomCard)c).textureImg.contains("Attack.png") || ((CustomCard)c).textureImg.contains("Skill.png") || ((CustomCard)c).textureImg.contains("Power.png")))
+                CardArtRoller.computeCard(c);
 
         if (Loader.isModLoaded("widepotions")) {
             WidePotionsMod.whitelistSimplePotion(SilkPotion.POTION_ID);
@@ -305,7 +313,7 @@ public class WidowMod implements
         logger.info("Adding cards");
 
         new AutoAdd("TheWidowMod") // ${project.artifactId}
-                .packageFilter(ExtraMagicalCustomCard.class) // filters to any class in the same package as ExtraMagicalCustomCard, nested packages included
+                .packageFilter(Steelweave.class) // filters to any class in the same package as ExtraMagicalCustomCard, nested packages included
                 .setDefaultSeen(true)
                 .cards();
 
@@ -392,6 +400,9 @@ public class WidowMod implements
     public void receivePowersModified() {
         if (AbstractDungeon.player.hasRelic(HourglassMarkRelic.ID))
             AbstractDungeon.player.getRelic(HourglassMarkRelic.ID).onTrigger();
+        for (AbstractMonster m: AbstractDungeon.getMonsters().monsters)
+            if (m.hasPower(Disruptor.DisruptorPower.POWER_ID))
+                m.getPower(Disruptor.DisruptorPower.POWER_ID).onSpecificTrigger();
     }
 
     @Override
@@ -435,5 +446,10 @@ public class WidowMod implements
             if (r.cards != null)
                 for (AbstractCard c : r.cards)
                     c.upgrade();
+    }
+
+    @Override
+    public void receiveStartGame() {
+        ModuleX.initializeUpgradeOrder(new Random(Settings.seed));
     }
 }

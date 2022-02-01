@@ -29,6 +29,7 @@ public class NecrosisPower extends AbstractPower implements CloneablePowerInterf
     public NecrosisPower(final AbstractCreature owner, final int amount) {
         name = powerStrings.NAME;
         ID = POWER_ID;
+        priority = 0;
 
         this.owner = owner;
         this.amount = amount;

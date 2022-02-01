@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import theWidow.WidowMod;
-import theWidow.powers.WebPower;
+import theWidow.powers.WebPower2;
 
 public class SilkPotion extends CustomPotion {
 
@@ -49,7 +49,7 @@ public class SilkPotion extends CustomPotion {
         target = AbstractDungeon.player;
         // If you are in combat, gain Web.
         if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
-            addToBot(new ApplyPowerAction(target, AbstractDungeon.player, new WebPower(target, potency), potency));
+            addToBot(new ApplyPowerAction(target, AbstractDungeon.player, new WebPower2(target, potency), potency));
         }
     }
     
@@ -60,7 +60,7 @@ public class SilkPotion extends CustomPotion {
 
     @Override
     public int getPotency(final int potency) {
-        return 3;
+        return 5;
     }
 
     public void upgradePotion()

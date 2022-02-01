@@ -224,7 +224,7 @@ public class TheWidow extends CustomPlayer {
     // energy is displayed from within the energy orb.
     @Override
     public BitmapFont getEnergyNumFont() {
-        return FontHelper.energyNumFontRed;
+        return FontHelper.energyNumFontPurple;
     }
 
     // Should return class name as it appears in run history screen.

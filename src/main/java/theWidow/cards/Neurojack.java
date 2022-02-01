@@ -26,7 +26,6 @@ public class Neurojack extends CustomCard {
 
     public static final String ID = WidowMod.makeID(Neurojack.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("Neurojack.png");
 
     // /TEXT DECLARATION/
@@ -45,7 +44,7 @@ public class Neurojack extends CustomCard {
     // /STAT DECLARATION/
 
     public Neurojack() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = UPGRADES;
     }
     
@@ -62,7 +61,6 @@ public class Neurojack extends CustomCard {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_UPGRADES);
-            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

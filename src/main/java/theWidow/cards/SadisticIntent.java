@@ -5,17 +5,17 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
+import theWidow.powers.CaughtPower;
 import theWidow.util.TextureLoader;
 
 import static theWidow.WidowMod.makeCardPath;
@@ -34,20 +34,20 @@ public class SadisticIntent extends CustomCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 1;
-    private static final int DRAW = 1;
-    private static final int UPGRADE_PLUS_DRAW = 1;
+    private static final int CAUGHT = 5;
+    private static final int UPGRADE_PLUS_CAUGHT = 2;
 
     // /STAT DECLARATION/
 
     public SadisticIntent() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = DRAW;
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        magicNumber = baseMagicNumber = CAUGHT;
     }
 
     @Override
@@ -59,9 +59,7 @@ public class SadisticIntent extends CustomCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_DRAW);
-            rawDescription = UPGRADE_DESCRIPTION;
-            initializeDescription();
+            upgradeMagicNumber(UPGRADE_PLUS_CAUGHT);
         }
     }
 
@@ -74,6 +72,8 @@ public class SadisticIntent extends CustomCard {
         private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("SadisticIntentPower84.png"));
         private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("SadisticIntentPower32.png"));
 
+        private boolean myDebuff;
+
         public SadisticIntentPower(final AbstractCreature owner, final int amount) {
             name = powerStrings.NAME;
             ID = POWER_ID;
@@ -84,6 +84,8 @@ public class SadisticIntent extends CustomCard {
             type = PowerType.BUFF;
             isTurnBased = false;
 
+            myDebuff = false;
+
             this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
             this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
@@ -92,25 +94,29 @@ public class SadisticIntent extends CustomCard {
 
         @Override
         public void updateDescription() {
-            if (amount == 1)
-                description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
-            else
-                description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[2];
+            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
         }
 
-        /*@Override
+        @Override
         public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-            if (power.type == PowerType.DEBUFF && target instanceof AbstractMonster && source == owner) {
+            if (power.type == PowerType.DEBUFF && target instanceof AbstractMonster && source == owner && !target.hasPower(ArtifactPower.POWER_ID)) {
+                if (power instanceof CaughtPower && myDebuff) {
+                    myDebuff = false;
+                    return;
+                }
                 flash();
+                addToTop(new ApplyPowerAction(target, source, new CaughtPower(target, amount)));
+                myDebuff = true;
+//                addToTop(new ApplyPowerAction(owner, owner, new VigorPower(owner, amount), amount));
     //            addToTop(new ApplyPowerAction(owner, owner, new StrengthPower(owner, amount), amount));
     //            addToTop(new ApplyPowerAction(owner, owner, new LoseStrengthPower(owner, amount), amount));
     //            addToTop(new ApplyPowerAction(owner, owner, new DexterityPower(owner, amount), amount));
     //            addToTop(new ApplyPowerAction(owner, owner, new LoseDexterityPower(owner, amount), amount));
-                addToBot(new DrawCardAction(amount));
+//                addToBot(new ApplyPowerAction(owner, source, new DrawCardNextTurnPower(owner, amount), amount, true));
             }
-        }*/
+        }
 
-        @Override
+        /*@Override
         public void atStartOfTurn() {
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
                 boolean thisMon = false;
@@ -125,7 +131,7 @@ public class SadisticIntent extends CustomCard {
             }
             flash();
             addToBot(new DrawCardAction(amount));
-        }
+        }*/
 
         @Override
         public AbstractPower makeCopy() {

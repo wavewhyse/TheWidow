@@ -31,13 +31,13 @@ public class Harden extends BetaCard {
 
     private static final int COST = 1;
 
-    private static final int BLOCK = 8;
-    private static final int UPGRADE_PLUS_BLOCK = 1;
+    private static final int BLOCK = 9;
+    private static final int UPGRADE_PLUS_BLOCK = 3;
 
     // /STAT DECLARATION/
 
     public Harden() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(SewingKitRelic.ID))
             upgrade();

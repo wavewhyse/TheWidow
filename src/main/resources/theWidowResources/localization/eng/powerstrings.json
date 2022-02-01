@@ -3,6 +3,18 @@
                 "NAME": "Web",
                 "DESCRIPTIONS": ["Reduce the damage of the next #b", " attack by 25%.", " attacks by 25%.", "Caution!","This multiattack is only partially reduced by your current Web."]
         },
+        "theWidow:WebPower3": {
+                "NAME": "Web",
+                "DESCRIPTIONS": ["Decreases Attack damage by #b", ". Reduce by 1 when attacking."]
+        },
+        "theWidow:WebPower2": {
+                "NAME": "Web",
+                "DESCRIPTIONS": ["When attacked, apply #b", " #yCaught to the attacker and reduce by 1."]
+        },
+        "theWidow:CaughtPower": {
+                "NAME": "Caught",
+                "DESCRIPTIONS": ["Increase the next Attack damage taken by #b",". Decays by half every turn."]
+        },
         "theWidow:ParalysisPower": {
                 "NAME": "Paralysis",
                 "DESCRIPTIONS": ["Attacks #b1 less time when multi-attacking for #b", " turns."]
@@ -17,7 +29,7 @@
         },
         "theWidow:HermitWeavePower": {
                 "NAME": "Hermit Weave",
-                "DESCRIPTIONS": ["At the start of your turn, gain #b", " Web."]
+                "DESCRIPTIONS": ["#yWeb does not decrease."]
         },
         "theWidow:LaserDronePower": {
                 "NAME": "Laser Drone",
@@ -25,15 +37,15 @@
         },
         "theWidow:LairPower": {
                 "NAME": "Lair",
-                "DESCRIPTIONS": ["On gaining Web, apply #b", " Vulnerable to ALL enemies."]
+                "DESCRIPTIONS": ["Increase all Web gain by #b", "."]
         },
         "theWidow:ShockedPower": {
                 "NAME": "Shocked",
                 "DESCRIPTIONS": ["On attacking, takes #b", " damage."]
         },
-        "theWidow:HydraulicsPower": {
+        "theWidow:HydraulicsPower2": {
                 "NAME": "Hydraulics",
-                "DESCRIPTIONS": ["The first Attack played each turn costs double and deals ", "The first #b ", " Attacks played each turn cost double and deal ", "double damage."]
+                "DESCRIPTIONS": ["The ", "2nd ", "3rd ", "4th ", "next Attack will deal ", "double ", "triple ", "quadruple ", "quintuple ", "sextuple ", "septuple ", "octuple ", "nonuple ", " times ", "damage."]
         },
         "theWidow:GrenadierPower": {
                 "NAME": "Grenadier",
@@ -41,7 +53,7 @@
         },
         "theWidow:ConduitPower": {
                 "NAME": "Conduit",
-                "DESCRIPTIONS": ["Deal extra Attack damage equal to Web."]
+                "DESCRIPTIONS": ["Attacks deal bonus damage equal to #yWeb and reduce #yWeb by 1."]
         },
         "theWidow:AmbushPower": {
                 "NAME": "Ambush",
@@ -49,7 +61,7 @@
         },
         "theWidow:TranscensionPower": {
                 "NAME": "Transcension",
-                "DESCRIPTIONS": ["At the start of your turn, Upgrade all cards in your hand", " #b", " times.", "."]
+                "DESCRIPTIONS": ["At the start of your turn, Transform all Status and Curse cards in your hand into Widow cards, then Upgrade all cards in your hand", " #b", " times.", "."]
         },
         "theWidow:TransensionPower2": {
                 "NAME": "Transcension",
@@ -73,11 +85,11 @@
         },
         "theWidow:SadisticIntentPower": {
                 "NAME": "Sadistic Intent",
-                "DESCRIPTIONS": ["At turn start, if ALL enemies are debuffed, draw #b"," card."," cards."]
+                "DESCRIPTIONS": ["On applying a debuff to an enemy, next attack deals #b"," more damage."]
         },
         "theWidow:DischargeBatteryPower": {
                 "NAME": "Discharging Battery",
-                "DESCRIPTIONS": ["Apply ","#b"," times ","leftover Energy at end of turn as Paralysis to ALL enemies."]
+                "DESCRIPTIONS": ["Apply ","#b"," times ","leftover Energy at end of turn as #yParalysis and #yShocked to ALL enemies."]
         },
         "theWidow:ExtraCompartmentPower": {
                 "NAME": "Extra Compartments",
@@ -98,5 +110,13 @@
         "theWidow:EggClutchPower": {
                 "NAME": "Egg Clutch",
                 "DESCRIPTIONS": ["Upgrade #b"," card"," cards"," in this combat's card reward screen."]
+        },
+        "theWidow:SapPower": {
+          "NAME": "Sapped",
+          "DESCRIPTIONS": ["Deals #b"," less damage with Attacks. Reduced by half after every attack and every turn."]
+        },
+        "theWidow:DisruptorPower": {
+          "NAME": "Disrupted",
+          "DESCRIPTIONS": ["Cannot gain #yStrength or #yBlock."]
         }
 }

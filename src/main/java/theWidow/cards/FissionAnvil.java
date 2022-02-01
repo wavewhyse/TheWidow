@@ -38,15 +38,15 @@ public class FissionAnvil extends BetaCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 2;
-    private static final int DAMAGE = 16;
-    private static final int UPGRADE_PLUS_DMG = 2;
+    private static final int DAMAGE = 20;
+    private static final int UPGRADE_PLUS_DMG = 3;
 
     private boolean actionQueued;
 
     // /STAT DECLARATION/
 
     public FissionAnvil() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(SewingKitRelic.ID))
             upgrade();

@@ -37,7 +37,7 @@ public class TranscendentForm2 extends CustomCard {
     // /STAT DECLARATION/
 
     public TranscendentForm2() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         isEthereal = true;
     }
 

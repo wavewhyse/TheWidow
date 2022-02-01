@@ -68,7 +68,7 @@ public class MiniNukePotion extends CustomPotion {
     // This is your potency.
     @Override
     public int getPotency(final int potency) {
-        return 25;
+        return 30;
     }
 
     public void upgradePotion()

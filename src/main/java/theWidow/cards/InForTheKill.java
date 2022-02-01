@@ -28,7 +28,6 @@ public class InForTheKill extends CustomCard {
 
     public static final String ID = WidowMod.makeID(InForTheKill.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("InForTheKill.png");
 
     // /TEXT DECLARATION/
@@ -48,9 +47,10 @@ public class InForTheKill extends CustomCard {
     // /STAT DECLARATION/
 
     public InForTheKill() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = VULN_MULT;
+        initializeDescription();
     }
 
     @Override
@@ -60,7 +60,7 @@ public class InForTheKill extends CustomCard {
                     .setColor(Color.RED.cpy())
                     .fadeIn(0.2f)
                     .andThen(0.4f)
-                    .moveX((m.hb.cX + p.drawX) / 2f, m.hb.cX, VfxBuilder.Interpolations.SWINGIN)
+                    .moveX((m.hb.cX + p.drawX) / 2f, m.hb.x + m.hb.width, VfxBuilder.Interpolations.SWINGIN)
                     .fadeOut(0.3f)
                     .playSoundAt(0.2f, "IN_FOR_THE_KILL")
                     .build()
@@ -88,7 +88,6 @@ public class InForTheKill extends CustomCard {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_VULN_MULT);
-            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

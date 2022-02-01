@@ -27,7 +27,6 @@ public class Chemistry extends CustomCard {
 
     public static final String ID = WidowMod.makeID(Chemistry.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("Chemistry.png");
 
     // /TEXT DECLARATION/
@@ -46,7 +45,7 @@ public class Chemistry extends CustomCard {
     // /STAT DECLARATION/
 
     public Chemistry() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = DRAW;
     }
 
@@ -60,7 +59,6 @@ public class Chemistry extends CustomCard {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_DRAW);
-            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.TheWidow;
@@ -22,6 +23,7 @@ public class Meltdown extends CustomCard {
     // TEXT DECLARATION
 
     public static final String ID = WidowMod.makeID(Meltdown.class.getSimpleName());
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final UIStrings uistrings = CardCrawlGame.languagePack.getUIString(WidowMod.makeID(MeltdownAction.class.getSimpleName()));
     public static final String IMG = makeCardPath("Meltdown.png");
 
@@ -42,7 +44,7 @@ public class Meltdown extends CustomCard {
     // /STAT DECLARATION/
 
     public Meltdown() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = COPIES;
     }
 

@@ -40,7 +40,7 @@ public class ExtraCompartment extends CustomCard {
     // /STAT DECLARATION/
 
     public ExtraCompartment() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = SLOTS;
         ExhaustiveVariable.setBaseValue(this, EXHAUSTIVE);
     }

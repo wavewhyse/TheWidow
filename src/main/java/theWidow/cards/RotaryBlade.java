@@ -35,13 +35,13 @@ public class RotaryBlade extends BetaCard {
     private static final int COST = 2;
 
     private static final int DAMAGE = 4;
-    private static final int HITS = 2;
+    private static final int HITS = 3;
     private static final int UPGRADE_PLUS_HITS = 1;
 
     // /STAT DECLARATION/
 
     public RotaryBlade() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = HITS;
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(SewingKitRelic.ID))

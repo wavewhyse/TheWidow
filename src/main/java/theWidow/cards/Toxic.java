@@ -1,18 +1,20 @@
 package theWidow.cards;
 
+import basemod.abstracts.CustomCard;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.vfx.combat.PotionBounceEffect;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.powers.NecrosisPower;
+import theWidow.powers.SapPower;
 
 import static theWidow.WidowMod.makeCardPath;
 
-public class Toxic extends ExtraMagicalCustomCard {
+public class Toxic extends CustomCard {
 
     // TEXT DECLARATION
 
@@ -31,24 +33,21 @@ public class Toxic extends ExtraMagicalCustomCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 0;
-    private static final int DEBUFFS = 2;
-    private static final int UPGRADE_PLUS_DEBUFFS = 1;
-    private static final int NECROSIS = 2;
-    private static final int UPGRADE_PLUS_NECROSIS = 1;
+    private static final int DEBUFFS = 4;
+    private static final int UPGRADE_PLUS_DEBUFFS = 2;
 
     // /STAT DECLARATION/
 
     public Toxic() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = DEBUFFS;
-        secondMagicNumber = baseSecondMagicNumber = NECROSIS;
         exhaust = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot( new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false), magicNumber));
-        addToBot( new ApplyPowerAction(m, p, new NecrosisPower(m, secondMagicNumber), secondMagicNumber));
+        addToBot(new VFXAction(new PotionBounceEffect(p.hb.cX, p.hb.cY, m.hb.cX, m.hb.cY)));
+        addToBot( new ApplyPowerAction(m, p, new SapPower(m, magicNumber), magicNumber));
     }
 
     @Override
@@ -56,19 +55,6 @@ public class Toxic extends ExtraMagicalCustomCard {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_DEBUFFS);
-            upgradeSecondMagicNumber(UPGRADE_PLUS_NECROSIS);
-        }
-    }
-
-    @Override
-    public void downgrade() {
-        if (upgraded) {
-            name = cardStrings.NAME;
-            timesUpgraded--;
-            upgraded = false;
-            magicNumber = baseMagicNumber = DEBUFFS;
-            secondMagicNumber = baseSecondMagicNumber = NECROSIS;
-            upgradedMagicNumber = upgradedSecondMagicNumber = false;
         }
     }
 }

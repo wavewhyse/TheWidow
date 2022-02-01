@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.powers.WebPower;
+import theWidow.powers.WebPower2;
 import theWidow.util.TextureLoader;
 
 import static theWidow.WidowMod.makeCardPath;
@@ -35,19 +35,22 @@ public class HermitWeave extends CustomCard {
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
-    private static final int COST = 3;
-    private static final int UPGRADED_COST = 2;
+    private static final int COST = 1;
+    private static final int WEB = 3;
 
     // /STAT DECLARATION/
 
     public HermitWeave() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        magicNumber = baseMagicNumber = 0;
     }
     
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new HermitWeavePower(p, 1), 1 ));
+        addToBot(new ApplyPowerAction(p, p, new HermitWeavePower(p, 0), 0 ));
+        if (magicNumber > 0)
+            addToBot(new ApplyPowerAction(p, p, new WebPower2(p, magicNumber)));
     }
 
     //Upgraded stats.
@@ -55,7 +58,7 @@ public class HermitWeave extends CustomCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADED_COST);
+            upgradeMagicNumber(WEB);
             initializeDescription();
         }
     }
@@ -85,14 +88,8 @@ public class HermitWeave extends CustomCard {
         }
 
         @Override
-        public void atStartOfTurnPostDraw() {
-            flash();
-            addToBot(new ApplyPowerAction(owner, owner, new WebPower(owner, amount), amount ) );
-        }
-
-        @Override
         public void updateDescription() {
-            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+            description = DESCRIPTIONS[0];
         }
 
         @Override

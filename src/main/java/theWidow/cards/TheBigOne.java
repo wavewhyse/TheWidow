@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
+import theWidow.potions.MiniNukePlusPotion;
 import theWidow.potions.MiniNukePotion;
 
 import static theWidow.WidowMod.makeCardPath;
@@ -30,29 +31,27 @@ public class TheBigOne extends CustomCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 3;
-    //private static final int  UPGRADED_COST = 2;
 
     // /STAT DECLARATION/
 
     public TheBigOne() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         exhaust = true;
         isEthereal = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new
-                ObtainPotionAction(new MiniNukePotion())
-        );
+        if (!upgraded)
+            addToBot(new ObtainPotionAction(new MiniNukePotion()));
+        else
+            addToBot(new ObtainPotionAction(new MiniNukePlusPotion()));
     }
 
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            isEthereal = false;
-            //upgradeBaseCost(UPGRADED_COST);
             rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             initializeDescription();
         }

@@ -28,7 +28,6 @@ public class BombLauncher extends CustomCard {
 
     public static final String ID = WidowMod.makeID(BombLauncher.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("BombLauncher.png");
 
     // /TEXT DECLARATION/
@@ -47,7 +46,7 @@ public class BombLauncher extends CustomCard {
     // /STAT DECLARATION/
 
     public BombLauncher() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = POTIONS;
     }
 
@@ -61,7 +60,6 @@ public class BombLauncher extends CustomCard {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_POTIONS);
-            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

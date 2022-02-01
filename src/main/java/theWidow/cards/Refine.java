@@ -22,7 +22,6 @@ public class Refine extends CustomCard {
 
     public static final String ID = WidowMod.makeID(Refine.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("Refine.png");
 
     // /TEXT DECLARATION/
@@ -39,7 +38,7 @@ public class Refine extends CustomCard {
     // /STAT DECLARATION/
 
     public Refine() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         exhaust = true;
     }
 
@@ -102,6 +101,7 @@ public class Refine extends CustomCard {
                 p.hand.addToHand(c);
                 p.discardPile.removeCard(c);
                 addToTop(new WidowUpgradeCardAction(c));
+                addToTop(new WidowUpgradeCardAction(c));
                 c.lighten(false);
                 if (unhover)
                     c.unhover();
@@ -116,7 +116,6 @@ public class Refine extends CustomCard {
         if (!upgraded) {
             upgradeName();
             exhaust = false;
-            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

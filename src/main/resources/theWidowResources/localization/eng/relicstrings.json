@@ -45,6 +45,6 @@
   "theWidow:PerfectHeartRelic": {
     "NAME": "Perfect Heart",
     "FLAVOR": "Can you even call yourself human anymore?",
-    "DESCRIPTIONS": ["Replaces #pCyberheart. At the start of your turn, Upgrade #b", " random cards in your hand."]
+    "DESCRIPTIONS": ["Replaces #pCyberheart. At the start of each turn, #yUpgrade #b", " random cards in your hand for the rest of combat."]
   }
 }

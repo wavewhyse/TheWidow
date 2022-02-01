@@ -40,7 +40,7 @@ public class GeminiBot2 extends CustomCard {
     // /STAT DECLARATION/
 
     public GeminiBot2() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         exhaust = true;
         //ExhaustiveVariable.setBaseValue(this, EXHAUSTIVE);
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(SewingKitRelic.ID))
@@ -66,14 +66,11 @@ public class GeminiBot2 extends CustomCard {
     public void triggerOnOtherCardPlayed(AbstractCard c) {
         dontTriggerOnUseCard = true;
         cardToCopy = c.makeCopy();
-        AbstractMonster m = null;
-        for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
-            if (mon.hb.hovered)
-                m = mon;
-        }
-        if (m == null)
-            m = AbstractDungeon.getRandomMonster();
-        AbstractMonster finalM = m;
+        AbstractMonster m;
+        if (AbstractDungeon.actionManager.cardQueue.get(0).monster != null)
+            m = AbstractDungeon.actionManager.cardQueue.get(0).monster;
+        else
+            m = null;
         addToTop(new AbstractGameAction() {
             @Override
             public void update() {
@@ -82,7 +79,7 @@ public class GeminiBot2 extends CustomCard {
                     isDone = true;
                     return;
                 }
-                AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(GeminiBot2.this, finalM, c.energyOnUse, true, true));
+                AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(GeminiBot2.this, m, c.energyOnUse, true, true));
                 isDone = true;
             }
         });
@@ -91,7 +88,6 @@ public class GeminiBot2 extends CustomCard {
     @Override
     public void upgrade() {
         upgradeName();
-        rawDescription = cardStrings.UPGRADE_DESCRIPTION;
         initializeDescription();
     }
 }

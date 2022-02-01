@@ -2,17 +2,19 @@ package theWidow.cards;
 
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
 
@@ -35,60 +37,67 @@ public class Unstoppable extends CustomCard {
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
-    private static final int COST = 2;
+    private static final int COST = 1;
     private static final int DAMAGE = 10;
-    private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int UPGRADE_PLUS_DMG = 3;
     public static final int SCALING = 2;
     public static final int UPGRADE_PLUS_SCALING = 1;
 
     // /STAT DECLARATION/
 
     public Unstoppable() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, IMG, COST, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = SCALING;
+//        exhaust = true;
+        if (CardLibrary.getAllCards() != null && !CardLibrary.getAllCards().isEmpty())
+            theWidow.util.artHelp.CardArtRoller.computeCard(this);
     }
 
-    @Override
-    public void applyPowers() {
-        super.applyPowers();
-        rawDescription = cardStrings.DESCRIPTION;
-        rawDescription += cardStrings.EXTENDED_DESCRIPTION[0];
-        initializeDescription();
-    }
+//    @Override
+//    public void applyPowers() {
+//        super.applyPowers();
+//        rawDescription = cardStrings.DESCRIPTION;
+//        rawDescription += cardStrings.EXTENDED_DESCRIPTION[0];
+//        initializeDescription();
+//    }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int counter = 0;
-        for (AbstractPower pow : p.powers) {
-            switch (pow.ID) {
-                /*case StrengthPower.POWER_ID:
-                case DexterityPower.POWER_ID:
-                    if (pow.amount < 0){
-                        powersToRemove.add(pow);
-                    }
-                    break;
-                case EnergyDownPower.POWER_ID:
-                case DrawReductionPower.POWER_ID:*/
-                case VulnerablePower.POWER_ID:
-                case WeakPower.POWER_ID:
-                case FrailPower.POWER_ID:
-                    counter += pow.amount;
-                    addToBot(new RemoveSpecificPowerAction(p, p, pow));
-            }
-        }
-        int finalCounter = counter;
-        addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                int oldBaseDamage = baseDamage;
-                baseDamage += finalCounter * magicNumber;
-                calculateCardDamage(m);
-                addToTop( new DamageAction(m, new DamageInfo(p, damage), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-                baseDamage = oldBaseDamage;
-                isDone = true;
-            }
-        });
+        addToBot(new VFXAction(new InflameEffect(p)));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
+        addToBot(new RemoveSpecificPowerAction(p, p, VulnerablePower.POWER_ID));
+        addToBot(new RemoveSpecificPowerAction(p, p, WeakPower.POWER_ID));
+        addToBot(new RemoveSpecificPowerAction(p, p, FrailPower.POWER_ID));
+//        addToBot(new AbstractGameAction() {
+//            @Override
+//            public void update() {
+//                ArrayList<AbstractPower> powersToRemove = new ArrayList<>();
+//                for (AbstractPower pow : p.powers) {
+//                    switch (pow.ID) {
+//                        case VulnerablePower.POWER_ID:
+//                        case WeakPower.POWER_ID:
+//                        case FrailPower.POWER_ID:
+//                            powersToRemove.add(pow);
+//                    }
+//                }
+//                addToTop(new AbstractGameAction() {
+//                    @Override
+//                    public void update() {
+//                        int oldBaseDamage = baseDamage;
+//                        baseDamage += powersToRemove.size() * magicNumber;
+//                        calculateCardDamage(m);
+//                        addToTop(new DamageAction(m, new DamageInfo(p, damage), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+//                        baseDamage = oldBaseDamage;
+//                        calculateCardDamage(m);
+//                        isDone = true;
+//                    }
+//                });
+//                for (AbstractPower pow : powersToRemove)
+//                    addToTop(new RemoveSpecificPowerAction(p, p, pow));
+//                isDone = true;
+//            }
+//        });
     }
 
     @Override
