@@ -25,12 +25,12 @@ public class UpgradeHammerHit extends AbstractGameEffect {
         if (this.duration < 0.0F) {
             AbstractDungeon.actionManager.addToTop(new SFXAction("HammerHit"));
             AbstractDungeon.topLevelEffectsQueue.add(new UpgradeHammerImprintEffect(card.hb.cX -80.0F * Settings.scale, card.hb.cY));
-            if (Settings.DISABLE_EFFECTS)
-                return;
-            for (int i = 0; i < 10; i++)
-                AbstractDungeon.topLevelEffectsQueue.add(new UpgradeShineParticleEffect(card.hb.cX +
-                        MathUtils.random(-10.0F, 10.0F) * Settings.scale, card.hb.cY +
-                        MathUtils.random(-10.0F, 10.0F) * Settings.scale));
+            if (!Settings.DISABLE_EFFECTS) {
+                for (int i = 0; i < 10; i++)
+                    AbstractDungeon.topLevelEffectsQueue.add(new UpgradeShineParticleEffect(card.hb.cX +
+                            MathUtils.random(-10.0F, 10.0F) * Settings.scale, card.hb.cY +
+                            MathUtils.random(-10.0F, 10.0F) * Settings.scale));
+            }
             isDone = true;
         }
     }

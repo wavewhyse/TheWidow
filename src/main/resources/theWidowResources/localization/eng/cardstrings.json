@@ -420,7 +420,7 @@
   },
   "theWidow:Disruptor": {
     "NAME": "Disruptor",
-    "DESCRIPTION": "{@@}Deal !D! damage. NL {!M!|1=This turn|@=For the next !M! turns}, the target cannot gain Strength or Block."
+    "DESCRIPTION": "{@@}Deal !D! damage. NL {!M!|>1=For the next !M! turns|@=This turn}, the target cannot gain Strength or Block."
   },
   "theWidow:ManufactureReality": {
     "NAME": "Manufacture Reality",

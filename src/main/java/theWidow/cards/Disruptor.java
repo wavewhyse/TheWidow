@@ -87,7 +87,7 @@ public class Disruptor extends CustomCard {
         private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
         public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-        private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("ShockedrPower84.png"));
+        private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("ShockedPower84.png"));
         private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("ShockedPower32.png"));
 
         public DisruptorPower(final AbstractCreature owner, final int amount) {
