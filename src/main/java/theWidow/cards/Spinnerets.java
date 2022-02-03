@@ -31,7 +31,7 @@ public class Spinnerets extends BetaCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 1;
-    private static final int WEB = 5;
+    private static final int WEB = 3;
     private static final int UPGRADE_PLUS_WEB = 2;
 
     // /STAT DECLARATION/

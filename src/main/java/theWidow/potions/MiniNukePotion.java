@@ -1,6 +1,5 @@
 package theWidow.potions;
 
-import basemod.abstracts.CustomPotion;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -18,7 +17,7 @@ import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
 
-public class MiniNukePotion extends CustomPotion {
+public class MiniNukePotion extends UpgradeablePotion {
 
     public static final String POTION_ID = WidowMod.makeID(MiniNukePotion.class.getSimpleName());
     private static final PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(POTION_ID);
@@ -31,21 +30,25 @@ public class MiniNukePotion extends CustomPotion {
     public static final Color SPOTS_COLOR = Color.ORANGE;
 
     public MiniNukePotion() {
+        this(false);
+    }
+
+    public MiniNukePotion(boolean upgraded) {
         // The bottle shape and inside is determined by potion size and color. The actual colors are the main DefaultMod.java
-        super(NAME, POTION_ID, TheWidow.Enums.BOMB, PotionSize.BOTTLE, PotionColor.POISON);
-        
-        // Potency is the damage/magic number equivalent of potions.
+        super(NAME, POTION_ID, TheWidow.Enums.BOMB, PotionSize.BOTTLE, PotionColor.POISON, upgraded);
+    }
+
+    @Override
+    public void initializeData() {
         potency = getPotency();
-        
-        // Initialize the Description
+
         description = DESCRIPTIONS[0] + potency + DESCRIPTIONS[1];
-        
-       // Do you throw this potion at an enemy or do you just consume it.
+
         isThrown = true;
-        
-        // Initialize the on-hover name + description
+        targetRequired = false;
+
+        tips.clear();
         tips.add(new PowerTip(name, description));
-        
     }
 
     @Override
@@ -62,13 +65,16 @@ public class MiniNukePotion extends CustomPotion {
     
     @Override
     public AbstractPotion makeCopy() {
-        return new MiniNukePotion();
+        return new MiniNukePotion(upgraded);
     }
 
     // This is your potency.
     @Override
-    public int getPotency(final int potency) {
-        return 30;
+    public int getPotency(final int ascensionLevel) {
+        if (upgraded)
+            return 40;
+        else
+            return 30;
     }
 
     public void upgradePotion()

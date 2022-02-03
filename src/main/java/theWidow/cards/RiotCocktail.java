@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.potions.PulseBombPlusPotion;
 import theWidow.potions.PulseBombPotion;
 
 import static theWidow.WidowMod.makeCardPath;
@@ -41,10 +40,10 @@ public class RiotCocktail extends CustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (!upgraded)
-            addToBot(new ObtainPotionAction(new PulseBombPotion()));
+        if (upgraded)
+            addToBot(new ObtainPotionAction(new PulseBombPotion(true)));
         else
-            addToBot(new ObtainPotionAction(new PulseBombPlusPotion()));
+            addToBot(new ObtainPotionAction(new PulseBombPotion()));
     }
 
     @Override

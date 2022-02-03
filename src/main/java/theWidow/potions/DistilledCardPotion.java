@@ -104,7 +104,7 @@ public class DistilledCardPotion extends CustomPotion implements CustomSavable<C
     }
 
     @Override
-    public int getPotency(final int potency) {
+    public int getPotency(final int ascensionLevel) {
         return 1;
     }
 

@@ -48,5 +48,11 @@
                         "Has the effects of a ", ".",
                         "Have the effects of #b", "s."
                 ]
+        },
+        "BlessingOfTheForgeWithSacredBark": {
+                "NAME": "Blessing of the Forge",
+                "DESCRIPTIONS": [
+                        "Upgrade all cards in your hand twice for the rest of combat."
+                ]
         }
 }

@@ -1,6 +1,5 @@
 package theWidow.potions;
 
-import basemod.abstracts.CustomPotion;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -14,7 +13,7 @@ import com.megacrit.cardcrawl.potions.AbstractPotion;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
 
-public class GrenadePotion extends CustomPotion {
+public class GrenadePotion extends UpgradeablePotion {
 
     public static final String POTION_ID = WidowMod.makeID(GrenadePotion.class.getSimpleName());
     private static final PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(POTION_ID);
@@ -27,20 +26,23 @@ public class GrenadePotion extends CustomPotion {
     public static final Color SPOTS_COLOR = Color.BLACK;
 
     public GrenadePotion() {
-        // The bottle shape and inside is determined by potion size and color. The actual colors are the main DefaultMod.java
-        super(NAME, POTION_ID, TheWidow.Enums.BOMB, PotionSize.SPHERE, PotionColor.STEROID);
-        
-        // Potency is the damage/magic number equivalent of potions.
+        this(false);
+    }
+
+    public GrenadePotion(boolean upgraded) {
+        super(NAME, POTION_ID, TheWidow.Enums.BOMB, PotionSize.SPHERE, PotionColor.STEROID, upgraded);
+    }
+
+    @Override
+    public void initializeData() {
         potency = getPotency();
         
-        // Initialize the Description
         description = DESCRIPTIONS[0] + potency + DESCRIPTIONS[1];
         
-       // Do you throw this potion at an enemy or do you just consume it.
         isThrown = true;
         targetRequired = true;
-        
-        // Initialize the on-hover name + description
+
+        tips.clear();
         tips.add(new PowerTip(name, description));
     }
 
@@ -53,13 +55,16 @@ public class GrenadePotion extends CustomPotion {
     
     @Override
     public AbstractPotion makeCopy() {
-        return new GrenadePotion();
+        return new GrenadePotion(upgraded);
     }
 
     // This is your potency.
     @Override
-    public int getPotency(final int potency) {
-        return 10;
+    public int getPotency(final int ascensionLevel) {
+        if (upgraded)
+            return 15;
+        else
+            return 10;
     }
 
     public void upgradePotion() {

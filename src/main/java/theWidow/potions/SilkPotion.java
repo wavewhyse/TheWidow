@@ -1,6 +1,5 @@
 package theWidow.potions;
 
-import basemod.abstracts.CustomPotion;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -13,7 +12,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import theWidow.WidowMod;
 import theWidow.powers.WebPower2;
 
-public class SilkPotion extends CustomPotion {
+public class SilkPotion extends UpgradeablePotion {
 
     public static final String POTION_ID = WidowMod.makeID(SilkPotion.class.getSimpleName());
     private static final PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(POTION_ID);
@@ -26,8 +25,12 @@ public class SilkPotion extends CustomPotion {
     public static final Color SPOTS_COLOR = Color.WHITE;
 
     public SilkPotion() {
+        this(false);
+    }
+
+    public SilkPotion(boolean upgraded) {
         // The bottle shape and inside is determined by potion size and color. The actual colors are the main DefaultMod.java
-        super(NAME, POTION_ID, PotionRarity.COMMON, PotionSize.SNECKO, PotionColor.WHITE);
+        super(NAME, POTION_ID, PotionRarity.COMMON, PotionSize.SNECKO, PotionColor.WHITE, upgraded);
     }
 
     @Override
@@ -55,12 +58,15 @@ public class SilkPotion extends CustomPotion {
     
     @Override
     public AbstractPotion makeCopy() {
-        return new SilkPotion();
+        return new SilkPotion(upgraded);
     }
 
     @Override
-    public int getPotency(final int potency) {
-        return 5;
+    public int getPotency(final int ascensionLevel) {
+        if (upgraded)
+            return 8;
+        else
+            return 5;
     }
 
     public void upgradePotion()

@@ -102,7 +102,7 @@
   "theWidow:Labdomen": {
     "NAME": "Lab-domen",
     "DESCRIPTION": "Obtain a thewidow:Silk_Potion. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Obtain a thewodiw:Silk+_Potion. NL Exhaust."
+    "UPGRADE_DESCRIPTION": "Obtain a thewidow:Silk+_Potion. NL Exhaust."
   },
   "theWidow:Lair": {
     "NAME": "Lair",
@@ -173,7 +173,7 @@
     "DESCRIPTION": "Gain !M! thewidow:Web. NL Gain !theWidow:M2! Vulnerable."
   },
   "theWidow:BlackVenom": {
-    "NAME": "Black Venom",
+    "NAME": "Black Venom A",
     "DESCRIPTION": "Apply !M! Weak, !M! Vulnerable, and !theWidow:M2! thewidow:Sapped. Target loses !theWidow:M3! Strength. NL Exhaust."
   },
   "theWidow:TranscendentForm": {
@@ -248,8 +248,7 @@
   },
   "theWidow:Exploit": {
     "NAME": "Exploit",
-    "DESCRIPTION": "Deal damage equal to twice the amount of Vulnerable on the target.",
-    "UPGRADE_DESCRIPTION": "Deal damage equal to twice the amount of Vulnerable and Weak on the target."
+    "DESCRIPTION": "Deal !D! damage twice. NL Apply 1 thewidow:Sapped for each debuff on the target."
   },
   "theWidow:Spiderbite": {
     "NAME": "Spiderbite",
@@ -374,7 +373,7 @@
     "DESCRIPTION": "Gain [E] [E]. NL Draw !M! cards. NL Gain 2 Vulnerable."
   },
   "theWidow:BlackVenom2": {
-    "NAME": "Black Venom 2",
+    "NAME": "Black Venom B",
     "DESCRIPTION": "{@@}{!M!|2=Double|3=Triple|4=Quadruple} target's debuffs. NL Exhaust."
   },
   "theWidow:ModuleX": {
@@ -463,5 +462,9 @@
   "theWidow:Fangs": {
     "NAME": "Fangs",
     "DESCRIPTION": "Deal !D! damage. NL Does not consume thewidow:Caught."
+  },
+  "theWidow:Tazer": {
+    "NAME": "Tazer",
+    "DESCRIPTION": "Deal !D! damage. NL In 3 turns, Stun the target. NL Exhaust."
   }
 }

@@ -59,7 +59,7 @@ public class VenomCocktailPotion extends CustomPotion {
 
     // This is your potency.
     @Override
-    public int getPotency(final int potency) {
+    public int getPotency(final int ascensionLevel) {
         return 8;
     }
 

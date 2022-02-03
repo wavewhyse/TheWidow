@@ -1,9 +1,37 @@
-VERSION 0.10
+    VERSION 0.12
+
+-new card: Tazer (1; uncommon attack): Deal 7 (11) damage. In 3 turns, Stun the enemy.
+-readded and reworked Exploit (1; uncommon attack): Deal 4 (6) damage twice. Apply 1 Sapped for each debuff on the target.
+
+-fixed Anarchy only giving 1 or 2 grenades
+-Shock-Leap and Shock-Leap+ values reduced by 1 (4 -> 3, 6 -> 5)
+-Spinnerets Web gain reduced by 2. (3 -> 5 -> 7 -> 9...)
+-Sadistic Intent Caught reduced by 1 (5 -> 4, 7 -> 6)
+-Blessing of the Forge now activates twice with Sacred Bark
+-Blessing of the Forge now uses Widow Mod's upgrade vfx
+-Both of these can be disabled in the mod's settings
+-Pulse Bomb+, Mini-Nuke+, and Silk Potion+ now show a green "+" by their icon, and their code has been reworked.
+-fixed Labdomen+ description
+-commented out unnecessary patches
+
+    VERSION 0.9.1
+
+-fixed game being unplayable if particle effects are disabled
+
+-fixes to Disruptor's description and debuff icon
+
+    VERSION 0.9 (AGAIN OOPS)
+
+-basically everything
+
+
+
+    VERSION 0.10
 
 -Weaving now works properly in edge cases.
 -new vfx for downgrading cards
 
-VERSION 0.9
+    VERSION 0.9
 
 -Web now (mostly) correctly adjusts enemy intents. Multiattacks that break Web midway through will display a warning, indicating that they will do so, next to the intent.
 -new bg art for Widow cards, as well as energy orbs on cards
@@ -49,7 +77,7 @@ VERSION 0.9
 
 -added compatibility with Wide Potions for Silk Potion, Venom Cocktail, and Neurostimulant (pog)
 
-VERSION 0.6.1
+    VERSION 0.6.1
 
 -new card: Vengeful (uncommon 0-cost Power): When you are debuffed, gain 1(2) temporary Strength.
 -new card: Infect (uncommon 1-cost Attack): Deal 5(8) damage. When you debuff this enemy, also apply 2(3) Necrosis. Exhaust.
@@ -63,7 +91,7 @@ VERSION 0.6.1
 -there is now a setting to toggle Web altering enemy intents or not
 -added art for Vengeful and Infect
 
-VERSION 0.6
+    VERSION 0.6
 
 -Web reduces damage by 25%, instead of by 50%.
 
@@ -83,7 +111,7 @@ VERSION 0.6
 -added dead sprite
 -messed with code
 
-VERSION 0.5
+    VERSION 0.5
 
 -Sadistic Intent changed: At the start of your turn, if ALL enemies are debuffed, draw 1 (2) cards.
 -Weaving card draw increased 1 -> 2, but only upgrades 1 (chosen randomly). Weaving+ unchanged
@@ -107,7 +135,7 @@ VERSION 0.5
 -added art for Stinger (kinda), Unstable Cell, Weaving, Venom Strike, and Forge
 -updated art for In For The Kill
 
-VERSION 0.4.1
+    VERSION 0.4.1
 
 -FIXED GITHUB INTEGRATION (I had to remake the github page)
 
@@ -120,7 +148,7 @@ VERSION 0.4.1
 -fixed incorrect pluralization in some text
 -some code cleanup/optimization
 
-VERSION 0.4
+    VERSION 0.4
 
 -Necrosis decays by half its amount each turn instead of 2 each turn
 -new card: Dysphoria (rare Curse): Unplayable. When this is removed from your deck, Upgrade 3 random cards in your deck.
@@ -144,7 +172,7 @@ VERSION 0.4
 -art added for In For The Kill, Exploit, Refine, Entrap, and Gemini Bot
 -zoomed in art added for most cards with art (the ones that aren't just power icons)
 
-VERSION 0.3
+    VERSION 0.3
 
 -Link-Up removed
 -Salvage removed
@@ -175,7 +203,7 @@ VERSION 0.3
 --Bio-Informatics common -> uncommon
 --Weaving common -> uncommon
 
-VERSION 0.2.0
+    VERSION 0.2.0
 
 -new relic: Anarchist's Cookbook (common): At the start of combat, obtain a Grenade.
 -new relic: Perfect Heart (boss): Replaces Cyberheart. At the start of each turn, upgrade 2 random cards in your hand.
@@ -199,7 +227,7 @@ VERSION 0.2.0
 -fixed Scrapskin tooltip
 -added art for Gash, Metal Burrs, Nanobots, Injection, Fission Anvil, and Distill
 
-VERSION 0.1.2
+    VERSION 0.1.2
 
 -Web no longer adjusts enemy intent values
 -Sharpened Claws removed

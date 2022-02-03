@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.potions.MiniNukePlusPotion;
 import theWidow.potions.MiniNukePotion;
 
 import static theWidow.WidowMod.makeCardPath;
@@ -42,10 +41,10 @@ public class TheBigOne extends CustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (!upgraded)
-            addToBot(new ObtainPotionAction(new MiniNukePotion()));
+        if (upgraded)
+            addToBot(new ObtainPotionAction(new MiniNukePotion(true)));
         else
-            addToBot(new ObtainPotionAction(new MiniNukePlusPotion()));
+            addToBot(new ObtainPotionAction(new MiniNukePotion()));
     }
 
     @Override

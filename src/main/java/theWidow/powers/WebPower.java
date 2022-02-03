@@ -21,7 +21,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.RunicDome;
 import theWidow.WidowMod;
-import theWidow.patches.IntentMultiDmgField;
 import theWidow.util.TextureLoader;
 
 import java.util.ArrayList;
@@ -143,7 +142,7 @@ public class WebPower extends AbstractPower implements CloneablePowerInterface {
                     continue; //go to the next monster if this one isn't attacking
             }
             webbedMonsters.add(m);
-            int multi = IntentMultiDmgField.amount.get(m);
+            int multi = 0; //IntentMultiDmgField.amount.get(m);
             count -= Math.max(multi, 1);
             if (count < 0)  //if this monster is damaging BEYOND the web
                 webBreakerMonster = m;

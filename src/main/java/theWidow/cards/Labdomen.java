@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.potions.SilkPlusPotion;
 import theWidow.potions.SilkPotion;
 
 import static theWidow.WidowMod.makeCardPath;
@@ -41,10 +40,10 @@ public class Labdomen extends CustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (!upgraded)
-            addToBot(new ObtainPotionAction(new SilkPotion()));
+        if (upgraded)
+            addToBot(new ObtainPotionAction(new SilkPotion(true)));
         else
-            addToBot(new ObtainPotionAction(new SilkPlusPotion()));
+            addToBot(new ObtainPotionAction(new SilkPotion()));
     }
 
     @Override

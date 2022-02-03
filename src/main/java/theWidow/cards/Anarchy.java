@@ -46,7 +46,7 @@ public class Anarchy extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToTop(new ApplyPowerAction(p, p, new GrenadierPower(p, magicNumber)));
-        for (int i = 0; i < p.potionSlots + magicNumber - p.potions.size(); i++)
+        for (int i = 0; i < p.potionSlots + magicNumber; i++)
             addToBot(new ObtainPotionAction(new GrenadePotion()));
         addToBot(new AbstractGameAction() {
             public void update() { p.adjustPotionPositions(); isDone = true; }

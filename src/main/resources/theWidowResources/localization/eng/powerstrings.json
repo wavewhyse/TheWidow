@@ -118,5 +118,9 @@
         "theWidow:DisruptorPower": {
           "NAME": "Disrupted",
           "DESCRIPTIONS": ["Cannot gain #yStrength or #yBlock."]
+        },
+        "theWidow:TazerPower": {
+          "NAME": "Tazed",
+          "DESCRIPTIONS": ["#yStunned in #b", " turn.", " turns."]
         }
 }

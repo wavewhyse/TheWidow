@@ -2,6 +2,7 @@ package theWidow;
 
 import basemod.AutoAdd;
 import basemod.BaseMod;
+import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
 import basemod.abstracts.CustomCard;
 import basemod.abstracts.CustomRelic;
@@ -13,6 +14,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.mod.widepotions.WidePotionsMod;
 import com.evacipated.cardcrawl.modthespire.Loader;
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -22,13 +24,12 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
-import com.megacrit.cardcrawl.potions.BlessingOfTheForge;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
-import com.megacrit.cardcrawl.relics.SacredBark;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import org.apache.logging.log4j.LogManager;
@@ -66,8 +67,8 @@ public class WidowMod implements
 
     // Mod-settings settings. This is if you want an on/off savable button
     public static Properties theWidowSettings = new Properties();
-    public static final String WEB_INTENT_SETTINGS = "webIntent";
-    public static boolean webAffectsIntents = false;
+    public static final String BOTF_PATCH_SETTING = "BOTFPatched";
+    public static boolean enableBOTFPatch = true;
 
     //This is for the in-game mod settings panel.
     private static final String MODNAME = "The Widow";
@@ -155,15 +156,15 @@ public class WidowMod implements
         logger.info("Adding mod settings");
         // This loads the mod settings.
         // The actual mod Button is added below in receivePostInitialize()
-//        theWidowSettings.setProperty(WEB_INTENT_SETTINGS, "FALSE"); // This is the default setting. It's actually set...
-//        try {
-//            SpireConfig config = new SpireConfig("widowMod", "theWidowConfig", theWidowSettings); // ...right here
-//            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
-//            config.load(); // Load the setting and set the boolean to equal it
-//            webAffectsIntents = config.getBool(WEB_INTENT_SETTINGS);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        theWidowSettings.setProperty(BOTF_PATCH_SETTING, "TRUE"); // This is the default setting. It's actually set...
+        try {
+            SpireConfig config = new SpireConfig("widowMod", "theWidowConfig", theWidowSettings); // ...right here
+            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
+            config.load(); // Load the setting and set the boolean to equal it
+            enableBOTFPatch = config.getBool(BOTF_PATCH_SETTING);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         logger.info("Done adding mod settings");
         
     }
@@ -217,25 +218,25 @@ public class WidowMod implements
         ModPanel settingsPanel = new ModPanel();
         
         // Create the on/off button:
-//        ModLabeledToggleButton enableNormalsButton = new ModLabeledToggleButton("Web affects enemy intents (shows incorrect numbers when you don't have enough Web)",
-//                350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
-//                webAffectsIntents, // Boolean it uses
-//                settingsPanel, // The mod panel in which this button will be in
-//                (label) -> {}, // thing??????? idk
-//                (button) -> { // The actual button:
-//
-//            webAffectsIntents = button.enabled; // The boolean true/false will be whether the button is enabled or not
-//            try {
-//                // And based on that boolean, set the settings and save them
-//                SpireConfig config = new SpireConfig("widowMod", "theWidowConfig", theWidowSettings);
-//                config.setBool(WEB_INTENT_SETTINGS, webAffectsIntents);
-//                config.save();
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        });
+        ModLabeledToggleButton enableBOTFPatchButton = new ModLabeledToggleButton("Enable Blessing of the Forge changes (may cause mod conflicts):\n   - Uses Widow's upgrade VFX.\n   - Doubles with Sacred Bark.",
+                350.0f, 650.0f, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
+                enableBOTFPatch, // Boolean it uses
+                settingsPanel, // The mod panel in which this button will be in
+                (label) -> {}, // thing??????? idk
+                (button) -> { // The actual button:
+
+            enableBOTFPatch = button.enabled; // The boolean true/false will be whether the button is enabled or not
+            try {
+                // And based on that boolean, set the settings and save them
+                SpireConfig config = new SpireConfig("widowMod", "theWidowConfig", theWidowSettings);
+                config.setBool(BOTF_PATCH_SETTING, enableBOTFPatch);
+                config.save();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
         
-//        settingsPanel.addUIElement(enableNormalsButton); // Add the button to the settings panel. Button is a go.
+        settingsPanel.addUIElement(enableBOTFPatchButton); // Add the button to the settings panel. Button is a go.
         
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 
@@ -413,13 +414,13 @@ public class WidowMod implements
                 if (m.hb.hovered && !m.isDying)
                     target = m;
             ((BombLauncher.BombLauncherPower) AbstractDungeon.player.getPower(BombLauncher.BombLauncherPower.POWER_ID)).onPotionUse(pot, target);
-            if (AbstractDungeon.player.hasRelic(SacredBark.ID) && pot instanceof BlessingOfTheForge)
-                pot.use(AbstractDungeon.player);
+//            if (AbstractDungeon.player.hasRelic(SacredBark.ID) && pot instanceof BlessingOfTheForge)
+//                pot.use(AbstractDungeon.player);
             if (AbstractDungeon.player.hasPower(Chemistry.ChemistryPower.POWER_ID))
                 ((Chemistry.ChemistryPower)AbstractDungeon.player.getPower(Chemistry.ChemistryPower.POWER_ID)).onPotionUse(pot);
         }
-        if (AbstractDungeon.player.hasRelic(SacredBark.ID) && pot instanceof BlessingOfTheForge)
-            pot.use(AbstractDungeon.player);
+//        if (AbstractDungeon.player.hasRelic(SacredBark.ID) && pot instanceof BlessingOfTheForge)
+//            pot.use(AbstractDungeon.player);
         if (AbstractDungeon.player.hasPower(Chemistry.ChemistryPower.POWER_ID))
             ((Chemistry.ChemistryPower) AbstractDungeon.player.getPower(Chemistry.ChemistryPower.POWER_ID)).onPotionUse(pot);
         AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
