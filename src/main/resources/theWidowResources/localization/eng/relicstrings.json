@@ -17,7 +17,7 @@
     "NAME": "Hourglass Mark",
     "FLAVOR": "Usually considered an omen of impending doom.",
     "DESCRIPTIONS": [
-      "While you have at least #b", " #yWeb, gain #b", " #yStrength and #b", " #yDexterity."
+      "Start each combat with #b", " #yWeb."
     ]
   },
   "theWidow:HoloProjectorRelic": {

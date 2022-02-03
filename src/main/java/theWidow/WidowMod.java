@@ -34,12 +34,14 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theWidow.cards.*;
+import theWidow.cards.BombLauncher;
+import theWidow.cards.Chemistry;
+import theWidow.cards.ModuleX;
+import theWidow.cards.Steelweave;
 import theWidow.potions.*;
 import theWidow.powers.WebPower;
 import theWidow.relics.BlackBoxRelic;
 import theWidow.relics.CyberheartRelic;
-import theWidow.relics.HourglassMarkRelic;
 import theWidow.util.TextureLoader;
 import theWidow.util.artHelp.CardArtRoller;
 import theWidow.variables.UpgradesInHand;
@@ -56,7 +58,7 @@ public class WidowMod implements
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
         PostInitializeSubscriber,
-        OnPowersModifiedSubscriber,
+//        OnPowersModifiedSubscriber,
         PostPotionUseSubscriber,
         PostPowerApplySubscriber,
         AddAudioSubscriber,
@@ -397,14 +399,14 @@ public class WidowMod implements
         return getModID() + ":" + idText;
     }
 
-    @Override
-    public void receivePowersModified() {
-        if (AbstractDungeon.player.hasRelic(HourglassMarkRelic.ID))
-            AbstractDungeon.player.getRelic(HourglassMarkRelic.ID).onTrigger();
-        for (AbstractMonster m: AbstractDungeon.getMonsters().monsters)
-            if (m.hasPower(Disruptor.DisruptorPower.POWER_ID))
-                m.getPower(Disruptor.DisruptorPower.POWER_ID).onSpecificTrigger();
-    }
+//    @Override
+//    public void receivePowersModified() {
+//        if (AbstractDungeon.player.hasRelic(HourglassMarkRelic.ID))
+//            AbstractDungeon.player.getRelic(HourglassMarkRelic.ID).onTrigger();
+//        for (AbstractMonster m: AbstractDungeon.getMonsters().monsters)
+//            if (m.hasPower(Disruptor.DisruptorPower.POWER_ID))
+//                m.getPower(Disruptor.DisruptorPower.POWER_ID).onSpecificTrigger();
+//    }
 
     @Override
     public void receivePostPotionUse(AbstractPotion pot) {

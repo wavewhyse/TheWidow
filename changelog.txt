@@ -1,3 +1,7 @@
+    VERSION 0.13
+
+-changed Hourglass Mark: Gain 5 Web at the start of combat.
+
     VERSION 0.12
 
 -new card: Tazer (1; uncommon attack): Deal 7 (11) damage. In 3 turns, Stun the enemy.

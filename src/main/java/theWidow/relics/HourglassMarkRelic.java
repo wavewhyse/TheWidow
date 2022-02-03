@@ -3,10 +3,7 @@ package theWidow.relics;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import theWidow.WidowMod;
 import theWidow.powers.WebPower2;
 import theWidow.util.TextureLoader;
@@ -30,40 +27,46 @@ public class HourglassMarkRelic extends CustomRelic {
         pulse = false;
     }
 
-    @Override
-    public void onTrigger() {
-        AbstractPlayer p = AbstractDungeon.player;
-        int webNumber = 0;
-        if (p.hasPower(WebPower2.POWER_ID))
-            webNumber = p.getPower(WebPower2.POWER_ID).amount;
-        if (!pulse) {
-            if (webNumber >= TRIGGER_AMOUNT){
-                flash();
-                addToTop(new ApplyPowerAction(p, p, new StrengthPower(p, STAT_GAIN), STAT_GAIN));
-                addToTop(new ApplyPowerAction(p, p, new DexterityPower(p, STAT_GAIN), STAT_GAIN));
-                beginPulse();
-                pulse = true;
-            }
-        } else {
-            if (webNumber < TRIGGER_AMOUNT){
-                addToTop(new ApplyPowerAction(p, p, new StrengthPower(p, -STAT_GAIN), -STAT_GAIN));
-                addToTop(new ApplyPowerAction(p, p, new DexterityPower(p, -STAT_GAIN), -STAT_GAIN));
-                pulse = false;
-                stopPulse();
-            }
+//    @Override
+//    public void onTrigger() {
+//        AbstractPlayer p = AbstractDungeon.player;
+//        int webNumber = 0;
+//        if (p.hasPower(WebPower2.POWER_ID))
+//            webNumber = p.getPower(WebPower2.POWER_ID).amount;
+//        if (!pulse) {
+//            if (webNumber >= TRIGGER_AMOUNT){
+//                flash();
+//                addToTop(new ApplyPowerAction(p, p, new StrengthPower(p, STAT_GAIN), STAT_GAIN));
+//                addToTop(new ApplyPowerAction(p, p, new DexterityPower(p, STAT_GAIN), STAT_GAIN));
+//                beginPulse();
+//                pulse = true;
+//            }
+//        } else {
+//            if (webNumber < TRIGGER_AMOUNT){
+//                addToTop(new ApplyPowerAction(p, p, new StrengthPower(p, -STAT_GAIN), -STAT_GAIN));
+//                addToTop(new ApplyPowerAction(p, p, new DexterityPower(p, -STAT_GAIN), -STAT_GAIN));
+//                pulse = false;
+//                stopPulse();
+//            }
+//
+//        }
+//    }
+//
+//    @Override
+//    public void onVictory() {
+//        pulse = false;
+//    }
 
-        }
-    }
-
     @Override
-    public void onVictory() {
-        pulse = false;
+    public void atBattleStart() {
+        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new WebPower2(AbstractDungeon.player, TRIGGER_AMOUNT)));
+        flash();
     }
 
     // Description
     @Override
     public String getUpdatedDescription() {
-        return DESCRIPTIONS[0] + TRIGGER_AMOUNT + DESCRIPTIONS[1] + STAT_GAIN + DESCRIPTIONS[2] + STAT_GAIN + DESCRIPTIONS[3];
+        return DESCRIPTIONS[0] + TRIGGER_AMOUNT + DESCRIPTIONS[1];// + STAT_GAIN + DESCRIPTIONS[2] + STAT_GAIN + DESCRIPTIONS[3];
     }
 
 }
