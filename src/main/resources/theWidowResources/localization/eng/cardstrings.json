@@ -378,7 +378,7 @@
   },
   "theWidow:ModuleX": {
     "NAME": "Module \"X\"",
-    "DESCRIPTION": "thewidow:Beta-X 10. NL Choose 1: NL Gain 2 Strength or 2 Dexterity.",
+    "DESCRIPTION": "thewidow:Beta-X 12. NL Choose 1: NL Gain 2 Strength or 2 Dexterity.",
     "EXTENDED_DESCRIPTION": ["thewidow:Beta-X !theWidow:MXU!. NL ", "Choose !M!: NL ",
       "Gain 2 Strength", "+2 Strength",
       "2 Dexterity", "+2 Dexterity",

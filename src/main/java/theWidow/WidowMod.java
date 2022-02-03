@@ -36,7 +36,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theWidow.cards.BombLauncher;
 import theWidow.cards.Chemistry;
-import theWidow.cards.ModuleX;
 import theWidow.cards.Steelweave;
 import theWidow.potions.*;
 import theWidow.powers.WebPower;
@@ -48,7 +47,6 @@ import theWidow.variables.UpgradesInHand;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
-import java.util.Random;
 
 @SpireInitializer
 public class WidowMod implements
@@ -453,6 +451,6 @@ public class WidowMod implements
 
     @Override
     public void receiveStartGame() {
-        ModuleX.initializeUpgradeOrder(new Random(Settings.seed));
+//        ModuleX.initializeUpgradeOrder(new Random(Settings.seed));
     }
 }

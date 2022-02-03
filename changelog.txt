@@ -1,6 +1,10 @@
     VERSION 0.13
 
 -changed Hourglass Mark: Gain 5 Web at the start of combat.
+-cleaned up Downgrading and fixed Omni-Cannon's downgrades and upgrades
+-changed Module X's random distribution to not favor more options over being able to choose more times
+-fixed Module X saving its upgrade order between runs
+-Module X can now downgrade
 
     VERSION 0.12
 

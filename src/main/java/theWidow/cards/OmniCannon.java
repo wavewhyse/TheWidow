@@ -58,20 +58,23 @@ public class OmniCannon extends BetaCard {
 
     @Override
     public boolean canUpgrade() {
-        return costForTurn > 0 || cost > 0;
+        return cost > 0;
     }
 
     // Upgraded stats.
     @Override
     public void upgrade() {
-        upgradeBaseCost(cost - 1);
-        upgradeName();
+        if (cost > 0) {
+            upgradeBaseCost(cost - 1);
+            upgradeName();
+        }
     }
 
     @Override
     public void downgrade() {
-        cost++;
-        costForTurn++;
+        upgradeBaseCost(cost + 1);
+        if (costForTurn == 0)
+            costForTurn = 1;
         super.downgrade();
     }
 

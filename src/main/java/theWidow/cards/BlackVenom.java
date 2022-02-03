@@ -67,17 +67,4 @@ public class BlackVenom extends ExtraExtraMagicalCustomCard {
             initializeDescription();
         }
     }
-
-    @Override
-    public void downgrade() {
-        if (upgraded) {
-            name = cardStrings.NAME;
-            timesUpgraded--;
-            upgraded = false;
-            magicNumber = baseMagicNumber = STATUSES;
-            secondMagicNumber = baseSecondMagicNumber = SAP;
-            thirdMagicNumber = baseThirdMagicNumber = STRENGTH_DOWN;
-            upgradedMagicNumber = upgradedSecondMagicNumber = upgradedThirdMagicNumber = false;
-        }
-    }
 }

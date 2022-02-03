@@ -76,6 +76,4 @@ public class Dysphoria extends ExtraMagicalCustomCard {
 
     @Override
     public void upgrade() {}
-    @Override
-    public void downgrade() {}
 }

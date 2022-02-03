@@ -99,5 +99,6 @@ public class ImprobabilityDrive extends BetaCard {
     public void downgrade() {
         super.downgrade();
         magicNumber = baseMagicNumber -= 1;
+        initializeDescription();
     }
 }

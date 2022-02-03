@@ -1,21 +1,22 @@
 package theWidow.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.watcher.ChooseOneAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.tempCards.Smite;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.*;
-import com.megacrit.cardcrawl.powers.watcher.BattleHymnPower;
+import com.megacrit.cardcrawl.random.Random;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
 import theWidow.cards.ModuleXOptions.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 import static theWidow.WidowMod.makeCardPath;
@@ -40,28 +41,14 @@ public class ModuleX extends BetaCard {
 
     private static final int COST = 1;
     private static final int UPGRADED_COST = 0;
+    public static final int MAX_UPGRADES = 12;
 
     private enum Options {
         INFLAME, FOOTWORK, METALLICIZE, MACHINE_LEARNING, WELLLAID_PLANS, CALTROPS, BATTLE_HYMN, COST
+
     }
-
-    private static List<Options> upgradeOrder = Arrays.asList(
-            Options.INFLAME,    //always adds another to "choose x", since inflame effect is in by default.
-            Options.METALLICIZE,
-            Options.METALLICIZE,
-            Options.MACHINE_LEARNING,
-            Options.MACHINE_LEARNING,
-            Options.WELLLAID_PLANS,
-            Options.WELLLAID_PLANS,
-            Options.CALTROPS,
-            Options.CALTROPS,
-            Options.BATTLE_HYMN,
-            Options.BATTLE_HYMN,
-            Options.COST
-    );
-
-    public static final int MAX_UPGRADES = upgradeOrder.size();
-
+    private Random randomizer;
+    private boolean[] upgradesTaken;
     protected Set<Options> availableOptions;
 
     // /STAT DECLARATION/
@@ -71,6 +58,11 @@ public class ModuleX extends BetaCard {
         availableOptions = new LinkedHashSet<>();
         availableOptions.add(Options.INFLAME);
         availableOptions.add(Options.FOOTWORK);
+        if (Settings.seed == null)
+            randomizer = new Random();
+        else
+            randomizer = new Random(Settings.seed);
+        upgradesTaken = new boolean[MAX_UPGRADES];
         magicNumber = baseMagicNumber = 1;
         rawDescription = getDescription();
         if (CardLibrary.getAllCards() != null && !CardLibrary.getAllCards().isEmpty())
@@ -111,27 +103,6 @@ public class ModuleX extends BetaCard {
                 c.use(p, m);
     }
 
-    private AbstractGameAction getAction (AbstractPlayer p, Options opt) {
-        switch (opt) {
-            case INFLAME:
-                return new ApplyPowerAction(p, p, new StrengthPower(p, 2), 2);
-            case FOOTWORK:
-                return new ApplyPowerAction(p, p, new DexterityPower(p, 2), 2);
-            case METALLICIZE:
-                return new ApplyPowerAction(p, p, new MetallicizePower(p, 3), 3);
-            case MACHINE_LEARNING:
-                return new ApplyPowerAction(p, p, new DrawPower(p, 1), 1);
-            case WELLLAID_PLANS:
-                return new ApplyPowerAction(p, p, new RetainCardPower(p, 1), 1);
-            case CALTROPS:
-                return new ApplyPowerAction(p, p, new ThornsPower(p, 3), 3);
-            case BATTLE_HYMN:
-                return new ApplyPowerAction(p, p, new BattleHymnPower(p, 1), 1);
-            default:
-                return null;
-        }
-    }
-
     @Override
     public boolean canUpgrade() {
         return timesUpgraded < MAX_UPGRADES;
@@ -139,19 +110,63 @@ public class ModuleX extends BetaCard {
 
     @Override
     public void upgrade() {
-        upgraded = true;
         if (timesUpgraded < MAX_UPGRADES) {
-            Options thisUpgrade = upgradeOrder.get(timesUpgraded);
-            upgradeName();
-            if (thisUpgrade == Options.COST)
-                upgradeBaseCost(UPGRADED_COST);
-            else
-                if (!availableOptions.add(thisUpgrade))
-                    magicNumber = baseMagicNumber = baseMagicNumber + 1;
+            int thisUpgrade;
+            do
+                thisUpgrade = randomizer.random(0, MAX_UPGRADES-1);
+            while (upgradesTaken[thisUpgrade] || ( thisUpgrade >= 6 && magicNumber >= availableOptions.size() ) );
+            upgradesTaken[thisUpgrade] = true;
 
+            switch (thisUpgrade) {
+                case 0:
+                    upgradeBaseCost(UPGRADED_COST);
+                    break;
+                case 1:
+                    availableOptions.add(Options.METALLICIZE);
+                    break;
+                case 2:
+                    availableOptions.add(Options.MACHINE_LEARNING);
+                    break;
+                case 3:
+                    availableOptions.add(Options.WELLLAID_PLANS);
+                    break;
+                case 4:
+                    availableOptions.add(Options.CALTROPS);
+                    break;
+                case 5:
+                    availableOptions.add(Options.BATTLE_HYMN);
+                    cardsToPreview = new Smite();
+                    break;
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                default:
+                    upgradeMagicNumber(1);
+            }
+
+            upgradeName();
             rawDescription = getDescription();
             initializeDescription();
         }
+    }
+
+    @Override
+    public void downgrade() {
+        super.downgrade();
+        ModuleX downgradedVersion = new ModuleX();
+        for (int i = 0; i<timesUpgraded; i++)
+            downgradedVersion.upgrade();
+
+        this.upgradesTaken = downgradedVersion.upgradesTaken;
+        magicNumber = baseMagicNumber = downgradedVersion.baseMagicNumber;
+        this.availableOptions = downgradedVersion.availableOptions;
+
+        upgradeBaseCost(downgradedVersion.cost);
+        this.upgradedCost = downgradedVersion.upgradedCost;
+
     }
 
     private String getDescription() {
@@ -206,10 +221,10 @@ public class ModuleX extends BetaCard {
         return desc;
     }
 
-    public static void initializeUpgradeOrder(Random rand) {
-        Collections.shuffle(upgradeOrder, rand);
-        WidowMod.logger.info("Module \"X\" randomized. The upgrade order is:");
-        for (Options o: upgradeOrder)
-            WidowMod.logger.info(o);
-    }
+//    public static void initializeUpgradeOrder(Random rand) {
+//        Collections.shuffle(upgradeOrder, rand);
+//        WidowMod.logger.info("Module \"X\" randomized. The upgrade order is:");
+//        for (Options o: upgradeOrder)
+//            WidowMod.logger.info(o);
+//    }
 }

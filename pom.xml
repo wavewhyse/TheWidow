@@ -6,7 +6,7 @@
     <groupId>thewidow</groupId>
     <artifactId>TheWidowMod</artifactId> <!--Keep a note of this one: this is the ID used in the "auto add cards" method-->
     <name>The Widow</name>
-    <version>0.12</version>
+    <version>0.13</version>
     <description>Character mod for The Widow (WIP)</description>
 
     <properties>

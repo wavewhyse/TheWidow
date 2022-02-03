@@ -60,15 +60,4 @@ public class Lace extends ExtraMagicalCustomCard {
             initializeDescription();
         }
     }
-
-    @Override
-    public void downgrade() {
-        if (upgraded) {
-            name = cardStrings.NAME;
-            timesUpgraded--;
-            upgraded = false;
-            magicNumber = baseMagicNumber = WEB;
-            upgradedMagicNumber = false;
-        }
-    }
 }

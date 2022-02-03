@@ -12,6 +12,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import theWidow.cards.Downgradeable;
+import theWidow.cards.ExtraExtraMagicalCustomCard;
+import theWidow.cards.ExtraMagicalCustomCard;
 
 public class WidowDowngradeCardAction extends AbstractGameAction {
 
@@ -71,6 +73,16 @@ public class WidowDowngradeCardAction extends AbstractGameAction {
                 card.baseHeal = card.heal = downgradedVersion.baseHeal;
                 if (downgradedVersion.cost >= 0)
                     card.updateCost(downgradedVersion.cost - card.cost);
+
+                if (card instanceof ExtraMagicalCustomCard) {
+                    ((ExtraMagicalCustomCard)card).baseSecondMagicNumber = ((ExtraMagicalCustomCard)card).secondMagicNumber = ((ExtraMagicalCustomCard)downgradedVersion).baseSecondMagicNumber;
+                    ((ExtraMagicalCustomCard)card).upgradedSecondMagicNumber = false;
+                    if (card instanceof ExtraExtraMagicalCustomCard) {
+                        ((ExtraExtraMagicalCustomCard)card).baseThirdMagicNumber = ((ExtraExtraMagicalCustomCard)card).thirdMagicNumber = ((ExtraExtraMagicalCustomCard)downgradedVersion).baseThirdMagicNumber;
+                        ((ExtraExtraMagicalCustomCard)card).upgradedThirdMagicNumber = false;
+                    }
+                }
+
                 card.purgeOnUse = downgradedVersion.purgeOnUse;
                 card.isEthereal = downgradedVersion.isEthereal;
                 card.exhaust = downgradedVersion.exhaust;
