@@ -19,16 +19,10 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class ImprobabilityDrive extends BetaCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(ImprobabilityDrive.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     public static final String IMG = makeCardPath("ImprobabilityDrive.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -37,8 +31,6 @@ public class ImprobabilityDrive extends BetaCard {
 
     private static final int COST = -1;
     private static final int ENERGY = 2;
-
-    // /STAT DECLARATION/
 
     public ImprobabilityDrive() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
@@ -59,7 +51,6 @@ public class ImprobabilityDrive extends BetaCard {
         super.initializeDescription();
     }
 
-    // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         class DrawXCardsAction extends AbstractGameAction {
@@ -87,7 +78,6 @@ public class ImprobabilityDrive extends BetaCard {
         addToBot(new GainEnergyAction(magicNumber));
     }
 
-    //Upgraded stats.
     @Override
     public void upgrade() {
         upgradeMagicNumber(1);

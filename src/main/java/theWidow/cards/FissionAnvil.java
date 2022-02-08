@@ -22,15 +22,9 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class FissionAnvil extends BetaCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(FissionAnvil.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("FissionAnvil.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -42,8 +36,6 @@ public class FissionAnvil extends BetaCard {
     private static final int UPGRADE_PLUS_DMG = 3;
 
     private boolean actionQueued;
-
-    // /STAT DECLARATION/
 
     public FissionAnvil() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

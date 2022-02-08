@@ -27,15 +27,9 @@ import static theWidow.WidowMod.makePowerPath;
 
 public class TranscendentForm extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(TranscendentForm.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("TranscendentForm.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -45,8 +39,6 @@ public class TranscendentForm extends CustomCard {
     private static final int COST = 3;
     private static final int UPGRADES = 1;
     private static final int UPGRADE_PLUS_UPGRADES = 1;
-
-    // /STAT DECLARATION/
 
     public TranscendentForm() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

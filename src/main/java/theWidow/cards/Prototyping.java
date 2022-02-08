@@ -18,14 +18,8 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class Prototyping extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Prototyping.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("Prototyping.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -34,8 +28,6 @@ public class Prototyping extends CustomCard {
 
     private static final int COST = 1;
     private static final int UPGRADED_COST = 0;
-
-    // /STAT DECLARATION/
 
     public Prototyping() {
         super(ID, languagePack.getCardStrings(ID).NAME, IMG, COST, languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

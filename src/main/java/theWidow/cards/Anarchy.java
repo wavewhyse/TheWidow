@@ -17,15 +17,9 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class Anarchy extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Anarchy.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Grenadier.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -35,8 +29,6 @@ public class Anarchy extends CustomCard {
     private static final int COST = 1;
     private static final int SLOTS = 1;
     private static final int UPGRADE_PLUS_SLOTS = 1;
-
-    // /STAT DECLARATION/
 
     public Anarchy() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

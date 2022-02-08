@@ -19,15 +19,9 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class SearingBlade extends BetaCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(SearingBlade.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("SearingBlade.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -39,8 +33,6 @@ public class SearingBlade extends BetaCard {
     private static final int DAMAGE = 9;
     private static final int UPGRADE_PLUS_DMG = 2;
 
-    // /STAT DECLARATION/
-
     public SearingBlade() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
@@ -48,7 +40,6 @@ public class SearingBlade extends BetaCard {
             upgrade();
     }
 
-    // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));

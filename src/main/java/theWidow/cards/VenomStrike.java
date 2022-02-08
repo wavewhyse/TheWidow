@@ -17,15 +17,9 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class VenomStrike extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(VenomStrike.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("VenomStrike.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -37,8 +31,6 @@ public class VenomStrike extends CustomCard {
     private static final int UPGRADE_PLUS_DMG = 3;
     private static final int SAP = 3;
     private static final int UPGRADE_PLUS_SAP = 2;
-
-    // /STAT DECLARATION/
 
     public VenomStrike() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

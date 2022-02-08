@@ -23,16 +23,10 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class ModuleX extends BetaCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(ModuleX.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     public static final String IMG = makeCardPath("Power.png");// "public static final String IMG = makeCardPath("ModuleXOptions.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -44,14 +38,12 @@ public class ModuleX extends BetaCard {
     public static final int MAX_UPGRADES = 12;
 
     private enum Options {
-        INFLAME, FOOTWORK, METALLICIZE, MACHINE_LEARNING, WELLLAID_PLANS, CALTROPS, BATTLE_HYMN, COST
-
+        INFLAME, FOOTWORK, METALLICIZE, MACHINE_LEARNING, WELLLAID_PLANS, CALTROPS, BATTLE_HYMN
     }
+
     private Random randomizer;
     private boolean[] upgradesTaken;
-    protected Set<Options> availableOptions;
-
-    // /STAT DECLARATION/
+    private Set<Options> availableOptions;
 
     public ModuleX() {
         super(ID, languagePack.getCardStrings(ID).NAME, IMG, COST, languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
@@ -220,11 +212,4 @@ public class ModuleX extends BetaCard {
 
         return desc;
     }
-
-//    public static void initializeUpgradeOrder(Random rand) {
-//        Collections.shuffle(upgradeOrder, rand);
-//        WidowMod.logger.info("Module \"X\" randomized. The upgrade order is:");
-//        for (Options o: upgradeOrder)
-//            WidowMod.logger.info(o);
-//    }
 }

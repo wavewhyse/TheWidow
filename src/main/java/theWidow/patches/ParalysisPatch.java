@@ -9,7 +9,7 @@
 //import org.apache.logging.log4j.LogManager;
 //import org.apache.logging.log4j.Logger;
 //import theWidow.powers.ParalysisPower;
-//import theWidow.powers.WebPower;
+//import theWidow.deprecated.OldWebPower;
 //
 //@SpirePatch(
 //        clz = AbstractMonster.class,
@@ -34,8 +34,8 @@
 //            ((ParalysisPower) __instance.getPower(ParalysisPower.POWER_ID)).primed = true;
 //        }
 //        IntentMultiDmgField.amount.set(__instance, intentMultiAmt[0]);
-//        if (AbstractDungeon.player.hasPower(WebPower.POWER_ID)) {
-//            ((WebPower) AbstractDungeon.player.getPower(WebPower.POWER_ID)).updateWebbedMonsters();
+//        if (AbstractDungeon.player.hasPower(OldWebPower.POWER_ID)) {
+//            ((OldWebPower) AbstractDungeon.player.getPower(OldWebPower.POWER_ID)).updateWebbedMonsters();
 //            __instance.applyPowers();
 //        }
 //        // Incredible.

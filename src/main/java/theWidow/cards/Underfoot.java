@@ -16,15 +16,9 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class Underfoot extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Underfoot.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Underfoot.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF_AND_ENEMY;
@@ -36,8 +30,6 @@ public class Underfoot extends CustomCard {
     private static final int UPGRADE_PLUS_BLOCK = 3;
     private static final int EXTEND = 3;
     private static final int UPGRADE_PLUS_EXTEND = 1;
-
-    // /STAT DECLARATION/
 
     public Underfoot() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

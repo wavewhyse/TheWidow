@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.potions.PotionSlot;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.rewards.RewardItem;
 import theWidow.WidowMod;
 import theWidow.util.TextureLoader;
 
@@ -80,10 +81,22 @@ public class GrenadierPower extends AbstractPower implements CloneablePowerInter
             the array SHOULD be. And it removes that, leaving all indices intact
             from 0 through the new size minus 1; which is correct.
             Why the FDUCK is potionSlots not just equal to potions.size() anyway i hate this
+            NOTE: none of this comment is relevant anymore but i am keeping it regardless
         */
         if (p.potions.size() > p.potionSlots) {
+            for (int i = p.potionSlots; i < p.potions.size(); i++)
+                if (!(p.potions.get(i) instanceof PotionSlot)) {
+                    RewardItem salvage = new RewardItem(p.potions.get(i));
+                    salvage.text += DESCRIPTIONS[3];
+                    AbstractDungeon.getCurrRoom().rewards.add(salvage);
+                }
             p.potions.subList(p.potionSlots, p.potions.size()).clear();
         }
+    }
+
+    @Override
+    public void onRemove() {
+        onVictory();
     }
 
     @Override

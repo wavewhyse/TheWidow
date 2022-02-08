@@ -29,16 +29,10 @@ import static theWidow.WidowMod.makePowerPath;
 @Deprecated
 public class Infect extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Infect.class.getSimpleName());
     //private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     //private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("Infect.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -50,8 +44,6 @@ public class Infect extends CustomCard {
     private static final int UPGRADE_PLUS_DMG = 3;
     private static final int NECROSIS = 1;
     private static final int UPGRADE_PLUS_NECROSIS = 1;
-
-    // /STAT DECLARATION/
 
     public Infect() {
         super(ID, languagePack.getCardStrings(ID).NAME, IMG, COST, languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

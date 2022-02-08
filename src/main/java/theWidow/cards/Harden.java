@@ -14,15 +14,9 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class Harden extends BetaCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Harden.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Harden.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -34,8 +28,6 @@ public class Harden extends BetaCard {
     private static final int BLOCK = 9;
     private static final int UPGRADE_PLUS_BLOCK = 3;
 
-    // /STAT DECLARATION/
-
     public Harden() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
@@ -43,7 +35,6 @@ public class Harden extends BetaCard {
             upgrade();
     }
 
-    // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(

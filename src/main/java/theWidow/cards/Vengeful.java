@@ -27,16 +27,10 @@ import static theWidow.WidowMod.makePowerPath;
 
 public class Vengeful extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Vengeful.class.getSimpleName());
     //private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     //private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("Vengeful.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -46,8 +40,6 @@ public class Vengeful extends CustomCard {
     private static final int COST = 0;
     private static final int DAMAGE = 5;
     private static final int UPGRADE_PLUS_DAMAGE = 3;
-
-    // /STAT DECLARATION/
 
     public Vengeful() {
         super(ID, languagePack.getCardStrings(ID).NAME, IMG, COST, languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

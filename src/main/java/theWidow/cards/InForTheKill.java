@@ -24,15 +24,9 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class InForTheKill extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(InForTheKill.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("InForTheKill.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -43,8 +37,6 @@ public class InForTheKill extends CustomCard {
     private static final int DAMAGE = 14;
     private static final int VULN_MULT = 2;
     private static final int UPGRADE_PLUS_VULN_MULT = 1;
-
-    // /STAT DECLARATION/
 
     public InForTheKill() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

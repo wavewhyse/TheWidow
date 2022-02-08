@@ -19,7 +19,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.powers.WebPower2;
+import theWidow.powers.WebPower;
 import theWidow.util.TextureLoader;
 
 import static theWidow.WidowMod.makeCardPath;
@@ -27,16 +27,10 @@ import static theWidow.WidowMod.makePowerPath;
 
 public class Conduit extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Conduit.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     //private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("Conduit.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -47,8 +41,6 @@ public class Conduit extends CustomCard {
     private static final int WEB = 3;
     private static final int UPGRADE_PLUS_WEB = 2;
 
-    // /STAT DECLARATION/
-
     public Conduit() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = WEB;
@@ -56,7 +48,7 @@ public class Conduit extends CustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new WebPower2(p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new WebPower(p, magicNumber), magicNumber));
         addToBot(new ApplyPowerAction(p, p, new ConduitPower(p, 1), 1));
     }
 
@@ -98,8 +90,8 @@ public class Conduit extends CustomCard {
 
         @Override
         public float atDamageGive(float damage, DamageInfo.DamageType type) {
-            if (type == DamageInfo.DamageType.NORMAL && owner.hasPower(WebPower2.POWER_ID))
-                return damage + owner.getPower(WebPower2.POWER_ID).amount;
+            if (type == DamageInfo.DamageType.NORMAL && owner.hasPower(WebPower.POWER_ID))
+                return damage + owner.getPower(WebPower.POWER_ID).amount;
             else return damage;
         }
 
@@ -115,8 +107,8 @@ public class Conduit extends CustomCard {
 
         //        @Override
 //        public int onAttacked(DamageInfo info, int damageAmount) {
-//            if (owner.hasPower(WebPower.POWER_ID))
-//                addToTop(new DamageAction(info.owner, new DamageInfo(owner, owner.getPower(WebPower.POWER_ID).amount, DamageInfo.DamageType.THORNS)));
+//            if (owner.hasPower(OldWebPower.POWER_ID))
+//                addToTop(new DamageAction(info.owner, new DamageInfo(owner, owner.getPower(OldWebPower.POWER_ID).amount, DamageInfo.DamageType.THORNS)));
 //            return damageAmount;
 //        }
 
@@ -136,16 +128,16 @@ public class Conduit extends CustomCard {
 
         @Override
         public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-            if (owner.hasPower(WebPower.POWER_ID) && info.type == DamageInfo.DamageType.NORMAL && damageAmount > 0) {
+            if (owner.hasPower(OldWebPower.POWER_ID) && info.type == DamageInfo.DamageType.NORMAL && damageAmount > 0) {
                 flash();
-                addToBot(new DamageAction(target, new DamageInfo(owner, owner.getPower(WebPower.POWER_ID).amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
+                addToBot(new DamageAction(target, new DamageInfo(owner, owner.getPower(OldWebPower.POWER_ID).amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
             }
         }*/
 
         /*@Override
         public float atDamageGive(float damage, DamageInfo.DamageType type) {
-            if (type == DamageInfo.DamageType.NORMAL && owner.hasPower(WebPower.POWER_ID))
-                return damage + owner.getPower(WebPower.POWER_ID).amount;
+            if (type == DamageInfo.DamageType.NORMAL && owner.hasPower(OldWebPower.POWER_ID))
+                return damage + owner.getPower(OldWebPower.POWER_ID).amount;
             else return damage;
         }*/
 

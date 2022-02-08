@@ -9,21 +9,15 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.powers.WebPower2;
+import theWidow.powers.WebPower;
 
 import static theWidow.WidowMod.makeCardPath;
 
 public class Hide extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Hide.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Hide.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -36,8 +30,6 @@ public class Hide extends CustomCard {
     private static final int WEB = 3;
     private static final int UPGRADE_PLUS_WEB = 1;
 
-    // /STAT DECLARATION/
-
     public Hide() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
@@ -47,7 +39,7 @@ public class Hide extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot( new GainBlockAction(p, block));
-        addToBot(new ApplyPowerAction(p, p, new WebPower2(p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new WebPower(p, magicNumber), magicNumber));
     }
 
     @Override

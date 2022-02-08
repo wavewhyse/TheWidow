@@ -17,15 +17,9 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class RotaryBlade extends BetaCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(RotaryBlade.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("RotaryBlade.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -38,8 +32,6 @@ public class RotaryBlade extends BetaCard {
     private static final int HITS = 3;
     private static final int UPGRADE_PLUS_HITS = 1;
 
-    // /STAT DECLARATION/
-
     public RotaryBlade() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
@@ -48,7 +40,6 @@ public class RotaryBlade extends BetaCard {
             upgrade();
     }
 
-    // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < magicNumber; i++)

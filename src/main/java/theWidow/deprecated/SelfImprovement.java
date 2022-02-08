@@ -22,17 +22,11 @@ import static theWidow.WidowMod.makeCardPath;
 @Deprecated
 public class SelfImprovement extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(SelfImprovement.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final UIStrings uistrings = CardCrawlGame.languagePack.getUIString(WidowMod.makeID(SelfImprovementAction.class.getSimpleName()));
     public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("SelfImprovement.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -42,8 +36,6 @@ public class SelfImprovement extends CustomCard {
     private static final int COST = 0;
     private static final int DRAW_PER_UPGRADE = 1;
     private static final int UPGRADE_DRAW_PER_UPGRADE = 1;
-
-    // /STAT DECLARATION/
 
     public SelfImprovement() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

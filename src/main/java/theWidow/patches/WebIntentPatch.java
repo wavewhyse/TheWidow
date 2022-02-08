@@ -5,7 +5,7 @@
 //import com.megacrit.cardcrawl.monsters.AbstractMonster;
 //import com.megacrit.cardcrawl.powers.AbstractPower;
 //import javassist.CtBehavior;
-//import theWidow.powers.WebPower;
+//import theWidow.deprecated.OldWebPower;
 //
 //@SpirePatch(
 //        clz = AbstractMonster.class,
@@ -18,9 +18,9 @@
 //            localvars = {"tmp", "p"}
 //    )
 //    public static void betterWebDamageReceive(AbstractMonster __instance, int dmg, @ByRef float[] tmp, AbstractPower p) {
-//        if (p instanceof WebPower) {
-//            tmp[0] = ((WebPower) p).atDamageReceiveButPassTheActualDamageSource(tmp[0], DamageInfo.DamageType.NORMAL, __instance);
-//            tmp[0] /= WebPower.DAMAGE_MULT;
+//        if (p instanceof OldWebPower) {
+//            tmp[0] = ((OldWebPower) p).atDamageReceiveButPassTheActualDamageSource(tmp[0], DamageInfo.DamageType.NORMAL, __instance);
+//            tmp[0] /= OldWebPower.DAMAGE_MULT;
 //        }
 //    } //Incredible.
 //

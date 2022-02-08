@@ -15,7 +15,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.powers.WebPower2;
+import theWidow.powers.WebPower;
 import theWidow.util.TextureLoader;
 
 import static theWidow.WidowMod.makeCardPath;
@@ -25,15 +25,9 @@ import static theWidow.WidowMod.makePowerPath;
 @Deprecated
 public class Lair extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Lair.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Lair.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -43,8 +37,6 @@ public class Lair extends CustomCard {
     private static final int COST = 1;
     private static final int WEB = 2;
     private static final int UPGRADE_PLUS_WEB = 1;
-
-    // /STAT DECLARATION/
 
     public Lair() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
@@ -82,7 +74,7 @@ public class Lair extends CustomCard {
 
 //        @Override
 //        public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-//            if(power instanceof WebPower && target == owner) {
+//            if(power instanceof OldWebPower && target == owner) {
 //                flash();
 //                power.amount += 2;
 //            }
@@ -91,7 +83,7 @@ public class Lair extends CustomCard {
         @Override
         public void atStartOfTurnPostDraw() {
             flash();
-            addToBot(new ApplyPowerAction(owner, owner, new WebPower2(owner, amount), amount ) );
+            addToBot(new ApplyPowerAction(owner, owner, new WebPower(owner, amount), amount ) );
         }
 
         @Override

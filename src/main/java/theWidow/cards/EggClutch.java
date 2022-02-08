@@ -22,15 +22,9 @@ import static theWidow.WidowMod.makePowerPath;
 
 public class EggClutch extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(EggClutch.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("EggClutch.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -40,8 +34,6 @@ public class EggClutch extends CustomCard {
     private static final int COST = 2;
     private static final int UPGRADED = 1;
     private static final int UPGRADED_COST = 1;
-
-    // /STAT DECLARATION/
 
     public EggClutch() {
         super(ID, languagePack.getCardStrings(ID).NAME, IMG, COST, languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

@@ -23,15 +23,9 @@ import static theWidow.WidowMod.makePowerPath;
 
 public class Chemistry extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Chemistry.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Chemistry.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -41,8 +35,6 @@ public class Chemistry extends CustomCard {
     private static final int COST = 1;
     private static final int DRAW = 1;
     private static final int UPGRADE_PLUS_DRAW = 1;
-
-    // /STAT DECLARATION/
 
     public Chemistry() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theWidow.WidowMod;
-import theWidow.powers.WebPower2;
+import theWidow.powers.WebPower;
 import theWidow.util.TextureLoader;
 
 import static theWidow.WidowMod.makeRelicOutlinePath;
@@ -31,8 +31,8 @@ public class HourglassMarkRelic extends CustomRelic {
 //    public void onTrigger() {
 //        AbstractPlayer p = AbstractDungeon.player;
 //        int webNumber = 0;
-//        if (p.hasPower(WebPower2.POWER_ID))
-//            webNumber = p.getPower(WebPower2.POWER_ID).amount;
+//        if (p.hasPower(WebPower.POWER_ID))
+//            webNumber = p.getPower(WebPower.POWER_ID).amount;
 //        if (!pulse) {
 //            if (webNumber >= TRIGGER_AMOUNT){
 //                flash();
@@ -59,7 +59,7 @@ public class HourglassMarkRelic extends CustomRelic {
 
     @Override
     public void atBattleStart() {
-        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new WebPower2(AbstractDungeon.player, TRIGGER_AMOUNT)));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new WebPower(AbstractDungeon.player, TRIGGER_AMOUNT)));
         flash();
     }
 

@@ -16,15 +16,9 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class BlackVenom extends ExtraExtraMagicalCustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(BlackVenom.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("BlackVenom.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -38,8 +32,6 @@ public class BlackVenom extends ExtraExtraMagicalCustomCard {
     private static final int UPGRADE_PLUS_SAP = 2;
     private static final int STRENGTH_DOWN = 1;
     private static final int UPGRADE_PLUS_STRENGTH_DOWN = 1;
-
-    // /STAT DECLARATION/
 
     public BlackVenom() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

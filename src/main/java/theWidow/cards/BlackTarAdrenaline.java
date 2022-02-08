@@ -18,15 +18,9 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class BlackTarAdrenaline extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(BlackTarAdrenaline.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("BlackTarAdrenaline.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -38,8 +32,6 @@ public class BlackTarAdrenaline extends CustomCard {
     private static final int ENERGY_GAIN = 2;
     private static final int DRAW = 2;
     private static final int VULNERABLE = 2;
-
-    // /STAT DECLARATION/
 
     public BlackTarAdrenaline() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

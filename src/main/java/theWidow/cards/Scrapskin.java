@@ -17,16 +17,10 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class Scrapskin extends CustomCard implements Downgradeable{
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Scrapskin.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("Scrapskin.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -35,8 +29,6 @@ public class Scrapskin extends CustomCard implements Downgradeable{
 
     private static final int COST = 1;
     private static final int BLOCK = 5;
-
-    // /STAT DECLARATION/
 
     public Scrapskin() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

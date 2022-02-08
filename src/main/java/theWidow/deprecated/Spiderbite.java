@@ -23,15 +23,9 @@ import static theWidow.WidowMod.makeCardPath;
 @Deprecated
 public class Spiderbite extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Spiderbite.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Spiderbite.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -43,8 +37,6 @@ public class Spiderbite extends CustomCard {
     private static final int UPGRADE_PLUS_DMG = 2;
     private static final int NECROSIS = 2;
     private static final int UPGRADE_PLUS_NECROSIS = 1;
-
-    // /STAT DECLARATION/
 
     public Spiderbite() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

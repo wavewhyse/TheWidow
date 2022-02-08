@@ -19,15 +19,9 @@ import static theWidow.WidowMod.makeCardPath;
 @Deprecated
 public class Silkshield extends BetaCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Silkshield.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("Silkshield.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -37,8 +31,6 @@ public class Silkshield extends BetaCard {
     private static final int COST = 1;
     private static final int BLOCK = 8;
     private static final int UPGRADE_PLUS_BLOCK = 4;
-
-    // /STAT DECLARATION/
 
     public Silkshield() {
         super(ID, languagePack.getCardStrings(ID).NAME, IMG, COST, languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.cards.CardSave;
+import com.megacrit.cardcrawl.cards.colorless.Madness;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -54,7 +55,7 @@ public class DistilledCardPotion extends CustomPotion implements CustomSavable<C
     public void initializeData() {
         potency = getPotency();
         if (card == null)
-            return;
+            card = new Madness();//TODO: Make this save properly even when it isn't in the player's potion slots
         card.resetAttributes();
         switch (card.target) {
             case ENEMY:
@@ -78,8 +79,10 @@ public class DistilledCardPotion extends CustomPotion implements CustomSavable<C
         else
             description = DESCRIPTIONS[0] + card.name + DESCRIPTIONS[1];
 //        description = "";
+//        card.initializeDescription();
 //        for (DescriptionLine line : card.description) {
-//            description += line.getCachedTokenizedText();
+//            for (String s: line.getCachedTokenizedText())
+//                description += s;
 //        }
         tips.add(new PowerTip(name, description));
         tips.add(new CardPowerTip(card));
@@ -87,6 +90,8 @@ public class DistilledCardPotion extends CustomPotion implements CustomSavable<C
 
     @Override
     public void use(AbstractCreature target) {
+        if (card == null)
+            return;
         for (int i=0; i<potency; i++) {
             AbstractCard playing = card.makeStatEquivalentCopy();
             playing.purgeOnUse = true;
@@ -110,7 +115,10 @@ public class DistilledCardPotion extends CustomPotion implements CustomSavable<C
 
     @Override
     public CardSave onSave() {
-        return new CardSave(card.cardID, card.timesUpgraded, card.misc);
+        if (card != null)
+            return new CardSave(card.cardID, card.timesUpgraded, card.misc);
+        else
+            return new CardSave(Madness.ID, 0, 0);
     }
 
     @Override

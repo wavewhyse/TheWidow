@@ -20,16 +20,10 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class Meltdown extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Meltdown.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final UIStrings uistrings = CardCrawlGame.languagePack.getUIString(WidowMod.makeID(MeltdownAction.class.getSimpleName()));
     public static final String IMG = makeCardPath("Meltdown.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -41,14 +35,11 @@ public class Meltdown extends CustomCard {
     private static final int COPIES = 2;
     private static final int UPGRADE_PLUS_COPIES = 1;
 
-    // /STAT DECLARATION/
-
     public Meltdown() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = COPIES;
     }
 
-    // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new MeltdownAction());
@@ -118,7 +109,6 @@ public class Meltdown extends CustomCard {
         }
     }
 
-    //Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {

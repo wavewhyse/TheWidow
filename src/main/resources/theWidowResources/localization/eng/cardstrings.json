@@ -305,7 +305,7 @@
   },
   "theWidow:Unstoppable": {
     "NAME": "Unstoppable",
-    "DESCRIPTION": "Deal !D! damage. Remove all your Weak, Frail, and Vulnerable."
+    "DESCRIPTION": "Deal !D! damage. For !M! turns, you are unaffected by Weak, Frail, and Vulnerable."
   },
   "theWidow:Weaving": {
     "NAME": "Weaving",

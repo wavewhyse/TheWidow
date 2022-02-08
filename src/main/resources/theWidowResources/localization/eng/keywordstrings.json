@@ -140,7 +140,7 @@
       "Caught",
       "caught"
     ],
-    "DESCRIPTION": "#yCaught enemies take more damage from the next attack. Decays by half each turn."
+    "DESCRIPTION": "#yCaught enemies take more damage from the next attack. Decays by half each turn if unused."
   },
   {
     "PROPER_NAME": "Sapped",

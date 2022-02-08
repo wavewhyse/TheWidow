@@ -20,14 +20,8 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class ShockLeap extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(ShockLeap.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("ShockLeap.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -37,8 +31,6 @@ public class ShockLeap extends CustomCard {
     private static final int COST = 0;
     private static final int STATS = 3;
     private static final int UPGRADE_PLUS_STATS = 2;
-
-    // /STAT DECLARATION/
 
     public ShockLeap() {
         super(ID, languagePack.getCardStrings(ID).NAME, IMG, COST, languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

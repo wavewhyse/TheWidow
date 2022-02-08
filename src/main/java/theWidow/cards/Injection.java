@@ -18,14 +18,8 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class Injection extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Injection.class.getSimpleName());
     public static final String IMG = makeCardPath("Injection.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
@@ -37,8 +31,6 @@ public class Injection extends CustomCard {
     private static final int UPGRADE_PLUS_DMG = 3;
     private static final int SAP = 4;
     private static final int UPGRADE_PLUS_SAP = 2;
-
-    // /STAT DECLARATION/
 
     public Injection() {
         super(ID, languagePack.getCardStrings(ID).NAME, IMG, COST, languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

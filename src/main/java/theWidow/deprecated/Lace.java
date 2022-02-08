@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
 import theWidow.cards.ExtraMagicalCustomCard;
-import theWidow.powers.WebPower2;
+import theWidow.powers.WebPower;
 
 import static theWidow.WidowMod.makeCardPath;
 
@@ -18,15 +18,9 @@ import static theWidow.WidowMod.makeCardPath;
 @Deprecated
 public class Lace extends ExtraMagicalCustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Lace.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Lace.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -38,8 +32,6 @@ public class Lace extends ExtraMagicalCustomCard {
     private static final int VULNERABLE = 2;
     private static final int UPGRADE_PLUS_WEB = 2;
 
-    // /STAT DECLARATION/
-
     public Lace() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = WEB;
@@ -48,7 +40,7 @@ public class Lace extends ExtraMagicalCustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new WebPower2(p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new WebPower(p, magicNumber), magicNumber));
         addToBot(new ApplyPowerAction(p, p, new VulnerablePower(p, secondMagicNumber, false), secondMagicNumber));
     }
 

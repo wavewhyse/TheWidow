@@ -19,15 +19,9 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class OmniCannon extends BetaCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(OmniCannon.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("OmniCannon.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
@@ -38,8 +32,6 @@ public class OmniCannon extends BetaCard {
 
     private static final int DAMAGE = 32;
 
-    // /STAT DECLARATION/
-
     public OmniCannon() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
@@ -48,7 +40,6 @@ public class OmniCannon extends BetaCard {
             upgrade();
     }
 
-    // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot((AbstractGameAction)new SFXAction("ATTACK_HEAVY"));

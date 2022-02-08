@@ -16,15 +16,9 @@ import static theWidow.WidowMod.makeCardPath;
 @Deprecated
 public class Electroneurons extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Electroneurons.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("Electroneurons.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -34,8 +28,6 @@ public class Electroneurons extends CustomCard {
     private static final int COST = 0;
     private static final int DRAW = 3;
     private static final int UPGRADE_PLUS_DRAW = 1;
-
-    // /STAT DECLARATION/
 
     public Electroneurons() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

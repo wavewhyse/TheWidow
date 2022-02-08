@@ -22,16 +22,10 @@ import static theWidow.WidowMod.makeCardPath;
 @Deprecated
 public class Dysphoria extends ExtraMagicalCustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Dysphoria.class.getSimpleName());
     //private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     //private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("Dysphoria.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.NONE;
@@ -41,8 +35,6 @@ public class Dysphoria extends ExtraMagicalCustomCard {
     private static final int COST = -2;
     private static final int UPGRADES = 3;
     private static final int HP_INCREASE = 12;
-
-    // /STAT DECLARATION/
 
     public Dysphoria() {
         super(ID, languagePack.getCardStrings(ID).NAME, IMG, COST, languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

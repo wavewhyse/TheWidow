@@ -2,6 +2,7 @@ package theWidow.cards;
 
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -18,15 +19,9 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class Refine extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Refine.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Refine.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -34,8 +29,6 @@ public class Refine extends CustomCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 1;
-
-    // /STAT DECLARATION/
 
     public Refine() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
@@ -102,6 +95,7 @@ public class Refine extends CustomCard {
                 p.discardPile.removeCard(c);
                 addToTop(new WidowUpgradeCardAction(c));
                 addToTop(new WidowUpgradeCardAction(c));
+                addToTop(new WaitAction(Settings.ACTION_DUR_FAST));
                 c.lighten(false);
                 if (unhover)
                     c.unhover();

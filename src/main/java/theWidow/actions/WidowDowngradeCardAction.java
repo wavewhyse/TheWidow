@@ -99,6 +99,7 @@ public class WidowDowngradeCardAction extends AbstractGameAction {
             }
             card.applyPowers();
             card.initializeDescription();
+            card.displayUpgrades();
             //card.initializeTitle(); <------find a way to do this (maybe)!
         }
     }

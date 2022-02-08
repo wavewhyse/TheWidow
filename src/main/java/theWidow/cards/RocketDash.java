@@ -18,15 +18,9 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class RocketDash extends BetaCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(RocketDash.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("RocketDash.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -39,8 +33,6 @@ public class RocketDash extends BetaCard {
     private static final int UPGRADE_PLUS_BLOCK = 2;
 
     private boolean damageQueued;
-
-    // /STAT DECLARATION/
 
     public RocketDash() {
         this(0);

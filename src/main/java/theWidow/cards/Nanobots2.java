@@ -16,15 +16,9 @@ import static theWidow.WidowMod.makeCardPath;
 @AutoAdd.Ignore
 public class Nanobots2 extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Nanobots2.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Nanobots.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -33,8 +27,6 @@ public class Nanobots2 extends CustomCard {
 
     private static final int COST = 0;
     private static final int BLOCK = 6;
-
-    // /STAT DECLARATION/
 
     public Nanobots2() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

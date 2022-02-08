@@ -18,15 +18,9 @@ import static theWidow.WidowMod.makeCardPath;
 @Deprecated
 public class Scanner extends BetaCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Scanner.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("Scanner.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -36,8 +30,6 @@ public class Scanner extends BetaCard {
     private static final int COST = 1;
     private static final int SCRY = 4;
     private static final int UPGRADE_PLUS_SCRY = 2;
-
-    // /STAT DECLARATION/
 
     public Scanner() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

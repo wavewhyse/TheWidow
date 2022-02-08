@@ -23,16 +23,10 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class Distill extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Distill.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final UIStrings uistrings = CardCrawlGame.languagePack.getUIString(WidowMod.makeID(DistillAction.class.getSimpleName()));
     public static final String IMG = makeCardPath("Distill.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.NONE;
@@ -40,8 +34,6 @@ public class Distill extends CustomCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = -1;
-
-    // /STAT DECLARATION/
 
     public Distill() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

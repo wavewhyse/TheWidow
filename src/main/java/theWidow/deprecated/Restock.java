@@ -22,16 +22,10 @@ import static theWidow.WidowMod.makeCardPath;
 @Deprecated
 public class Restock extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Restock.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("Restock.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -42,8 +36,6 @@ public class Restock extends CustomCard {
     private static final int DAMAGE = 8;
     private static final int DRAW = 1;
     private static final int UPGRADE_PLUS_DRAW = 1;
-
-    // /STAT DECLARATION/
 
     public Restock() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

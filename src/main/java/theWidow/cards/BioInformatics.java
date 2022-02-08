@@ -15,15 +15,9 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class BioInformatics extends BetaCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(BioInformatics.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("BioInformatics.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -34,8 +28,6 @@ public class BioInformatics extends BetaCard {
     private static final int BLOCK = 10;
     private static final int DRAW = 2;
     private static final int UPGRADE_PLUS_DRAW = 1;
-
-    // /STAT DECLARATION/
 
     public BioInformatics() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

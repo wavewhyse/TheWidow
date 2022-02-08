@@ -12,14 +12,8 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class MercurialShield extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(MercurialShield.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("MercurialBlade.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.SPECIAL;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -28,8 +22,6 @@ public class MercurialShield extends CustomCard {
 
     private static final int COST = 0;
     private static final int BLOCK = 12;
-
-    // /STAT DECLARATION/
 
     public MercurialShield() {
         super(ID, languagePack.getCardStrings(ID).NAME, IMG, COST, languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

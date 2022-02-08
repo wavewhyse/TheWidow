@@ -2,11 +2,11 @@ package theWidow.cards;
 
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
 import com.megacrit.cardcrawl.actions.utility.UnlimboAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -25,16 +25,10 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class ParticleAccelerator extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(ParticleAccelerator.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(WidowMod.makeID(ParticleAcceleratorAction.class.getSimpleName()));
     public static final String IMG = makeCardPath("DischargeBattery.png");// "public static final String IMG = makeCardPath("ParticleAccelerator.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -42,8 +36,6 @@ public class ParticleAccelerator extends CustomCard {
     public static final CardColor COLOR = theWidow.TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = -1;
-
-    // /STAT DECLARATION/
 
     public ParticleAccelerator() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
@@ -143,19 +135,20 @@ public class ParticleAccelerator extends CustomCard {
             c.targetDrawScale = 0.75F;
             c.applyPowers();
             for (int i = 1; i < effect; i++) {
-                AbstractCard tmp = c.makeSameInstanceOf();
-                p.limbo.addToBottom(tmp);
-                tmp.current_x = c.current_x;
-                tmp.current_y = c.current_y;
-                tmp.target_x = (float)Settings.WIDTH / 2.0F - 300.0F * Settings.scale;
-                tmp.target_y = (float)Settings.HEIGHT / 2.0F;
-                AbstractMonster m = null;
-                if (tmp.target == CardTarget.ENEMY) {
-                    m = AbstractDungeon.getRandomMonster();
-                    tmp.calculateCardDamage(m);
-                }
-                tmp.purgeOnUse = true;
-                AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, m, c.energyOnUse, true, true), true);
+//                AbstractCard tmp = c.makeSameInstanceOf();
+//                p.limbo.addToBottom(tmp);
+//                tmp.current_x = c.current_x;
+//                tmp.current_y = c.current_y;
+//                tmp.target_x = (float)Settings.WIDTH / 2.0F - 300.0F * Settings.scale;
+//                tmp.target_y = (float)Settings.HEIGHT / 2.0F;
+//                AbstractMonster m = null;
+//                if (tmp.target == CardTarget.ENEMY) {
+//                    m = AbstractDungeon.getRandomMonster();
+//                    tmp.calculateCardDamage(m);
+//                }
+//                tmp.purgeOnUse = true;
+//                AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, m, c.energyOnUse, true, true), true);
+                GameActionManager.queueExtraCard(c, null);
             }
             AbstractCreature target = null;
             if (c.target == CardTarget.ENEMY)

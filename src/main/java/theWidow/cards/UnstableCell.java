@@ -2,9 +2,11 @@ package theWidow.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.TheWidow;
@@ -15,16 +17,8 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class UnstableCell extends BetaCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(UnstableCell.class.getSimpleName());
-    //private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    //private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("UnstableCell.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -35,33 +29,54 @@ public class UnstableCell extends BetaCard {
     private static final int DAMAGE = 18;
     private static final int UPGRADE_PLUS_DMG = 5;
 
-    private boolean playQueued;
-
-    // /STAT DECLARATION/
+    private int playsQueued;
 
     public UnstableCell() {
         super(ID, languagePack.getCardStrings(ID).NAME, IMG, COST, languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
-        playQueued = false;
+        playsQueued = 0;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot( new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
+        if (playsQueued > 0) {
+            AbstractCard copyBecauseTheCardQueueIsBullshit = makeSameInstanceOf();
+            AbstractDungeon.player.limbo.addToBottom(copyBecauseTheCardQueueIsBullshit);
+            copyBecauseTheCardQueueIsBullshit.current_x = current_x;
+            copyBecauseTheCardQueueIsBullshit.current_y = current_y;
+            copyBecauseTheCardQueueIsBullshit.target_x = Settings.WIDTH / 2.0F - 300.0F * Settings.scale;
+            copyBecauseTheCardQueueIsBullshit.target_y = Settings.HEIGHT / 2.0F;
+            copyBecauseTheCardQueueIsBullshit.purgeOnUse = true;
+            AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(copyBecauseTheCardQueueIsBullshit, AbstractDungeon.getRandomMonster(), energyOnUse, true, true), true);
+            playsQueued--;
+        }
     }
 
     @Override
     public void triggerWhenDrawn() {
-        playQueued = false;
+        playsQueued = 0;
     }
 
     @Override
     public void applyPowers() {
         super.applyPowers();
-        if (playQueued && AbstractDungeon.player.hand.contains(this)) {
+        if (playsQueued > 0 && AbstractDungeon.player.hand.contains(this)) {
             superFlash();
-            AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(this, true, energyOnUse, true, true));
-            playQueued = false;
+            if (AbstractDungeon.actionManager.cardQueue.stream().noneMatch(cq -> cq.card.uuid == this.uuid)) {
+                AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(this, true, energyOnUse, true, true));
+                playsQueued--;
+            }
+//            else {
+//                AbstractCard copyBecauseTheCardQueueIsBullshit = makeSameInstanceOf();
+//                AbstractDungeon.player.limbo.addToBottom(copyBecauseTheCardQueueIsBullshit);
+//                copyBecauseTheCardQueueIsBullshit.current_x = current_x;
+//                copyBecauseTheCardQueueIsBullshit.current_y = current_y;
+//                copyBecauseTheCardQueueIsBullshit.target_x = Settings.WIDTH / 2.0F - 300.0F * Settings.scale;
+//                copyBecauseTheCardQueueIsBullshit.target_y = Settings.HEIGHT / 2.0F;
+//                copyBecauseTheCardQueueIsBullshit.purgeOnUse = true;
+//                AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(copyBecauseTheCardQueueIsBullshit, null, energyOnUse, true, true), true);
+//            }
         }
     }
 
@@ -69,7 +84,8 @@ public class UnstableCell extends BetaCard {
     public void upgrade() {
         upgradeName();
         upgradeDamage(UPGRADE_PLUS_DMG);
-        playQueued = true;
+        if (AbstractDungeon.player.hand.contains(this))
+            playsQueued++;
     }
 
     @Override

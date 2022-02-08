@@ -19,16 +19,10 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class ExplosiveKick extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(ExplosiveKick.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("ExplosiveKick.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -37,8 +31,6 @@ public class ExplosiveKick extends CustomCard {
 
     private static final int COST = 1;
     private static final int DAMAGE = 6;
-
-    // /STAT DECLARATION/
 
     public ExplosiveKick() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

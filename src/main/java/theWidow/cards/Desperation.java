@@ -16,15 +16,9 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class Desperation extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Desperation.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Desperation.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
@@ -35,8 +29,6 @@ public class Desperation extends CustomCard {
     private static final int DAMAGE = 10;
     private static final int UPGRADE_PLUS_DMG = 3;
     private static final int WEAK = 2;
-
-    // /STAT DECLARATION/
 
     public Desperation() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

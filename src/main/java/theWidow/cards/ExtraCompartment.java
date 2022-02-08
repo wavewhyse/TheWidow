@@ -17,15 +17,9 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class ExtraCompartment extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(ExtraCompartment.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("ExtraCompartment.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
@@ -36,8 +30,6 @@ public class ExtraCompartment extends CustomCard {
     private static final int SLOTS = 1;
     private static final int EXHAUSTIVE = 2;
     private static final int UPGRADE_PLUS_EXHAUSTIVE = 1;
-
-    // /STAT DECLARATION/
 
     public ExtraCompartment() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

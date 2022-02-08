@@ -16,15 +16,9 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class Weld extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Weld.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Weld.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -35,8 +29,6 @@ public class Weld extends CustomCard {
     private static final int DAMAGE = 9;
     private static final int UPGRADES = 1;
     private static final int UPGRADE_PLUS_UPGRADES = 1;
-
-    // /STAT DECLARATION/
 
     public Weld() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

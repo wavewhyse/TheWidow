@@ -23,16 +23,10 @@ import static theWidow.WidowMod.makePowerPath;
 
 public class SadisticIntent extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(SadisticIntent.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("SadisticIntent.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -42,8 +36,6 @@ public class SadisticIntent extends CustomCard {
     private static final int COST = 1;
     private static final int CAUGHT = 4;
     private static final int UPGRADE_PLUS_CAUGHT = 2;
-
-    // /STAT DECLARATION/
 
     public SadisticIntent() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

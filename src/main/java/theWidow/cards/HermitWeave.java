@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.powers.WebPower2;
+import theWidow.powers.WebPower;
 import theWidow.util.TextureLoader;
 
 import static theWidow.WidowMod.makeCardPath;
@@ -26,10 +26,6 @@ public class HermitWeave extends CustomCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("HermitWeave.png");
 
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
-
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
@@ -38,22 +34,18 @@ public class HermitWeave extends CustomCard {
     private static final int COST = 1;
     private static final int WEB = 3;
 
-    // /STAT DECLARATION/
-
     public HermitWeave() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = 0;
     }
     
-    // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new HermitWeavePower(p, 0), 0 ));
         if (magicNumber > 0)
-            addToBot(new ApplyPowerAction(p, p, new WebPower2(p, magicNumber)));
+            addToBot(new ApplyPowerAction(p, p, new WebPower(p, magicNumber)));
     }
 
-    //Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {

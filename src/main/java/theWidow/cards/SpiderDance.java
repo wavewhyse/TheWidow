@@ -14,16 +14,10 @@ import static theWidow.WidowMod.makeCardPath;
 
 public class SpiderDance extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(SpiderDance.class.getSimpleName());
     //private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     //private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("SpiderDance.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -33,8 +27,6 @@ public class SpiderDance extends CustomCard {
     private static final int COST = 2;
     private static final int DAMAGE = 4;
     private static final int UPGRADE_PLUS_DMG = 1;
-
-    // /STAT DECLARATION/
 
     public SpiderDance() {
         super(ID, languagePack.getCardStrings(ID).NAME, IMG, COST, languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

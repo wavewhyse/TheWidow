@@ -1,13 +1,9 @@
 {
-        "theWidow:WebPower": {
+        "theWidow:OldWebPower": {
                 "NAME": "Web",
                 "DESCRIPTIONS": ["Reduce the damage of the next #b", " attack by 25%.", " attacks by 25%.", "Caution!","This multiattack is only partially reduced by your current Web."]
         },
-        "theWidow:WebPower3": {
-                "NAME": "Web",
-                "DESCRIPTIONS": ["Decreases Attack damage by #b", ". Reduce by 1 when attacking."]
-        },
-        "theWidow:WebPower2": {
+        "theWidow:WebPower": {
                 "NAME": "Web",
                 "DESCRIPTIONS": ["When attacked, apply #b", " #yCaught to the attacker and reduce by 1."]
         },
@@ -49,7 +45,7 @@
         },
         "theWidow:GrenadierPower": {
                 "NAME": "Grenadier",
-                "DESCRIPTIONS": ["#b", " extra potion slots.", " extra potion slot."]
+                "DESCRIPTIONS": ["#b", " extra potion slots.", " extra potion slot.", " (salvaged)"]
         },
         "theWidow:ConduitPower": {
                 "NAME": "Conduit",
@@ -122,5 +118,9 @@
         "theWidow:TazerPower": {
           "NAME": "Tazed",
           "DESCRIPTIONS": ["#yStunned in #b", " turn.", " turns."]
+        },
+        "theWidow:UnstoppablePower": {
+          "NAME": "Unstoppable",
+          "DESCRIPTIONS": ["Unaffected by #yWeak, #yFrail, and #yVulnerable."]
         }
 }

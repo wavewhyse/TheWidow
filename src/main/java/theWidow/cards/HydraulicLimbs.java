@@ -30,15 +30,9 @@ import static theWidow.WidowMod.makePowerPath;
 
 public class HydraulicLimbs extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(HydraulicLimbs.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("HydraulicLimbs.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -47,8 +41,6 @@ public class HydraulicLimbs extends CustomCard {
 
     private static final int COST = 2;
     private static final int  UPGRADED_COST = 1;
-
-    // /STAT DECLARATION/
 
     public HydraulicLimbs() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

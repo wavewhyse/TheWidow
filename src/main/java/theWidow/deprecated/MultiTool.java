@@ -20,16 +20,10 @@ import static theWidow.WidowMod.makeCardPath;
 @Deprecated
 public class MultiTool extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(MultiTool.class.getSimpleName());
     //private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     //private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("MultiTool.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
@@ -40,8 +34,6 @@ public class MultiTool extends CustomCard {
     private static final int UPGRADES = 2;
     private static final int UPGRADE_PLUS_UPGRADES = 1;
     private static final int EXHAUSTIVE = 3;
-
-    // /STAT DECLARATION/
 
     public MultiTool() {
         super(ID, languagePack.getCardStrings(ID).NAME, IMG, COST, languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

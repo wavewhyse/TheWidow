@@ -24,15 +24,9 @@ import static theWidow.WidowMod.makeCardPath;
 @Deprecated
 public class Opportunist extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Opportunist.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("Opportunist.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -43,8 +37,6 @@ public class Opportunist extends CustomCard {
     private static final int DAMAGE = 10;
     private static final int UPGRADE_PLUS_DMG = 2;
     private static final int VULN = 2;
-
-    // /STAT DECLARATION/
 
     public Opportunist() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

@@ -1,9 +1,19 @@
+    VERSION 0.13.1
+
+-new energy orb art on cards!
+-reworked Unstoppable: Deal 10 (13) damage. For 2 (3) turns, you are unaffected by Weak, Frail, and Vulnerable.
+-fixed Gemini Bot not playing if triggered by a card that opened a selection screen (like for upgrading)
+-when finishing a combat with extra potion slots (from Anarchy or Extra Compartments), potions in those slots will be salvaged and added to the combat rewards.
+-known bug: Distilled Card Potions in the combat rewards cannot save properly, if you quit before moving to the next floor. As a failsafe, on reloading the card will be a Madness.
+-fixed Unstable Cell only playing once when upgraded twice by one card (Refine, Transcendent Form)
+-Particle Accelerator aligns its multiple plays to look nicer
+
     VERSION 0.13
 
 -changed Hourglass Mark: Gain 5 Web at the start of combat.
 -cleaned up Downgrading and fixed Omni-Cannon's downgrades and upgrades
 -changed Module X's random distribution to not favor more options over being able to choose more times
--fixed Module X saving its upgrade order between runs
+-fixed Module X not saving its upgrade order between runs
 -Module X can now downgrade
 
     VERSION 0.12

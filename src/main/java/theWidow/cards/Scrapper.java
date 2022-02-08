@@ -22,15 +22,9 @@ import static theWidow.WidowMod.makePowerPath;
 
 public class Scrapper extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Scrapper.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Scrapper.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -40,8 +34,6 @@ public class Scrapper extends CustomCard {
     private static final int COST = 1;
     private static final int AMOUNT = 3;
     private static final int UPGRADE_PLUS_AMOUNT = 1;
-
-    // /STAT DECLARATION/
 
     public Scrapper() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

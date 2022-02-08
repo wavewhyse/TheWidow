@@ -17,7 +17,6 @@ import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
@@ -30,15 +29,12 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
-import com.megacrit.cardcrawl.rewards.RewardItem;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theWidow.cards.BombLauncher;
 import theWidow.cards.Chemistry;
 import theWidow.cards.Steelweave;
 import theWidow.potions.*;
-import theWidow.powers.WebPower;
 import theWidow.relics.BlackBoxRelic;
 import theWidow.relics.CyberheartRelic;
 import theWidow.util.TextureLoader;
@@ -56,12 +52,9 @@ public class WidowMod implements
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
         PostInitializeSubscriber,
-//        OnPowersModifiedSubscriber,
         PostPotionUseSubscriber,
         PostPowerApplySubscriber,
-        AddAudioSubscriber,
-        PostBattleSubscriber,
-        StartGameSubscriber{
+        AddAudioSubscriber{
     public static final Logger logger = LogManager.getLogger(WidowMod.class.getName());
     private static String modID;
 
@@ -74,10 +67,7 @@ public class WidowMod implements
     private static final String MODNAME = "The Widow";
     private static final String AUTHOR = "wavewhyse";
     private static final String DESCRIPTION = "spider but also cyborg";
-    
-    // =============== INPUT TEXTURE LOCATION =================
-    // Colors (RGB)
-    // Character Color
+
     public static final Color WIDOW_BLACK = CardHelper.getColor(55, 0, 20);
     public static final String THE_DEFAULT_SHOULDER_1 = "theWidowResources/images/char/defaultCharacter/shoulder.png";
     public static final String THE_DEFAULT_SHOULDER_2 = "theWidowResources/images/char/defaultCharacter/shoulder2.png";
@@ -89,12 +79,12 @@ public class WidowMod implements
     static final String ATTACK_WIDOW_BLACK = "theWidowResources/images/512/bg_attack_widow_black.png";
     static final String SKILL_WIDOW_BLACK = "theWidowResources/images/512/bg_skill_widow_black.png";
     static final String POWER_WIDOW_BLACK = "theWidowResources/images/512/bg_power_widow_black.png";
-    static final String ENERGY_ORB_WIDOW_BLACK = "theWidowResources/images/512/card_widow_black_orb2.png";
-    static final String CARD_ENERGY_ORB = "theWidowResources/images/512/card_small_orb2.png";
+    static final String ENERGY_ORB_WIDOW_BLACK = "theWidowResources/images/512/card_widow_black_orb3.png";
+    static final String CARD_ENERGY_ORB = "theWidowResources/images/512/card_small_black_orb3.png";
     static final String ATTACK_WIDOW_BLACK_PORTRAIT = "theWidowResources/images/1024/bg_attack_widow_black.png";
     static final String SKILL_WIDOW_BLACK_PORTRAIT = "theWidowResources/images/1024/bg_skill_widow_black.png";
     static final String POWER_WIDOW_BLACK_PORTRAIT = "theWidowResources/images/1024/bg_power_widow_black.png";
-    static final String ENERGY_ORB_WIDOW_BLACK_PORTRAIT = "theWidowResources/images/1024/card_widow_black_orb2.png";
+    static final String ENERGY_ORB_WIDOW_BLACK_PORTRAIT = "theWidowResources/images/1024/card_widow_black_orb3.png";
     // Character assets
     static final String THE_WIDOW_BUTTON = "theWidowResources/images/charSelect/WidowCharacterButton.png";
     static final String THE_WIDOW_PORTRAIT = "theWidowResources/images/charSelect/WidowCharacterPortraitBG.png";
@@ -103,8 +93,6 @@ public class WidowMod implements
     public static final String BADGE_IMAGE = "theWidowResources/images/Badge.png";
 
     public static int EGG_CLUTCH_UPGRADES = 0;
-
-    // =============== MAKE IMAGE PATHS =================
 
     public static String makeCardPath(String resourcePath) {
         return getModID() + "Resources/images/cards/" + resourcePath;
@@ -125,14 +113,6 @@ public class WidowMod implements
     public static String makePowerPath(String resourcePath) {
         return getModID() + "Resources/images/powers/" + resourcePath;
     }
-    
-    // =============== /MAKE IMAGE PATHS/ =================
-    
-    // =============== /INPUT TEXTURE LOCATION/ =================
-    
-    
-    // =============== SUBSCRIBE, CREATE THE COLOR_GRAY, INITIALIZE =================
-    
     public WidowMod() {
         logger.info("Subscribe to BaseMod hooks");
         
@@ -176,21 +156,13 @@ public class WidowMod implements
     public static String getModID() {
         return modID;
     }
-    
-    private static void pathCheck() {
-    }
-    
-    
-    public static void initialize() {
-        logger.info("========================= Initializing The Widow Mod. Hi. =========================");
-        WidowMod widowMod = new WidowMod();
-        logger.info("========================= /The Widow Mod Initialized. Hello World./ =========================");
-    }
-    
-    // ============== /SUBSCRIBE, CREATE THE COLOR_GRAY, INITIALIZE/ =================
 
-    // =============== LOAD THE CHARACTER =================
-    
+    public static void initialize() {
+        logger.info("========================= Initializing The Widow Mod. hi =========================");
+        WidowMod widowMod = new WidowMod();
+        logger.info("========================= /The Widow Mod Initialized. hi/ =========================");
+    }
+
     @Override
     public void receiveEditCharacters() {
         logger.info("Beginning to edit characters. " + "Add " + TheWidow.Enums.THE_WIDOW.toString());
@@ -201,12 +173,7 @@ public class WidowMod implements
         receiveEditPotions();
         logger.info("Added " + TheWidow.Enums.THE_WIDOW.toString());
     }
-    
-    // =============== /LOAD THE CHARACTER/ =================
-    
-    
-    // =============== POST-INITIALIZE =================
-    
+
     @Override
     public void receivePostInitialize() {
         logger.info("Loading badge image and mod options");
@@ -253,11 +220,7 @@ public class WidowMod implements
             WidePotionsMod.whitelistSimplePotion(NeurostimulantPotion.POTION_ID);
         }
     }
-    
-    // =============== / POST-INITIALIZE/ =================
-    
-    // ================ ADD POTIONS ===================
-    
+
     public void receiveEditPotions() {
         logger.info("Beginning to edit potions");
 
@@ -272,12 +235,7 @@ public class WidowMod implements
         
         logger.info("Done editing potions");
     }
-    
-    // ================ /ADD POTIONS/ ===================
-    
-    
-    // ================ ADD RELICS ===================
-    
+
     @Override
     public void receiveEditRelics() {
         logger.info("Adding relics");
@@ -291,20 +249,11 @@ public class WidowMod implements
 
         logger.info("Done adding relics!");
     }
-    
-    // ================ /ADD RELICS/ ===================
-    
-    
-    // ================ ADD CARDS ===================
-    
+
     @Override
     public void receiveEditCards() {
         logger.info("Adding variables");
-        //Ignore this
-        pathCheck();
-        // Add the Custom Dynamic Variables
         logger.info("Add variables");
-        // Add the Custom Dynamic variables
         new AutoAdd("TheWidowMod")
                 .packageFilter(UpgradesInHand.class)
                 .any(DynamicVariable.class, (info, dynamicVariable) -> {
@@ -320,57 +269,29 @@ public class WidowMod implements
 
         logger.info("Done adding cards!");
     }
-    
-    // ================ /ADD CARDS/ ===================
-    
-    
-    // ================ LOAD THE TEXT ===================
-    
+
     @Override
     public void receiveEditStrings() {
         logger.info("Beginning to edit strings for mod with ID: " + getModID());
-        
-        // CardStrings
+
         BaseMod.loadCustomStringsFile(CardStrings.class,
                 getModID() + "Resources/localization/eng/cardstrings.json");
-        
-        // PowerStrings
         BaseMod.loadCustomStringsFile(PowerStrings.class,
                 getModID() + "Resources/localization/eng/powerstrings.json");
-        
-        // RelicStrings
         BaseMod.loadCustomStringsFile(RelicStrings.class,
                 getModID() + "Resources/localization/eng/relicstrings.json");
-        
-        // PotionStrings
         BaseMod.loadCustomStringsFile(PotionStrings.class,
                 getModID() + "Resources/localization/eng/potionstrings.json");
-
-        // UIStrings
         BaseMod.loadCustomStringsFile(UIStrings.class,
                 getModID() + "Resources/localization/eng/uistrings.json");
-        
-        // CharacterStrings
         BaseMod.loadCustomStringsFile(CharacterStrings.class,
                 getModID() + "Resources/localization/eng/characterstrings.json");
         
         logger.info("Done editing strings");
     }
-    
-    // ================ /LOAD THE TEXT/ ===================
-    
-    // ================ LOAD THE KEYWORDS ===================
 
     @Override
     public void receiveEditKeywords() {
-        // Keywords on cards are supposed to be Capitalized, while in Keyword-String.json they're lowercase
-        //
-        // Multiword keywords on cards are done With_Underscores
-        //
-        // If you're using multiword keywords, the first element in your NAMES array in your keywords-strings.json has to be the same as the PROPER_NAME.
-        // That is, in Card-Strings.json you would have #yA_Long_Keyword (#y highlights the keyword in yellow).
-        // In Keyword-Strings.json you would have PROPER_NAME as A Long Keyword and the first element in NAMES be a long keyword, and the second element be a_long_keyword
-        
         Gson gson = new Gson();
         String json = Gdx.files.internal(getModID() + "Resources/localization/eng/keywordstrings.json").readString(String.valueOf(StandardCharsets.UTF_8));
         com.evacipated.cardcrawl.mod.stslib.Keyword[] keywords = gson.fromJson(json, com.evacipated.cardcrawl.mod.stslib.Keyword[].class);
@@ -378,12 +299,9 @@ public class WidowMod implements
         if (keywords != null) {
             for (Keyword keyword : keywords) {
                 BaseMod.addKeyword(getModID().toLowerCase(), keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
-                //  getModID().toLowerCase() makes your keyword mod specific (it won't show up in other cards that use that word)
             }
         }
     }
-    
-    // ================ /LOAD THE KEYWORDS/ ===================
 
     @Override
     public void receiveAddAudio() {
@@ -391,20 +309,9 @@ public class WidowMod implements
         BaseMod.addAudio("IN_FOR_THE_KILL", getModID() + "Resources/sounds/kill.ogg");
     }
     
-    // this adds "ModName:" before the ID of any card/relic/power etc.
-    // in order to avoid conflicts if any other mod uses the same ID.
     public static String makeID(String idText) {
         return getModID() + ":" + idText;
     }
-
-//    @Override
-//    public void receivePowersModified() {
-//        if (AbstractDungeon.player.hasRelic(HourglassMarkRelic.ID))
-//            AbstractDungeon.player.getRelic(HourglassMarkRelic.ID).onTrigger();
-//        for (AbstractMonster m: AbstractDungeon.getMonsters().monsters)
-//            if (m.hasPower(Disruptor.DisruptorPower.POWER_ID))
-//                m.getPower(Disruptor.DisruptorPower.POWER_ID).onSpecificTrigger();
-//    }
 
     @Override
     public void receivePostPotionUse(AbstractPotion pot) {
@@ -414,43 +321,16 @@ public class WidowMod implements
                 if (m.hb.hovered && !m.isDying)
                     target = m;
             ((BombLauncher.BombLauncherPower) AbstractDungeon.player.getPower(BombLauncher.BombLauncherPower.POWER_ID)).onPotionUse(pot, target);
-//            if (AbstractDungeon.player.hasRelic(SacredBark.ID) && pot instanceof BlessingOfTheForge)
-//                pot.use(AbstractDungeon.player);
             if (AbstractDungeon.player.hasPower(Chemistry.ChemistryPower.POWER_ID))
                 ((Chemistry.ChemistryPower)AbstractDungeon.player.getPower(Chemistry.ChemistryPower.POWER_ID)).onPotionUse(pot);
         }
-//        if (AbstractDungeon.player.hasRelic(SacredBark.ID) && pot instanceof BlessingOfTheForge)
-//            pot.use(AbstractDungeon.player);
         if (AbstractDungeon.player.hasPower(Chemistry.ChemistryPower.POWER_ID))
             ((Chemistry.ChemistryPower) AbstractDungeon.player.getPower(Chemistry.ChemistryPower.POWER_ID)).onPotionUse(pot);
-        AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-            @Override
-            public void update() {
-                if (AbstractDungeon.player.hasPower(WebPower.POWER_ID))
-                    ((WebPower) AbstractDungeon.player.getPower(WebPower.POWER_ID)).updateWebbedMonsters();
-                for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
-                    m.applyPowers();
-                isDone = true;
-            }
-        });
     }
 
     @Override
     public void receivePostPowerApplySubscriber(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if (AbstractDungeon.player.hasRelic(BlackBoxRelic.ID) && power instanceof ArtifactPower && target instanceof AbstractMonster)
             ((BlackBoxRelic) AbstractDungeon.player.getRelic(BlackBoxRelic.ID)).onTrigger(power, target);
-    }
-
-    @Override
-    public void receivePostBattle(AbstractRoom abstractRoom) {
-        for (RewardItem r : abstractRoom.rewards)
-            if (r.cards != null)
-                for (AbstractCard c : r.cards)
-                    c.upgrade();
-    }
-
-    @Override
-    public void receiveStartGame() {
-//        ModuleX.initializeUpgradeOrder(new Random(Settings.seed));
     }
 }

@@ -18,16 +18,10 @@ import static theWidow.WidowMod.makeCardPath;
 @Deprecated
 public class BackupBattery extends BetaCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(BackupBattery.class.getSimpleName());
     //private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     //private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("BackupBattery.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -37,8 +31,6 @@ public class BackupBattery extends BetaCard {
     private static final int COST = 0;
     private static final int ENERGY_GAIN = 2;
     private static final int EXHAUSTIVE = 1;
-
-    // /STAT DECLARATION/
 
     public BackupBattery() {
         super(ID, languagePack.getCardStrings(ID).NAME, IMG, COST, languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

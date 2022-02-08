@@ -22,15 +22,9 @@ import static theWidow.WidowMod.makeCardPath;
 @Deprecated
 public class ShockEmitters extends BetaCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(ShockEmitters.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("ShockEmitters.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -42,8 +36,6 @@ public class ShockEmitters extends BetaCard {
     private static final int UPGRADE_PLUS_DMG = 1;
     private static final int MAGIC = 3;
     private static final int UPGRADE_PLUS_MAGIC = 1;
-
-    // /STAT DECLARATION/
 
     public ShockEmitters() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

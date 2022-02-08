@@ -22,15 +22,9 @@ import static theWidow.WidowMod.makePowerPath;
 
 public class Neurojack extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Neurojack.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Neurojack.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -41,21 +35,17 @@ public class Neurojack extends CustomCard {
     private static final int UPGRADES = 1;
     private static final int UPGRADE_PLUS_UPGRADES = 1;
 
-    // /STAT DECLARATION/
-
     public Neurojack() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = UPGRADES;
     }
     
-    // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p,
                 new NeurojackPower(p, magicNumber), magicNumber ));
     }
 
-    //Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
@@ -69,7 +59,6 @@ public class Neurojack extends CustomCard {
 
         public static final String POWER_ID = WidowMod.makeID(NeurojackPower.class.getSimpleName());
         private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-        public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
         private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("NeurojackPower84.png"));
         private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("NeurojackPower32.png"));
@@ -99,9 +88,9 @@ public class Neurojack extends CustomCard {
         @Override
         public void updateDescription() {
             if (amount == 1) {
-                description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+                description = powerStrings.DESCRIPTIONS[0] + amount + powerStrings.DESCRIPTIONS[1];
             } else if (amount > 1) {
-                description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[2];
+                description = powerStrings.DESCRIPTIONS[0] + amount + powerStrings.DESCRIPTIONS[2];
             }
         }
 

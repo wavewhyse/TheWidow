@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.powers.WebPower2;
+import theWidow.powers.WebPower;
 
 import static theWidow.WidowMod.makeCardPath;
 
@@ -18,15 +18,9 @@ import static theWidow.WidowMod.makeCardPath;
 @Deprecated
 public class Skitter extends CustomCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = WidowMod.makeID(Skitter.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Skitter.png");
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -37,8 +31,6 @@ public class Skitter extends CustomCard {
     private static final int UPGRADED_COST = 0;
     private static final int WEB = 3;
 
-    // /STAT DECLARATION/
-
     public Skitter() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = WEB;
@@ -48,7 +40,7 @@ public class Skitter extends CustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new WebPower2(p,
+        addToBot(new ApplyPowerAction(p, p, new WebPower(p,
                 magicNumber * AbstractDungeon.getMonsters().monsters.size()),
                 magicNumber * AbstractDungeon.getMonsters().monsters.size()));
     }
