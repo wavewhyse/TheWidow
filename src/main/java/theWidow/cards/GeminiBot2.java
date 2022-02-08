@@ -1,7 +1,7 @@
 package theWidow.cards;
 
 import basemod.abstracts.CustomCard;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -36,6 +36,7 @@ public class GeminiBot2 extends CustomCard {
     //private static final int EXHAUSTIVE = 2;
 
     private AbstractCard cardToCopy;
+    private int storedEnergyOnUse;
 
     // /STAT DECLARATION/
 
@@ -59,30 +60,33 @@ public class GeminiBot2 extends CustomCard {
             cardToCopy.upgrade();
         //cardToCopy.dontTriggerOnUseCard = true;
         cardToCopy.purgeOnUse = true;
-        AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(cardToCopy, m, energyOnUse, true, true));
+        AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(cardToCopy, m, storedEnergyOnUse, true, true));
     }
 
     @Override
     public void triggerOnOtherCardPlayed(AbstractCard c) {
         dontTriggerOnUseCard = true;
         cardToCopy = c.makeCopy();
-        AbstractMonster m;
-        if (AbstractDungeon.actionManager.cardQueue.get(0).monster != null)
-            m = AbstractDungeon.actionManager.cardQueue.get(0).monster;
-        else
-            m = null;
-        addToTop(new AbstractGameAction() {
-            @Override
-            public void update() {
-                if (!AbstractDungeon.player.hand.contains(GeminiBot2.this)) {
-                    cardToCopy = null;
-                    isDone = true;
-                    return;
-                }
-                AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(GeminiBot2.this, m, c.energyOnUse, true, true));
-                isDone = true;
-            }
-        });
+        cardToCopy.misc = c.misc;
+//        AbstractMonster m;
+//        if (AbstractDungeon.actionManager.cardQueue.get(0).monster != null)
+//            m = AbstractDungeon.actionManager.cardQueue.get(0).monster;
+//        else
+//            m = null;
+        addToBot(new NewQueueCardAction(this, AbstractDungeon.actionManager.cardQueue.get(0).monster, true, true));
+        storedEnergyOnUse = c.energyOnUse;
+//        addToTop(new AbstractGameAction() {
+//            @Override
+//            public void update() {
+//                if (!AbstractDungeon.player.hand.contains(GeminiBot2.this)) {
+//                    cardToCopy = null;
+//                    isDone = true;
+//                    return;
+//                }
+//                AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(GeminiBot2.this, m, c.energyOnUse, true, true));
+//                isDone = true;
+//            }
+//        });
     }
 
     @Override
