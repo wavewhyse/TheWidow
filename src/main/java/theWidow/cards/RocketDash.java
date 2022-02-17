@@ -74,7 +74,6 @@ public class RocketDash extends BetaCard {
         damageQueued = false;
     }
 
-    // Upgraded stats.
     @Override
     public void upgrade() {
         upgradeBlock(UPGRADE_PLUS_BLOCK );

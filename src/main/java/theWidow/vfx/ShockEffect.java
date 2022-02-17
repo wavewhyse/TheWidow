@@ -16,18 +16,18 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 public class ShockEffect extends AbstractGameEffect {
     private Texture img = null;
     private int index = 0;
-    private float x;
-    private float y;
-    private boolean flipX;
-    private boolean flipY;
-    private float intervalDuration;
+    private final float x;
+    private final float y;
+    private final boolean flipX;
+    private final boolean flipY;
+    private final float intervalDuration;
 
     public ShockEffect(float x, float y) {
         this.renderBehind = false;// 20
         this.x = x;// 21
         this.y = y;// 22
         this.color = Settings.BLUE_TEXT_COLOR.cpy();// 23
-        this.img = (Texture)ImageMaster.LIGHTNING_PASSIVE_VFX.get(this.index);// 24
+        this.img = ImageMaster.LIGHTNING_PASSIVE_VFX.get(this.index);// 24
         this.scale = MathUtils.random(5.6F, 7.0F) * Settings.scale;// 25
         this.rotation = MathUtils.random(360.0F);// 26
 
@@ -46,7 +46,7 @@ public class ShockEffect extends AbstractGameEffect {
                 return;// 43
             }
 
-            this.img = (Texture)ImageMaster.LIGHTNING_PASSIVE_VFX.get(this.index);// 45
+            this.img = ImageMaster.LIGHTNING_PASSIVE_VFX.get(this.index);// 45
             this.duration = this.intervalDuration;// 47
         }
 

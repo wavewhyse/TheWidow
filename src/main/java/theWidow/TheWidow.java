@@ -32,35 +32,19 @@ import java.util.ArrayList;
 
 import static theWidow.WidowMod.makeID;
 
-//Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
-//and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
-//All text (starting description and loadout, anything labeled TEXT[]) can be found in DefaultMod-character-Strings.json in the resources
-
 public class TheWidow extends CustomPlayer {
     public static final Logger logger = LogManager.getLogger(WidowMod.class.getName());
-
-    // =============== CHARACTER ENUMERATORS =================
-    // These are enums for your Characters color (both general color and for the card library) as well as
-    // an enum for the name of the player class - IRONCLAD, THE_SILENT, DEFECT, YOUR_CLASS ...
-    // These are all necessary for creating a character. If you want to find out where and how exactly they are used
-    // in the basegame (for fun and education) Ctrl+click on the PlayerClass, CardColor and/or LibraryType below and go down the
-    // Ctrl+click rabbit hole
 
     public static class Enums {
         @SpireEnum
         public static AbstractPlayer.PlayerClass THE_WIDOW;
-        @SpireEnum(name = "THE_WIDOW") // These two HAVE to have the same absolutely identical name.
+        @SpireEnum(name = "THE_WIDOW")
         public static AbstractCard.CardColor COLOR_BLACK;
         @SpireEnum(name = "THE_WIDOW") @SuppressWarnings("unused")
         public static CardLibrary.LibraryType WIDOW_BLACK;
         @SpireEnum
         public static AbstractPotion.PotionRarity BOMB;
     }
-
-    // =============== CHARACTER ENUMERATORS  =================
-
-
-    // =============== BASE STATS =================
 
     public static final int ENERGY_PER_TURN = 3;
     public static final int STARTING_HP = 75;
@@ -69,20 +53,10 @@ public class TheWidow extends CustomPlayer {
     public static final int CARD_DRAW = 5;
     public static final int ORB_SLOTS = 0;
 
-    // =============== /BASE STATS/ =================
-
-
-    // =============== STRINGS =================
-
     private static final String ID = makeID("WidowCharacter");
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     private static final String[] NAMES = characterStrings.NAMES;
     private static final String[] TEXT = characterStrings.TEXT;
-
-    // =============== /STRINGS/ =================
-
-
-    // =============== TEXTURES OF BIG ENERGY ORB ===============
 
     public static final String[] orbTextures = {
             "theWidowResources/images/char/defaultCharacter/orb/layer1.png",
@@ -96,10 +70,6 @@ public class TheWidow extends CustomPlayer {
             "theWidowResources/images/char/defaultCharacter/orb/layer3d.png",
             "theWidowResources/images/char/defaultCharacter/orb/layer4d.png",
             "theWidowResources/images/char/defaultCharacter/orb/layer5d.png",};
-
-    // =============== /TEXTURES OF BIG ENERGY ORB/ ===============
-
-    // =============== CHARACTER CLASS START =================
 
     public TheWidow(String name, PlayerClass setClass) {
         super(name, setClass, orbTextures,
@@ -141,10 +111,6 @@ public class TheWidow extends CustomPlayer {
 
     }
 
-    // =============== /CHARACTER CLASS END/ =================
-
-
-    // Starting description and loadout
     @Override
     public CharSelectInfo getLoadout() {
         return new CharSelectInfo(NAMES[0], TEXT[0],
@@ -152,14 +118,12 @@ public class TheWidow extends CustomPlayer {
                 getStartingDeck(), false);
     }
 
-    // Starting Deck
     @Override
     public ArrayList<String> getStartingDeck() {
         ArrayList<String> retVal = new ArrayList<>();
 
         logger.info("Begin loading starter Deck Strings");
 
-        retVal.add(StrikeWidow.ID);
         retVal.add(StrikeWidow.ID);
         retVal.add(StrikeWidow.ID);
         retVal.add(StrikeWidow.ID);
@@ -176,7 +140,6 @@ public class TheWidow extends CustomPlayer {
         return retVal;
     }
 
-    // Starting Relics	
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
 
@@ -187,7 +150,6 @@ public class TheWidow extends CustomPlayer {
         return retVal;
     }
 
-    // character Select screen effect
     @Override
     public void doCharSelectScreenSelectEffect() {
         CardCrawlGame.sound.playA("MONSTER_SNECKO_GLARE", 1.25f); // Sound Effect
@@ -195,78 +157,61 @@ public class TheWidow extends CustomPlayer {
                 false); // Screen Effect
     }
 
-    // character Select on-button-press sound effect
     @Override
     public String getCustomModeCharacterButtonSoundKey() {
         return "MONSTER_SNECKO_GLARE";
     }
 
-    // Should return how much HP your maximum HP reduces by when starting a run at
-    // Ascension 14 or higher. (ironclad loses 5, defect and silent lose 4 hp respectively)
     @Override
     public int getAscensionMaxHPLoss() {
         return 4;
     }
 
-    // Should return the card color enum to be associated with your character.
     @Override
     public AbstractCard.CardColor getCardColor() {
         return Enums.COLOR_BLACK;
     }
 
-    // Should return a color object to be used to color the trail of moving cards
     @Override
     public Color getCardTrailColor() {
         return WidowMod.WIDOW_BLACK.cpy();
     }
 
-    // Should return a BitmapFont object that you can use to customize how your
-    // energy is displayed from within the energy orb.
     @Override
     public BitmapFont getEnergyNumFont() {
         return FontHelper.energyNumFontPurple;
     }
 
-    // Should return class name as it appears in run history screen.
     @Override
     public String getLocalizedCharacterName() {
         return NAMES[0];
     }
 
-    //Which card should be obtainable from the Match and Keep event?
     @Override
     public AbstractCard getStartCardForEvent() {
         return new Steelweave();
     }
 
-    // The class name as it appears next to your player name in-game
     @Override
     public String getTitle(AbstractPlayer.PlayerClass playerClass) {
         return NAMES[1];
     }
 
-    // Should return a new instance of your character, sending name as its name parameter.
     @Override
     public AbstractPlayer newInstance() {
         return new TheWidow(name, chosenClass);
     }
 
-    // Should return a Color object to be used to color the miniature card images in run history.
     @Override
     public Color getCardRenderColor() {
         return WidowMod.WIDOW_BLACK;
     }
 
-    // Should return a Color object to be used as screen tint effect when your
-    // character attacks the heart.
     @Override
     public Color getSlashAttackColor() {
         return WidowMod.WIDOW_BLACK;
     }
 
-    // Should return an AttackEffect array of any size greater than 0. These effects
-    // will be played in sequence as your character's finishing combo on the heart.
-    // Attack effects are the same as used in DamageAction and the like.
     @Override
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
         return new AbstractGameAction.AttackEffect[]{
@@ -278,17 +223,11 @@ public class TheWidow extends CustomPlayer {
                 AbstractGameAction.AttackEffect.POISON};
     }
 
-    // Should return a string containing what text is shown when your character is
-    // about to attack the heart. For example, the defect is "NL You charge your
-    // core to its maximum..."
     @Override
     public String getSpireHeartText() {
         return TEXT[1];
     }
 
-    // The vampire events refer to the base game characters as "brother", "sister",
-    // and "broken one" respectively.This method should return a String containing
-    // the full text that will be displayed as the first screen of the vampires event.
     @Override
     public String getVampireText() {
         return TEXT[2];

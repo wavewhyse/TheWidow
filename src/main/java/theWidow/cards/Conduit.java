@@ -4,7 +4,9 @@ import basemod.abstracts.CustomCard;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -34,7 +36,7 @@ public class Conduit extends CustomCard {
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.SKILL;
+    private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 1;
@@ -44,12 +46,21 @@ public class Conduit extends CustomCard {
     public Conduit() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = WEB;
+        isMultiDamage = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new WebPower(p, magicNumber), magicNumber));
-        addToBot(new ApplyPowerAction(p, p, new ConduitPower(p, 1), 1));
+
+        damage = magicNumber;
+        if (p.hasPower(WebPower.POWER_ID))
+            damage += p.getPower(WebPower.POWER_ID).amount;
+        baseDamage = damage;
+        calculateCardDamage(m);
+        addToBot(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+
+//        addToBot(new ApplyPowerAction(p, p, new ConduitPower(p, 1), 1));
     }
 
     @Override
@@ -60,6 +71,7 @@ public class Conduit extends CustomCard {
         }
     }
 
+    @Deprecated
     public static class ConduitPower extends AbstractPower implements CloneablePowerInterface {
         public static final String POWER_ID = WidowMod.makeID(ConduitPower.class.getSimpleName());
         private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);

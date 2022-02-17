@@ -32,10 +32,7 @@ public class Labdomen extends CustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (upgraded)
-            addToBot(new ObtainPotionAction(new SilkPotion(true)));
-        else
-            addToBot(new ObtainPotionAction(new SilkPotion()));
+        addToBot(new ObtainPotionAction(new SilkPotion(upgraded)));
     }
 
     @Override

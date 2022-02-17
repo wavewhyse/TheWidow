@@ -1,3 +1,35 @@
+    VERSION 0.14.1
+
+
+    VERSION 0.14
+
+-new shop relic: Flux Catalyst. When you Smith at Rest Sites, Upgrade two random cards instead of one card.
+-new card: Web Swing (common 1-cost skill) Gain 2(3) Web. Apply 2 (3) Weak. Draw a card.
+-new card: Stalk (common 1-cost skill) Gain 8 (11) Block. Apply 2 (3) Vulnerable.
+-new card: Test Subject (uncommon 1(0)-cost skill) Apply copies of all debuffs on an enemy to all enemies. Exhaust.
+-returning card: Opportunist (uncommon 3-cost attack) Deal 5 (6) damage 3 times. If the enemy is Weak, Sapped, or does not intend to attack, gain 3 energy.
+-Black Venom B (double/triple debuffs) removed (replaced by Test Subject)
+
+-Widow's starting deck now has 4 Strikes instead of 5
+
+-lots of small adjustments to damage, block, and rarity on several cards
+-Black Venom changed: Enemy loses Strength equal to the number of debuffs it has (+1). Exhaust.
+-Sadistic Intent no longer triggers from Caught. Caught applied increased from 4 (6) -> 5 (8)
+-Exploit Sap per debuff doubled, from 1 to 2
+-Blacktar Adrenaline card draw 2 -> 1, cost 1 -> 0
+-Blacktar Adrenaline+ card draw 2 -> 1, energy gain 2 -> 3
+-Hourglass Mark Web gain increased by 1.
+
+-Fixed Sapped decaying incorrectly.
+-Fixed Extra Compartments permanently removing potion slots.
+-Fixed compendium crashes.
+-Fixed Particle Accelerator not working with enemy-targeting cards.
+-Gemini Bot now interacts with Particle Accelerator in the way you'd want.
+-Meltdown now interacts with Gemini Bot in a way that makes more sense
+
+-new art for Strike, Unstoppable, Tazer, Test Subject, Sewing Kit, and Anarchist's Cookbook!
+-touched up art for Fusion Scythe
+
     VERSION 0.13.1
 
 -new energy orb art on cards!

@@ -53,7 +53,7 @@ public class Prototyping extends CustomCard {
     }
 
     private static final float DURATION = Settings.ACTION_DUR_XFAST;
-    public class PrototypingDowngradeAction extends AbstractGameAction {
+    public static class PrototypingDowngradeAction extends AbstractGameAction {
         public PrototypingDowngradeAction() {
             actionType = ActionType.CARD_MANIPULATION;
             duration = DURATION;

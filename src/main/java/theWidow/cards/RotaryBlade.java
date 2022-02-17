@@ -47,7 +47,6 @@ public class RotaryBlade extends BetaCard {
         addToBot(new WidowUpgradeCardAction(this));
     }
 
-    // Upgraded stats.
     @Override
     public void upgrade() {
         upgradeMagicNumber(UPGRADE_PLUS_HITS);

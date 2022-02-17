@@ -26,7 +26,6 @@ public class VenomCocktailPotion extends CustomPotion {
     public static final Color SPOTS_COLOR = Color.FOREST;
 
     public VenomCocktailPotion() {
-        // The bottle shape and inside is determined by potion size and color. The actual colors are the main DefaultMod.java
         super(NAME, POTION_ID, PotionRarity.UNCOMMON, PotionSize.M, PotionColor.FAIRY);
     }
 

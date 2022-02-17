@@ -33,10 +33,7 @@ public class TheBigOne extends CustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (upgraded)
-            addToBot(new ObtainPotionAction(new MiniNukePotion(true)));
-        else
-            addToBot(new ObtainPotionAction(new MiniNukePotion()));
+        addToBot(new ObtainPotionAction(new MiniNukePotion(upgraded)));
     }
 
     @Override

@@ -1,3 +1,4 @@
 #!/bin/sh
 
-java -jar /mnt/Games/SteamLibrary-Linux/steamapps/common/SlayTheSpire/mod-uploader.jar upload -w The_Widow
+cd /mnt/Games/SteamLibrary-Linux/steamapps/common/SlayTheSpire/
+java -jar mod-uploader.jar upload -w The_Widow

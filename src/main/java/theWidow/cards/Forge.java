@@ -27,8 +27,8 @@ public class Forge extends CustomCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 2;
-    private static final int DAMAGE = 12;
-    private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int DAMAGE = 16;
+    private static final int UPGRADE_PLUS_DMG = 5;
 
     public Forge() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

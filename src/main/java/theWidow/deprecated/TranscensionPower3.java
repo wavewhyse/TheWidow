@@ -27,7 +27,7 @@ public class TranscensionPower3 extends AbstractPower implements CloneablePowerI
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("TranscensionPower84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("TranscensionPower32.png"));
 
-    private boolean upgraded;
+    private final boolean upgraded;
 
     public TranscensionPower3(final AbstractCreature owner, int amount, boolean upgraded) {
         name = powerStrings.NAME;

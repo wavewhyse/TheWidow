@@ -26,7 +26,6 @@ public class NeurostimulantPotion extends CustomPotion {
     public static final Color SPOTS_COLOR = Color.WHITE;
 
     public NeurostimulantPotion() {
-        // The bottle shape and inside is determined by potion size and color. The actual colors are the main DefaultMod.java
         super(NAME, POTION_ID, PotionRarity.RARE, PotionSize.BOLT, PotionColor.ENERGY);
     }
 

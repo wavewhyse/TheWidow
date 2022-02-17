@@ -32,8 +32,8 @@ public class Scrapper extends CustomCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 1;
-    private static final int AMOUNT = 3;
-    private static final int UPGRADE_PLUS_AMOUNT = 1;
+    private static final int AMOUNT = 4;
+    private static final int UPGRADE_PLUS_AMOUNT = 2;
 
     public Scrapper() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

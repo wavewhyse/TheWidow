@@ -26,7 +26,7 @@
   },
   "theWidow:WebSwing": {
     "NAME": "Web Swing",
-    "DESCRIPTION": "Gain !B! Block. NL Draw !M! cards."
+    "DESCRIPTION": "Gain !M! thewidow:Web. NL Apply !M! Weak. NL Draw a card."
   },
   "theWidow:Harden": {
     "NAME": "Harden",
@@ -153,7 +153,7 @@
   },
   "theWidow:Conduit": {
     "NAME": "Conduit",
-    "DESCRIPTION": "Gain !M! thewidow:Web. NL Your next attack deals extra damage equal to your thewidow:Web."
+    "DESCRIPTION": "Gain !M! thewidow:Web. NL Deal damage equal to your thewidow:Web to ALL enemies."
   },
   "theWidow:Electroneurons": {
     "NAME": "Electroneurons",
@@ -172,9 +172,10 @@
     "NAME": "Lace",
     "DESCRIPTION": "Gain !M! thewidow:Web. NL Gain !theWidow:M2! Vulnerable."
   },
-  "theWidow:BlackVenom": {
-    "NAME": "Black Venom A",
-    "DESCRIPTION": "Apply !M! Weak, !M! Vulnerable, and !theWidow:M2! thewidow:Sapped. Target loses !theWidow:M3! Strength. NL Exhaust."
+  "theWidow:BlackVenom3": {
+    "NAME": "Black Venom",
+    "DESCRIPTION": "Enemy loses Strength equal to the number of debuffs it has. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Enemy loses Strength equal to the number of debuffs it has +1. NL Exhaust."
   },
   "theWidow:TranscendentForm": {
     "NAME": "Transcendent Form",
@@ -218,7 +219,7 @@
     "NAME": "Searing Blade",
     "DESCRIPTION": "thewidow:Beta+. NL Deal !D! damage."
   },
-  "theWidow:GeminiBot2": {
+  "theWidow:GeminiBot": {
     "NAME": "Gemini Bot",
     "DESCRIPTION": "{@@}Unplayable. NL When you play another card in hand, play this as a {!Upgrades!|0=non-}Upgraded copy of that card and Exhaust."
   },
@@ -240,11 +241,11 @@
   },
   "theWidow:Opportunist": {
     "NAME": "Opportunist",
-    "DESCRIPTION": "Apply !M! Vulnerable. If the target is Weak, thewidow:Paralyzed, thewidow:Caught, or does not intend to attack, deal !D! damage twice."
+    "DESCRIPTION": "Deal !D! damage 3 times. NL If the enemy is Weak, thewidow:Sapped, or does not intend to attack, gain [E] [E] [E]."
   },
   "theWidow:Underfoot": {
     "NAME": "Underfoot",
-    "DESCRIPTION": "Gain !B! Block. NL Extend the duration of Weak and Vulnerable on an enemy by !M! turns."
+    "DESCRIPTION": "Gain !B! Block. NL Extend the duration of Weak and Vulnerable on ALL enemies by !M! turns."
   },
   "theWidow:Exploit": {
     "NAME": "Exploit",
@@ -264,7 +265,7 @@
   },
   "theWidow:SadisticIntent": {
     "NAME": "Sadistic Intent",
-    "DESCRIPTION": "When you apply a debuff to an enemy, also apply !M! thewidow:Caught."
+    "DESCRIPTION": "When you apply a debuff other than Caught to an enemy, also apply !M! thewidow:Caught."
   },
   "theWidow:DischargeBattery": {
     "NAME": "Discharge Battery",
@@ -305,7 +306,7 @@
   },
   "theWidow:Unstoppable": {
     "NAME": "Unstoppable",
-    "DESCRIPTION": "Deal !D! damage. For !M! turns, you are unaffected by Weak, Frail, and Vulnerable."
+    "DESCRIPTION": "Deal !D! damage. NL For !M! turns, you are unaffected by Weak, Frail, and Vulnerable."
   },
   "theWidow:Weaving": {
     "NAME": "Weaving",
@@ -335,10 +336,6 @@
   "theWidow:BackupBattery": {
     "NAME": "Backup Battery",
     "DESCRIPTION": "thewidow:Beta. NL Gain [E] [E]. NL Exhaustive !stslib:ex!."
-  },
-  "theWidow:Nanobots": {
-    "NAME": "Nanobots",
-    "DESCRIPTION": "thewidow:Beta. NL Deal !D! damage. NL When this card is Upgraded in combat, add a copy into your discard pile."
   },
   "theWidow:UnstableCell": {
     "NAME": "Unstable Cell",
@@ -370,7 +367,8 @@
   },
   "theWidow:BlackTarAdrenaline": {
     "NAME": "Blacktar Adrenaline",
-    "DESCRIPTION": "Gain [E] [E]. NL Draw !M! cards. NL Gain 2 Vulnerable."
+    "DESCRIPTION": "Gain [E] [E]. NL Draw 1 card. NL Gain 2 Vulnerable.",
+    "UPGRADE_DESCRIPTION": "Gain [E] [E] [E]. NL Draw 1 card. NL Gain 2 Vulnerable."
   },
   "theWidow:BlackVenom2": {
     "NAME": "Black Venom B",
@@ -449,15 +447,10 @@
     "NAME": "Particle Accelerator",
     "DESCRIPTION": "{@@}Play a 0-Cost card in your hand X{!Upgrades!|>0=+1} times."
   },
-  "theWidow:Nanobots2": {
-    "NAME": "Nanobots 2",
-    "DESCRIPTION": "Gain !B! Block. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Add a Nanobots to your hand. NL Exhaust."
-  },
-  "theWidow:Nanobots3": {
+  "theWidow:Nanobots": {
     "NAME": "Nanobots",
     "DESCRIPTION": "Deal !D! damage. NL Draw a card.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Draw a card. NL Shuffle a Nanobots into your draw pile."
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Draw a card. NL Shuffle an unupgraded copy of this card into your draw pile."
   },
   "theWidow:Fangs": {
     "NAME": "Fangs",
@@ -466,5 +459,13 @@
   "theWidow:Tazer": {
     "NAME": "Tazer",
     "DESCRIPTION": "Deal !D! damage. NL In 3 turns, Stun the target. NL Exhaust."
+  },
+  "theWidow:TestSubject": {
+    "NAME": "Test Subject",
+    "DESCRIPTION": "Apply copies of one enemy's debuffs to ALL enemies. NL Exhaust."
+  },
+  "theWidow:Stalk": {
+    "NAME": "Stalk",
+    "DESCRIPTION": "Gain !B! Block. NL Apply !M! Vulnerable."
   }
 }

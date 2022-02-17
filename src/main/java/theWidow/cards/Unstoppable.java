@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -37,7 +36,7 @@ public class Unstoppable extends CustomCard {
 
     public static final String ID = WidowMod.makeID(Unstoppable.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("Unstoppable.png");
+    public static final String IMG = makeCardPath("Unstoppable.png");
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -46,7 +45,7 @@ public class Unstoppable extends CustomCard {
 
     private static final int COST = 1;
     private static final int DAMAGE = 10;
-    private static final int UPGRADE_PLUS_DMG = 3;
+    private static final int UPGRADE_PLUS_DMG = 4;
     private static final int DURATION = 2;
     private static final int UPGRADE_PLUS_DURATION = 1;
 
@@ -54,8 +53,6 @@ public class Unstoppable extends CustomCard {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = DURATION;
-        if (CardLibrary.getAllCards() != null && !CardLibrary.getAllCards().isEmpty())
-            theWidow.util.artHelp.CardArtRoller.computeCard(this);
     }
 
     @Override

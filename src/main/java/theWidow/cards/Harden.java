@@ -41,7 +41,6 @@ public class Harden extends BetaCard {
                 new GainBlockAction(p, block));
     }
 
-    // Upgraded stats.
     @Override
     public void upgrade() {
         upgradeBlock(UPGRADE_PLUS_BLOCK + timesUpgraded);

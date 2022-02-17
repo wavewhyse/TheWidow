@@ -34,7 +34,7 @@
   },
   "theWidow:SewingKitRelic": {
     "NAME": "Sewing Kit",
-    "FLAVOR": "A great way to pass the time, and make something useful too.",
+    "FLAVOR": "A great way to pass the time; and make something useful too.",
     "DESCRIPTIONS": ["#yBeta cards have an additional #yUpgrade."]
   },
   "theWidow:AnarchistsCookbookRelic": {
@@ -46,5 +46,10 @@
     "NAME": "Perfect Heart",
     "FLAVOR": "Can you even call yourself human anymore?",
     "DESCRIPTIONS": ["Replaces #pCyberheart. At the start of each turn, #yUpgrade #b", " random cards in your hand for the rest of combat."]
+  },
+  "theWidow:FluxCatalystRelic": {
+    "NAME": "Flux Catalyst",
+    "FLAVOR": "A necessary component of making steel and other high-grade metals.",
+    "DESCRIPTIONS": ["When you Smith at Rest Sites, #yUpgrade two #brandom cards instead of one card."]
   }
 }

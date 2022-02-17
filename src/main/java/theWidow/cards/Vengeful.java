@@ -68,16 +68,12 @@ public class Vengeful extends CustomCard {
         private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("VengefulPower84.png"));
         private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("VengefulPower32.png"));
 
-        private boolean negateOwnDebuff;
-
         public VengefulPower(final AbstractCreature owner, final int amount) {
             name = powerStrings.NAME;
             ID = POWER_ID;
 
             this.owner = owner;
             this.amount = amount;
-
-            negateOwnDebuff = false;
 
             type = PowerType.BUFF;
             isTurnBased = false;

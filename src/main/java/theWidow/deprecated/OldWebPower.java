@@ -40,7 +40,7 @@ public class OldWebPower extends AbstractPower implements CloneablePowerInterfac
 
     private static final Texture webBreakTex = TextureLoader.getTexture(makePowerPath("WebPower32.png"));
     private Hitbox wbhb;
-    private ArrayList<PowerTip> tips;
+    private final ArrayList<PowerTip> tips;
 
     public static final float DAMAGE_MULT = 0.75f;
 

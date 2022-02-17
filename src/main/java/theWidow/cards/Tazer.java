@@ -17,7 +17,6 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -33,7 +32,7 @@ public class Tazer extends CustomCard {
 
     public static final String ID = WidowMod.makeID(Tazer.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = WidowMod.makeCardPath("Attack.png");// "public static final String IMG = WidowMod.makeCardPath("Tazer.png");
+    public static final String IMG = WidowMod.makeCardPath("Tazer.png");
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -47,14 +46,12 @@ public class Tazer extends CustomCard {
     public Tazer() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
-        if (CardLibrary.getAllCards() != null && !CardLibrary.getAllCards().isEmpty())
-            theWidow.util.artHelp.CardArtRoller.computeCard(this);
         exhaust = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot( new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        addToBot( new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         addToBot( new ApplyPowerAction(m, p, new TazerPower(m, 3), 3));
     }
 
@@ -85,13 +82,18 @@ public class Tazer extends CustomCard {
         @Override
         public void atEndOfRound() {
             if (amount <= 1) {
-                addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+                flash();
                 addToBot(new SFXAction("ORB_LIGHTNING_EVOKE"));
                 addToBot(new VFXAction(new ShockEffect(owner.hb.cX, owner.hb.cY)));
                 addToBot(new StunMonsterAction((AbstractMonster) owner, AbstractDungeon.player));
-            } else
+                addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+            } else {
+                flashWithoutSound();
                 addToBot(new ReducePowerAction(owner, owner, this, 1));
+            }
         }
+
+
 
         @Override
         public void updateDescription() {

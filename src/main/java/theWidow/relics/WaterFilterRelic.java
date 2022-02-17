@@ -20,7 +20,7 @@ public class WaterFilterRelic extends CustomRelic implements BetterOnUsePotionRe
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("WaterFilter.png"));
 
     public WaterFilterRelic() {
-        super(ID, IMG, OUTLINE, RelicTier.RARE, LandingSound.CLINK);
+        super(ID, IMG, OUTLINE, RelicTier.RARE, LandingSound.SOLID);
     }
 
     private static final int PERCENT_CHANCE = 25;

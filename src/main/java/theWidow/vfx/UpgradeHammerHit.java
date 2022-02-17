@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.vfx.UpgradeHammerImprintEffect;
 import com.megacrit.cardcrawl.vfx.UpgradeShineParticleEffect;
 
 public class UpgradeHammerHit extends AbstractGameEffect {
-    private AbstractCard card;
+    private final AbstractCard card;
 
     public UpgradeHammerHit(AbstractCard c) {
         this.card = c;

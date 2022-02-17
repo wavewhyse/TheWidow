@@ -74,7 +74,7 @@ public class LaserDrone extends CustomCard {
 
         private static int laserDroneIDOffset;
 
-        private AbstractCreature source;
+        private final AbstractCreature source;
 
         public LaserDronePower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
             name = powerStrings.NAME;

@@ -46,9 +46,9 @@ public class Distill extends CustomCard {
     }
 
     class DistillAction extends AbstractGameAction {
-        private AbstractPlayer p = AbstractDungeon.player;
+        private final AbstractPlayer p = AbstractDungeon.player;
         private final float DURATION = Settings.ACTION_DUR_FAST;
-        private ArrayList<AbstractCard> unpotionable = new ArrayList<>();
+        private final ArrayList<AbstractCard> unpotionable = new ArrayList<>();
         public DistillAction() {
             actionType = ActionType.CARD_MANIPULATION;
             duration = DURATION;

@@ -27,22 +27,22 @@ public class BlackTarAdrenaline extends CustomCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
-    private static final int COST = 1;
-    private static final int UPGRADED_COST = 0;
+    private static final int COST = 0;
     private static final int ENERGY_GAIN = 2;
-    private static final int DRAW = 2;
+    private static final int UPGRADE_PLUS_ENERGY_GAIN = 1;
+    private static final int DRAW = 1;
     private static final int VULNERABLE = 2;
 
     public BlackTarAdrenaline() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = DRAW;
+        magicNumber = baseMagicNumber = ENERGY_GAIN;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new VFXAction(new AdrenalineEffect(), 0.15F));
-        addToBot(new GainEnergyAction(ENERGY_GAIN));
-        addToBot(new DrawCardAction(magicNumber));
+        addToBot(new GainEnergyAction(magicNumber));
+        addToBot(new DrawCardAction(DRAW));
         addToBot(new ApplyPowerAction(p, p, new VulnerablePower(p, VULNERABLE, false), VULNERABLE));
     }
 
@@ -50,8 +50,8 @@ public class BlackTarAdrenaline extends CustomCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADED_COST);
-            upgradedCost = true;
+            upgradeMagicNumber(UPGRADE_PLUS_ENERGY_GAIN);
+            rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

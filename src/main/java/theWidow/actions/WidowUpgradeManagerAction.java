@@ -13,10 +13,10 @@ import theWidow.WidowMod;
 import java.util.ArrayList;
 
 public class WidowUpgradeManagerAction extends AbstractGameAction {
-    private AbstractPlayer p = AbstractDungeon.player;
+    private final AbstractPlayer p = AbstractDungeon.player;
     private static final UIStrings uistrings = CardCrawlGame.languagePack.getUIString(WidowMod.makeID(WidowUpgradeManagerAction.class.getSimpleName()));
 
-    private ArrayList<AbstractCard> cannotUpgrade = new ArrayList<>();
+    private final ArrayList<AbstractCard> cannotUpgrade = new ArrayList<>();
     private final boolean random;
     private final boolean permanent;
 

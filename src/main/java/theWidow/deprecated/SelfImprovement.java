@@ -48,7 +48,7 @@ public class SelfImprovement extends CustomCard {
     }
 
     class SelfImprovementAction extends AbstractGameAction {
-        private AbstractPlayer p = AbstractDungeon.player;
+        private final AbstractPlayer p = AbstractDungeon.player;
         private final float DURATION = Settings.ACTION_DUR_FAST;
         private int draws;
         public SelfImprovementAction() {

@@ -15,9 +15,9 @@ import theWidow.relics.SewingKitRelic;
 
 import static theWidow.WidowMod.makeCardPath;
 
-public class GeminiBot2 extends CustomCard {
+public class GeminiBot extends CustomCard {
 
-    public static final String ID = WidowMod.makeID(GeminiBot2.class.getSimpleName());
+    public static final String ID = WidowMod.makeID(GeminiBot.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("GeminiBot.png");
 
@@ -27,12 +27,11 @@ public class GeminiBot2 extends CustomCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = -2;
-    //private static final int EXHAUSTIVE = 2;
 
     private AbstractCard cardToCopy;
     private int storedEnergyOnUse;
 
-    public GeminiBot2() {
+    public GeminiBot() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         exhaust = true;
         //ExhaustiveVariable.setBaseValue(this, EXHAUSTIVE);
@@ -48,13 +47,22 @@ public class GeminiBot2 extends CustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (upgraded && cardToCopy.canUpgrade())
-            cardToCopy.upgrade();
-        //cardToCopy.dontTriggerOnUseCard = true;
-        cardToCopy.purgeOnUse = true;
-        cardToCopy.energyOnUse = storedEnergyOnUse;
-//        addToTop(new NewQueueCardAction(cardToCopy, m, true, true));
-        AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(cardToCopy, m, storedEnergyOnUse, true, true), true);
+        if (cardToCopy != null) {
+            if (upgraded && cardToCopy.canUpgrade())
+                cardToCopy.upgrade();
+//            cardToCopy.dontTriggerOnUseCard = true;
+            cardToCopy.purgeOnUse = true;
+            cardToCopy.energyOnUse = storedEnergyOnUse;
+//            addToTop(new NewQueueCardAction(cardToCopy, m, true, true));
+            AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(cardToCopy, m, storedEnergyOnUse, true, true), true);
+            cardToCopy = null;
+        }
+    }
+
+    @Override
+    public void triggerOnExhaust() {
+        cardToCopy = null;
+        AbstractDungeon.actionManager.removeFromQueue(this);
     }
 
     @Override

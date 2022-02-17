@@ -4,10 +4,11 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theWidow.WidowMod;
@@ -53,23 +54,30 @@ public class SapPower extends AbstractPower implements CloneablePowerInterface {
     @Override
     public int onAttackToChangeDamage(DamageInfo info, int damageAmount) {
         if (info.type == DamageInfo.DamageType.NORMAL)
-            addToBot(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    addToTop(new ReducePowerAction(owner, owner, SapPower.this, (amount+1)/2));
-                    isDone = true;
-                }
-            });
+            decayByHalf();
         return damageAmount;
     }
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
         if (!isPlayer)
-            addToBot(new ReducePowerAction(owner, owner, this, (amount+1)/2));
+            decayByHalf();
     }
 
-
+    private void decayByHalf() {
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                if (SapPower.this.amount == 1)
+                    addToTop(new RemoveSpecificPowerAction(owner, owner, SapPower.this));
+                else {
+                    reducePower(SapPower.this.amount / 2);
+                    AbstractDungeon.onModifyPower();
+                }
+                isDone = true;
+            }
+        });
+    }
 
     @Override
     public AbstractPower makeCopy() {

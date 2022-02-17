@@ -28,7 +28,7 @@ public class VenomStrike extends CustomCard {
 
     private static final int COST = 1;
     private static final int DAMAGE = 8;
-    private static final int UPGRADE_PLUS_DMG = 3;
+    private static final int UPGRADE_PLUS_DMG = 2;
     private static final int SAP = 3;
     private static final int UPGRADE_PLUS_SAP = 2;
 

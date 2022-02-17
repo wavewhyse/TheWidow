@@ -34,7 +34,6 @@ public class MiniNukePotion extends UpgradeablePotion {
     }
 
     public MiniNukePotion(boolean upgraded) {
-        // The bottle shape and inside is determined by potion size and color. The actual colors are the main DefaultMod.java
         super(NAME, POTION_ID, TheWidow.Enums.BOMB, PotionSize.BOTTLE, PotionColor.POISON, upgraded);
     }
 

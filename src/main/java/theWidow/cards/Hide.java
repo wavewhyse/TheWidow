@@ -26,9 +26,9 @@ public class Hide extends CustomCard {
 
     private static final int COST = 1;
     private static final int BLOCK = 8;
-    private static final int UPGRADE_PLUS_BLOCK = 3;
+    private static final int UPGRADE_PLUS_BLOCK = 2;
     private static final int WEB = 3;
-    private static final int UPGRADE_PLUS_WEB = 1;
+    private static final int UPGRADE_PLUS_WEB = 2;
 
     public Hide() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

@@ -6,15 +6,14 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theWidow.WidowMod;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 
 public class EggClutchPatch {
 
     private static final Logger logger = LogManager.getLogger(EggClutchPatch.class.getName());
+    public static int EGG_CLUTCH_UPGRADES = 0;
 
     @SpirePatch(
             clz = AbstractDungeon.class,
@@ -24,16 +23,13 @@ public class EggClutchPatch {
 
         @SpirePostfixPatch
         public static ArrayList<AbstractCard> eggClutchUpgrade(ArrayList<AbstractCard> __result) {
-            if (WidowMod.EGG_CLUTCH_UPGRADES != 0) {
+            if (EGG_CLUTCH_UPGRADES != 0) {
                 ArrayList<AbstractCard> upgradeable = new ArrayList<>(__result);
-                Iterator<AbstractCard> itr = upgradeable.iterator();
-                while (itr.hasNext())
-                    if (!itr.next().canUpgrade())
-                        itr.remove();
+                upgradeable.removeIf(abstractCard -> !abstractCard.canUpgrade());
                 ArrayList<Boolean> upgrades = new ArrayList<>();
-                for (int i = 0; i < WidowMod.EGG_CLUTCH_UPGRADES && i < upgradeable.size(); i++)
+                for (int i = 0; i < EGG_CLUTCH_UPGRADES && i < upgradeable.size(); i++)
                     upgrades.add(true);
-                WidowMod.EGG_CLUTCH_UPGRADES = 0;
+                EGG_CLUTCH_UPGRADES = 0;
                 for (int i = upgrades.size(); i < upgradeable.size(); i++)
                     upgrades.add(false);
                 Collections.shuffle(upgrades, AbstractDungeon.cardRng.random);

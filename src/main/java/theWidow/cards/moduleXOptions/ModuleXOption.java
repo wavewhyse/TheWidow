@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import java.util.ArrayList;
 
 public abstract class ModuleXOption extends AbstractCard {
-    protected ArrayList<AbstractCard> unchosenOptions;
+    protected final ArrayList<AbstractCard> unchosenOptions;
     protected int remainingChoices;
 
     public ModuleXOption(ArrayList<AbstractCard> unchosenOptions, int remainingChoices, String id, String name, String imgUrl, String rawDescription) {
@@ -29,10 +29,5 @@ public abstract class ModuleXOption extends AbstractCard {
 
     @Override
     public void upgrade() {
-    }
-
-    @Override
-    public AbstractCard makeCopy() {
-        return null;
     }
 }

@@ -35,4 +35,9 @@ public class Resonate extends ModuleXOption {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new BattleHymnPower(p, 1), 1));
     }
+
+    @Override
+    public AbstractCard makeCopy() {
+        return new Resonate();
+    }
 }

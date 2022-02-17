@@ -32,10 +32,7 @@ public class RiotCocktail extends CustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (upgraded)
-            addToBot(new ObtainPotionAction(new PulseBombPotion(true)));
-        else
-            addToBot(new ObtainPotionAction(new PulseBombPotion()));
+        addToBot(new ObtainPotionAction(new PulseBombPotion(upgraded)));
     }
 
     @Override

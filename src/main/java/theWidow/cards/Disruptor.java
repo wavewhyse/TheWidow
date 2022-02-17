@@ -41,8 +41,8 @@ public class Disruptor extends CustomCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 9;
-    private static final int UPGRADE_PLUS_DMG = 3;
+    private static final int DAMAGE = 7;
+    private static final int UPGRADE_PLUS_DMG = 2;
     private static final int DURATION = 1;
     private static final int UPGRADE_PLUS_DURATION = 1;
 

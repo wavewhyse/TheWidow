@@ -4,6 +4,7 @@ import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
+import com.megacrit.cardcrawl.cards.blue.Zap;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -37,7 +38,7 @@ public class ShockLeap extends CustomCard {
         magicNumber = baseMagicNumber = STATS;
         exhaust = true;
         if (CardLibrary.getAllCards() != null && !CardLibrary.getAllCards().isEmpty())
-            theWidow.util.artHelp.CardArtRoller.computeCard(this);
+            theWidow.util.artHelp.CardArtRoller.computeCard(this, Zap.ID);
     }
 
     @Override

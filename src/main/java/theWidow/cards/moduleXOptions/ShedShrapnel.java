@@ -35,4 +35,9 @@ public class ShedShrapnel extends ModuleXOption {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new ThornsPower(p, magicNumber), magicNumber));
     }
+
+    @Override
+    public AbstractCard makeCopy() {
+        return new ShedShrapnel();
+    }
 }

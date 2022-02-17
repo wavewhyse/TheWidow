@@ -38,7 +38,6 @@ public class ExtraCompartmentPower extends GrenadierPower {
     public void atEndOfTurn(boolean isPlayer) {
         if (!isPlayer)
             return;
-        super.onVictory();
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 

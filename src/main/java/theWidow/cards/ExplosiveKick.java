@@ -24,7 +24,7 @@ public class ExplosiveKick extends CustomCard {
     private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = makeCardPath("ExplosiveKick.png");
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
@@ -55,7 +55,6 @@ public class ExplosiveKick extends CustomCard {
                 && !AbstractDungeon.player.masterDeck.contains(this);
     }
 
-    // Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {

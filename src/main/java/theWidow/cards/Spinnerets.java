@@ -19,7 +19,7 @@ public class Spinnerets extends BetaCard {
     public static final String IMG = makeCardPath("Skill.png");
 
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;

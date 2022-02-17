@@ -35,7 +35,6 @@ public class PulseBombPotion extends UpgradeablePotion {
     }
 
     public PulseBombPotion(boolean upgraded) {
-        // The bottle shape and inside is determined by potion size and color. The actual colors are the main DefaultMod.java
         super(NAME, POTION_ID, TheWidow.Enums.BOMB, PotionSize.FAIRY, PotionColor.STEROID, upgraded);
     }
 
@@ -43,7 +42,7 @@ public class PulseBombPotion extends UpgradeablePotion {
     public void initializeData() {
         potency = getPotency();
 
-        description = DESCRIPTIONS[0] + potency + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0] + potency + DESCRIPTIONS[1] + potency/2 + DESCRIPTIONS[2];
 
         isThrown = true;
         targetRequired = true;

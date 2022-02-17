@@ -29,7 +29,6 @@ public class SilkPotion extends UpgradeablePotion {
     }
 
     public SilkPotion(boolean upgraded) {
-        // The bottle shape and inside is determined by potion size and color. The actual colors are the main DefaultMod.java
         super(NAME, POTION_ID, PotionRarity.COMMON, PotionSize.SNECKO, PotionColor.WHITE, upgraded);
     }
 

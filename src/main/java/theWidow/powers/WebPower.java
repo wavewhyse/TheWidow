@@ -9,14 +9,11 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theWidow.WidowMod;
 import theWidow.cards.HermitWeave;
 import theWidow.util.TextureLoader;
-
-import java.util.ArrayList;
 
 import static theWidow.WidowMod.makePowerPath;
 
@@ -28,7 +25,6 @@ public class WebPower extends AbstractPower implements CloneablePowerInterface {
 
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("WebPower84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("WebPower32.png"));
-    private ArrayList<PowerTip> tips;
 
     public WebPower(final AbstractCreature owner, final int amount) {
         name = powerStrings.NAME;
@@ -39,9 +35,6 @@ public class WebPower extends AbstractPower implements CloneablePowerInterface {
 
         type = PowerType.BUFF;
         isTurnBased = false;
-
-        tips = new ArrayList<>();
-        tips.add(new PowerTip(powerStrings.DESCRIPTIONS[0], powerStrings.DESCRIPTIONS[1]));
 
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);

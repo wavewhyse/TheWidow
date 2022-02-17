@@ -26,7 +26,7 @@ public class ModuleX extends BetaCard {
     public static final String ID = WidowMod.makeID(ModuleX.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG = makeCardPath("Power.png");// "public static final String IMG = makeCardPath("ModuleXOptions.png");
+    public static final String IMG = makeCardPath("Power.png");// "public static final String IMG = makeCardPath("moduleXOptions.png");
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -41,7 +41,7 @@ public class ModuleX extends BetaCard {
         INFLAME, FOOTWORK, METALLICIZE, MACHINE_LEARNING, WELLLAID_PLANS, CALTROPS, BATTLE_HYMN
     }
 
-    private Random randomizer;
+    private final Random randomizer;
     private boolean[] upgradesTaken;
     private Set<Options> availableOptions;
 

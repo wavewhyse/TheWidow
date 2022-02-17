@@ -21,8 +21,8 @@ public class CaughtPower extends AbstractPower implements CloneablePowerInterfac
     public static final String POWER_ID = WidowMod.makeID(CaughtPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("CaughtPower84.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("CaughtPower32.png"));
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("CaughtPowerAlt84.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("CaughtPowerAlt32.png"));
 
     public CaughtPower(final AbstractCreature owner, final int amount) {
         name = powerStrings.NAME;

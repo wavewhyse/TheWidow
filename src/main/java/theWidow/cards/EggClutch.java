@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
+import theWidow.patches.EggClutchPatch;
 import theWidow.util.TextureLoader;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
@@ -90,7 +91,7 @@ public class EggClutch extends CustomCard {
         @Override
         public void onVictory() {
             flash();
-            WidowMod.EGG_CLUTCH_UPGRADES = amount;
+            EggClutchPatch.EGG_CLUTCH_UPGRADES = amount;
         }
 
         @Override

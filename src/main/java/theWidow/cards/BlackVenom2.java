@@ -1,5 +1,6 @@
 package theWidow.cards;
 
+import basemod.AutoAdd;
 import basemod.abstracts.CustomCard;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -15,13 +16,14 @@ import theWidow.WidowMod;
 
 import static theWidow.WidowMod.makeCardPath;
 
+@AutoAdd.Ignore
 public class BlackVenom2 extends CustomCard {
 
     public static final String ID = WidowMod.makeID(BlackVenom2.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("BlackVenom.png");
 
-    private static final CardRarity RARITY = CardRarity.RARE;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;

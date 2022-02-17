@@ -11,10 +11,10 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import theWidow.vfx.UpgradeHammerHit;
 
 public class WidowUpgradeCardAction extends AbstractGameAction {
-    private AbstractPlayer p = AbstractDungeon.player;
-    private AbstractCard c;
-    private boolean permanent;
-    public float DURATION = 0.1f;
+    private final AbstractPlayer p = AbstractDungeon.player;
+    private final AbstractCard c;
+    private final boolean permanent;
+    public static final float DURATION = 0.1f;
 
     public WidowUpgradeCardAction(AbstractCard card, boolean permanent) {
         actionType = ActionType.CARD_MANIPULATION;

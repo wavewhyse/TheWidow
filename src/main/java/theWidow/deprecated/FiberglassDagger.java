@@ -52,7 +52,6 @@ public class FiberglassDagger extends BetaCard {
             downgrade();
     }
 
-    // Upgraded stats.
     @Override
     public void upgrade() {
         upgradeDamage(UPGRADE_PLUS_DMG + 2*timesUpgraded);

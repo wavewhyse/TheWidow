@@ -35,4 +35,9 @@ public class ExhaustFlame extends ModuleXOption {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, magicNumber), magicNumber));
     }
+
+    @Override
+    public AbstractCard makeCopy() {
+        return new ExhaustFlame();
+    }
 }

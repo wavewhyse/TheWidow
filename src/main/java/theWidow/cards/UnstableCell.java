@@ -26,7 +26,7 @@ public class UnstableCell extends BetaCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 2;
-    private static final int DAMAGE = 18;
+    private static final int DAMAGE = 16;
     private static final int UPGRADE_PLUS_DMG = 5;
 
     private int playsQueued;
@@ -84,7 +84,7 @@ public class UnstableCell extends BetaCard {
     public void upgrade() {
         upgradeName();
         upgradeDamage(UPGRADE_PLUS_DMG);
-        if (AbstractDungeon.player.hand.contains(this))
+        if (AbstractDungeon.player != null && AbstractDungeon.player.hand.contains(this))
             playsQueued++;
     }
 

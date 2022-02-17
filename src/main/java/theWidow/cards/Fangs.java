@@ -25,7 +25,7 @@ public class Fangs extends CustomCard {
     public static final CardColor COLOR = theWidow.TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 9;
+    private static final int DAMAGE = 8;
     private static final int UPGRADE_PLUS_DMG = 4;
 
     public Fangs() {

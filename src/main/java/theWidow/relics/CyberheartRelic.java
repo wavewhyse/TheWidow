@@ -3,7 +3,6 @@ package theWidow.relics;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theWidow.WidowMod;
 import theWidow.actions.WidowUpgradeManagerAction;
@@ -31,7 +30,7 @@ public class CyberheartRelic extends CustomRelic {
     @Override
     public void atBattleStart() {
         flash();
-        addToBot(new RelicAboveCreatureAction((AbstractCreature)AbstractDungeon.player, this));
+        addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         addToBot(new WidowUpgradeManagerAction(UPGRADES, true));
     }
 

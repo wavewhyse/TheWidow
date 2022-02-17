@@ -1,5 +1,6 @@
 package theWidow.cards;
 
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -14,6 +15,7 @@ import theWidow.powers.SapPower;
 
 import static theWidow.WidowMod.makeCardPath;
 
+@AutoAdd.Ignore
 public class BlackVenom extends ExtraExtraMagicalCustomCard {
 
     public static final String ID = WidowMod.makeID(BlackVenom.class.getSimpleName());

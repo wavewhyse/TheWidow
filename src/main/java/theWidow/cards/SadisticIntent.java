@@ -34,8 +34,8 @@ public class SadisticIntent extends CustomCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 1;
-    private static final int CAUGHT = 4;
-    private static final int UPGRADE_PLUS_CAUGHT = 2;
+    private static final int CAUGHT = 5;
+    private static final int UPGRADE_PLUS_CAUGHT = 3;
 
     public SadisticIntent() {
         super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
@@ -64,8 +64,6 @@ public class SadisticIntent extends CustomCard {
         private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("SadisticIntentPower84.png"));
         private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("SadisticIntentPower32.png"));
 
-        private boolean myDebuff;
-
         public SadisticIntentPower(final AbstractCreature owner, final int amount) {
             name = powerStrings.NAME;
             ID = POWER_ID;
@@ -75,8 +73,6 @@ public class SadisticIntent extends CustomCard {
 
             type = PowerType.BUFF;
             isTurnBased = false;
-
-            myDebuff = false;
 
             this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
             this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
@@ -91,39 +87,17 @@ public class SadisticIntent extends CustomCard {
 
         @Override
         public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-            if (power.type == PowerType.DEBUFF && target instanceof AbstractMonster && source == owner && !target.hasPower(ArtifactPower.POWER_ID)) {
-                if (power instanceof CaughtPower && myDebuff) {
-                    myDebuff = false;
-                    return;
-                }
+            if (
+                    power.type == PowerType.DEBUFF &&
+                    target instanceof AbstractMonster &&
+                    source == owner &&
+                    !target.hasPower(ArtifactPower.POWER_ID) &&
+                    !(power instanceof CaughtPower)
+            ) {
                 flash();
-                addToTop(new ApplyPowerAction(target, source, new CaughtPower(target, amount)));
-                myDebuff = true;
-//                addToTop(new ApplyPowerAction(owner, owner, new VigorPower(owner, amount), amount));
-    //            addToTop(new ApplyPowerAction(owner, owner, new StrengthPower(owner, amount), amount));
-    //            addToTop(new ApplyPowerAction(owner, owner, new LoseStrengthPower(owner, amount), amount));
-    //            addToTop(new ApplyPowerAction(owner, owner, new DexterityPower(owner, amount), amount));
-    //            addToTop(new ApplyPowerAction(owner, owner, new LoseDexterityPower(owner, amount), amount));
-//                addToBot(new ApplyPowerAction(owner, source, new DrawCardNextTurnPower(owner, amount), amount, true));
+                addToBot(new ApplyPowerAction(target, source, new CaughtPower(target, amount)));
             }
         }
-
-        /*@Override
-        public void atStartOfTurn() {
-            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                boolean thisMon = false;
-                for (AbstractPower pow : m.powers) {
-                    if (pow.type == PowerType.DEBUFF) {
-                        thisMon = true;
-                        break;
-                    }
-                }
-                if (!thisMon)
-                    return;
-            }
-            flash();
-            addToBot(new DrawCardAction(amount));
-        }*/
 
         @Override
         public AbstractPower makeCopy() {

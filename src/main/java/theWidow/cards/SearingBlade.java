@@ -47,7 +47,6 @@ public class SearingBlade extends BetaCard {
             addToBot(new VFXAction(new SearingBlowEffect(m.hb.cX, m.hb.cY, timesUpgraded)));
     }
 
-    // Upgraded stats.
     @Override
     public void upgrade() {
         upgradeDamage(UPGRADE_PLUS_DMG+timesUpgraded);

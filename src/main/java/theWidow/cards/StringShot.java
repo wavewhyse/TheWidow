@@ -63,7 +63,6 @@ public class StringShot extends CustomCard {
         }
     }
 
-
     @Override
     public List<TooltipInfo> getCustomTooltips() {
         List<TooltipInfo> retVal = new ArrayList<>();

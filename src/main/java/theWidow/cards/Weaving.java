@@ -65,7 +65,7 @@ public class Weaving extends CustomCard {
     }
 
     private static final float DURATION = Settings.ACTION_DUR_XFAST;
-    public class WeavingUpgradeAction extends AbstractGameAction {
+    public static class WeavingUpgradeAction extends AbstractGameAction {
         public WeavingUpgradeAction() {
             actionType = ActionType.CARD_MANIPULATION;
             duration = DURATION;

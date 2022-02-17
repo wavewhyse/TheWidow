@@ -17,10 +17,10 @@ import theWidow.cards.ExtraMagicalCustomCard;
 
 public class WidowDowngradeCardAction extends AbstractGameAction {
 
-    private AbstractPlayer p = AbstractDungeon.player;
-    private AbstractCard c;
-    private boolean permanent;
-    public float DURATION = 0.1f;
+    private final AbstractPlayer p = AbstractDungeon.player;
+    private final AbstractCard c;
+    private final boolean permanent;
+    public static final float DURATION = 0.1f;
 
     public WidowDowngradeCardAction(AbstractCard card, boolean permanent) {
         actionType = ActionType.CARD_MANIPULATION;

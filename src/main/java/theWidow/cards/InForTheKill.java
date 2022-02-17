@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -48,7 +47,7 @@ public class InForTheKill extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (m.hasPower(VulnerablePower.POWER_ID)) {
-            addToBot(new VFXAction(new VfxBuilder(ImageMaster.DAGGER_STREAK, (m.hb.cX + p.drawX) / 2f, m.hb.cY, (Settings.FAST_MODE ? 0.1f : 1f))
+            addToBot(new VFXAction(new VfxBuilder(ImageMaster.DAGGER_STREAK, (m.hb.cX + p.drawX) / 2f, m.hb.cY, 0.4f)
                     .setColor(Color.RED.cpy())
                     .fadeIn(0.2f)
                     .andThen(0.4f)
@@ -56,8 +55,8 @@ public class InForTheKill extends CustomCard {
                     .fadeOut(0.3f)
                     .playSoundAt(0.2f, "IN_FOR_THE_KILL")
                     .build()
-            ));
-            addToBot(new WaitAction(1.2f));
+            , 0.4f));
+            addToBot(new WaitAction(0.6f));
         }
         else
             addToBot(new VFXAction(new ThrowDaggerEffect(m.hb.cX, m.hb.cY)));

@@ -46,7 +46,7 @@ public class Inspiration extends CustomCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         class InspirationAction extends AbstractGameAction {
             private final float DURATION = Settings.ACTION_DUR_LONG;
-            private ArrayList<AbstractCard> cannotUpgrade = new ArrayList<>();
+            private final ArrayList<AbstractCard> cannotUpgrade = new ArrayList<>();
             private int effect;
             public InspirationAction() {
                 actionType = ActionType.CARD_MANIPULATION;

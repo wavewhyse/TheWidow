@@ -61,7 +61,7 @@ public class HydraulicLimbs extends CustomCard {
         private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("HydraulicsPower32.png"));
         private int attacksPlayedThisTurn;
 
-        private HashSet<AbstractCard> affectedCards;
+        private final HashSet<AbstractCard> affectedCards;
         public HydraulicsPower(final AbstractCreature owner, final int amount) {
             name = powerStrings.NAME;
             ID = POWER_ID;

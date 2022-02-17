@@ -16,7 +16,7 @@ public class HourglassMarkRelic extends CustomRelic {
     // ID, images, text.
     public static final String ID = WidowMod.makeID("HourglassMarkRelic");
 
-    public static final int TRIGGER_AMOUNT = 5;
+    public static final int TRIGGER_AMOUNT = 6;
     public static final int STAT_GAIN = 1;
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("HourglassMark.png"));

@@ -25,7 +25,7 @@ public class CrumpleZones extends CustomCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 0;
-    private static final int BLOCK = 9;
+    private static final int BLOCK = 12;
     private static final int UPGRADE_PLUS_BLOCK = 4;
     private static final int FRAIL = 2;
 

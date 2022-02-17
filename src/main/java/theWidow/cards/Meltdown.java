@@ -46,8 +46,8 @@ public class Meltdown extends CustomCard {
     }
 
     class MeltdownAction extends AbstractGameAction {
-        private AbstractPlayer p = AbstractDungeon.player;
-        private ArrayList<AbstractCard> unupgraded = new ArrayList<>();
+        private final AbstractPlayer p = AbstractDungeon.player;
+        private final ArrayList<AbstractCard> unupgraded = new ArrayList<>();
         private final float DURATION = Settings.ACTION_DUR_FAST;
         public MeltdownAction() {
             actionType = ActionType.CARD_MANIPULATION;

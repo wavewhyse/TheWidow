@@ -56,8 +56,8 @@ public class ParticleAccelerator extends CustomCard {
 
     private static final float DURATION = Settings.ACTION_DUR_MED;
     public class ParticleAcceleratorAction extends AbstractGameAction {
-        private AbstractPlayer p = AbstractDungeon.player;
-        private ArrayList<AbstractCard> costedCards = new ArrayList<>();
+        private final AbstractPlayer p = AbstractDungeon.player;
+        private final ArrayList<AbstractCard> costedCards = new ArrayList<>();
         public ParticleAcceleratorAction() {
             actionType = ActionType.CARD_MANIPULATION;
             duration = DURATION;
@@ -148,10 +148,10 @@ public class ParticleAccelerator extends CustomCard {
 //                }
 //                tmp.purgeOnUse = true;
 //                AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, m, c.energyOnUse, true, true), true);
-                GameActionManager.queueExtraCard(c, null);
+                GameActionManager.queueExtraCard(c, AbstractDungeon.getRandomMonster());
             }
             AbstractCreature target = null;
-            if (c.target == CardTarget.ENEMY)
+            if (c.target == CardTarget.ENEMY || c.target == CardTarget.SELF_AND_ENEMY)
                 target = AbstractDungeon.getRandomMonster();
             this.addToTop(new NewQueueCardAction(c, target, false, true));
             this.addToTop(new UnlimboAction(c));

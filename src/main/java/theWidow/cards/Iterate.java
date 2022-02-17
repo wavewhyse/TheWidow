@@ -28,7 +28,7 @@ public class Iterate extends CustomCard {
     public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 10;
+    private static final int DAMAGE = 9;
     private static final int UPGRADE_PLUS_DMG = 4;
 
     public Iterate() {

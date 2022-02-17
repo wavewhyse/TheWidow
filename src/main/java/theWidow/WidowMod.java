@@ -31,9 +31,9 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import theWidow.cards.BetaCard;
 import theWidow.cards.BombLauncher;
 import theWidow.cards.Chemistry;
-import theWidow.cards.Steelweave;
 import theWidow.potions.*;
 import theWidow.relics.BlackBoxRelic;
 import theWidow.relics.CyberheartRelic;
@@ -58,24 +58,20 @@ public class WidowMod implements
     public static final Logger logger = LogManager.getLogger(WidowMod.class.getName());
     private static String modID;
 
-    // Mod-settings settings. This is if you want an on/off savable button
-    public static Properties theWidowSettings = new Properties();
+    public static final Properties theWidowSettings = new Properties();
     public static final String BOTF_PATCH_SETTING = "BOTFPatched";
     public static boolean enableBOTFPatch = true;
 
-    //This is for the in-game mod settings panel.
     private static final String MODNAME = "The Widow";
-    private static final String AUTHOR = "wavewhyse";
+    private static final String AUTHOR = "wavewhyse☆";
     private static final String DESCRIPTION = "spider but also cyborg";
 
     public static final Color WIDOW_BLACK = CardHelper.getColor(55, 0, 20);
     public static final String THE_DEFAULT_SHOULDER_1 = "theWidowResources/images/char/defaultCharacter/shoulder.png";
     public static final String THE_DEFAULT_SHOULDER_2 = "theWidowResources/images/char/defaultCharacter/shoulder2.png";
     public static final String THE_WIDOW_CORPSE = "theWidowResources/images/char/widowCharacter/corpse.png";
-    // Atlas and JSON files for the Animations
     public static final String THE_WIDOW_SKELETON_ATLAS = "theWidowResources/images/char/widowCharacter/Widow.atlas";
     public static final String THE_WIDOW_SKELETON_JSON = "theWidowResources/images/char/widowCharacter/Widow.json";
-    // Card backgrounds - The actual rectangular card.
     static final String ATTACK_WIDOW_BLACK = "theWidowResources/images/512/bg_attack_widow_black.png";
     static final String SKILL_WIDOW_BLACK = "theWidowResources/images/512/bg_skill_widow_black.png";
     static final String POWER_WIDOW_BLACK = "theWidowResources/images/512/bg_power_widow_black.png";
@@ -85,14 +81,10 @@ public class WidowMod implements
     static final String SKILL_WIDOW_BLACK_PORTRAIT = "theWidowResources/images/1024/bg_skill_widow_black.png";
     static final String POWER_WIDOW_BLACK_PORTRAIT = "theWidowResources/images/1024/bg_power_widow_black.png";
     static final String ENERGY_ORB_WIDOW_BLACK_PORTRAIT = "theWidowResources/images/1024/card_widow_black_orb3.png";
-    // Character assets
     static final String THE_WIDOW_BUTTON = "theWidowResources/images/charSelect/WidowCharacterButton.png";
     static final String THE_WIDOW_PORTRAIT = "theWidowResources/images/charSelect/WidowCharacterPortraitBG.png";
 
-    //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
     public static final String BADGE_IMAGE = "theWidowResources/images/Badge.png";
-
-    public static int EGG_CLUTCH_UPGRADES = 0;
 
     public static String makeCardPath(String resourcePath) {
         return getModID() + "Resources/images/cards/" + resourcePath;
@@ -113,6 +105,7 @@ public class WidowMod implements
     public static String makePowerPath(String resourcePath) {
         return getModID() + "Resources/images/powers/" + resourcePath;
     }
+
     public WidowMod() {
         logger.info("Subscribe to BaseMod hooks");
         
@@ -134,13 +127,11 @@ public class WidowMod implements
         
         
         logger.info("Adding mod settings");
-        // This loads the mod settings.
-        // The actual mod Button is added below in receivePostInitialize()
-        theWidowSettings.setProperty(BOTF_PATCH_SETTING, "TRUE"); // This is the default setting. It's actually set...
+
+        theWidowSettings.setProperty(BOTF_PATCH_SETTING, "TRUE");
         try {
-            SpireConfig config = new SpireConfig("widowMod", "theWidowConfig", theWidowSettings); // ...right here
-            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
-            config.load(); // Load the setting and set the boolean to equal it
+            SpireConfig config = new SpireConfig("widowMod", "theWidowConfig", theWidowSettings);
+            config.load();
             enableBOTFPatch = config.getBool(BOTF_PATCH_SETTING);
         } catch (Exception e) {
             e.printStackTrace();
@@ -171,6 +162,7 @@ public class WidowMod implements
                 THE_WIDOW_BUTTON, THE_WIDOW_PORTRAIT, TheWidow.Enums.THE_WIDOW);
         
         receiveEditPotions();
+
         logger.info("Added " + TheWidow.Enums.THE_WIDOW.toString());
     }
 
@@ -178,23 +170,19 @@ public class WidowMod implements
     public void receivePostInitialize() {
         logger.info("Loading badge image and mod options");
         
-        // Load the Mod Badge
         Texture badgeTexture = TextureLoader.getTexture(BADGE_IMAGE);
         
-        // Create the Mod Menu
         ModPanel settingsPanel = new ModPanel();
         
-        // Create the on/off button:
-        ModLabeledToggleButton enableBOTFPatchButton = new ModLabeledToggleButton("Enable Blessing of the Forge changes (may cause mod conflicts):\n   - Uses Widow's upgrade VFX.\n   - Doubles with Sacred Bark.",
-                350.0f, 650.0f, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
-                enableBOTFPatch, // Boolean it uses
-                settingsPanel, // The mod panel in which this button will be in
-                (label) -> {}, // thing??????? idk
-                (button) -> { // The actual button:
+        ModLabeledToggleButton enableBOTFPatchButton = new ModLabeledToggleButton("Enable Blessing of the Forge changes (may cause mod conflicts):\n   - Changes Blessing of the Forge to use Widow's Upgrade VFX, and also to be doubled with Sacred Bark.",
+                350.0f, 650.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
+                enableBOTFPatch,
+                settingsPanel,
+                (label) -> {},
+                (button) -> {
 
-            enableBOTFPatch = button.enabled; // The boolean true/false will be whether the button is enabled or not
+            enableBOTFPatch = button.enabled;
             try {
-                // And based on that boolean, set the settings and save them
                 SpireConfig config = new SpireConfig("widowMod", "theWidowConfig", theWidowSettings);
                 config.setBool(BOTF_PATCH_SETTING, enableBOTFPatch);
                 config.save();
@@ -203,11 +191,10 @@ public class WidowMod implements
             }
         });
         
-        settingsPanel.addUIElement(enableBOTFPatchButton); // Add the button to the settings panel. Button is a go.
+        settingsPanel.addUIElement(enableBOTFPatchButton);
         
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 
-        // =============== /EVENTS/ =================
         logger.info("Done loading badge Image and mod options");
 
         for (AbstractCard c : CardLibrary.getCardList(TheWidow.Enums.WIDOW_BLACK))
@@ -253,7 +240,6 @@ public class WidowMod implements
     @Override
     public void receiveEditCards() {
         logger.info("Adding variables");
-        logger.info("Add variables");
         new AutoAdd("TheWidowMod")
                 .packageFilter(UpgradesInHand.class)
                 .any(DynamicVariable.class, (info, dynamicVariable) -> {
@@ -262,8 +248,8 @@ public class WidowMod implements
         
         logger.info("Adding cards");
 
-        new AutoAdd("TheWidowMod") // ${project.artifactId}
-                .packageFilter(Steelweave.class) // filters to any class in the same package as ExtraMagicalCustomCard, nested packages included
+        new AutoAdd("TheWidowMod")
+                .packageFilter(BetaCard.class)
                 .setDefaultSeen(true)
                 .cards();
 

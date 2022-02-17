@@ -67,7 +67,7 @@ public class MetalBurrs extends CustomCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (m != null) {
             if (Settings.FAST_MODE) {
-                addToBot(new VFXAction( new ViolentAttackEffect(m.hb.cX, m.hb.cY, Color.BLACK)));
+                addToBot(new VFXAction( new ViolentAttackEffect(m.hb.cX, m.hb.cY, Color.BLACK), 0.1f));
             } else {
                 addToBot(new VFXAction( new ViolentAttackEffect(m.hb.cX, m.hb.cY, Color.BLACK), 0.4F));
             }
@@ -84,4 +84,9 @@ public class MetalBurrs extends CustomCard {
             initializeDescription();
         }
     }
+
+//    @Override
+//    public AbstractCard makeCopy() {
+//        return new MetalBurrs();
+//    }
 }

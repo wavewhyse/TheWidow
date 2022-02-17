@@ -17,11 +17,11 @@ public class SewingKitRelic extends CustomRelic {
     // ID, images, text.
     public static final String ID = WidowMod.makeID("SewingKitRelic");
 
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic2.png"));
-    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic2.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("SewingKit.png"));
+    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("SewingKit.png"));
 
     public SewingKitRelic() {
-        super(ID, IMG, OUTLINE, RelicTier.COMMON, LandingSound.SOLID);
+        super(ID, IMG, OUTLINE, RelicTier.COMMON, LandingSound.FLAT);
     }
 
     @Override
