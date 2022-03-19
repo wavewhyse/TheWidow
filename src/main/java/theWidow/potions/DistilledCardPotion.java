@@ -1,6 +1,5 @@
 package theWidow.potions;
 
-import basemod.abstracts.CustomPotion;
 import basemod.abstracts.CustomSavable;
 import basemod.helpers.CardPowerTip;
 import com.badlogic.gdx.graphics.Color;
@@ -10,7 +9,6 @@ import com.megacrit.cardcrawl.cards.CardSave;
 import com.megacrit.cardcrawl.cards.colorless.Madness;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
@@ -18,36 +16,29 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
+import theWidow.util.Wiz;
 
-public class DistilledCardPotion extends CustomPotion implements CustomSavable<CardSave> {
-
+public class DistilledCardPotion extends AbstractPotion implements CustomSavable<CardSave> {
     public static final String POTION_ID = WidowMod.makeID(DistilledCardPotion.class.getSimpleName());
     private static final PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(POTION_ID);
 
-    public static final String NAME = potionStrings.NAME;
-    public static final String[] DESCRIPTIONS = potionStrings.DESCRIPTIONS;
-
-    public static final Color LIQUID_COLOR = Color.BLACK;
-    public static final Color HYBRID_COLOR = Color.PURPLE;
-    public static final Color SPOTS_COLOR = Color.MAGENTA;
-
-    AbstractCard card;
+    private AbstractCard card;
 
     public DistilledCardPotion() {
-        super(NAME, POTION_ID, TheWidow.Enums.BOMB, PotionSize.CARD, PotionColor.WHITE);
+        super(potionStrings.NAME, POTION_ID, TheWidow.Enums.BOMB, PotionSize.CARD, PotionEffect.OSCILLATE, Color.BLACK, Color.PURPLE, Color.MAGENTA);
         initializeData();
     }
 
     public DistilledCardPotion(AbstractCard card) {
-        super(NAME + card.name, POTION_ID, TheWidow.Enums.BOMB, PotionSize.CARD, PotionColor.WHITE);
+        super(potionStrings.NAME + card.name, POTION_ID, TheWidow.Enums.BOMB, PotionSize.CARD, PotionEffect.OSCILLATE, Color.BLACK, Color.PURPLE, Color.MAGENTA);
         this.card = card;
         initializeData();
     }
 
     public DistilledCardPotion(CardSave save) {
-        super(NAME + save.id, POTION_ID, TheWidow.Enums.BOMB, PotionSize.CARD, PotionColor.WHITE);
+        super(potionStrings.NAME + save.id, POTION_ID, TheWidow.Enums.BOMB, PotionSize.CARD, PotionColor.WHITE);
         this.card = CardLibrary.getCopy(save.id, save.upgrades, save.misc);
-        name = NAME + card.name;
+        name = potionStrings.NAME + card.name;
         initializeData();
     }
 
@@ -55,7 +46,7 @@ public class DistilledCardPotion extends CustomPotion implements CustomSavable<C
     public void initializeData() {
         potency = getPotency();
         if (card == null)
-            card = new Madness();//TODO: Make this save properly even when it isn't in the player's potion slots
+            card = new Madness();
         card.resetAttributes();
         switch (card.target) {
             case ENEMY:
@@ -75,15 +66,9 @@ public class DistilledCardPotion extends CustomPotion implements CustomSavable<C
         }
         tips.clear();
         if (potency > 1)
-            description = DESCRIPTIONS[2] + potency + " " + card.name + DESCRIPTIONS[3];
+            description = String.format(potionStrings.DESCRIPTIONS[2], potency, card.name);
         else
-            description = DESCRIPTIONS[0] + card.name + DESCRIPTIONS[1];
-//        description = "";
-//        card.initializeDescription();
-//        for (DescriptionLine line : card.description) {
-//            for (String s: line.getCachedTokenizedText())
-//                description += s;
-//        }
+            description = String.format(potionStrings.DESCRIPTIONS[0], card.name);
         tips.add(new PowerTip(name, description));
         tips.add(new CardPowerTip(card));
     }
@@ -96,10 +81,10 @@ public class DistilledCardPotion extends CustomPotion implements CustomSavable<C
             AbstractCard playing = card.makeStatEquivalentCopy();
             playing.purgeOnUse = true;
             playing.dontTriggerOnUseCard = true;
-            AbstractDungeon.player.limbo.addToBottom(playing);
+            Wiz.adp().limbo.addToBottom(playing);
             if (target instanceof AbstractMonster)
                 playing.calculateCardDamage((AbstractMonster) target);
-            AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(playing, (AbstractMonster) target, playing.energyOnUse, true, true), true);
+            Wiz.adam().addCardQueueItem(new CardQueueItem(playing, (AbstractMonster) target, playing.energyOnUse, true, true), true);
         }
     }
 
@@ -124,7 +109,7 @@ public class DistilledCardPotion extends CustomPotion implements CustomSavable<C
     @Override
     public void onLoad(CardSave save) {
         this.card = CardLibrary.getCopy(save.id, save.upgrades, save.misc);
-        name = NAME + card.name;
+        name = potionStrings.NAME + card.name;
         initializeData();
     }
 }

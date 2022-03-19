@@ -3,20 +3,20 @@ package theWidow.actions;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import theWidow.WidowMod;
+import theWidow.util.Wiz;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class WidowUpgradeManagerAction extends AbstractGameAction {
-    private final AbstractPlayer p = AbstractDungeon.player;
     private static final UIStrings uistrings = CardCrawlGame.languagePack.getUIString(WidowMod.makeID(WidowUpgradeManagerAction.class.getSimpleName()));
 
-    private final ArrayList<AbstractCard> cannotUpgrade = new ArrayList<>();
+    private final List<AbstractCard> cannotUpgrade = new ArrayList<>();
     private final boolean random;
     private final boolean permanent;
 
@@ -53,16 +53,16 @@ public class WidowUpgradeManagerAction extends AbstractGameAction {
                 isDone = true;
                 return;
             }
-            for (AbstractCard c : p.hand.group) {
+            for (AbstractCard c : Wiz.adp().hand.group) {
                 if (!c.canUpgrade())
                     cannotUpgrade.add(c);
             }
-            if (cannotUpgrade.size() == p.hand.size()) {
+            if (cannotUpgrade.size() == Wiz.adp().hand.size()) {
                 isDone = true;
                 return;
             }
-            if (p.hand.size() - cannotUpgrade.size() <= amount) {
-                for (AbstractCard c : p.hand.group) {
+            if (Wiz.adp().hand.size() - cannotUpgrade.size() <= amount) {
+                for (AbstractCard c : Wiz.adp().hand.group) {
                     if (c.canUpgrade())
                         addToTop(new WidowUpgradeCardAction(c, permanent));
                 }
@@ -71,7 +71,7 @@ public class WidowUpgradeManagerAction extends AbstractGameAction {
             }
             if (random) {
                 CardGroup cardsToUpgrade = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-                for (AbstractCard c : p.hand.group)
+                for (AbstractCard c : Wiz.adp().hand.group)
                     if (c.canUpgrade())
                         cardsToUpgrade.addToTop(c);
                 for (int i=0; i<amount && !cardsToUpgrade.isEmpty(); i++) {
@@ -84,9 +84,9 @@ public class WidowUpgradeManagerAction extends AbstractGameAction {
                 return;
             }
 
-            p.hand.group.removeAll(cannotUpgrade);
-            if (p.hand.size() <= amount) {
-                for (AbstractCard c : p.hand.group)
+            Wiz.adp().hand.group.removeAll(cannotUpgrade);
+            if (Wiz.adp().hand.size() <= amount) {
+                for (AbstractCard c : Wiz.adp().hand.group)
                     addToTop(new WidowUpgradeCardAction(c, permanent));
                 returnCards();
                 isDone = true;
@@ -100,7 +100,7 @@ public class WidowUpgradeManagerAction extends AbstractGameAction {
         if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
             for (AbstractCard c : AbstractDungeon.handCardSelectScreen.selectedCards.group) {
                 addToTop(new WidowUpgradeCardAction(c, permanent));
-                p.hand.addToTop(c);
+                Wiz.adp().hand.addToTop(c);
             }
             returnCards();
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
@@ -112,7 +112,7 @@ public class WidowUpgradeManagerAction extends AbstractGameAction {
 
     private void returnCards() {
         for (AbstractCard c : cannotUpgrade)
-            p.hand.addToTop(c);
-        p.hand.refreshHandLayout();
+            Wiz.adp().hand.addToTop(c);
+        Wiz.adp().hand.refreshHandLayout();
     }
 }

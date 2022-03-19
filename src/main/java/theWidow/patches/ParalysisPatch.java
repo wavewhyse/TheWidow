@@ -8,7 +8,7 @@
 //import javassist.CtBehavior;
 //import org.apache.logging.log4j.LogManager;
 //import org.apache.logging.log4j.Logger;
-//import theWidow.powers.ParalysisPower;
+//import theWidow.deprecated.ParalysisPower;
 //import theWidow.deprecated.OldWebPower;
 //
 //@SpirePatch(
@@ -34,8 +34,8 @@
 //            ((ParalysisPower) __instance.getPower(ParalysisPower.POWER_ID)).primed = true;
 //        }
 //        IntentMultiDmgField.amount.set(__instance, intentMultiAmt[0]);
-//        if (AbstractDungeon.player.hasPower(OldWebPower.POWER_ID)) {
-//            ((OldWebPower) AbstractDungeon.player.getPower(OldWebPower.POWER_ID)).updateWebbedMonsters();
+//        if (Wiz.adp().hasPower(OldWebPower.POWER_ID)) {
+//            ((OldWebPower) Wiz.adp().getPower(OldWebPower.POWER_ID)).updateWebbedMonsters();
 //            __instance.applyPowers();
 //        }
 //        // Incredible.

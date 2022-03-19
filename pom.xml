@@ -1,12 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <!--Hello! You'll basically should only need to change these names and the steam path (just below)-->
-    <!--The author name(s) as they appear in MTS and any other comments are in your ModTheSpire.json-->
     <groupId>thewidow</groupId>
     <artifactId>TheWidowMod</artifactId> <!--Keep a note of this one: this is the ID used in the "auto add cards" method-->
     <name>The Widow</name>
-    <version>0.14.0</version>
+    <version>0.15</version>
     <description>Character mod for The Widow (WIP)</description>
 
     <properties>
@@ -15,7 +12,6 @@
         <SlayTheSpire.version>12-22-2020</SlayTheSpire.version>
         <ModTheSpire.version>3.8.0</ModTheSpire.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!--CHANGE THIS TO YOUR STEAM INSTALLATION-->
         <Steam.path>/mnt/Games/SteamLibrary-Linux/steamapps</Steam.path>
     </properties>
 
@@ -78,6 +74,8 @@
                 <configuration>
                     <excludes>
                         <exclude>**/*.psd</exclude>
+                        <exclude>**/*.kra</exclude>
+                        <exclude>src/main/java/theWidow/deprecated/*</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -100,7 +98,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin><plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><configuration><source>8</source><target>8</target></configuration></plugin>
         </plugins>
 
         <resources>

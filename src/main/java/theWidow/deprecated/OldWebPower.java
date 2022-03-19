@@ -4,7 +4,6 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -21,51 +20,42 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.RunicDome;
 import theWidow.WidowMod;
-import theWidow.util.TextureLoader;
+import theWidow.powers.AbstractEasyPower;
+import theWidow.util.TexLoader;
+import theWidow.util.Wiz;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static theWidow.WidowMod.makePowerPath;
 
 
 @Deprecated
-public class OldWebPower extends AbstractPower implements CloneablePowerInterface {
+public class OldWebPower extends AbstractEasyPower implements CloneablePowerInterface {
 
     public static final String POWER_ID = WidowMod.makeID(OldWebPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("WebPower84.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("WebPower32.png"));
-
-    private static final Texture webBreakTex = TextureLoader.getTexture(makePowerPath("WebPower32.png"));
+    private static final Texture webBreakTex = TexLoader.getTexture(makePowerPath("WebPower32"));
     private Hitbox wbhb;
     private final ArrayList<PowerTip> tips;
 
     public static final float DAMAGE_MULT = 0.75f;
 
-    public ArrayList<AbstractMonster> webbedMonsters;
+    public List<AbstractMonster> webbedMonsters;
     public AbstractMonster webBreakerMonster;
 
     public OldWebPower(final AbstractCreature owner, final int amount) {
-        name = powerStrings.NAME;
-        ID = POWER_ID;
-
-        this.owner = owner;
-        this.amount = amount;
-
-        type = PowerType.BUFF;
-        isTurnBased = false;
+super( powerStrings.NAME,
+                    PowerType.BUFF,
+                    owner,
+                    amount );
 
         webbedMonsters = new ArrayList<>();
         webBreakerMonster = null;
         tips = new ArrayList<>();
         tips.add(new PowerTip(powerStrings.DESCRIPTIONS[3], powerStrings.DESCRIPTIONS[4]));
-
-        this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
-        this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
-
-        updateDescription();
     }
 
     @Override
@@ -94,7 +84,7 @@ public class OldWebPower extends AbstractPower implements CloneablePowerInterfac
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (info.type == DamageInfo.DamageType.NORMAL ) {
             flashWithoutSound();
-            AbstractDungeon.actionManager.addToTop(new ReducePowerAction(owner, owner, this, 1));
+            Wiz.adam().addToTop(new ReducePowerAction(owner, owner, this, 1));
         }
         return damageAmount;
     }
@@ -168,7 +158,7 @@ public class OldWebPower extends AbstractPower implements CloneablePowerInterfac
     @Override
     public void renderIcons(SpriteBatch sb, float x, float y, Color c) {
         super.renderIcons(sb, x, y, c);
-        if (wbhb != null && !AbstractDungeon.player.hasRelic(RunicDome.ID) && !Settings.hideCombatElements) {
+        if (wbhb != null && !Wiz.adp().hasRelic(RunicDome.ID) && !Settings.hideCombatElements) {
             sb.setColor(new Color(1, 1, 1, 1));
             sb.draw( webBreakTex, wbhb.x, wbhb.y, 16f,16f, 32f, 32f, Settings.scale * 1.5f, Settings.scale * 1.5f, 0f, 0, 0, 32, 32, false, false);
             FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, "!?", wbhb.cX + 32f * Settings.scale, wbhb.cY + 18f * Settings.scale, new Color(1, 0, 0, 1));

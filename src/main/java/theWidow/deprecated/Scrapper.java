@@ -20,7 +20,7 @@ public class Scrapper extends CustomCard {
     public static final String ID = WidowMod.makeID(Scrapper.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG = makeCardPath("Scrapper.png");
+    public static final String IMG = makeCardPath("Scrapper");
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;

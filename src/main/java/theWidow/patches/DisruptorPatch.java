@@ -6,7 +6,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theWidow.cards.Disruptor;
+import theWidow.cards.uncommon.Disruptor;
 
 public class DisruptorPatch {
 
@@ -16,7 +16,7 @@ public class DisruptorPatch {
             clz = GainBlockAction.class,
             method = "update"
     )
-    public static class WaterFilterPotionPopUpTargetModePatch {
+    public static final class WaterFilterPotionPopUpTargetModePatch {
         @SpirePrefixPatch
         public static SpireReturn preventBlock(GainBlockAction __instance) {
             if (__instance.target.hasPower(Disruptor.DisruptorPower.POWER_ID)) {

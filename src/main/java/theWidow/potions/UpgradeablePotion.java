@@ -1,18 +1,29 @@
 package theWidow.potions;
 
-import basemod.abstracts.CustomPotion;
 import basemod.abstracts.CustomSavable;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.google.gson.reflect.TypeToken;
+import com.megacrit.cardcrawl.potions.AbstractPotion;
 import theWidow.WidowMod;
-import theWidow.util.TextureLoader;
+import theWidow.util.TexLoader;
 
 import java.lang.reflect.Type;
 
-public abstract class UpgradeablePotion extends CustomPotion implements CustomSavable<Boolean> {
+public abstract class UpgradeablePotion extends AbstractPotion implements CustomSavable<Boolean> {
 
+    private static final Texture plusTexture = TexLoader.getTexture(WidowMod.makeImagePath("ui/PotionPlus"));
     protected boolean upgraded;
+
+    public UpgradeablePotion(String name, String id, PotionRarity rarity, PotionSize size, PotionEffect effect, Color liquidColor, Color hybridColor, Color spotsColor, boolean upgraded) {
+        super(name + (upgraded?"+":""), id, rarity, size, effect, liquidColor, hybridColor, spotsColor);
+        this.upgraded = upgraded;
+        initializeData();
+    }
+
+    public UpgradeablePotion(String name, String id, PotionRarity rarity, PotionSize size, PotionEffect effect, Color liquidColor, Color hybridColor, Color spotsColor) {
+        this(name, id, rarity, size, effect, liquidColor, hybridColor, spotsColor, false);
+    }
 
     public UpgradeablePotion(String name, String id, PotionRarity rarity, PotionSize size, PotionColor color, boolean upgraded) {
         super(name + (upgraded?"+":""), id, rarity, size, color);
@@ -29,7 +40,7 @@ public abstract class UpgradeablePotion extends CustomPotion implements CustomSa
         super.render(sb);
         if (upgraded) {
             sb.setColor(Color.WHITE);
-            sb.draw(TextureLoader.getTexture(WidowMod.makeImagePath("ui/PotionPlus.png")), this.posX - 32.0F, this.posY - 32.0F, 32.0F, 32.0F, 64.0F, 64.0F, scale, scale, 0, 0, 0, 64, 64, false, false);
+            sb.draw(plusTexture, this.posX - 32.0F, this.posY - 32.0F, 32.0F, 32.0F, 64.0F, 64.0F, scale, scale, 0, 0, 0, 64, 64, false, false);
         }
     }
 
@@ -48,6 +59,6 @@ public abstract class UpgradeablePotion extends CustomPotion implements CustomSa
 
     @Override
     public Type savedType() {
-        return new TypeToken<Boolean>(){}.getType();
+        return Boolean.TYPE;
     }
 }

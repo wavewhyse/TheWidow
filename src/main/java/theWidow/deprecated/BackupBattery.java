@@ -4,14 +4,13 @@ import basemod.AutoAdd;
 import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
 import theWidow.cards.BetaCard;
-import theWidow.relics.SewingKitRelic;
 
-import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 import static theWidow.WidowMod.makeCardPath;
 
 @AutoAdd.Ignore
@@ -19,9 +18,9 @@ import static theWidow.WidowMod.makeCardPath;
 public class BackupBattery extends BetaCard {
 
     public static final String ID = WidowMod.makeID(BackupBattery.class.getSimpleName());
-    //private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     //private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG = makeCardPath("BackupBattery.png");
+    public static final String IMG = makeCardPath("BackupBattery");
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -33,11 +32,10 @@ public class BackupBattery extends BetaCard {
     private static final int EXHAUSTIVE = 1;
 
     public BackupBattery() {
-        super(ID, languagePack.getCardStrings(ID).NAME, IMG, COST, languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET, cardStrings);
         ExhaustiveVariable.setBaseValue(this, EXHAUSTIVE);
         magicNumber = baseMagicNumber = ENERGY_GAIN;
-        if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(SewingKitRelic.ID))
-            upgrade();
+        SewingKitCheck();
     }
 
     @Override

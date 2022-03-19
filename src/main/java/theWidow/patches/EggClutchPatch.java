@@ -9,8 +9,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
-public class EggClutchPatch {
+public final class EggClutchPatch {
 
     private static final Logger logger = LogManager.getLogger(EggClutchPatch.class.getName());
     public static int EGG_CLUTCH_UPGRADES = 0;
@@ -19,12 +20,12 @@ public class EggClutchPatch {
             clz = AbstractDungeon.class,
             method = "getRewardCards"
     )
-    public static class upgradeCardRewards {
+    public static final class upgradeCardRewards {
 
         @SpirePostfixPatch
         public static ArrayList<AbstractCard> eggClutchUpgrade(ArrayList<AbstractCard> __result) {
             if (EGG_CLUTCH_UPGRADES != 0) {
-                ArrayList<AbstractCard> upgradeable = new ArrayList<>(__result);
+                List<AbstractCard> upgradeable = new ArrayList<>(__result);
                 upgradeable.removeIf(abstractCard -> !abstractCard.canUpgrade());
                 ArrayList<Boolean> upgrades = new ArrayList<>();
                 for (int i = 0; i < EGG_CLUTCH_UPGRADES && i < upgradeable.size(); i++)

@@ -2,7 +2,7 @@ package theWidow.variables;
 
 import basemod.abstracts.DynamicVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import theWidow.cards.ModuleX;
+import theWidow.cards.rare.ModuleX;
 
 import static theWidow.WidowMod.makeID;
 

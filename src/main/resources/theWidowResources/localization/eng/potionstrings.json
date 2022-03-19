@@ -1,52 +1,36 @@
 {
         "theWidow:SilkPotion": {
                 "NAME": "Silk Potion",
-                "DESCRIPTIONS": ["Gain #b", " #yWeb."]
-        },
-        "theWidow:SilkPlusPotion": {
-                "NAME": "Silk+ Potion",
-                "DESCRIPTIONS": ["Gain #b", " #yWeb."]
+                "DESCRIPTIONS": ["Gain #b%d #yWeb."]
         },
         "theWidow:VenomCocktailPotion": {
                 "NAME": "Venom Cocktail",
-                "DESCRIPTIONS": ["Apply #b", " Sapped."]
+                "DESCRIPTIONS": ["Apply #b%d Sapped."]
         },
         "theWidow:NeurostimulantPotion": {
                 "NAME": "Neurostimulant",
                 "DESCRIPTIONS": [
                         "Permanently Upgrade a card in your hand.",
-                        "Permanently Upgrade #b", " cards in your hand."
+                        "Permanently Upgrade #b%d cards in your hand."
                 ]
         },
         "theWidow:GrenadePotion": {
                 "NAME": "Grenade",
-                "DESCRIPTIONS": ["Deal #b", " damage."]
-        },
-        "theWidow:GrenadePlusPotion": {
-                "NAME": "Grenade+",
-                "DESCRIPTIONS": ["Deal #b", " damage."]
+                "DESCRIPTIONS": ["Deal #b%d damage."]
         },
         "theWidow:PulseBombPotion": {
                 "NAME": "Pulse Bomb",
-                "DESCRIPTIONS": ["Deal #b", " damage to one enemy and #b", " damage to all other enemies."]
-        },
-        "theWidow:PulseBombPlusPotion": {
-                "NAME": "Pulse Bomb+",
-                "DESCRIPTIONS": ["Deal #b", " damage to one enemy and #b", " damage to all other enemies."]
+                "DESCRIPTIONS": ["Deal #b%d damage to one enemy and #b%d damage to all other enemies."]
         },
         "theWidow:MiniNukePotion": {
                 "NAME": "Mini-Nuke",
-                "DESCRIPTIONS": ["Deal #b", " damage to ALL enemies."]
-        },
-        "theWidow:MiniNukePlusPotion": {
-                "NAME": "Mini-Nuke+",
-                "DESCRIPTIONS": ["Deal #b", " damage to ALL enemies."]
+                "DESCRIPTIONS": ["Deal #b%d damage to ALL enemies."]
         },
         "theWidow:DistilledCardPotion": {
                 "NAME": "Distilled ",
                 "DESCRIPTIONS": [
-                        "Has the effects of a ", ".",
-                        "Have the effects of #b", "s."
+                        "Has the effects of a %s.",
+                        "Have the effects of #b%d %ss."
                 ]
         },
         "BlessingOfTheForgeWithSacredBark": {

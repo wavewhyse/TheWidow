@@ -17,22 +17,24 @@ import static theWidow.WidowMod.makeCardPath;
 @AutoAdd.Ignore
 @Deprecated
 public class Skitter extends CustomCard {
-
     public static final String ID = WidowMod.makeID(Skitter.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = makeCardPath("Skitter.png");
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
-    private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
-
-    private static final int COST = 1;
     private static final int UPGRADED_COST = 0;
     private static final int WEB = 3;
 
+
+
     public Skitter() {
-        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super( ID,
+                cardStrings.NAME,
+                makeCardPath(Skitter.class.getSimpleName()),
+                1,
+                cardStrings.DESCRIPTION,
+                CardType.SKILL,
+                TheWidow.Enums.COLOR_BLACK,
+                CardRarity.UNCOMMON,
+                CardTarget.SELF );
         magicNumber = baseMagicNumber = WEB;
         exhaust = true;
         isInnate = true;

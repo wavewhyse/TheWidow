@@ -1,8 +1,6 @@
 package theWidow.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -13,66 +11,55 @@ import com.megacrit.cardcrawl.potions.PotionSlot;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import theWidow.WidowMod;
-import theWidow.util.TextureLoader;
+import theWidow.util.Wiz;
 
-import static theWidow.WidowMod.makePowerPath;
-
-public class GrenadierPower extends AbstractPower implements CloneablePowerInterface {
+public class GrenadierPower extends AbstractEasyPower implements CloneablePowerInterface {
     public static final String POWER_ID = WidowMod.makeID(GrenadierPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("GrenadierPower84.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("GrenadierPower32.png"));
+    public GrenadierPower(AbstractCreature owner, int amount) {
+        super( powerStrings.NAME,
+                PowerType.BUFF,
+                owner,
+                amount );
+    }
 
-    public GrenadierPower(final AbstractCreature owner, final int amount) {
-        name = powerStrings.NAME;
-        ID = POWER_ID;
-
-        this.owner = owner;
-        this.amount = amount;
-
-        type = PowerType.BUFF;
-        isTurnBased = false;
-
-        this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
-        this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
-
-        updateDescription();
+    protected GrenadierPower(String name, AbstractCreature owner, int amount) {
+        super( name,
+                PowerType.BUFF,
+                owner,
+                amount );
     }
 
     @Override
     public void onInitialApplication() {
-        addSlots(amount);
+        addToBot(new AddPotionSlotAction(amount));
     }
 
     @Override
     public void stackPower(int stackAmount) {
         super.stackPower(stackAmount);
-        addSlots(stackAmount);
+        addToBot(new AddPotionSlotAction(stackAmount));
     }
 
-    private void addSlots(int num) {
-        AbstractDungeon.player.potionSlots += num;
-        for (int i = 0; i < num; i++) {
-            int finalI = i;
-            addToTop(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    AbstractDungeon.player.potions.add(new PotionSlot(AbstractDungeon.player.potionSlots - 1 - finalI));
-                    isDone = true;
-                }
-            });
+    private static class AddPotionSlotAction extends AbstractGameAction {
+        public AddPotionSlotAction(int amount) {
+            this.amount = amount;
         }
-        /*addToBot(new WaitAction(10f));
-        for (int i = 0; i < num; i++)
-            addToBot(new ObtainPotionAction(new GrenadePotion()));*/
-        //AbstractDungeon.player.adjustPotionPositions();
+
+        @Override
+        public void update() {
+            Wiz.adp().potionSlots += amount;
+            for (int i = 0; i < amount; i++) {
+                Wiz.adp().potions.add(new PotionSlot(Wiz.adp().potionSlots - 1 - i));
+            }
+            isDone = true;
+        }
     }
 
     @Override
     public void onVictory() {
-        AbstractPlayer p = AbstractDungeon.player;
+        AbstractPlayer p = Wiz.adp();
         p.potionSlots -= amount;
         /*
             A case where arrays starting at 0 SUCKS and IS CONFUSING
@@ -87,7 +74,7 @@ public class GrenadierPower extends AbstractPower implements CloneablePowerInter
             for (int i = p.potionSlots; i < p.potions.size(); i++)
                 if (!(p.potions.get(i) instanceof PotionSlot)) {
                     RewardItem salvage = new RewardItem(p.potions.get(i));
-                    salvage.text += DESCRIPTIONS[3];
+                    salvage.text += powerStrings.DESCRIPTIONS[2];
                     AbstractDungeon.getCurrRoom().rewards.add(salvage);
                 }
             p.potions.subList(p.potionSlots, p.potions.size()).clear();
@@ -102,9 +89,9 @@ public class GrenadierPower extends AbstractPower implements CloneablePowerInter
     @Override
     public void updateDescription() {
         if (amount == 1)
-            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[2];
+            description = String.format(powerStrings.DESCRIPTIONS[0], amount);
         else
-            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+            description = String.format(powerStrings.DESCRIPTIONS[1], amount);
     }
 
     @Override

@@ -15,22 +15,24 @@ import static theWidow.WidowMod.makeCardPath;
 @AutoAdd.Ignore
 @Deprecated
 public class Electroneurons extends CustomCard {
-
     public static final String ID = WidowMod.makeID(Electroneurons.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("Electroneurons.png");
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
-    private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
-
-    private static final int COST = 0;
     private static final int DRAW = 3;
     private static final int UPGRADE_PLUS_DRAW = 1;
 
+
+
     public Electroneurons() {
-        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super( ID,
+                cardStrings.NAME,
+                makeCardPath(Electroneurons.class.getSimpleName()),
+                0,
+                cardStrings.DESCRIPTION,
+                CardType.SKILL,
+                TheWidow.Enums.COLOR_BLACK,
+                CardRarity.COMMON,
+                CardTarget.SELF );
         magicNumber = baseMagicNumber = DRAW;
         exhaust = true;
     }

@@ -2,7 +2,7 @@ package theWidow.variables;
 
 import basemod.abstracts.DynamicVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import theWidow.util.Wiz;
 
 import static theWidow.WidowMod.makeID;
 
@@ -30,12 +30,7 @@ public class UpgradesInHand extends DynamicVariable
     // In our case, it displays the damage the card would do, multiplied by the amount of energy the player currently has.
     @Override
     public int value(AbstractCard card) {
-        int upgrades = 0;
-        for (AbstractCard c : AbstractDungeon.player.hand.group) {
-            if (c.upgraded && c != card)
-                upgrades++;
-        }
-        return upgrades;
+        return Wiz.count(Wiz.adp().hand.group, c -> c.upgraded && c != card);
     }
     
     // The baseValue the variable should display.

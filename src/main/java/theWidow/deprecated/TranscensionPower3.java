@@ -1,18 +1,13 @@
 package theWidow.deprecated;
 
 import basemod.interfaces.CloneablePowerInterface;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.unique.DiscoveryAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theWidow.WidowMod;
-import theWidow.util.TextureLoader;
-
-import static theWidow.WidowMod.makePowerPath;
+import theWidow.util.Wiz;
 
 
 @Deprecated
@@ -23,9 +18,6 @@ public class TranscensionPower3 extends AbstractPower implements CloneablePowerI
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("TranscensionPower84.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("TranscensionPower32.png"));
 
     private final boolean upgraded;
 
@@ -39,11 +31,6 @@ public class TranscensionPower3 extends AbstractPower implements CloneablePowerI
 
         type = PowerType.BUFF;
         isTurnBased = false;
-
-        this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
-        this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
-
-        updateDescription();
     }
 
     @Override
@@ -53,14 +40,14 @@ public class TranscensionPower3 extends AbstractPower implements CloneablePowerI
 
     @Override
     public void atStartOfTurnPostDraw() {
-        boolean willItBeAdded = AbstractDungeon.player.hand.size() < 10;
+        boolean willItBeAdded = Wiz.adp().hand.size() < 10;
         addToBot(new DiscoveryAction(false, amount));
         /*if (willItBeAdded) {
-            if (AbstractDungeon.player.hand.getTopCard().canUpgrade())
-                AbstractDungeon.player.hand.getTopCard().upgrade();
+            if (Wiz.adp().hand.getTopCard().canUpgrade())
+                Wiz.adp().hand.getTopCard().upgrade();
         } else {
-            if (AbstractDungeon.player.discardPile.getTopCard().canUpgrade())
-                AbstractDungeon.player.discardPile.getTopCard().upgrade();
+            if (Wiz.adp().discardPile.getTopCard().canUpgrade())
+                Wiz.adp().discardPile.getTopCard().upgrade();
         }*/
     }
 

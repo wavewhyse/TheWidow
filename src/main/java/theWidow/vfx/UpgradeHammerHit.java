@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.UpgradeHammerImprintEffect;
 import com.megacrit.cardcrawl.vfx.UpgradeShineParticleEffect;
+import theWidow.util.Wiz;
 
 public class UpgradeHammerHit extends AbstractGameEffect {
     private final AbstractCard card;
@@ -23,7 +24,7 @@ public class UpgradeHammerHit extends AbstractGameEffect {
     public void update() {
         duration -= Gdx.graphics.getDeltaTime();
         if (this.duration < 0.0F) {
-            AbstractDungeon.actionManager.addToTop(new SFXAction("HammerHit"));
+            Wiz.adam().addToTop(new SFXAction("HammerHit"));
             AbstractDungeon.topLevelEffectsQueue.add(new UpgradeHammerImprintEffect(card.hb.cX -80.0F * Settings.scale, card.hb.cY));
             if (!Settings.DISABLE_EFFECTS) {
                 for (int i = 0; i < 10; i++)

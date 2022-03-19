@@ -20,7 +20,7 @@ public class LinkUp extends CustomCard {
     public static final String ID = WidowMod.makeID(LinkUp.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG = makeCardPath("LinkUp.png");
+    public static final String IMG = makeCardPath("LinkUp");
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;

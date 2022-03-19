@@ -14,14 +14,19 @@
       "Distill"
     ]
   },
-  "theWidow:MeltdownAction": {
+  "theWidow:Meltdown": {
     "TEXT": [
       "Melt Down"
     ]
   },
-  "theWidow:ParticleAcceleratorAction": {
+  "theWidow:ParticleAccelerator": {
     "TEXT": [
       "Play"
+    ]
+  },
+  "theWidow:Refine": {
+    "TEXT": [
+      "Refine"
     ]
   }
 }

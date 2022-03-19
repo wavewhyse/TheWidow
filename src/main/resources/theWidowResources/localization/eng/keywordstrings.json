@@ -16,6 +16,17 @@
     "DESCRIPTION": "This card can be upgraded any number of times. Each upgrade is progressively better."
   },
   {
+    "PROPER_NAME": "Tune-Up",
+    "NAMES": [
+      "Tune-Up",
+      "tune-up",
+      "tune up",
+      "tune_up",
+      "tuneup"
+    ],
+    "DESCRIPTION": "Upgrade a card for the rest of combat. If you Tune-Up a Status or Curse card, turn it into Slag instead."
+  },
+  {
     "PROPER_NAME": "Downgrade",
     "NAMES": [
       "Downgrade",

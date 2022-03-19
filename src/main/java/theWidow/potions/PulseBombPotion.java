@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -17,32 +16,33 @@ import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
+import theWidow.util.Wiz;
 
 public class PulseBombPotion extends UpgradeablePotion {
-
     public static final String POTION_ID = WidowMod.makeID(PulseBombPotion.class.getSimpleName());
     private static final PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(POTION_ID);
-
-    public static final String NAME = potionStrings.NAME;
-    public static final String[] DESCRIPTIONS = potionStrings.DESCRIPTIONS;
-
-    public static final Color LIQUID_COLOR = Color.BLUE;
-    public static final Color HYBRID_COLOR = Color.WHITE;
-    public static final Color SPOTS_COLOR = Color.YELLOW;
 
     public PulseBombPotion() {
         this(false);
     }
 
     public PulseBombPotion(boolean upgraded) {
-        super(NAME, POTION_ID, TheWidow.Enums.BOMB, PotionSize.FAIRY, PotionColor.STEROID, upgraded);
+        super( potionStrings.NAME,
+                POTION_ID,
+                TheWidow.Enums.BOMB,
+                PotionSize.FAIRY,
+                PotionEffect.OSCILLATE,
+                Color.BLUE,
+                Color.WHITE,
+                Color.YELLOW,
+                upgraded );
     }
 
     @Override
     public void initializeData() {
         potency = getPotency();
 
-        description = DESCRIPTIONS[0] + potency + DESCRIPTIONS[1] + potency/2 + DESCRIPTIONS[2];
+        description = String.format(potionStrings.DESCRIPTIONS[0], potency, potency/2);
 
         isThrown = true;
         targetRequired = true;
@@ -52,18 +52,24 @@ public class PulseBombPotion extends UpgradeablePotion {
     }
 
     @Override
-    public void use(AbstractCreature target) { //TODO: make it not double damage vs main target
-        for (AbstractMonster m : (AbstractDungeon.getMonsters()).monsters) {
+    public void use(AbstractCreature target) {
+        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
             if (!m.isDeadOrEscaped())
                 addToBot(new VFXAction(new ExplosionSmallEffect(m.hb.cX, m.hb.cY), 0.1F));
         }
         addToBot(new WaitAction(0.5F));
-        addToBot(new DamageAllEnemiesAction(null,
-                DamageInfo.createDamageMatrix(potency/2, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE)
-        );
-        DamageInfo info = new DamageInfo(AbstractDungeon.player, potency/2, DamageInfo.DamageType.THORNS);
-        info.applyEnemyPowersOnly(target);
-        addToBot(new DamageAction(target, info, AbstractGameAction.AttackEffect.FIRE));
+
+        DamageInfo damage = new DamageInfo(Wiz.adp(), potency, DamageInfo.DamageType.THORNS);
+        damage.applyEnemyPowersOnly(target);
+        addToBot(new DamageAction(target, damage, AbstractGameAction.AttackEffect.FIRE));
+
+        for (AbstractMonster m: AbstractDungeon.getMonsters().monsters) {
+            if (m != target) {
+                damage = new DamageInfo(Wiz.adp(), potency / 2, DamageInfo.DamageType.THORNS);
+                damage.applyEnemyPowersOnly(m);
+                addToBot(new DamageAction(m, damage, AbstractGameAction.AttackEffect.FIRE));
+            }
+        }
     }
     
     @Override

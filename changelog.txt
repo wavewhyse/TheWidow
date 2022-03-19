@@ -1,5 +1,24 @@
-    VERSION 0.14.1
+    VERSION 0.15
 
+-Hermit Weave reverted - (1 cost uncommon power) At the end of your turn, gain 3 (4) Web.
+-Test Subject upgrade no longer lowers cost to 0, instead removes Exhaust
+-Lace re-added - (0 cost common skill) Reduce the next 2 (3) instances of HP loss by 75%. Gain 2 Vulnerable.
+-Blacktar Adrenaline changed - Gain 1 (2) energy. Draw 3 cards. For 2 turns, draw 1 less card.
+-removed Improve Reality and Manufacture Reality
+-Sludge Wave is an attack and no longer stuns. Instead, it deals 6 (9) damage to all enemies.
+
+-fixed several cards' interactions with Sewing Kit
+-fixed Improbability Drive not downgrading properly
+-fixed Weaving not upgrading a card if it was the 10th card in your hand
+-Each instance of Module "X" will now upgrade differently, instead of all instances upgrading the same in the same run.
+-Exploit description fixed
+-new art for Prototyping and Module "X" (and all of its choices)
+-updated art for Bio-Informatics
+-fixed downgraded cards not updating their cost's colour
+-fixed Bomb Launcher's description
+
+-a LOT LOT of code cleanup
+-removed a lot of unneccesory files (cut the filesize in half lol)
 
     VERSION 0.14
 

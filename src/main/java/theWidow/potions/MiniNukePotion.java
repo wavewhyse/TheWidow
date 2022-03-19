@@ -18,33 +18,32 @@ import theWidow.TheWidow;
 import theWidow.WidowMod;
 
 public class MiniNukePotion extends UpgradeablePotion {
-
     public static final String POTION_ID = WidowMod.makeID(MiniNukePotion.class.getSimpleName());
     private static final PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(POTION_ID);
-
-    public static final String NAME = potionStrings.NAME;
-    public static final String[] DESCRIPTIONS = potionStrings.DESCRIPTIONS;
-
-    public static final Color LIQUID_COLOR = Color.LIME;
-    public static final Color HYBRID_COLOR = Color.YELLOW;
-    public static final Color SPOTS_COLOR = Color.ORANGE;
 
     public MiniNukePotion() {
         this(false);
     }
 
     public MiniNukePotion(boolean upgraded) {
-        super(NAME, POTION_ID, TheWidow.Enums.BOMB, PotionSize.BOTTLE, PotionColor.POISON, upgraded);
+        super( potionStrings.NAME,
+                POTION_ID,
+                TheWidow.Enums.BOMB,
+                PotionSize.BOTTLE,
+                PotionEffect.RAINBOW,
+                Color.LIME,
+                Color.LIME,
+                Color.LIME,
+                upgraded );
     }
 
     @Override
     public void initializeData() {
         potency = getPotency();
 
-        description = DESCRIPTIONS[0] + potency + DESCRIPTIONS[1];
+        description = String.format(potionStrings.DESCRIPTIONS[0], potency);
 
         isThrown = true;
-        targetRequired = false;
 
         tips.clear();
         tips.add(new PowerTip(name, description));
@@ -67,7 +66,6 @@ public class MiniNukePotion extends UpgradeablePotion {
         return new MiniNukePotion(upgraded);
     }
 
-    // This is your potency.
     @Override
     public int getPotency(final int ascensionLevel) {
         if (upgraded)

@@ -5,11 +5,11 @@
         },
         "theWidow:WebPower": {
                 "NAME": "Web",
-                "DESCRIPTIONS": ["When attacked, apply #b", " #yCaught to the attacker and reduce by 1."]
+                "DESCRIPTIONS": ["When attacked, apply #b%d #yCaught to the attacker and reduce by 1."]
         },
         "theWidow:CaughtPower": {
                 "NAME": "Caught",
-                "DESCRIPTIONS": ["Increase the next Attack damage taken by #b",". Decays by half every turn."]
+                "DESCRIPTIONS": ["Increase the next Attack damage taken by #b%d. Decays by half every turn."]
         },
         "theWidow:ParalysisPower": {
                 "NAME": "Paralysis",
@@ -25,7 +25,7 @@
         },
         "theWidow:HermitWeavePower": {
                 "NAME": "Hermit Weave",
-                "DESCRIPTIONS": ["#yWeb does not decrease."]
+                "DESCRIPTIONS": ["At the start of your turn, gain #b%d #yWeb."]
         },
         "theWidow:LaserDronePower": {
                 "NAME": "Laser Drone",
@@ -37,15 +37,15 @@
         },
         "theWidow:ShockedPower": {
                 "NAME": "Shocked",
-                "DESCRIPTIONS": ["On attacking, takes #b", " damage."]
+                "DESCRIPTIONS": ["On attacking, takes #b%d damage."]
         },
-        "theWidow:HydraulicsPower2": {
+        "theWidow:HydraulicsPower": {
                 "NAME": "Hydraulics",
-                "DESCRIPTIONS": ["The ", "2nd ", "3rd ", "4th ", "next Attack will deal ", "double ", "triple ", "quadruple ", "quintuple ", "sextuple ", "septuple ", "octuple ", "nonuple ", " times ", "damage."]
+                "DESCRIPTIONS": ["The ", "2nd ", "3rd ", "4th ", "next Attack will deal ", "double ", "triple ", "quadruple ", "quintuple ", "sextuple ", "septuple ", "octuple ", "nonuple ", "%d times ", "damage."]
         },
         "theWidow:GrenadierPower": {
                 "NAME": "Grenadier",
-                "DESCRIPTIONS": ["#b", " extra potion slots.", " extra potion slot.", " (salvaged)"]
+                "DESCRIPTIONS": ["#b%d extra potion slot.","#b%d extra potion slots."," (salvaged)"]
         },
         "theWidow:ConduitPower": {
                 "NAME": "Conduit",
@@ -69,35 +69,34 @@
         },
         "theWidow:BombLauncherPower": {
                 "NAME": "Bomb Launcher",
-                "DESCRIPTIONS": ["The next Potion you use is used twice.", "The next #b", " Potions you use are used twice."]
+                "DESCRIPTIONS": ["The next Potion you use is used twice.", "The next #b%d Potions you use are used twice."]
         },
         "theWidow:ChemistryPower": {
                 "NAME": "Chemistry",
-                "DESCRIPTIONS": ["When you use a Potion, draw #b", " cards."]
+                "DESCRIPTIONS": ["When you use a Potion, draw #b%d cards."]
         },
         "theWidow:ScrapperPower": {
                 "NAME": "Scrappy",
-                "DESCRIPTIONS": ["At end of turn, gain #b", " Block per debuff."]
+                "DESCRIPTIONS": ["At end of turn, gain #b%d Block per debuff."]
         },
         "theWidow:SadisticIntentPower": {
                 "NAME": "Sadistic Intent",
-                "DESCRIPTIONS": ["On applying a debuff to an enemy, next attack deals #b"," more damage."]
+                "DESCRIPTIONS": ["On applying a debuff to an enemy, apply #b%d #yCaught."]
         },
         "theWidow:DischargeBatteryPower": {
                 "NAME": "Discharging Battery",
                 "DESCRIPTIONS": ["Apply ","#b"," times ","leftover Energy at end of turn as #yParalysis and #yShocked to ALL enemies."]
         },
         "theWidow:ExtraCompartmentPower": {
-                "NAME": "Extra Compartments",
-                "DESCRIPTIONS": ["#b", " extra Potion Slots this turn."]
+                "NAME": "Extra Compartments"
         },
         "theWidow:GashPower": {
                 "NAME": "Gash",
-                "DESCRIPTIONS": ["At the end of its next #b", " turns, takes #b", " damage."]
+                "DESCRIPTIONS": ["At the end of the next #b%d turns, takes #b%d damage."]
         },
         "theWidow:VengefulPower": {
                 "NAME": "Vengeful",
-                "DESCRIPTIONS": ["When debuffed, gain #b"," temporary #yStrength."]
+                "DESCRIPTIONS": ["When debuffed, gain #b%d temporary #yStrength."]
         },
         "theWidow:InfectPower": {
                 "NAME": "Infected",
@@ -109,7 +108,7 @@
         },
         "theWidow:SapPower": {
           "NAME": "Sapped",
-          "DESCRIPTIONS": ["Deals #b"," less damage with Attacks. Reduced by half after every attack and every turn."]
+          "DESCRIPTIONS": ["Deals #b%d less damage with Attacks. Reduced by half after every attack and every turn."]
         },
         "theWidow:DisruptorPower": {
           "NAME": "Disrupted",
@@ -122,5 +121,9 @@
         "theWidow:UnstoppablePower": {
           "NAME": "Unstoppable",
           "DESCRIPTIONS": ["Unaffected by #yWeak, #yFrail, and #yVulnerable."]
+        },
+        "theWidow:LacePower": {
+          "NAME": "Lace",
+          "DESCRIPTIONS": ["Reduce the next #b%d instances of HP loss by #b75%%."]
         }
 }

@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
 public class ShockEffect extends AbstractGameEffect {
-    private Texture img = null;
+    private Texture img;
     private int index = 0;
     private final float x;
     private final float y;

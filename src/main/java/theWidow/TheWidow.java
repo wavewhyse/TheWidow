@@ -22,11 +22,11 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theWidow.cards.DefendWidow;
-import theWidow.cards.Steelweave;
-import theWidow.cards.StrikeWidow;
-import theWidow.cards.StringShot;
-import theWidow.relics.CyberheartRelic;
+import theWidow.cards.common.Defend;
+import theWidow.cards.common.Steelweave;
+import theWidow.cards.common.Strike;
+import theWidow.cards.common.StringShot;
+import theWidow.relics.Cyberheart;
 
 import java.util.ArrayList;
 
@@ -35,7 +35,7 @@ import static theWidow.WidowMod.makeID;
 public class TheWidow extends CustomPlayer {
     public static final Logger logger = LogManager.getLogger(WidowMod.class.getName());
 
-    public static class Enums {
+    public static final class Enums {
         @SpireEnum
         public static AbstractPlayer.PlayerClass THE_WIDOW;
         @SpireEnum(name = "THE_WIDOW")
@@ -124,15 +124,15 @@ public class TheWidow extends CustomPlayer {
 
         logger.info("Begin loading starter Deck Strings");
 
-        retVal.add(StrikeWidow.ID);
-        retVal.add(StrikeWidow.ID);
-        retVal.add(StrikeWidow.ID);
-        retVal.add(StrikeWidow.ID);
+        retVal.add(Strike.ID);
+        retVal.add(Strike.ID);
+        retVal.add(Strike.ID);
+        retVal.add(Strike.ID);
 
-        retVal.add(DefendWidow.ID);
-        retVal.add(DefendWidow.ID);
-        retVal.add(DefendWidow.ID);
-        retVal.add(DefendWidow.ID);
+        retVal.add(Defend.ID);
+        retVal.add(Defend.ID);
+        retVal.add(Defend.ID);
+        retVal.add(Defend.ID);
 
         retVal.add(Steelweave.ID);
         retVal.add(StringShot.ID);
@@ -143,9 +143,9 @@ public class TheWidow extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        retVal.add(CyberheartRelic.ID);
+        retVal.add(Cyberheart.ID);
 
-        UnlockTracker.markRelicAsSeen(CyberheartRelic.ID);
+        UnlockTracker.markRelicAsSeen(Cyberheart.ID);
 
         return retVal;
     }

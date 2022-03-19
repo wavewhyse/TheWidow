@@ -3,15 +3,14 @@ package theWidow.actions;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
+import theWidow.util.Wiz;
 import theWidow.vfx.UpgradeHammerHit;
 
 public class WidowUpgradeCardAction extends AbstractGameAction {
-    private final AbstractPlayer p = AbstractDungeon.player;
     private final AbstractCard c;
     private final boolean permanent;
     public static final float DURATION = 0.1f;
@@ -31,7 +30,7 @@ public class WidowUpgradeCardAction extends AbstractGameAction {
     public void update() {
         if (duration == DURATION) {
             if (permanent) {
-                for (AbstractCard dc : p.masterDeck.group) {
+                for (AbstractCard dc : Wiz.adp().masterDeck.group) {
                     if (!dc.uuid.equals(c.uuid))
                         continue;
                     if (dc.canUpgrade()) {

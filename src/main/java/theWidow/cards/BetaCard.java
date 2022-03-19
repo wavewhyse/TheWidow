@@ -1,18 +1,24 @@
 package theWidow.cards;
 
 import basemod.abstracts.CustomCard;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import theWidow.relics.SewingKit;
+import theWidow.util.Wiz;
 
 public abstract class BetaCard extends CustomCard implements Downgradeable{
 
     private final CardStrings cardStrings;
 
-    public BetaCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target) {
+    public BetaCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target, CardStrings cardStrings) {
         super(id, name, img, cost, rawDescription, type, color, rarity, target);
-        cardStrings = CardCrawlGame.languagePack.getCardStrings(id);
-        //if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(SewingKitRelic.ID))
-        //    upgrade();
+        this.cardStrings = cardStrings;
+    }
+
+    protected void SewingKitCheck() {
+        if (Wiz.adp() != null && Wiz.adp().hasRelic(SewingKit.ID)) {
+            upgrade();
+            initializeDescription();
+        }
     }
 
     @Override

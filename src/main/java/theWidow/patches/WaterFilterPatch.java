@@ -2,13 +2,13 @@ package theWidow.patches;
 
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.core.GameCursor;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.ui.panels.PotionPopUp;
 import com.megacrit.cardcrawl.ui.panels.TopPanel;
 import javassist.CtBehavior;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theWidow.relics.WaterFilterRelic;
+import theWidow.relics.WaterFilter;
+import theWidow.util.Wiz;
 
 public class WaterFilterPatch {
 
@@ -18,13 +18,13 @@ public class WaterFilterPatch {
             clz = PotionPopUp.class,
             method = "updateTargetMode"
     )
-    public static class WaterFilterPotionPopUpTargetModePatch {
+    public static final class WaterFilterPotionPopUpTargetModePatch {
         @SpireInsertPatch(
                 locator = DestroyPotionLocator.class
         )
         public static SpireReturn chanceToNotUsePotion(PotionPopUp __instance) {
-            if ( AbstractDungeon.player.hasRelic(WaterFilterRelic.ID) && ((WaterFilterRelic) AbstractDungeon.player.getRelic(WaterFilterRelic.ID)).potionSaveChance()) {
-                AbstractDungeon.player.getRelic(WaterFilterRelic.ID).flash();
+            if ( Wiz.adp().hasRelic(WaterFilter.ID) && ((WaterFilter) Wiz.adp().getRelic(WaterFilter.ID)).potionSaveChance()) {
+                Wiz.adp().getRelic(WaterFilter.ID).flash();
                 __instance.targetMode = false;
                 GameCursor.hidden = false;
                 return SpireReturn.Return(null);
@@ -38,13 +38,13 @@ public class WaterFilterPatch {
             clz = PotionPopUp.class,
             method = "updateInput"
     )
-    public static class WaterFilterPotionPopUpInputPatch {
+    public static final class WaterFilterPotionPopUpInputPatch {
         @SpireInsertPatch(
                 locator = DestroyPotionLocator.class
         )
         public static SpireReturn chanceToNotUsePotion(PotionPopUp __instance) {
-            if (AbstractDungeon.player.hasRelic(WaterFilterRelic.ID) && ((WaterFilterRelic) AbstractDungeon.player.getRelic(WaterFilterRelic.ID)).potionSaveChance()) {
-                AbstractDungeon.player.getRelic(WaterFilterRelic.ID).flash();
+            if (Wiz.adp().hasRelic(WaterFilter.ID) && ((WaterFilter) Wiz.adp().getRelic(WaterFilter.ID)).potionSaveChance()) {
+                Wiz.adp().getRelic(WaterFilter.ID).flash();
                 __instance.close();
                 return SpireReturn.Return(null);
             }

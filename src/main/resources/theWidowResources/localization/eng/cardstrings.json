@@ -1,9 +1,9 @@
 {
-  "theWidow:StrikeWidow": {
+  "theWidow:Strike": {
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage."
   },
-  "theWidow:DefendWidow": {
+  "theWidow:Defend": {
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block."
   },
@@ -26,7 +26,7 @@
   },
   "theWidow:WebSwing": {
     "NAME": "Web Swing",
-    "DESCRIPTION": "Gain !M! thewidow:Web. NL Apply !M! Weak. NL Draw a card."
+    "DESCRIPTION": "Apply !M! Weak. NL Draw 2 cards."
   },
   "theWidow:Harden": {
     "NAME": "Harden",
@@ -46,7 +46,7 @@
   },
   "theWidow:HermitWeave": {
     "NAME": "Hermit Weave",
-    "DESCRIPTION": "{@@}thewidow:Web can no longer be decreased.{!M!|>0= NL Gain !M! thewidow:Web.}"
+    "DESCRIPTION": "At the end of your turn, gain !M! thewidow:Web."
   },
   "theWidow:OmniCannon": {
     "NAME": "Omni-Cannon",
@@ -54,8 +54,7 @@
   },
   "theWidow:ImprobabilityDrive": {
     "NAME": "Improbability Drive",
-    "DESCRIPTION": "thewidow:Beta. NL Draw X cards. NL Gain",
-    "EXTENDED_DESCRIPTION": [". NL Exhaust."]
+    "DESCRIPTION": "thewidow:Beta. NL Draw X cards. NL Gain%s. NL Exhaust."
   },
   "theWidow:RocketDash": {
     "NAME": "Rocket Dash",
@@ -76,7 +75,8 @@
   },
   "theWidow:StringShot": {
     "NAME": "String Shot",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !M! thewidow:Web."
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! thewidow:Web.",
+    "EXTENDED_DESCRIPTION": ["thewidow:Caught"]
   },
   "theWidow:LaserDrone": {
     "NAME": "Laser Drone",
@@ -170,9 +170,10 @@
   },
   "theWidow:Lace": {
     "NAME": "Lace",
-    "DESCRIPTION": "Gain !M! thewidow:Web. NL Gain !theWidow:M2! Vulnerable."
+    "DESCRIPTION": "Reduce the next !M! instances of HP loss by 75%. NL Gain 2 Vulnerable.",
+    "UPGRADE_DESCRIPTION": "Prevent the next !M! times you would lose HP. NL Gain 2 Vulnerable."
   },
-  "theWidow:BlackVenom3": {
+  "theWidow:BlackVenom": {
     "NAME": "Black Venom",
     "DESCRIPTION": "Enemy loses Strength equal to the number of debuffs it has. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Enemy loses Strength equal to the number of debuffs it has +1. NL Exhaust."
@@ -201,7 +202,7 @@
   },
   "theWidow:BombLauncher": {
     "NAME": "Bomb Launcher",
-    "DESCRIPTION": "{@@}The next {!M!|1=Potion|@=!M! Potions} you use this turn {!M!|1=is|@=are} used twice."
+    "DESCRIPTION": "{@@}The next {!M!|<2=Potion|@=!M! Potions} you use this turn {!M!|1=is|@=are} used twice."
   },
   "theWidow:Chemistry": {
     "NAME": "Chemistry",
@@ -221,7 +222,8 @@
   },
   "theWidow:GeminiBot": {
     "NAME": "Gemini Bot",
-    "DESCRIPTION": "{@@}Unplayable. NL When you play another card in hand, play this as a {!Upgrades!|0=non-}Upgraded copy of that card and Exhaust."
+    "DESCRIPTION": "{@@}Unplayable. NL When you play another card in hand, play this as a {!Upgrades!|0=non-}Upgraded copy of that card and Exhaust.",
+    "EXTENDED_DESCRIPTION": ["I can't play that."]
   },
   "theWidow:InForTheKill": {
     "NAME": "In For The Kill",
@@ -249,7 +251,7 @@
   },
   "theWidow:Exploit": {
     "NAME": "Exploit",
-    "DESCRIPTION": "Deal !D! damage twice. NL Apply 1 thewidow:Sapped for each debuff on the target."
+    "DESCRIPTION": "Deal !D! damage twice. NL Apply 2 thewidow:Sapped for each debuff on the target."
   },
   "theWidow:Spiderbite": {
     "NAME": "Spiderbite",
@@ -281,7 +283,7 @@
   },
   "theWidow:SludgeWave": {
     "NAME": "Sludge Wave",
-    "DESCRIPTION": "Apply !M! Vulnerable and !M! Weak to EVERYONE. NL If there are 3 or more enemies, Stun the one with the highest HP."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Apply !M! Vulnerable and !M! Weak to EVERYONE."
   },
   "theWidow:LinkUp": {
     "NAME": "Link-Up",
@@ -367,8 +369,8 @@
   },
   "theWidow:BlackTarAdrenaline": {
     "NAME": "Blacktar Adrenaline",
-    "DESCRIPTION": "Gain [E] [E]. NL Draw 1 card. NL Gain 2 Vulnerable.",
-    "UPGRADE_DESCRIPTION": "Gain [E] [E] [E]. NL Draw 1 card. NL Gain 2 Vulnerable."
+    "DESCRIPTION": "Gain [E]. NL Draw 2 cards. NL For the next 2 turns, draw 1 less card.",
+    "UPGRADE_DESCRIPTION": "Gain [E] [E]. NL Draw 2 cards. NL For the next 2 turns, draw 1 less card."
   },
   "theWidow:BlackVenom2": {
     "NAME": "Black Venom B",
@@ -462,10 +464,24 @@
   },
   "theWidow:TestSubject": {
     "NAME": "Test Subject",
-    "DESCRIPTION": "Apply copies of one enemy's debuffs to ALL enemies. NL Exhaust."
+    "DESCRIPTION": "Apply copies of one enemy's debuffs to ALL enemies. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Apply copies of one enemy's debuffs to ALL enemies."
   },
   "theWidow:Stalk": {
     "NAME": "Stalk",
     "DESCRIPTION": "Gain !B! Block. NL Apply !M! Vulnerable."
+  },
+  "theWidow:Slag": {
+    "NAME": "Slag",
+    "DESCRIPTION": "Unplayable. NL Ethereal. NL When Upgraded, Transform into a random Widow card. It costs 0."
+  },
+  "theWidow:SlaggedScars": {
+    "NAME": "Slagged Scars",
+    "DESCRIPTION": "At the start of your turn, add a Slag to your hand."
+  },
+  "theWidow:MultiTool": {
+    "NAME": "Multi-Tool",
+    "DESCRIPTION": "thewidow:Beta. NL Add a random thewidow:Beta card to your hand. It costs 0 this turn. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "thewidow:Beta. NL Add a random thewidow:Beta card to your hand and Upgrade it !M! times. It costs 0 this turn. NL Exhaust."
   }
 }

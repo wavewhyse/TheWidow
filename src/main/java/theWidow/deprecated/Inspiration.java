@@ -17,8 +17,8 @@ import theWidow.WidowMod;
 import theWidow.vfx.UpgradeHammerHit;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 import static theWidow.WidowMod.makeCardPath;
 
 @AutoAdd.Ignore
@@ -28,7 +28,7 @@ public class Inspiration extends CustomCard {
     public static final String ID = WidowMod.makeID(Inspiration.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("Inspiration.png");
+    public static final String IMG = makeCardPath("Attack");// "public static final String IMG = makeCardPath("Inspiration");
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.NONE;
@@ -38,7 +38,7 @@ public class Inspiration extends CustomCard {
     private static final int COST = -1;
 
     public Inspiration() {
-        super(ID, languagePack.getCardStrings(ID).NAME, IMG, COST, languagePack.getCardStrings(ID).DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         exhaust = true;
     }
 
@@ -46,7 +46,7 @@ public class Inspiration extends CustomCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         class InspirationAction extends AbstractGameAction {
             private final float DURATION = Settings.ACTION_DUR_LONG;
-            private final ArrayList<AbstractCard> cannotUpgrade = new ArrayList<>();
+            private final List<AbstractCard> cannotUpgrade = new ArrayList<>();
             private int effect;
             public InspirationAction() {
                 actionType = ActionType.CARD_MANIPULATION;

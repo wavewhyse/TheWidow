@@ -2,13 +2,13 @@ package theWidow.deprecated;
 
 import basemod.AutoAdd;
 import basemod.abstracts.CustomCard;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
+import theWidow.util.Wiz;
 
 import static theWidow.WidowMod.makeCardPath;
 
@@ -19,7 +19,7 @@ public class TranscendentForm2 extends CustomCard {
     public static final String ID = WidowMod.makeID(TranscendentForm2.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG = makeCardPath("TranscendentForm.png");
+    public static final String IMG = makeCardPath("TranscendentForm");
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -35,7 +35,7 @@ public class TranscendentForm2 extends CustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot( new ApplyPowerAction(p, p, new TransensionPower2(p, p, 1), 1));
+        Wiz.apply(new TransensionPower2(p, p, 1));
     }
 
     @Override

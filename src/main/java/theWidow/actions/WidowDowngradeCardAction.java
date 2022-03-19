@@ -14,10 +14,11 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import theWidow.cards.Downgradeable;
 import theWidow.cards.ExtraExtraMagicalCustomCard;
 import theWidow.cards.ExtraMagicalCustomCard;
+import theWidow.util.Wiz;
 
 public class WidowDowngradeCardAction extends AbstractGameAction {
 
-    private final AbstractPlayer p = AbstractDungeon.player;
+    private final AbstractPlayer p = Wiz.adp();
     private final AbstractCard c;
     private final boolean permanent;
     public static final float DURATION = 0.1f;
@@ -36,17 +37,20 @@ public class WidowDowngradeCardAction extends AbstractGameAction {
     @Override
     public void update() {
         if (duration == DURATION) {
-            if (permanent)
-                p.masterDeck.group.stream().filter(dc -> dc.uuid.equals(c.uuid) && dc.upgraded).forEach(dc -> {
-                    doDowngrade(dc);
-                    AbstractDungeon.topLevelEffectsQueue.add(new ShowCardBrieflyEffect(dc.makeStatEquivalentCopy()));
-                    AbstractDungeon.topLevelEffectsQueue.add(new VfxBuilder(ImageMaster.ORB_DARK, Settings.WIDTH/2f, Settings.HEIGHT/2f, 0.75f)
-                            .setAlpha(0.5f)
-                            .scale(0.5f, 5f, VfxBuilder.Interpolations.ELASTICOUT)
-                            .rotate(100f)
-                            .fadeOut(0.5f)
-                            .build());
-                });
+            if (permanent) {
+                for (AbstractCard dc : p.masterDeck.group) {
+                    if (dc.uuid.equals(c.uuid) && dc.upgraded) {
+                        doDowngrade(dc);
+                        AbstractDungeon.topLevelEffectsQueue.add(new ShowCardBrieflyEffect(dc.makeStatEquivalentCopy()));
+                        AbstractDungeon.topLevelEffectsQueue.add(new VfxBuilder(ImageMaster.ORB_DARK, Settings.WIDTH / 2f, Settings.HEIGHT / 2f, 0.75f)
+                                .setAlpha(0.5f)
+                                .scale(0.5f, 5f, VfxBuilder.Interpolations.ELASTICOUT)
+                                .rotate(100f)
+                                .fadeOut(0.5f)
+                                .build());
+                    }
+                }
+            }
             doDowngrade(c);
             AbstractDungeon.topLevelEffectsQueue.add(new VfxBuilder(ImageMaster.ORB_DARK, c.current_x, c.current_y, 0.75f)
                     .setAlpha(0.5f)
@@ -71,8 +75,12 @@ public class WidowDowngradeCardAction extends AbstractGameAction {
                 card.baseDiscard = card.discard = downgradedVersion.baseDiscard;
                 card.baseDraw = card.draw = downgradedVersion.baseDraw;
                 card.baseHeal = card.heal = downgradedVersion.baseHeal;
-                if (downgradedVersion.cost >= 0)
+                if (downgradedVersion.cost >= 0) {
                     card.updateCost(downgradedVersion.cost - card.cost);
+                    card.isCostModifiedForTurn = card.costForTurn != downgradedVersion.costForTurn;
+                    card.isCostModified = card.cost != downgradedVersion.cost;
+                    card.upgradedCost = card.costForTurn < downgradedVersion.costForTurn;
+                }
 
                 if (card instanceof ExtraMagicalCustomCard) {
                     ((ExtraMagicalCustomCard)card).baseSecondMagicNumber = ((ExtraMagicalCustomCard)card).secondMagicNumber = ((ExtraMagicalCustomCard)downgradedVersion).baseSecondMagicNumber;
@@ -97,6 +105,7 @@ public class WidowDowngradeCardAction extends AbstractGameAction {
                 for (AbstractCardModifier acm : CardModifierManager.modifiers(card))
                     acm.onInitialApplication(card);
             }
+            card.isDamageModified = card.isBlockModified = card.isMagicNumberModified = false;
             card.applyPowers();
             card.initializeDescription();
             card.displayUpgrades();

@@ -10,30 +10,28 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
+import theWidow.util.CardArtRoller;
 
 import static theWidow.WidowMod.makeCardPath;
 
 @AutoAdd.Ignore
 public class Rewire extends CustomCard {
-
     public static final String ID = WidowMod.makeID(Rewire.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("Rewire.png");
-
-    private static final CardRarity RARITY = CardRarity.COMMON;
-    private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
-
-    private static final int COST = 1;
-    private static final int BLOCK = 10;
-    private static final int UPGRADE_PLUS_BLOCK = 3;
 
     public Rewire() {
-        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-        baseBlock = BLOCK;
+        super( ID,
+                cardStrings.NAME,
+                makeCardPath(Rewire.class.getSimpleName()),
+                1,
+                cardStrings.DESCRIPTION,
+                CardType.SKILL,
+                TheWidow.Enums.COLOR_BLACK,
+                CardRarity.COMMON,
+                CardTarget.SELF );
+        baseBlock = 10;
         if (CardLibrary.getAllCards() != null && !CardLibrary.getAllCards().isEmpty())
-            theWidow.util.artHelp.CardArtRoller.computeCard(this);
+            CardArtRoller.computeCard(this);
     }
 
     @Override
@@ -46,7 +44,7 @@ public class Rewire extends CustomCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBlock(UPGRADE_PLUS_BLOCK);
+            upgradeBlock(3);
             initializeDescription();
         }
     }

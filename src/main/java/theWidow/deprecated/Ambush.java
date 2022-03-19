@@ -3,48 +3,46 @@ package theWidow.deprecated;
 import basemod.AutoAdd;
 import basemod.abstracts.CustomCard;
 import basemod.interfaces.CloneablePowerInterface;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
-import theWidow.util.TextureLoader;
+import theWidow.powers.AbstractEasyPower;
+import theWidow.util.Wiz;
 
 import static theWidow.WidowMod.makeCardPath;
-import static theWidow.WidowMod.makePowerPath;
 
 @AutoAdd.Ignore
 @Deprecated
 public class Ambush extends CustomCard {
-
     public static final String ID = WidowMod.makeID(Ambush.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = makeCardPath("Ambush.png");
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
-    private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.POWER;
-    public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
-
-    private static final int COST = 2;
     private static final int  UPGRADED_COST = 1;
 
+
+
     public Ambush() {
-        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super( ID,
+                cardStrings.NAME,
+                makeCardPath(Ambush.class.getSimpleName()),
+                2,
+                cardStrings.DESCRIPTION,
+                CardType.POWER,
+                TheWidow.Enums.COLOR_BLACK,
+                CardRarity.UNCOMMON,
+                CardTarget.SELF );
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new AmbushPower(p, 1), 0));
+        Wiz.apply(new AmbushPower(p, 1));
     }
 
     @Override
@@ -55,29 +53,17 @@ public class Ambush extends CustomCard {
         }
     }
 
-    public static class AmbushPower extends AbstractPower implements CloneablePowerInterface{
+    public static class AmbushPower extends AbstractEasyPower implements CloneablePowerInterface{
 
         public static final String POWER_ID = WidowMod.makeID(AmbushPower.class.getSimpleName());
         private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
         public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-        private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("Ambush84.png"));
-        private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("Ambush32.png"));
-
-        public AmbushPower(final AbstractCreature owner, final int amount) {
-            name = powerStrings.NAME;
-            ID = POWER_ID;
-
-            this.owner = owner;
-            this.amount = -1;
-
-            type = PowerType.BUFF;
-            isTurnBased = false;
-
-            this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
-            this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
-
-            updateDescription();
+        public AmbushPower(AbstractCreature owner, int amount) {
+            super( powerStrings.NAME,
+                    PowerType.BUFF,
+                    owner,
+                    amount );
         }
 
         @Override
@@ -87,9 +73,9 @@ public class Ambush extends CustomCard {
 
         @Override
         public void atEndOfTurn(boolean isPlayer) {
-            if (isPlayer && AbstractDungeon.actionManager.cardsPlayedThisTurn.stream().noneMatch(c -> c.type == CardType.ATTACK)) {
+            if (isPlayer && Wiz.adam().cardsPlayedThisTurn.stream().noneMatch(c -> c.type == CardType.ATTACK)) {
                 flash();
-                for (AbstractCard c : AbstractDungeon.player.hand.group) {
+                for (AbstractCard c : Wiz.adp().hand.group) {
                     if (!c.isEthereal)
                         c.retain = true;
                 }

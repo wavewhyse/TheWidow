@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
+import theWidow.util.Wiz;
 
 import static theWidow.WidowMod.makeCardPath;
 
@@ -26,7 +27,7 @@ public class SelfImprovement extends CustomCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final UIStrings uistrings = CardCrawlGame.languagePack.getUIString(WidowMod.makeID(SelfImprovementAction.class.getSimpleName()));
-    public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("SelfImprovement.png");
+    public static final String IMG = makeCardPath("Attack");// "public static final String IMG = makeCardPath("SelfImprovement");
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -48,7 +49,7 @@ public class SelfImprovement extends CustomCard {
     }
 
     class SelfImprovementAction extends AbstractGameAction {
-        private final AbstractPlayer p = AbstractDungeon.player;
+        private final AbstractPlayer p = Wiz.adp();
         private final float DURATION = Settings.ACTION_DUR_FAST;
         private int draws;
         public SelfImprovementAction() {

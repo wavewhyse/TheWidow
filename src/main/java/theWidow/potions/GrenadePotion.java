@@ -6,38 +6,38 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
+import theWidow.util.Wiz;
 
 public class GrenadePotion extends UpgradeablePotion {
-
     public static final String POTION_ID = WidowMod.makeID(GrenadePotion.class.getSimpleName());
     private static final PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(POTION_ID);
-
-    public static final String NAME = potionStrings.NAME;
-    public static final String[] DESCRIPTIONS = potionStrings.DESCRIPTIONS;
-
-    public static final Color LIQUID_COLOR = Color.BLACK;
-    public static final Color HYBRID_COLOR = Color.RED;
-    public static final Color SPOTS_COLOR = Color.BLACK;
 
     public GrenadePotion() {
         this(false);
     }
 
     public GrenadePotion(boolean upgraded) {
-        super(NAME, POTION_ID, TheWidow.Enums.BOMB, PotionSize.SPHERE, PotionColor.STEROID, upgraded);
+        super(potionStrings.NAME,
+                POTION_ID,
+                TheWidow.Enums.BOMB,
+                PotionSize.SPHERE,
+                PotionEffect.NONE,
+                Color.BLACK,
+                Color.RED,
+                Color.BLACK,
+                upgraded );
     }
 
     @Override
     public void initializeData() {
         potency = getPotency();
         
-        description = DESCRIPTIONS[0] + potency + DESCRIPTIONS[1];
+        description = String.format(potionStrings.DESCRIPTIONS[0], potency);
         
         isThrown = true;
         targetRequired = true;
@@ -48,7 +48,7 @@ public class GrenadePotion extends UpgradeablePotion {
 
     @Override
     public void use(AbstractCreature target) {
-        DamageInfo info = new DamageInfo(AbstractDungeon.player, potency, DamageInfo.DamageType.THORNS);
+        DamageInfo info = new DamageInfo(Wiz.adp(), potency, DamageInfo.DamageType.THORNS);
         info.applyEnemyPowersOnly(target);
         addToBot(new DamageAction(target, info, AbstractGameAction.AttackEffect.FIRE));
     }
@@ -58,7 +58,6 @@ public class GrenadePotion extends UpgradeablePotion {
         return new GrenadePotion(upgraded);
     }
 
-    // This is your potency.
     @Override
     public int getPotency(final int ascensionLevel) {
         if (upgraded)

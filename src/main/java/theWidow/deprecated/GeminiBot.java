@@ -8,42 +8,43 @@ import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theWidow.TheWidow;
 import theWidow.WidowMod;
 import theWidow.cards.BetaCard;
-import theWidow.relics.SewingKitRelic;
+import theWidow.util.Wiz;
 
 import static theWidow.WidowMod.makeCardPath;
 
 @AutoAdd.Ignore
 @Deprecated
 public class GeminiBot extends BetaCard {
-
     public static final String ID = WidowMod.makeID(GeminiBot.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("GeminiBot.png");
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
-    private static final CardTarget TARGET = CardTarget.NONE;
-    private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
-
-    private static final int COST = -2;
     private static final int DAMAGE = 3;
     private static final int UPGRADE_PLUS_DMG = 2;
     private static final int BLOCK = 3;
     private static final int UPGRADE_PLUS_BLOCK = 2;
 
+
+
     public GeminiBot() {
-        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super( ID,
+                cardStrings.NAME,
+                makeCardPath(GeminiBot.class.getSimpleName()),
+                -2,
+                cardStrings.DESCRIPTION,
+                CardType.SKILL,
+                TheWidow.Enums.COLOR_BLACK,
+                CardRarity.COMMON,
+                CardTarget.NONE,
+                cardStrings );
         baseDamage = DAMAGE;
         baseBlock = BLOCK;
         magicNumber = baseMagicNumber = DAMAGE;
-        if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(SewingKitRelic.ID))
-            upgrade();
+        SewingKitCheck();
     }
 
     @Override
@@ -62,7 +63,7 @@ public class GeminiBot extends BetaCard {
     @Override
     public void triggerOnEndOfTurnForPlayingCard() {
         dontTriggerOnUseCard = true;
-        AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(this, true));
+        Wiz.adam().cardQueue.add(new CardQueueItem(this, true));
     }
 
     @Override

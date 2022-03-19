@@ -25,7 +25,7 @@ public class Restock extends CustomCard {
     public static final String ID = WidowMod.makeID(Restock.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG = makeCardPath("Restock.png");
+    public static final String IMG = makeCardPath("Restock");
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;

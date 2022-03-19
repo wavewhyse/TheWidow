@@ -1,8 +1,6 @@
 package theWidow.deprecated;
 
 import basemod.interfaces.CloneablePowerInterface;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -10,9 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theWidow.WidowMod;
-import theWidow.util.TextureLoader;
-
-import static theWidow.WidowMod.makePowerPath;
+import theWidow.util.Wiz;
 
 
 @Deprecated
@@ -22,9 +18,6 @@ public class TransensionPower2 extends AbstractPower implements CloneablePowerIn
     public static final String POWER_ID = WidowMod.makeID(TransensionPower2.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("TransensionPower84.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("TransensionPower32.png"));
 
     public TransensionPower2(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = powerStrings.NAME;
@@ -36,11 +29,6 @@ public class TransensionPower2 extends AbstractPower implements CloneablePowerIn
 
         type = PowerType.BUFF;
         isTurnBased = false;
-
-        this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
-        this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
-
-        updateDescription();
     }
 
     @Override
@@ -50,7 +38,7 @@ public class TransensionPower2 extends AbstractPower implements CloneablePowerIn
 
     @Override
     public void onInitialApplication() {
-        for (AbstractCard c : AbstractDungeon.player.hand.group) {
+        for (AbstractCard c : Wiz.adp().hand.group) {
             c.setCostForTurn(-9);
         }
     }
@@ -60,8 +48,8 @@ public class TransensionPower2 extends AbstractPower implements CloneablePowerIn
         AbstractDungeon.transformCard(card);
         AbstractCard newCard = AbstractDungeon.transformedCard.makeCopy();
         newCard.setCostForTurn(-9);
-        AbstractDungeon.player.hand.removeCard(card);
-        AbstractDungeon.player.hand.addToTop(newCard);
+        Wiz.adp().hand.removeCard(card);
+        Wiz.adp().hand.addToTop(newCard);
     }
 
     @Override

@@ -15,21 +15,23 @@ import static theWidow.WidowMod.makeCardPath;
 
 @AutoAdd.Ignore
 public class Nanobots2 extends CustomCard {
-
     public static final String ID = WidowMod.makeID(Nanobots2.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = makeCardPath("Nanobots.png");
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
-    private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheWidow.Enums.COLOR_BLACK;
-
-    private static final int COST = 0;
     private static final int BLOCK = 6;
 
+
+
     public Nanobots2() {
-        super(ID, cardStrings.NAME, IMG, COST, cardStrings.DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super( ID,
+                cardStrings.NAME,
+                makeCardPath(Nanobots2.class.getSimpleName()),
+                0,
+                cardStrings.DESCRIPTION,
+                CardType.SKILL,
+                TheWidow.Enums.COLOR_BLACK,
+                CardRarity.COMMON,
+                CardTarget.SELF );
         baseBlock = BLOCK;
         exhaust = true;
     }
