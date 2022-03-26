@@ -33,7 +33,7 @@ public class GrenadierPower extends AbstractEasyPower implements CloneablePowerI
 
     @Override
     public void onInitialApplication() {
-        addToBot(new AddPotionSlotAction(amount));
+        addToTop(new AddPotionSlotAction(amount));
     }
 
     @Override
