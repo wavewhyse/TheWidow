@@ -369,8 +369,8 @@
   },
   "theWidow:BlackTarAdrenaline": {
     "NAME": "Blacktar Adrenaline",
-    "DESCRIPTION": "Gain [E]. NL Draw 2 cards. NL For the next 2 turns, draw 1 less card.",
-    "UPGRADE_DESCRIPTION": "Gain [E] [E]. NL Draw 2 cards. NL For the next 2 turns, draw 1 less card."
+    "DESCRIPTION": "Gain [E]. NL Draw 3 cards. NL For the next 2 turns, draw 1 less card.",
+    "UPGRADE_DESCRIPTION": "Gain [E] [E]. NL Draw 3 cards. NL For the next 2 turns, draw 1 less card."
   },
   "theWidow:BlackVenom2": {
     "NAME": "Black Venom B",
