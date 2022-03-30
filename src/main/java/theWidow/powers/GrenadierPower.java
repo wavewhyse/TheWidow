@@ -39,7 +39,7 @@ public class GrenadierPower extends AbstractEasyPower implements CloneablePowerI
     @Override
     public void stackPower(int stackAmount) {
         super.stackPower(stackAmount);
-        addToBot(new AddPotionSlotAction(stackAmount));
+        addToTop(new AddPotionSlotAction(stackAmount));
     }
 
     private static class AddPotionSlotAction extends AbstractGameAction {
